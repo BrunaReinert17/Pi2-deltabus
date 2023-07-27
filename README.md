@@ -3,7 +3,7 @@
 ![DELTABUS](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/029c8cda-555d-40cb-93d4-96292974bebe)
 
 
-Software gerenciar vendas de ônibus.
+Software gerenciamento para vendas de ônibus.
 
 
 # <p align="center" >Projeto Integrador</p><p align="center" > Pi</p> 
