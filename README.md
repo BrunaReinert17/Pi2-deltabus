@@ -28,7 +28,7 @@ Software gerenciar vendas de ônibus.
 <p>Tecnologia 1 : Java </p>
 <p>Tecnologia 2 : IDE eclipse workspace</p></br>
 
-# 🔮 Atualizações e aprimoramentos posteriores 
+# 🔮 Atualizaçôes e aprimoramentos posteriores 
 
 #  👨‍💻  Contribuintes
 
