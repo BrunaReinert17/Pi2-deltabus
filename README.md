@@ -33,4 +33,4 @@ Software gerenciamento para vendas de ônibus.
 #  👨‍💻  Contribuintes
 
 <p align="left" >Docente 💗: Prof Bruna Caroline Russi e Andrey de Souza Inacio MARAVILHOSOS!</p>
-<p align="left" >Discente 🎓🤘🏻: Maria Tereza, Bruna Reinert, Águida Ariane,Agatha Cristine e Marieli Buss.</p>
+<p align="left" >Discente 🎓🤘🏻: Maria Tereza, Bruna Reinert, Águida Ariane,Agatha Cristine Onofre e Marieli Buss.</p>
