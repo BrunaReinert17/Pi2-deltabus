@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 import java.awt.SystemColor;
+import javax.swing.ImageIcon;
 
 public class TelaLogin extends JFrame {
 
