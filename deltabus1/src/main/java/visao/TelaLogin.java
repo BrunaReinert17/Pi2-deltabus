@@ -76,7 +76,7 @@ public class TelaLogin extends JFrame {
 		txtEmail = new JTextField();
 		txtEmail.setBounds(49, 225, 274, 31);
 		panel.add(txtEmail);
-		txtEmail.setBackground(UIManager.getColor("Button.light"));
+		txtEmail.setBackground(SystemColor.controlHighlight);
 		txtEmail.setForeground(new Color(0, 0, 0));
 		txtEmail.setFont(new Font("Source Serif Pro Black", Font.PLAIN, 13));
 		txtEmail.setText("    Email : ");
