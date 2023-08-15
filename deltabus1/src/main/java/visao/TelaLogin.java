@@ -43,7 +43,7 @@ public class TelaLogin extends JFrame {
 	 */
 	public TelaLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1500);
+		setBounds(2000, 2000, 2500, 2500);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 102));
 		contentPane.setForeground(new Color(0, 102, 0));

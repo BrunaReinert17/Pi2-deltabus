@@ -9,6 +9,9 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class TelaPrincipal extends JFrame {
 
@@ -45,22 +48,27 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 376, 1061);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(0, 0, 376, 733);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JButton btnHistorico = new JButton("Histórico");
-		btnHistorico.setBackground(new Color(51, 102, 102));
-		btnHistorico.setBounds(76, 477, 199, 37);
+		btnHistorico.setForeground(new Color(255, 255, 255));
+		btnHistorico.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnHistorico.setBackground(new Color(0, 128, 128));
+		btnHistorico.setBounds(90, 412, 199, 37);
 		panel.add(btnHistorico);
 		
 		JButton btnNewButton_1 = new JButton("Consultar Cadastros");
-		btnNewButton_1.setBackground(new Color(51, 102, 102));
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnNewButton_1.setBackground(new Color(0, 128, 128));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(76, 584, 199, 37);
+		btnNewButton_1.setBounds(90, 469, 199, 37);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Logout");
@@ -70,9 +78,22 @@ public class TelaPrincipal extends JFrame {
 		panel.add(btnNewButton_2);
 		
 		JButton btnFuncionario = new JButton("Funcionario");
-		btnFuncionario.setBackground(new Color(51, 102, 102));
-		btnFuncionario.setBounds(76, 379, 199, 37);
+		btnFuncionario.setForeground(new Color(255, 255, 255));
+		btnFuncionario.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnFuncionario.setBackground(new Color(0, 128, 128));
+		btnFuncionario.setBounds(90, 353, 199, 37);
 		panel.add(btnFuncionario);
+		
+		JButton btnNewButton_1_1 = new JButton("Logout");
+		btnNewButton_1_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+		btnNewButton_1_1.setBackground(new Color(0, 0, 0));
+		btnNewButton_1_1.setBounds(124, 574, 140, 37);
+		panel.add(btnNewButton_1_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/teste.png")));
+		lblNewLabel.setBounds(-73, 260, 1260, 209);
+		contentPane.add(lblNewLabel);
 	}
-
 }
