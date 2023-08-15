@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`Clientes` (
   `cpf` DOUBLE NOT NULL,
   `cnpj` INT NOT NULL,
   `endereco_cep` INT NOT NULL,
-  INDEX `fk_cadastrarClientes_endereco1_idx` (`endereco_cep` ASC) VISIBLE,
   PRIMARY KEY (`cnpj`),
+  INDEX `fk_cadastrarClientes_endereco1_idx` (`endereco_cep` ASC) VISIBLE,
   CONSTRAINT `fk_cadastrarClientes_endereco1`
     FOREIGN KEY (`endereco_cep`)
-    REFERENCES `deltaBus`.`endereco` (`cep`));
+    REFERENCES `deltaBus`.`endereco` (`cnpj`));
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Pedido`
