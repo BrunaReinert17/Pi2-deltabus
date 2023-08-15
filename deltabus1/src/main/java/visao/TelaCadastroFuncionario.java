@@ -1,19 +1,20 @@
 package visao;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import java.awt.Font;
+import javax.swing.JTable;
 
-public class TelaPrincipal extends JFrame {
+public class TelaCadastroFuncionario extends JFrame {
 
 	private JPanel contentPane;
 
@@ -24,7 +25,7 @@ public class TelaPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaPrincipal frame = new TelaPrincipal();
+					TelaCadastroFuncionario frame = new TelaCadastroFuncionario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,8 +37,7 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaPrincipal() {
-		setBackground(new Color(51, 102, 102));
+	public TelaCadastroFuncionario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1500);
 		contentPane = new JPanel();
@@ -75,6 +75,13 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_1.setBounds(90, 687, 199, 43);
 		panel.add(btnNewButton_1);
 		
+		JButton btnadministrador = new JButton("+Administrador");
+		btnadministrador.setForeground(Color.WHITE);
+		btnadministrador.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnadministrador.setBackground(new Color(0, 128, 128));
+		btnadministrador.setBounds(90, 457, 199, 43);
+		panel.add(btnadministrador);
+		
 		JButton btnFuncionario = new JButton("+Funcionario");
 		btnFuncionario.setForeground(new Color(255, 255, 255));
 		btnFuncionario.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -89,10 +96,10 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_1_1.setBounds(120, 815, 140, 43);
 		panel.add(btnNewButton_1_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Bem Vindo: Administrador");
+		JLabel lblNewLabel_1 = new JLabel("Administrador");
 		lblNewLabel_1.setForeground(new Color(0, 128, 128));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
-		lblNewLabel_1.setBounds(109, 275, 184, 18);
+		lblNewLabel_1.setBounds(141, 276, 184, 18);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
@@ -100,21 +107,9 @@ public class TelaPrincipal extends JFrame {
 		panel.add(lblNewLabel_2);
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
 		
-		JButton btnadministrador = new JButton("+Administrador");
-		btnadministrador.setForeground(Color.WHITE);
-		btnadministrador.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnadministrador.setBackground(new Color(0, 128, 128));
-		btnadministrador.setBounds(90, 457, 199, 43);
-		panel.add(btnadministrador);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/Telas Pi (2).png")));
-		lblNewLabel.setBounds(276, 290, 1456, 407);
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
+		lblNewLabel.setBounds(1186, 868, 830, 126);
 		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel1 = new JLabel("New label");
-		lblNewLabel1.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
-		lblNewLabel1.setBounds(1186, 868, 830, 126);
-		contentPane.add(lblNewLabel1);
 	}
 }
