@@ -4,138 +4,139 @@ import java.time.LocalDate;
 
 public class Funcionario {
 
-private String nome;
+	private String nome;
 
-private LocalDate datanasci;
+	private LocalDate datanasci;
 
-private String genero;
+	private String genero;
 
-private Long numeroTelefone;
+	private Long numeroTelefone;
 
-private String email;
+	private String email;
 
-private Double cpf;
+	private Double cpf;
 
-private Endereco endereco;
+	private Endereco endereco;
 
-private Usuario usuario;
+	private Usuario usuario;
 
-public Funcionario(String nome, LocalDate datanasci, String genero,Long numeroTelefone, String email, Double cpf, Endereco endereco , Usuario usuario ) {
+	public Funcionario(String nome, LocalDate datanasci, String genero, Long numeroTelefone, String email, Double cpf,
+			Endereco endereco, Usuario usuario) {
 
-super();
+		super();
 
-this.nome = nome;
+		this.nome = nome;
 
-this.datanasci = datanasci;
+		this.datanasci = datanasci;
 
-this.genero = genero;
+		this.genero = genero;
 
-this.numeroTelefone = numeroTelefone;
+		this.numeroTelefone = numeroTelefone;
 
-this.email = email;
+		this.email = email;
 
-this.cpf = cpf;
+		this.cpf = cpf;
 
-this.endereco = endereco;
+		this.endereco = endereco;
 
-this.usuario = usuario;
+		this.usuario = usuario;
 
-}
+	}
 
-public String getNome() {
+	public String getNome() {
 
-return nome;
+		return nome;
 
-}
+	}
 
-public void setNome(String nome) {
+	public void setNome(String nome) {
 
-this.nome = nome;
+		this.nome = nome;
 
-}
+	}
 
-public LocalDate getDatanasci() {
+	public LocalDate getDatanasci() {
 
-return datanasci;
+		return datanasci;
 
-}
+	}
 
-public void setDatanasci(LocalDate datanasci) {
+	public void setDatanasci(LocalDate datanasci) {
 
-this.datanasci = datanasci;
+		this.datanasci = datanasci;
 
-}
+	}
 
-public String getGenero() {
+	public String getGenero() {
 
-return genero;
+		return genero;
 
-}
+	}
 
-public void setGenero(String genero) {
+	public void setGenero(String genero) {
 
-this.genero = genero;
+		this.genero = genero;
 
-}
+	}
 
-public Long getNumeroTelefone() {
+	public Long getNumeroTelefone() {
 
-return numeroTelefone;
+		return numeroTelefone;
 
-}
+	}
 
-public void setNumeroTelefone(Long numeroTelefone) {
+	public void setNumeroTelefone(Long numeroTelefone) {
 
-this.numeroTelefone = numeroTelefone;
+		this.numeroTelefone = numeroTelefone;
 
-}
+	}
 
-public String getEmail() {
+	public String getEmail() {
 
-return email;
+		return email;
 
-}
+	}
 
-public void setEmail(String email) {
+	public void setEmail(String email) {
 
-this.email = email;
+		this.email = email;
 
-}
+	}
 
-public Double getCpf() {
+	public Double getCpf() {
 
-return cpf;
+		return cpf;
 
-}
+	}
 
-public void setCpf(Double cpf) {
+	public void setCpf(Double cpf) {
 
-this.cpf = cpf;
+		this.cpf = cpf;
 
-}
+	}
 
-public Endereco getEndereco() {
+	public Endereco getEndereco() {
 
-return endereco;
+		return endereco;
 
-}
+	}
 
-public void setEndereco(Endereco endereco) {
+	public void setEndereco(Endereco endereco) {
 
-this.endereco = endereco;
+		this.endereco = endereco;
 
-}
+	}
 
-public Usuario getUsuario() {
+	public Usuario getUsuario() {
 
-return usuario;
+		return usuario;
 
-}
+	}
 
-public void setUsuario(Usuario usuario) {
+	public void setUsuario(Usuario usuario) {
 
-this.usuario = usuario;
+		this.usuario = usuario;
 
-}
+	}
 
 }

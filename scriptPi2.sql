@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`Clientes` (
   INDEX `fk_cadastrarClientes_endereco1_idx` (`endereco_cep` ASC) VISIBLE,
   CONSTRAINT `fk_cadastrarClientes_endereco1`
     FOREIGN KEY (`endereco_cep`)
-    REFERENCES `deltaBus`.`endereco` (`cnpj`));
+    REFERENCES `deltaBus`.`endereco` (`cep`));
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Pedido`
@@ -60,16 +60,16 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`Pedido` (
   `tipoPagamento` VARCHAR(45) NOT NULL,
   `pedidoIs` VARCHAR(45) NOT NULL,
   `Veiculo_idVeiculo` BIGINT(45) NOT NULL,
-  `Clientes_cpf` DOUBLE NOT NULL,
+  `Clientes_cnpj` DOUBLE NOT NULL,
   PRIMARY KEY (`pedidoIs`),
   INDEX `fk_Pedido_Veiculo_idx` (`Veiculo_idVeiculo` ASC) VISIBLE,
-  INDEX `fk_Pedido_Clientes1_idx` (`Clientes_cpf` ASC) VISIBLE,
+  INDEX `fk_Pedido_Clientes1_idx` (`Clientes_cnpj` ASC) VISIBLE,
   CONSTRAINT `fk_Pedido_Veiculo`
     FOREIGN KEY (`Veiculo_idVeiculo`)
     REFERENCES `deltaBus`.`Veiculo` (`idVeiculo`),
   CONSTRAINT `fk_Pedido_Clientes1`
-    FOREIGN KEY (`Clientes_cpf`)
-    REFERENCES `deltaBus`.`Clientes` (`cpf`));
+    FOREIGN KEY (`Clientes_cnpj`)
+    REFERENCES `deltaBus`.`Clientes` (`cnpj`));
 
 
 -- -----------------------------------------------------
