@@ -13,6 +13,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import java.awt.Toolkit;
 
 public class TelaCadastroFuncionario extends JFrame {
 
@@ -38,6 +39,8 @@ public class TelaCadastroFuncionario extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastroFuncionario() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCadastroFuncionario.class.getResource("/imagem/logoampliada.png")));
+		setTitle("Cadastrar Funcionário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1500);
 		contentPane = new JPanel();

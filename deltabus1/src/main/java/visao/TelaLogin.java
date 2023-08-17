@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 import java.awt.SystemColor;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class TelaLogin extends JFrame {
 
@@ -43,6 +44,8 @@ public class TelaLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaLogin() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaLogin.class.getResource("/imagem/logoampliada.png")));
+		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1500);
 		contentPane = new JPanel();
