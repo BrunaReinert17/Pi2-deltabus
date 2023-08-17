@@ -43,6 +43,10 @@ public class Funcionario {
 
 	}
 
+	public Funcionario(String string, long l, String string2, String string3, String string4) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getNome() {
 
 		return nome;
