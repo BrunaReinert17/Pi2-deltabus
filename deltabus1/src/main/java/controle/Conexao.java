@@ -8,6 +8,7 @@ public class Conexao {
 	private static Connection conexao;
 	private static Conexao instancia;
 	private static final String DATABASE = "deltaBus";
+	private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE + "?serverTimezone=UTC";
 	private static final String USER = "root";
 	private static final String PSW = "aluno";
 
@@ -23,7 +24,7 @@ public class Conexao {
 
 	public static Connection conectar() {
 		try {
-			conexao = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?serverTimezone=UTC", USER,PSW);
+			conexao = DriverManager.getConnection(URL, USER, PSW);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

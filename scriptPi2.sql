@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`Clientes` (
   `numeroTelefone` INT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `cpf` DOUBLE NOT NULL,
- `cnpj` BIGINT NOT NULL AUTO_INCREMENT,
+  `cnpj` BIGINT NOT NULL AUTO_INCREMENT,
   `endereco_cep` INT NOT NULL,
   PRIMARY KEY (`cnpj`),
   CONSTRAINT `fk_cadastrarClientes_endereco1`
@@ -59,15 +59,14 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`Pedido` (
   `tipoPagamento` VARCHAR(45) NOT NULL,
   `pedidoIs` VARCHAR(45) NOT NULL,
   `Veiculo_idVeiculo` BIGINT(45) NOT NULL,
-  `Clientes_cnpj` BIGINT NOT NULL, 
+  `Clientes_cnpj` BIGINT AUTO_INCREMENT NOT NULL, 
   PRIMARY KEY (`pedidoIs`),
   CONSTRAINT `fk_Pedido_Veiculo`
     FOREIGN KEY (`Veiculo_idVeiculo`)
     REFERENCES `deltaBus`.`Veiculo` (`idVeiculo`),
-  CONSTRAINT `fk_Pedido_Clientes1`
+   CONSTRAINT `fk_Cliente_cnpj_Pedido1`
     FOREIGN KEY (`Clientes_cnpj`)
     REFERENCES `deltaBus`.`Clientes` (`cnpj`));
-
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Usuario`
@@ -161,8 +160,7 @@ UPDATE funcionarios SET email = "agathaAgmail.com", numerotelefone = 999888777 W
 DELETE FROM funcionarios WHERE cpf = 12345678901;
 
 --- INSERT UPDATE DELETE Clientes---
-
-INSERT INTO `Clientes` (`Nome`, `numeroTelefone`, `email`, `cpf`, `endereco_cep`) 
-VALUES ('Gisele Melo Onofre', 1234567890, 'gisele@gmail.com', 12345678901, 12345);
-UPDATE `Clientes` SET `email` = 'giselemelo@gmail.com' WHERE `cnpj` = 123456;
-DELETE FROM `Clientes` WHERE `cnpj` = 123456;
+INSERT INTO Clientes (Nome, numeroTelefone, email, cpf, endereco_cep) 
+VALUES ('Gisele Melo Onofre', '1234567890', 'gisele@gmail.com', '12345678901', '12345');
+UPDATE Clientes SET email = 'giselemelo@gmail.com' WHERE cnpj = '123456';
+DELETE FROM Clientes WHERE cnpj = '123456';
