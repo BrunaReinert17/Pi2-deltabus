@@ -3,6 +3,7 @@ package controle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import modelo.Usuario;
 
@@ -11,7 +12,17 @@ public class UsuarioDAO implements InterfaceUsuario {
 	private Conexao con;
 	private Usuario usuarioModelo;
 	private Usuario usuario;
-	
+
+	public ArrayList<Usuario> listar() {
+		Conexao c = Conexao.getInstacia();
+
+		Connection con = c.conectar();
+		ArrayList<Usuario> animais = new ArrayList();
+		String query = "INSERT INTO Usuario " + "(idUsuario, senha,email,cargo) " + "VALUES (?, ?)";
+
+		return null;
+	}
+
 	@Override
 	public boolean inserirUsuario(Usuario usuario) {
 		this.usuario = usuario;
@@ -25,7 +36,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 			stm.setLong(1, usuario.getIdUsuario());
 			stm.setString(2, usuario.getSenha());
 			stm.setString(3, usuario.getEmail());
-			stm.setString(4,usuario.getCargo());
+			stm.setString(4, usuario.getCargo());
 
 			valida = stm.executeUpdate();
 
@@ -37,13 +48,13 @@ public class UsuarioDAO implements InterfaceUsuario {
 		return (valida == 0 ? false : true);
 
 	}
-	
+
 	@Override
 	public boolean deletarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
-	
+
 	@Override
 	public Usuario Cadastrar(Usuario usuarioModelo) {
 		con = Conexao.getInstacia();
@@ -80,10 +91,8 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 	}
 
-
 	@Override
 	public Usuario alterarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

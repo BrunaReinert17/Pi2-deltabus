@@ -18,7 +18,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 		Connection c = con.conectar();
 		try {
 			PreparedStatement ps = c.prepareStatement(
-					"select endereco.*, estados.id as id_estado, estados.nome as nome_estado, estados.uf as uf_estado from endereco inner join estados on estados.id = endereco.id_estado where cep = ? ");
+					"select endereco.*, estados.cep as cep_estado, estados.cidade as cidade_estado, estados.bairro as bairro_estado from endereco inner join estados on estados.cep = endereco._estado where cep = ? ");
 			ps.setLong(1, endereco.getCep());
 
 			ResultSet rs = ps.executeQuery();

@@ -59,12 +59,12 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`Pedido` (
   `tipoPagamento` VARCHAR(45) NOT NULL,
   `pedidoIs` VARCHAR(45) NOT NULL,
   `Veiculo_idVeiculo` BIGINT(45) NOT NULL,
-  `Clientes_cnpj` BIGINT AUTO_INCREMENT NOT NULL, 
+  `Clientes_Clientes_cnpj` BIGINT AUTO_INCREMENT NOT NULL, 
   PRIMARY KEY (`pedidoIs`),
   CONSTRAINT `fk_Pedido_Veiculo`
     FOREIGN KEY (`Veiculo_idVeiculo`)
     REFERENCES `deltaBus`.`Veiculo` (`idVeiculo`),
-   CONSTRAINT `fk_Cliente_cnpj_Pedido1`
+    CONSTRAINT `fk_Pedido_Clientes1`
     FOREIGN KEY (`Clientes_cnpj`)
     REFERENCES `deltaBus`.`Clientes` (`cnpj`));
 
@@ -127,40 +127,26 @@ SELECT * FROM funcionarios ORDER BY cpf ASC;
 --- INSERT, UPDATE e DELETE do Veiculo ---
 INSERT INTO Veiculo (idVeiculo, marca, modelo, preco, ano, acessorios, lotacao,cor,tipoFrota, tipoCombustivel,consultarEstoque_Codigoveiculo, placa,renavam,situacao) 
 VALUES (1, 'Marcopolo ', 'Paradiso G8 1050', 100000000.00, '2023-08-17','Ar condicionado, GPS', 5,'Azul', 'Passeio', 'diesel', 123,'ABC123','123456789', 1);
-UPDATE Veiculo SET preco = 120000000.00, lotacao = 2 WHERE idVeiculo = 1;
-DELETE FROM Veiculo WHERE idVeiculo = 1;
 
 --- INSERT, UPDATE e DELETE do endereco ---
 INSERT INTO endereco (cep, cidade, bairro, rua, estado, UF)
 VALUES (123456, 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
-UPDATE endereco SET cidade = 'Barreirinhas', estado = 'Maranhão' WHERE cep = 123456;
-DELETE FROM endereco WHERE cep = 123456;
 
 --- INSERT, UPDATE e DELETE do Pedido ---
 INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, pedidoIs, Veiculo_idVeiculo,Clientes_cnpj) 
 VALUES ('2023-08-16', 15000.00, 'Cartao','PED001', 1,123456789);
-UPDATE Estoque SET valorPago = 28000.00,tipoPagamento = 'Pix parcelado'  WHERE pedidoIs = 'PED001'; 
-DELETE FROM Pedido WHERE pedidoIs = 'PED001';
 
 ---  INSERT, UPDATE e DELETE do Usuario --- 
 INSERT INTO Usuario (idUsuario, senha, email, cargo)
 VALUES ('Bruna', '1312', 'bruna@gmail.com', 'funcionario');
-UPDATE Usuario SET email = 'reinertbruna@gmail.com', cargo = 'administrador' WHERE idUsuario = 'Bruna';
-DELETE FROM Usuario WHERE idUsuario = 'Bruna';
 
 --- INSERT, UPDATE e DELETE do administrador ---
 INSERT INTO adiministrdor ( idEmail, senha) VALUES ('agatha.c2009@gmail.com','Agatha');
-UPDATE adiministrador SET senha = '4gatha' WHERE idEmail = 'agatha.c2009@gmail.com'; 
-DELETE FROM adiministrador WHERE idEmail ='agatha.c2009@gmail.com';
 
 --- INSERT, UPDATE e DELETE do funcionarios ---
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario,endereco_cep) 
 VALUES (12345678901, 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321, 'agatha.cor@gmail.com', 'agatha_cor', 123456);
-UPDATE funcionarios SET email = "agathaAgmail.com", numerotelefone = 999888777 WHERE cpf = 12345678901;
-DELETE FROM funcionarios WHERE cpf = 12345678901;
 
 --- INSERT UPDATE DELETE Clientes---
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf, endereco_cep) 
 VALUES ('Gisele Melo Onofre', '1234567890', 'gisele@gmail.com', '12345678901', '12345');
-UPDATE Clientes SET email = 'giselemelo@gmail.com' WHERE cnpj = '123456';
-DELETE FROM Clientes WHERE cnpj = '123456';

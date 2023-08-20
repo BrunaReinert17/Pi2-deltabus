@@ -80,6 +80,14 @@ public class TelaPrincipal extends JFrame {
 		panel.add(btnNewButton_1);
 		
 		JButton btnFuncionario = new JButton("+Funcionario");
+		btnFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+				cadastrarUsuario.setLocationRelativeTo(null);
+				cadastrarUsuario.setVisible(true);;
+			dispose();
+			}
+		});
 		btnFuncionario.setForeground(new Color(255, 255, 255));
 		btnFuncionario.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnFuncionario.setBackground(new Color(0, 128, 128));
@@ -105,6 +113,15 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
 		
 		JButton btnadministrador = new JButton("+Administrador");
+		btnadministrador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+					cadastrarUsuario.setLocationRelativeTo(null);
+					cadastrarUsuario.setVisible(true);;
+				dispose();
+				}
+			
+	});
 		btnadministrador.setForeground(Color.WHITE);
 		btnadministrador.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnadministrador.setBackground(new Color(0, 128, 128));

@@ -14,8 +14,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class CadastrarFuncionario extends JFrame {
+public class CadastrarUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -29,7 +32,7 @@ public class CadastrarFuncionario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarFuncionario frame = new CadastrarFuncionario();
+					CadastrarUsuario frame = new CadastrarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +44,8 @@ public class CadastrarFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastrarFuncionario() {
+	public CadastrarUsuario() {
+		setTitle("Cadastrar Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(800, 800, 800, 700);
 		contentPane = new JPanel();
@@ -87,6 +91,21 @@ public class CadastrarFuncionario extends JFrame {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
+
+		JButton btnNewButton_1_1 = new JButton("Logout");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaPrincipal telaPrincipal = new TelaPrincipal();
+				telaPrincipal.setLocationRelativeTo(null);
+				telaPrincipal.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_1_1.setForeground(Color.WHITE);
+		btnNewButton_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
+		btnNewButton_1_1.setBackground(Color.BLACK);
+		btnNewButton_1_1.setBounds(57, 568, 140, 43);
+		contentPane.add(btnNewButton_1_1);
 
 	}
 }
