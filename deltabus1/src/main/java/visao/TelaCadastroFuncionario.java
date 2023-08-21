@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import utilidades.RoundButton;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -18,6 +21,11 @@ import java.awt.Toolkit;
 public class TelaCadastroFuncionario extends JFrame {
 
 	private JPanel contentPane;
+	private RoundButton btnadministrador;
+	private RoundButton btnFuncionario;
+	private RoundButton btnNewButton_1_1;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -56,43 +64,33 @@ public class TelaCadastroFuncionario extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JButton btnHistorico = new JButton("Histórico");
-		btnHistorico.addActionListener(new ActionListener() {
+		btnadministrador = new RoundButton("Cadastro de Usuário");
+		btnadministrador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnHistorico.setForeground(new Color(255, 255, 255));
-		btnHistorico.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnHistorico.setBackground(new Color(0, 128, 128));
-		btnHistorico.setBounds(90, 613, 199, 43);
-		panel.add(btnHistorico);
-		
-		JButton btnNewButton_1 = new JButton("Consultar Cadastros");
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnNewButton_1.setBackground(new Color(0, 128, 128));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(90, 687, 199, 43);
-		panel.add(btnNewButton_1);
-		
-		JButton btnadministrador = new JButton("+Administrador");
 		btnadministrador.setForeground(Color.WHITE);
 		btnadministrador.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnadministrador.setBackground(new Color(0, 128, 128));
 		btnadministrador.setBounds(90, 457, 199, 43);
 		panel.add(btnadministrador);
 		
-		JButton btnFuncionario = new JButton("+Funcionario");
+		btnFuncionario = new RoundButton("Verificar");
+		btnFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnFuncionario.setForeground(new Color(255, 255, 255));
 		btnFuncionario.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnFuncionario.setBackground(new Color(0, 128, 128));
 		btnFuncionario.setBounds(90, 534, 199, 43);
 		panel.add(btnFuncionario);
 		
-		JButton btnNewButton_1_1 = new JButton("Logout");
+		JButton btnNewButton_1_1 = new RoundButton("Logout");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_1_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
 		btnNewButton_1_1.setBackground(new Color(0, 0, 0));

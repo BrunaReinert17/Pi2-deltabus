@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import utilidades.RoundButton;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -25,6 +28,7 @@ public class TelaLogin extends JFrame {
 	private JTextField txtSenha;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel;
+	private RoundButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -65,7 +69,7 @@ public class TelaLogin extends JFrame {
 		contentPane.add(panel1);
 		panel1.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Login");
+		btnNewButton = new RoundButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
