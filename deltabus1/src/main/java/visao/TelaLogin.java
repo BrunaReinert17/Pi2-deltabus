@@ -72,7 +72,10 @@ public class TelaLogin extends JFrame {
 		btnNewButton = new RoundButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				TelaPrincipal telaPrincipal = new TelaPrincipal();
+				telaPrincipal.setLocationRelativeTo(null);
+				telaPrincipal.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton.setBounds(116, 384, 219, 42);

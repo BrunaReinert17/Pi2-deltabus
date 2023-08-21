@@ -97,20 +97,6 @@ public class CadastrarUsuario extends JFrame {
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
 
-		bntLogout = new JButton("Logout");
-		bntLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaPrincipal telaPrincipal = new TelaPrincipal();
-				telaPrincipal.setLocationRelativeTo(null);
-				telaPrincipal.setVisible(true);
-				dispose();
-			}
-		});
-		bntLogout.setForeground(Color.WHITE);
-		bntLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		bntLogout.setBackground(Color.BLACK);
-		bntLogout.setBounds(57, 568, 140, 43);
-		contentPane.add(bntLogout);
 
 	}
 }
