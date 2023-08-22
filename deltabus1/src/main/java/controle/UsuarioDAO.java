@@ -9,91 +9,97 @@ import modelo.Usuario;
 
 public class UsuarioDAO implements InterfaceUsuario {
 
-	private Conexao con;
-	private Usuario usuarioModelo;
-	private Usuario usuario;
+    private Conexao con;
 
-	public ArrayList<Usuario> listar() {
-		Conexao c = Conexao.getInstacia();
+    public UsuarioDAO() {
+        con = Conexao.getInstacia();
+    }
 
-		Connection con = c.conectar();
-		ArrayList<Usuario> animais = new ArrayList();
-		String query = "INSERT INTO Usuario " + "(idUsuario, senha,email,cargo) " + "VALUES (?, ?)";
+    @Override
+    public boolean inserirUsuario(Usuario usuario) {
+        Connection c = con.conectar();
+        int valida = 0;
 
-		return null;
-	}
+        try {
+            String query = "INSERT INTO usuario(idUsuario, senha, email, cargo) VALUES (?, ?, ?, ?)";
+            PreparedStatement stm = c.prepareStatement(query);
+            stm.setLong(1, usuario.getIdUsuario());
+            stm.setString(2, usuario.getSenha());
+            stm.setString(3, usuario.getEmail());
+            stm.setString(4, usuario.getCargo());
 
-	@Override
-	public boolean inserirUsuario(Usuario usuario) {
-		this.usuario = usuario;
-		con = Conexao.getInstacia();
-		Connection c = con.conectar();
-		int valida = 0;
+            valida = stm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+        return valida != 0;
+    }
 
-		try {
-			String query = "INSERT INTO usuario(idUsuario, senha, email, cargo) values(?,?,?);";
-			PreparedStatement stm = c.prepareStatement(query);
-			stm.setLong(1, usuario.getIdUsuario());
-			stm.setString(2, usuario.getSenha());
-			stm.setString(3, usuario.getEmail());
-			stm.setString(4, usuario.getCargo());
+    @Override
+    public boolean deletarUsuario(Usuario usuario) {
+        // Implemente a exclusão do usuário aqui
+        return false;
+    }
 
-			valida = stm.executeUpdate();
+    @Override
+    public Usuario Cadastrar(Usuario usuarioModelo) {
+        Connection c = con.conectar();
+        try {
+            PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario WHERE idUsuario = ? AND senha = ?");
+            ps.setLong(1, usuarioModelo.getIdUsuario());
+            ps.setString(2, usuarioModelo.getSenha());
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
-		}
-		return (valida == 0 ? false : true);
+            ResultSet rs = ps.executeQuery();
 
-	}
+            if (rs.next()) {
+                Long id = rs.getLong("idUsuario");
+                String senha = rs.getString("senha");
+                String email = rs.getString("email");
+                String cargo = rs.getString("cargo");
 
-	@Override
-	public boolean deletarUsuario(Usuario usuario) {
+                Usuario u = new Usuario(id, senha, email, cargo);
+                return u;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+        return null;
+    }
 
-		return false;
-	}
+    @Override
+    public Usuario alterarUsuario(Usuario usuario) {
+        // Implemente a atualização do usuário aqui
+        return null;
+    }
 
-	@Override
-	public Usuario Cadastrar(Usuario usuarioModelo) {
-		con = Conexao.getInstacia();
-		Connection c = con.conectar();
-		try {
-			PreparedStatement ps = c.prepareStatement("select * from usuario where login = ? and senha = ? ");
-			ps.setLong(1, usuarioModelo.getIdUsuario());
-			ps.setString(2, usuarioModelo.getSenha());
+    public ArrayList<Usuario> listar() {
+        Connection c = con.conectar();
+        ArrayList<Usuario> usuarios = new ArrayList<>();
 
-			ResultSet rs = ps.executeQuery();
-			InterfaceEndereco endereConfirmado = new EnderecoDAO();
+        try {
+            String query = "SELECT * FROM usuario";
+            PreparedStatement stm = c.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
 
-			while (rs.next()) {
-				Long id = rs.getLong("idusuario");
-				String senha = rs.getString("senha");
-				String email = rs.getString("email");
-				String cargo = rs.getString("cargo");
+            while (rs.next()) {
+                Long id = rs.getLong("idUsuario");
+                String senha = rs.getString("senha");
+                String email = rs.getString("email");
+                String cargo = rs.getString("cargo");
 
-				Usuario u = new Usuario(id, senha, email, cargo);
-				u.setIdUsuario(id);
-				u.setSenha(senha);
-				u.setEmail(email);
-				u.setCargo(cargo);
+                Usuario u = new Usuario(id, senha, email, cargo);
+                usuarios.add(u);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
 
-				return u;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} finally {
-			con.fecharConexao();
-		}
-		return null;
-
-	}
-
-	@Override
-	public Usuario alterarUsuario(Usuario usuario) {
-		return null;
-	}
-
+        return usuarios;
+    }
 }

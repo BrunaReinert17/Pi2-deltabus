@@ -1,4 +1,5 @@
 -- DROP DATABASES deltaBus IF EXISTS --
+
 CREATE SCHEMA IF NOT EXISTS `deltaBus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `deltaBus` ;
 
@@ -6,7 +7,7 @@ USE `deltaBus` ;
 -- Table `deltaBus`.`Veiculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `deltaBus`.`Veiculo` (
-  `idVeiculo` BIGINT(45) NOT NULL,
+  `idVeiculo` BIGINT(45) NOT NULL auto_increment,
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
   `preco` DOUBLE NOT NULL,
@@ -35,20 +36,18 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`endereco` (
   PRIMARY KEY (`cep`));
 
 
--- -----------------------------------------------------
--- Table `deltaBus`.`Clientes`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `deltaBus`.`Clientes` (
-  `Nome` INT NOT NULL ,
+  `Nome`  VARCHAR(255) NOT NULL,
   `numeroTelefone` INT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `cpf` DOUBLE NOT NULL,
-  `cnpj` BIGINT NOT NULL AUTO_INCREMENT,
+  `cnpj` INT NOT NULL AUTO_INCREMENT,
   `endereco_cep` INT NOT NULL,
   PRIMARY KEY (`cnpj`),
   CONSTRAINT `fk_cadastrarClientes_endereco1`
     FOREIGN KEY (`endereco_cep`)
     REFERENCES `deltaBus`.`endereco` (`cep`));
+
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Pedido`
@@ -59,14 +58,15 @@ CREATE TABLE IF NOT EXISTS `deltaBus`.`Pedido` (
   `tipoPagamento` VARCHAR(45) NOT NULL,
   `pedidoIs` VARCHAR(45) NOT NULL,
   `Veiculo_idVeiculo` BIGINT(45) NOT NULL,
-  `Clientes_Clientes_cnpj` BIGINT AUTO_INCREMENT NOT NULL, 
-  PRIMARY KEY (`pedidoIs`),
+  `Clientes_cnpj` INT NOT NULL,
+  PRIMARY KEY (`pedidoIs`, `Veiculo_idVeiculo`, `Clientes_cnpj`),
   CONSTRAINT `fk_Pedido_Veiculo`
     FOREIGN KEY (`Veiculo_idVeiculo`)
     REFERENCES `deltaBus`.`Veiculo` (`idVeiculo`),
-    CONSTRAINT `fk_Pedido_Clientes1`
+  CONSTRAINT `fk_Pedido_Clientes1`
     FOREIGN KEY (`Clientes_cnpj`)
     REFERENCES `deltaBus`.`Clientes` (`cnpj`));
+
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Usuario`
@@ -124,29 +124,30 @@ SELECT * FROM Usuario  ORDER BY idUsuario ASC;
 SELECT COUNT(*) FROM funcionarios;
 SELECT * FROM funcionarios ORDER BY cpf ASC;
 
---- INSERT, UPDATE e DELETE do Veiculo ---
-INSERT INTO Veiculo (idVeiculo, marca, modelo, preco, ano, acessorios, lotacao,cor,tipoFrota, tipoCombustivel,consultarEstoque_Codigoveiculo, placa,renavam,situacao) 
-VALUES (1, 'Marcopolo ', 'Paradiso G8 1050', 100000000.00, '2023-08-17','Ar condicionado, GPS', 5,'Azul', 'Passeio', 'diesel', 123,'ABC123','123456789', 1);
+-- INSERT Veiculo --
+INSERT INTO Veiculo (idVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, consultarEstoque_Codigoveiculo, placa, renavam, situacao) 
+VALUES ('6','Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023-08-17', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 123, 'ABC123', '123456789', 2);
 
---- INSERT, UPDATE e DELETE do endereco ---
+-- INSERT endereco --
 INSERT INTO endereco (cep, cidade, bairro, rua, estado, UF)
-VALUES (123456, 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
+VALUES ('896116815', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
 
---- INSERT, UPDATE e DELETE do Pedido ---
+-- INSERT  Clientes--
+INSERT INTO Clientes (Nome, numeroTelefone, email, cnpj, endereco_cep) 
+VALUES ('Gisele', '1234567890', 'gisele@gmail.com', '90.857.326/1254-63', '12345');
+
+-- INSERT Pedido --
 INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, pedidoIs, Veiculo_idVeiculo,Clientes_cnpj) 
-VALUES ('2023-08-16', 15000.00, 'Cartao','PED001', 1,123456789);
+VALUES ('2023-08-16', 15000.00, 'Cartao','PED001', 1,'73.586.914/0572.68');
 
----  INSERT, UPDATE e DELETE do Usuario --- 
+--  INSERT Usuario --
 INSERT INTO Usuario (idUsuario, senha, email, cargo)
 VALUES ('Bruna', '1312', 'bruna@gmail.com', 'funcionario');
 
---- INSERT, UPDATE e DELETE do administrador ---
-INSERT INTO adiministrdor ( idEmail, senha) VALUES ('agatha.c2009@gmail.com','Agatha');
+-- INSERTadministrador--
+--- INSERT INTO adiministrador ( idEmail, senha) VALUES ('agatha.c2009@gmail.com','Agatha')---
 
---- INSERT, UPDATE e DELETE do funcionarios ---
+-- INSERT funcionarios --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario,endereco_cep) 
 VALUES (12345678901, 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321, 'agatha.cor@gmail.com', 'agatha_cor', 123456);
 
---- INSERT UPDATE DELETE Clientes---
-INSERT INTO Clientes (Nome, numeroTelefone, email, cpf, endereco_cep) 
-VALUES ('Gisele Melo Onofre', '1234567890', 'gisele@gmail.com', '12345678901', '12345');

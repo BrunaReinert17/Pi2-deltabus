@@ -8,8 +8,6 @@ public interface InterfacePedido {
 
 	public boolean inserirPedido(Pedido pedido);
 
-	//public ArrayList<Estado> ConsultaEstadoCidade();
-
 	public boolean excluirPedido(Pedido pedido);
 
 	public boolean alterarPedido(Pedido pedido);
