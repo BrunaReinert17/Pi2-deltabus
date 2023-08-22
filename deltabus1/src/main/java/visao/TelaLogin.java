@@ -51,9 +51,10 @@ public class TelaLogin extends JFrame {
 	 */
 	public TelaLogin() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaLogin.class.getResource("/imagem/logoampliada.png")));
+		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1500);
+		setBounds(100, 100, 2000, 1400);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 102));
 		contentPane.setForeground(new Color(0, 102, 0));
