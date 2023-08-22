@@ -46,6 +46,7 @@ public class TelaPrincipal extends JFrame {
 	 */
 	public TelaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPrincipal.class.getResource("/imagem/logoampliada.png")));
+		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Principal Administrador");
 		setTitle("Menu");
 		setBackground(new Color(51, 102, 102));
