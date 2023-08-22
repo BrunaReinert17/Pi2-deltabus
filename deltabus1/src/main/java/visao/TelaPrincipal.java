@@ -115,11 +115,6 @@ public class TelaPrincipal extends JFrame {
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/Telas Pi (2).png")));
-		lblNewLabel.setBounds(276, 290, 1456, 407);
-		contentPane.add(lblNewLabel);
-
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
 		lblNewLabel1.setBounds(1186, 868, 830, 126);
@@ -128,9 +123,14 @@ public class TelaPrincipal extends JFrame {
 		CadastrarUsuario panelUsuario = new CadastrarUsuario();
 		panelUsuario.setLocation(579, 97);
 		panelTeste = panelUsuario;
-		panelTeste.setBounds(507, 11, 1146, 748);
+		panelTeste.setBounds(567, 112, 1200, 800);
 		panelTeste.setVisible(false);
 		
 		contentPane.add(panelTeste);
+		
+				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/Telas Pi (2).png")));
+				lblNewLabel.setBounds(255, 283, 1456, 407);
+				contentPane.add(lblNewLabel);
 	}
 }

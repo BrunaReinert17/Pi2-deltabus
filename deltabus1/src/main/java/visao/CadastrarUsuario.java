@@ -45,7 +45,7 @@ public class CadastrarUsuario extends JPanel {
 	public CadastrarUsuario() {
 		setLocale("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setBounds(300, 300, 1200, 800);
 		JPanel contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 102));
 		contentPane.setForeground(new Color(0, 102, 0));
@@ -61,47 +61,49 @@ public class CadastrarUsuario extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 0));
-		panel.setBounds(0, 0, 800, 46);
+		panel.setBounds(0, 0, 1200, 46);
 		add(panel);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
-		panel_1.setBounds(0, 45, 10, 555);
+		panel_1.setBounds(0, 45, 10, 755);
 		add(panel_1);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(0, 0, 0));
-		panel_2.setBounds(10, 590, 790, 10);
+		panel_2.setBounds(10, 790, 1190, 10);
 		add(panel_2);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(0, 0, 0));
-		panel_3.setBounds(790, 45, 10, 555);
+		panel_3.setBounds(1190, 34, 10, 766);
 		add(panel_3);
 
 		textField = new JTextField();
-		textField.setBounds(81, 110, 229, 23);
+		textField.setFont(new Font("Dialog", Font.BOLD, 18));
+		textField.setBounds(178, 176, 278, 30);
 		add(textField);
 		textField.setColumns(10);
 
 		textField_1 = new JTextField();
-		textField_1.setBounds(460, 110, 262, 23);
+		textField_1.setFont(new Font("Dialog", Font.BOLD, 18));
+		textField_1.setBounds(656, 176, 307, 30);
 		add(textField_1);
 		textField_1.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNome.setBounds(81, 91, 46, 14);
+		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblNome.setBounds(178, 157, 67, 14);
 		add(lblNome);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblEmail.setBounds(460, 91, 46, 14);
+		lblEmail.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblEmail.setBounds(656, 157, 67, 14);
 		add(lblEmail);
 
 		JLabel lblCpf = new JLabel("CPF:");
-		lblCpf.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblCpf.setBounds(81, 169, 46, 14);
+		lblCpf.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblCpf.setBounds(178, 245, 46, 14);
 		add(lblCpf);
 
 		/**********/
@@ -112,109 +114,119 @@ public class CadastrarUsuario extends JPanel {
 			e1.printStackTrace();
 		}
 		txtCpf = new JFormattedTextField(mascaraCpf);
+		txtCpf.setFont(new Font("Dialog", Font.BOLD, 18));
 		/**********/
 
 		txtCpf.setBackground(new Color(255, 255, 255));
 		txtCpf.setForeground(new Color(245, 245, 245));
 		txtCpf.setColumns(10);
-		txtCpf.setBounds(81, 188, 174, 23);
+		txtCpf.setBounds(178, 264, 205, 30);
 		add(txtCpf);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblTelefone.setBounds(460, 171, 98, 14);
+		lblTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblTelefone.setBounds(656, 247, 98, 14);
 		add(lblTelefone);
 
 		textField_4 = new JTextField();
+		textField_4.setFont(new Font("Dialog", Font.BOLD, 18));
 		textField_4.setColumns(10);
-		textField_4.setBounds(81, 270, 174, 23);
+		textField_4.setBounds(178, 358, 194, 30);
 		add(textField_4);
 
 		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Dialog", Font.BOLD, 18));
 		textField_3.setColumns(10);
-		textField_3.setBounds(460, 189, 155, 23);
+		textField_3.setBounds(656, 265, 205, 29);
 		add(textField_3);
 
 		lblDataDeNascimento = new JLabel("Data de Nascimento:");
-		lblDataDeNascimento.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblDataDeNascimento.setBounds(81, 252, 155, 14);
+		lblDataDeNascimento.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblDataDeNascimento.setBounds(178, 340, 194, 14);
 		add(lblDataDeNascimento);
 
 		comboBox = new JComboBox();
-		comboBox.setBounds(460, 269, 155, 23);
+		comboBox.setFont(new Font("Dialog", Font.BOLD, 18));
+		comboBox.setBounds(656, 357, 182, 31);
 		add(comboBox);
 
 		lblGnero = new JLabel("Gênero:");
-		lblGnero.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblGnero.setBounds(460, 252, 155, 14);
+		lblGnero.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblGnero.setBounds(656, 340, 155, 14);
 		add(lblGnero);
 
 		textField_5 = new JTextField();
+		textField_5.setFont(new Font("Dialog", Font.BOLD, 18));
 		textField_5.setColumns(10);
-		textField_5.setBounds(81, 355, 137, 23);
+		textField_5.setBounds(178, 447, 194, 30);
 		add(textField_5);
 
 		lblCep = new JLabel("CEP:");
-		lblCep.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblCep.setBounds(81, 336, 155, 14);
+		lblCep.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblCep.setBounds(178, 428, 155, 14);
 		add(lblCep);
 
 		textField_7 = new JTextField();
+		textField_7.setFont(new Font("Dialog", Font.BOLD, 18));
 		textField_7.setColumns(10);
-		textField_7.setBounds(585, 355, 137, 23);
+		textField_7.setBounds(855, 447, 182, 30);
 		add(textField_7);
 
 		comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(328, 355, 146, 23);
+		comboBox_1.setFont(new Font("Dialog", Font.BOLD, 18));
+		comboBox_1.setBounds(545, 447, 199, 30);
 		add(comboBox_1);
 
 		lblCidade = new JLabel("Cidade:");
-		lblCidade.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblCidade.setBounds(328, 338, 155, 14);
+		lblCidade.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblCidade.setBounds(545, 430, 155, 14);
 		add(lblCidade);
 
 		lblBairro = new JLabel("Bairro:");
-		lblBairro.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblBairro.setBounds(584, 338, 155, 14);
+		lblBairro.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblBairro.setBounds(854, 430, 155, 14);
 		add(lblBairro);
 
 		comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(81, 437, 67, 23);
+		comboBox_2.setFont(new Font("Dialog", Font.BOLD, 18));
+		comboBox_2.setBounds(178, 541, 98, 30);
 		add(comboBox_2);
 
 		lblUf = new JLabel("UF:");
-		lblUf.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblUf.setBounds(81, 420, 155, 14);
+		lblUf.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblUf.setBounds(178, 524, 155, 14);
 		add(lblUf);
 
 		textField_6 = new JTextField();
+		textField_6.setFont(new Font("Dialog", Font.BOLD, 18));
 		textField_6.setColumns(10);
-		textField_6.setBounds(585, 437, 137, 23);
+		textField_6.setBounds(855, 541, 182, 30);
 		add(textField_6);
 
 		lblSenha = new JLabel("Senha:");
-		lblSenha.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSenha.setBounds(585, 420, 155, 14);
+		lblSenha.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblSenha.setBounds(855, 524, 155, 14);
 		add(lblSenha);
 
 		comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(328, 437, 137, 23);
+		comboBox_3.setFont(new Font("Dialog", Font.BOLD, 18));
+		comboBox_3.setBounds(545, 541, 155, 30);
 		add(comboBox_3);
 
 		lblFuno = new JLabel("Função:");
-		lblFuno.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblFuno.setBounds(328, 416, 155, 23);
+		lblFuno.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblFuno.setBounds(545, 520, 155, 23);
 		add(lblFuno);
 
 		btnNewButton = new RoundButton("Deletar");
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 18));
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(263, 513, 118, 30);
+		btnNewButton.setBounds(423, 674, 137, 33);
 		add(btnNewButton);
 
 		btnConfirmar = new RoundButton("Confirmar");
@@ -223,9 +235,9 @@ public class CadastrarUsuario extends JPanel {
 			}
 		});
 		btnConfirmar.setForeground(Color.BLACK);
-		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 18));
 		btnConfirmar.setBackground(Color.BLACK);
-		btnConfirmar.setBounds(420, 513, 118, 30);
+		btnConfirmar.setBounds(666, 674, 137, 33);
 		add(btnConfirmar);
 
 		setContentPane(contentPane);
