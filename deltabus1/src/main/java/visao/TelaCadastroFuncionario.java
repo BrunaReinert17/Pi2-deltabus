@@ -97,7 +97,7 @@ public class TelaCadastroFuncionario extends JFrame {
 		btnLogout.setBounds(120, 815, 140, 43);
 		panel.add(btnLogout);
 		
-		JLabel lblNewLabel_1 = new JLabel("Funcionario");
+		JLabel lblNewLabel_1 = new JLabel("admin");
 		lblNewLabel_1.setForeground(new Color(0, 128, 128));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblNewLabel_1.setBounds(141, 276, 184, 18);

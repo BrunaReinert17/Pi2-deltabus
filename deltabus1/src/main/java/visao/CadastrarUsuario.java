@@ -195,7 +195,7 @@ public class CadastrarUsuario extends JPanel {
 			lblFuno.setBounds(328, 416, 155, 23);
 			add(lblFuno);
 			
-			btnNewButton = new JButton("Deletar");
+			btnNewButton = new RoundButton("Deletar");
 			btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
 			btnNewButton.setForeground(new Color(0, 0, 0));
 			btnNewButton.setBackground(new Color(0, 0, 0));
@@ -206,14 +206,14 @@ public class CadastrarUsuario extends JPanel {
 			btnNewButton.setBounds(263, 513, 118, 30);
 			add(btnNewButton);
 			
-			btnConfirmar = new JButton("Confirmar");
+			btnConfirmar = new RoundButton("Confirmar");
 			btnConfirmar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
 			btnConfirmar.setForeground(Color.BLACK);
 			btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 14));
-			btnConfirmar.setBackground(new Color(0, 128, 128));
+			btnConfirmar.setBackground(Color.BLACK);
 			btnConfirmar.setBounds(420, 513, 118, 30);
 			add(btnConfirmar);
 
