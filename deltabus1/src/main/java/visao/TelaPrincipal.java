@@ -20,12 +20,10 @@ import java.awt.Toolkit;
 public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	private RoundButton btnadministrador;
-	private RoundButton btnFuncionario;
+	private RoundButton btnCadastrarUsuarios;
+	private RoundButton btnVerificar;
 	private RoundButton bntLogout;
-	private RoundButton bntConsultarCadastro;
-	private RoundButton bntHistorico;
-	
+
 
 	/**
 	 * Launch the application.
@@ -66,42 +64,17 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JButton btnHistorico = new RoundButton("Histórico");
-		btnHistorico.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnHistorico.setForeground(new Color(255, 255, 255));
-		btnHistorico.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnHistorico.setBackground(new Color(0, 128, 128));
-		btnHistorico.setBounds(90, 613, 199, 43);
-		panel.add(btnHistorico);
 		
-		JButton btnConsultarCadastro = new RoundButton("Consultar Cadastros");
-		btnConsultarCadastro.setForeground(new Color(255, 255, 255));
-		btnConsultarCadastro.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnConsultarCadastro.setBackground(new Color(0, 128, 128));
-		btnConsultarCadastro.addActionListener(new ActionListener() {
+		btnVerificar = new RoundButton("Verificar");
+		btnVerificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnConsultarCadastro.setBounds(90, 687, 199, 43);
-		panel.add(btnConsultarCadastro);
-		
-		JButton btnFuncionario = new RoundButton("+Funcionario");
-		btnFuncionario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
-				cadastrarUsuario.setLocationRelativeTo(null);
-				cadastrarUsuario.setVisible(true);;
-			dispose();
-			}
-		});
-		btnFuncionario.setForeground(new Color(255, 255, 255));
-		btnFuncionario.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnFuncionario.setBackground(new Color(0, 128, 128));
-		btnFuncionario.setBounds(90, 534, 199, 43);
-		panel.add(btnFuncionario);
+		btnVerificar.setForeground(new Color(255, 255, 255));
+		btnVerificar.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnVerificar.setBackground(new Color(0, 128, 128));
+		btnVerificar.setBounds(90, 534, 199, 43);
+		panel.add(btnVerificar);
 		
 		JButton btnLogout = new RoundButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
@@ -125,21 +98,22 @@ public class TelaPrincipal extends JFrame {
 		panel.add(lblNewLabel_2);
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
 		
-		JButton btnadministrador = new RoundButton("+Administrador");
-		btnadministrador.addActionListener(new ActionListener() {
+		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
+		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
-					cadastrarUsuario.setLocationRelativeTo(null);
-					cadastrarUsuario.setVisible(true);;
-				dispose();
-				}
-			
-	});
-		btnadministrador.setForeground(Color.WHITE);
-		btnadministrador.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnadministrador.setBackground(new Color(0, 128, 128));
-		btnadministrador.setBounds(90, 457, 199, 43);
-		panel.add(btnadministrador);
+			}
+		});
+		btnCadastrarUsuarios.setForeground(Color.WHITE);
+		btnCadastrarUsuarios.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
+		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
+		panel.add(btnCadastrarUsuarios);
+		
+		btnCadastrarUsuarios.setForeground(Color.WHITE);
+		btnCadastrarUsuarios.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
+		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
+		panel.add(btnCadastrarUsuarios);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/Telas Pi (2).png")));

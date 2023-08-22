@@ -23,7 +23,7 @@ public class TelaCadastroFuncionario extends JFrame {
 	private JPanel contentPane;
 	private RoundButton btnadministrador;
 	private RoundButton btnFuncionario;
-	private RoundButton btnNewButton_1_1;
+	private RoundButton btnLogout;
 	
 	
 
@@ -86,18 +86,18 @@ public class TelaCadastroFuncionario extends JFrame {
 		btnFuncionario.setBounds(90, 534, 199, 43);
 		panel.add(btnFuncionario);
 		
-		JButton btnNewButton_1_1 = new RoundButton("Logout");
-		btnNewButton_1_1.addActionListener(new ActionListener() {
+		JButton btnLogout = new RoundButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnNewButton_1_1.setBackground(new Color(0, 0, 0));
-		btnNewButton_1_1.setBounds(120, 815, 140, 43);
-		panel.add(btnNewButton_1_1);
+		btnLogout.setForeground(new Color(255, 255, 255));
+		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
+		btnLogout.setBackground(new Color(0, 0, 0));
+		btnLogout.setBounds(120, 815, 140, 43);
+		panel.add(btnLogout);
 		
-		JLabel lblNewLabel_1 = new JLabel("Administrador");
+		JLabel lblNewLabel_1 = new JLabel("Funcionario");
 		lblNewLabel_1.setForeground(new Color(0, 128, 128));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblNewLabel_1.setBounds(141, 276, 184, 18);
