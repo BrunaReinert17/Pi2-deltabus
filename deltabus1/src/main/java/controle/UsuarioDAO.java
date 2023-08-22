@@ -47,7 +47,7 @@ public class UsuarioDAO implements InterfaceUsuario {
     public Usuario Cadastrar(Usuario usuarioModelo) {
         Connection c = con.conectar();
         try {
-            PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario WHERE idUsuario = ? AND senha = ?");
+            PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario WHERE idUsuario = ? AND senha = ? AND email = ? AND cargo = ?");
             ps.setLong(1, usuarioModelo.getIdUsuario());
             ps.setString(2, usuarioModelo.getSenha());
 

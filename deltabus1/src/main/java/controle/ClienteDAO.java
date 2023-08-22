@@ -37,6 +37,8 @@ public class ClienteDAO implements InterfaceCliente {
 	        }
 	        return valida != 0;
 	    }
+	
+	
 
 	@Override
 	public boolean deletarCliente(Cliente cliente) {
