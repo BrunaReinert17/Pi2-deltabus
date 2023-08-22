@@ -81,7 +81,7 @@ public class ListarUsuario extends JFrame {
 		table.getColumn(1).setPreferredWidth(5000);
 
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" }));
+				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento"          , "Genero", "Endereço" }));
 		scrollPane.setViewportView(table);
 
 		panel_1 = new JPanel();
