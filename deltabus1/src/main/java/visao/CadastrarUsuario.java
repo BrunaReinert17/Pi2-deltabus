@@ -22,7 +22,7 @@ public class CadastrarUsuario extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField txtCpf;
-	private JTextField textField_4;
+	private JTextField txtDataDeNascimento;
 	private JTextField textField_3;
 	private JLabel lblDataDeNascimento;
 	private JComboBox comboBox;
@@ -118,7 +118,7 @@ public class CadastrarUsuario extends JPanel {
 		/**********/
 
 		txtCpf.setBackground(new Color(255, 255, 255));
-		txtCpf.setForeground(new Color(245, 245, 245));
+		txtCpf.setForeground(new Color(0, 0, 0));
 		txtCpf.setColumns(10);
 		txtCpf.setBounds(178, 264, 205, 30);
 		add(txtCpf);
@@ -129,9 +129,8 @@ public class CadastrarUsuario extends JPanel {
 		add(lblTelefone);
 
 		textField_4 = new JTextField();
-		textField_4.setFont(new Font("Dialog", Font.BOLD, 18));
 		textField_4.setColumns(10);
-		textField_4.setBounds(178, 358, 194, 30);
+		textField_4.setBounds(81, 270, 174, 23);
 		add(textField_4);
 
 		textField_3 = new JTextField();
@@ -139,12 +138,23 @@ public class CadastrarUsuario extends JPanel {
 		textField_3.setColumns(10);
 		textField_3.setBounds(656, 265, 205, 29);
 		add(textField_3);
-
+		
 		lblDataDeNascimento = new JLabel("Data de Nascimento:");
 		lblDataDeNascimento.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblDataDeNascimento.setBounds(178, 340, 194, 14);
 		add(lblDataDeNascimento);
-
+		
+		/**********/
+		MaskFormatter mascaraDataDeNascimento = null;
+		try {
+			mascaraCpf = new MaskFormatter("##/##/####");
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtDataDeNascimento = new JFormattedTextField(mascaraCpf);
+		txtCpf.setFont(new Font("Dialog", Font.PLAIN, 12));
+		/**********/
+		
 		comboBox = new JComboBox();
 		comboBox.setFont(new Font("Dialog", Font.BOLD, 18));
 		comboBox.setBounds(656, 357, 182, 31);
@@ -219,7 +229,7 @@ public class CadastrarUsuario extends JPanel {
 		add(lblFuno);
 
 		btnNewButton = new RoundButton("Deletar");
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 18));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -235,9 +245,9 @@ public class CadastrarUsuario extends JPanel {
 			}
 		});
 		btnConfirmar.setForeground(Color.BLACK);
-		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 18));
+		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnConfirmar.setBackground(Color.BLACK);
-		btnConfirmar.setBounds(666, 674, 137, 33);
+		btnConfirmar.setBounds(420, 513, 118, 30);
 		add(btnConfirmar);
 
 		setContentPane(contentPane);
