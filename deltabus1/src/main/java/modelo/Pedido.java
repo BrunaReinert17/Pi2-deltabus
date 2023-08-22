@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class Pedido {
 
-	private Veiculo veiculo;
+	private int veiculo;
 
-	private Cliente cliente;
+	private String cliente;
 
 	private LocalDate dataCompra;
 
@@ -14,7 +14,7 @@ public class Pedido {
 
 	private String tipoPagamento;
 
-	public Pedido(Veiculo veiculo, Cliente cliente, LocalDate dataCompra, Double valorPago, String tipoPagamento) {
+	public Pedido(int veiculo, String cliente, LocalDate dataCompra, Double valorPago, String tipoPagamento) {
 
 		super();
 
@@ -30,25 +30,25 @@ public class Pedido {
 
 	}
 
-	public Veiculo getVeiculo() {
+	public int getVeiculo() {
 
 		return veiculo;
 
 	}
 
-	public void setVeiculo(Veiculo veiculo) {
+	public void setVeiculo(int veiculo) {
 
 		this.veiculo = veiculo;
 
 	}
 
-	public Cliente getCliente() {
+	public String getCliente() {
 
 		return cliente;
 
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(String cliente) {
 
 		this.cliente = cliente;
 
