@@ -5,22 +5,20 @@ import java.time.LocalDate;
 public class Funcionario {
 
 	private String nome;
-
 	private LocalDate datanasci;
-
 	private String genero;
-
-	private Long numeroTelefone;
-
-	private String email;
-
-	private Double cpf;
-
+	private String numeroTelefone;
+	private long cpf;
 	private Endereco endereco;
-
 	private Usuario usuario;
 
-	public Funcionario(String nome, LocalDate datanasci, String genero, Long numeroTelefone, String email, Double cpf,
+	
+	
+	public Funcionario() {
+		super();
+	}
+
+	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, long cpf,
 			Endereco endereco, Usuario usuario) {
 
 		super();
@@ -33,8 +31,7 @@ public class Funcionario {
 
 		this.numeroTelefone = numeroTelefone;
 
-		this.email = email;
-
+		
 		this.cpf = cpf;
 
 		this.endereco = endereco;
@@ -83,37 +80,28 @@ public class Funcionario {
 
 	}
 
-	public Long getNumeroTelefone() {
+	public String getNumeroTelefone() {
 
 		return numeroTelefone;
 
 	}
 
-	public void setNumeroTelefone(Long numeroTelefone) {
+	public void setNumeroTelefone(String numeroTelefone) {
 
 		this.numeroTelefone = numeroTelefone;
 
 	}
 
-	public String getEmail() {
 
-		return email;
+	
 
-	}
-
-	public void setEmail(String email) {
-
-		this.email = email;
-
-	}
-
-	public Double getCpf() {
+	public long getCpf() {
 
 		return cpf;
 
 	}
 
-	public void setCpf(Double cpf) {
+	public void setCpf(long cpf) {
 
 		this.cpf = cpf;
 
@@ -143,4 +131,11 @@ public class Funcionario {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", datanasci=" + datanasci + ", genero=" + genero + ", numeroTelefone="
+				+ numeroTelefone + ", cpf=" + cpf + ", endereco=" + endereco + ", usuario=" + usuario + "]";
+	}
+
+	
 }

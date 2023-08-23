@@ -10,6 +10,6 @@ public interface InterfaceUsuario {
 
 	public Usuario alterarUsuario(Usuario usuario);
 
-	public Usuario Cadastrar(Usuario usuarioModelo);
+	public Usuario selecionar(Usuario usuarioModelo);
 
 }

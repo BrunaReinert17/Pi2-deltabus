@@ -3,6 +3,7 @@ package controle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Usuario;
@@ -44,12 +45,12 @@ public class UsuarioDAO implements InterfaceUsuario {
     }
 
     @Override
-    public Usuario Cadastrar(Usuario usuarioModelo) {
+    public Usuario selecionar (Usuario usuarioModelo) {
         Connection c = con.conectar();
         try {
-            PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario WHERE idUsuario = ? AND senha = ? AND email = ? AND cargo = ?");
-            ps.setLong(1, usuarioModelo.getIdUsuario());
-            ps.setString(2, usuarioModelo.getSenha());
+            PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario where senha = ? AND email = ?");
+            ps.setString(1, usuarioModelo.getSenha());
+            ps.setString(2, usuarioModelo.getEmail());
 
             ResultSet rs = ps.executeQuery();
 
@@ -102,4 +103,43 @@ public class UsuarioDAO implements InterfaceUsuario {
 
         return usuarios;
     }
+    public Usuario consultarLogin(Usuario usuario) {
+
+		try {
+
+			con = Conexao.getInstacia();
+			Connection c = con.conectar();
+			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
+			ps.setString(1, usuario.getEmail());
+			ps.setString(2, usuario.getSenha());
+
+			ResultSet rs = ps.executeQuery();
+		//	Usuario usuarioConectado = new Usuario();
+			
+			while (rs.next()) {
+				long idUsuario = rs.getLong("idusuario");
+				String email = rs.getString("email");
+				String senha = rs.getString("senha");
+				String cargo = rs.getString("cargo");
+
+				//usuarioConectado.setIdUsuario(idUsuario);
+				//usuarioConectado.setEmail(email);
+				//usuarioConectado.setSenha(senha);
+				//usuarioConectado.setCargo(cargo);
+
+			//	return usuarioConectado;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+
+			con.fecharConexao();
+		}
+
+		return null;
+	}
+
 }

@@ -37,18 +37,23 @@ public class VeiculoDAO {
 					
 
 					 Veiculo v = new Veiculo();
-					Endereco endereco = new Endereco();
 					
-				//	v.setNome(rs.getString("nome"));
-				//	v.setNumeroTelefone(rs.getInt("numeroTelefone"));
-				//	v.setEmail(rs.getString("email"));
-				//	v.setCpf(rs.getDouble("cpf"));
-				//	v.setCnpj(rs.getLong("cnpj"));
-					endereco.setCep(rs.getInt("endereco_cep"));
-				//	v.setEndereco(endereco);
+					v.setIdVeiculo(rs.getLong("idveiculo"));
+					v.setMarca(rs.getString("marca"));
+					v.setModelo(rs.getString("modelo"));
+					v.setPreco(rs.getDouble("preco"));
+					//v.setAno(rs.getLocalDate("ano"));
+					v.setAcessorios(rs.getString("acessorios"));
+					v.setLotacao(rs.getInt("lotacao"));
+					v.setPlaca(rs.getString("placa"));
+					v.setRenavam(rs.getString("renavam"));
+					v.setCor(rs.getString("cor"));
+					v.setTipoFrota(rs.getString("tipofrota"));
+					v.setKmveiculo(rs.getInt("kmveiculo"));
+					v.setTipoCombustivel(rs.getString("tipocombustivel"));
 					
-
 				}
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -57,5 +62,34 @@ public class VeiculoDAO {
 
 			return veiculos;
 		}
+		public boolean inserirVeiculo (Veiculo veiculo) {
+			 Connection c = con.conectar();
+		        int valida = 0;
+
+		        try {
+		            String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, endereco_cep) VALUES (?, ?, ?, ?)";
+		            PreparedStatement stm = c.prepareStatement(query);
+		            stm.setLong(1, veiculo.getIdVeiculo());
+		            stm.setString(2, veiculo.getMarca());
+		            stm.setString(3, veiculo.getModelo());
+		            stm.setDouble(4,veiculo.getPreco());
+		            //stm.setLocalDate(5, veiculo.getAno());
+		            stm.setString(6, veiculo.getAcessorios());
+		            stm.setInt(7, veiculo.getLotacao());
+		            stm.setString(8, veiculo.getPlaca());
+		            stm.setString(9, veiculo.getRenavam());
+		            stm.setString(10, veiculo.getCor());
+		            stm.setString(11, veiculo.getTipoFrota());
+		            stm.setLong(12, veiculo.getKmveiculo());
+		            stm.setString(13, veiculo.getTipoCombustivel());
+		            
+		            valida = stm.executeUpdate();
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        } finally {
+		            con.fecharConexao();
+		        }
+		        return valida != 0;
+		    }
 	    
 }

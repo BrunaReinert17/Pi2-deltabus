@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import modelo.Cliente;
+import modelo.Endereco;
 import modelo.Pedido;
 import modelo.Veiculo;
 
@@ -34,21 +35,16 @@ public class PedidoDAO implements InterfacePedido{
 				
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
-					 String veiculo = rs.getString("veiculo");
+					 String id_pedido = rs.getString("id_pedido");
 
-					String cliente = rs.getString("cliente");
-					Date dataCompra = rs.getDate("dataCompra");
-					Double valorPago = rs.getDouble("valorPago");
-					String tipoPagamento = rs.getString("tipoPagamento");
+					// Pedido pedido = new Pedido();
+						
+					// pedido.setVeiculo(rs.getInt("veiculo"));
+					// pedido.setCliente(rs.getString("cliente"));
+					 //pedido.setDataCompra(rs.getString("datacompra"));
+					// pedido.setValorPago(rs.getDouble("valorpago"));
+					// pedido.setTipoPagamento(rs.getString("cnpj"));
 
-					
-					//Pedido p = new Pedido(veiculo, tipoPagamento, null, valorPago, tipoPagamento);
-					//p.setVeiculo(null);;
-					//p.setCliente(null);
-				//	p.setDataCompra(null);
-					//p.setValorPago(valorPago);
-					//p.setTipoPagamento(tipoPagamento);
-					//pedidos.add(p);
 
 				}
 			} catch (SQLException e) {
