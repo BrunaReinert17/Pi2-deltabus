@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import utilidades.RoundButton;
+import javax.swing.DefaultComboBoxModel;
 
 public class CadastrarUsuario extends JPanel {
 	private JTextField txtNome;
@@ -161,10 +162,12 @@ public class CadastrarUsuario extends JPanel {
 		/**********/
 		
 		cbGenero = new JComboBox();
-		cbGenero.setFont(new Font("Dialog", Font.BOLD, 18));
+		cbGenero.setModel(new DefaultComboBoxModel(new String[] {"","Feminino", "Masculino"}));
+		cbGenero.setFont(new Font("Dialog", Font.BOLD, 13));
 		cbGenero.setBounds(656, 357, 182, 31);
 		add(cbGenero);
-
+		
+		
 		lblGnero = new JLabel("Gênero:");
 		lblGnero.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblGnero.setBounds(656, 340, 155, 14);
@@ -234,7 +237,8 @@ public class CadastrarUsuario extends JPanel {
 		add(lblSenha);
 
 		cbFuncao = new JComboBox();
-		cbFuncao.setFont(new Font("Dialog", Font.BOLD, 18));
+		cbFuncao.setModel(new DefaultComboBoxModel(new String[] {"","Administrador", "Funcionário"}));
+		cbFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		cbFuncao.setBounds(545, 541, 155, 30);
 		add(cbFuncao);
 

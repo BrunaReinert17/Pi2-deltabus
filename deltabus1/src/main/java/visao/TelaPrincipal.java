@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
 
 public class TelaPrincipal extends JFrame {
 
@@ -127,9 +128,10 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel1);
 		
 		CadastrarUsuario panelUsuario = new CadastrarUsuario();
+		panelUsuario.setToolTipText("");
 		panelUsuario.setLocation(579, 97);
 		panelTeste = panelUsuario;
-		panelTeste.setBounds(567, 112, 1200, 800);
+		panelTeste.setBounds(568, 104, 1200, 800);
 		panelTeste.setVisible(false);
 		
 		contentPane.add(panelTeste);
