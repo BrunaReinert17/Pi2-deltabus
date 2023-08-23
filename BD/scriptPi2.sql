@@ -1,7 +1,7 @@
 -- DROP DATABASES deltaBus IF EXISTS 
 
-CREATE SCHEMA IF NOT EXISTS `deltaBus2` ;
-USE deltabus2;
+CREATE SCHEMA IF NOT EXISTS `deltaBus` ;
+USE deltabus;
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Veiculo`
@@ -126,28 +126,27 @@ INSERT INTO Veiculo (marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFr
 VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023-08-17', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 123, 'ABC123', '123456789', 2);
 
 -- INSERT endereco --
-
--- NAO PODE CEO REPETIDO 
+-- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua, estado, UF)
-VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
+VALUES ('21346561', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468436, 21346560);
+VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468438, 21346561);
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
 INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Veiculo_idVeiculo,Clientes_cnpj) 
-VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468436');
+VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468438');
 
 --  INSERT Usuario --
 INSERT INTO Usuario ( senha, email, cargo)
 VALUES ( '1312', 'bruna@gmail.com', 'funcionario');
 
--- INSERTadministrador--
+-- INSERT administrador--
 --- INSERT INTO adiministrador ( idEmail, senha) VALUES ('agatha.c2009@gmail.com','Agatha')---
 
--- INSERT funcionarios --
-INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone, email, Usuario_idUsuario, endereco_cep) 
-VALUES ('15678901', 'Agatha Cristine Onofre Ribeiro', '2004-01-19', 'Feminino', 987654321, 'agatha.cor@gmail.com', 1, 21346560);
+-- INSERT Funcionario --
+INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
+VALUES ('15678901', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346560);

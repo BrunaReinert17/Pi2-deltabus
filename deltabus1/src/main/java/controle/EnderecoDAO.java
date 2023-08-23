@@ -14,22 +14,22 @@ public class EnderecoDAO implements InterfaceEndereco {
 	
 	@Override
 	public Endereco consultandoEndereco(Endereco endereco) {
+		System.out.println(endereco.toString());
 		con = Conexao.getInstacia();
 		Connection c = con.conectar();
 		try {
 			PreparedStatement ps = c.prepareStatement(
-					"select endereco.*, estados.cep as cep_estado, estados.cidade as cidade_estado, estados.bairro as bairro_estado from endereco inner join estados on estados.cep = endereco._estado where cep = ? ");
+					"select * from endereco where cep = ?");
 			ps.setLong(1, endereco.getCep());
 
 			ResultSet rs = ps.executeQuery();
-			Endereco enderecoConfirmado = new Endereco(0, null, null, null, null, null);
+			Endereco enderecoConfirmado = new Endereco();
 
 			while (rs.next()) {
 				int cep = rs.getInt("cep");
 				String cidade = rs.getString("cidade");
 				String bairro = rs.getString("bairro");
 				String rua = rs.getString("rua");
-				String estado = rs.getString("estado");
 				String uf = rs.getString("uf");
 
 			
@@ -37,7 +37,6 @@ public class EnderecoDAO implements InterfaceEndereco {
 				enderecoConfirmado.setCidade(cidade);
 				enderecoConfirmado.setBairro(bairro);
 				enderecoConfirmado.setRua(rua);
-				enderecoConfirmado.setEstado(estado);
 				enderecoConfirmado.setUf(uf);
 				
 				return enderecoConfirmado;
@@ -60,15 +59,14 @@ public class EnderecoDAO implements InterfaceEndereco {
 		PreparedStatement st = null;
 		int valida = 0;
 		try {
-			String query = "INSERT INTO endereco (cep, cidade, bairro, rua, estado, UF)values(?,?,?,?,?);";
+			String query = "INSERT INTO endereco (cep, cidade, bairro, rua, UF)values(?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setLong(1, endereco.getCep());
 			stm.setString(2, endereco.getCidade());
 			stm.setString(3, endereco.getBairro());
 			stm.setString(4, endereco.getRua());
-			stm.setString(5,endereco.getEstado());
-			stm.setString(6,endereco.getUf());
+			stm.setString(5,endereco.getUf());
 
 			valida = stm.executeUpdate();
 		} catch (SQLException e) {
