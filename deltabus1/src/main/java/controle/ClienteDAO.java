@@ -1,10 +1,15 @@
 package controle;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Cliente;
 import modelo.Endereco;
+import modelo.Pedido;
 
 public class ClienteDAO implements InterfaceCliente {
 
@@ -13,6 +18,47 @@ public class ClienteDAO implements InterfaceCliente {
 	    public ClienteDAO() {
 	        con = Conexao.getInstacia();
 	    }
+	    
+	    public ArrayList<Cliente> listar() {
+			Conexao c = Conexao.getInstacia();
+			Connection con = c.conectar();
+
+			ArrayList<Cliente> clientes = new ArrayList<>();
+
+			String query = "SELECT * FROM clientes";
+			try {
+				
+				PreparedStatement ps = con.prepareStatement(query);
+
+				
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					 String nome = rs.getString("nome");
+
+					
+
+					Cliente cliente = new Cliente();
+					Endereco endereco = new Endereco();
+					
+					cliente.setNome(rs.getString("nome"));
+					cliente.setNumeroTelefone(rs.getInt("numeroTelefone"));
+					cliente.setEmail(rs.getString("email"));
+					cliente.setCpf(rs.getDouble("cpf"));
+					cliente.setCnpj(rs.getLong("cnpj"));
+					endereco.setCep(rs.getInt("endereco_cep"));
+					cliente.setEndereco(endereco);
+					
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			c.fecharConexao();
+
+			return clientes;
+		}
+	    
 	
 	@Override
 	public boolean inserirCliente(Cliente cliente) {

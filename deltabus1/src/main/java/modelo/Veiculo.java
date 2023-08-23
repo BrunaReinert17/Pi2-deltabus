@@ -5,33 +5,24 @@ import java.time.LocalDate;
 public class Veiculo {
 
 	private Long idVeiculo;
-
 	private String marca;
-
 	private String modelo;
-
 	private Double preco;
-
 	private LocalDate ano;
-
 	private String acessorios;
-
 	private int lotacao;
-
 	private String placa;
-
 	private String renavam;
-
 	private String cor;
-
 	private String TipoFrota;
-
 	private int Kmveiculo;
-
 	private String TipoCombustivel;
-
 	private boolean situacao;
-
+	
+	public Veiculo() {
+		super();
+	}
+	
 	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, LocalDate ano, String acessorios,
 			int lotacao, String placa, String renavam, String cor, String TipoFrota, int Kmveiculo,
 			String TipoCombustivel, boolean situacao) {

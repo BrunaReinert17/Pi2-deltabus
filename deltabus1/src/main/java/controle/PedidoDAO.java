@@ -26,7 +26,7 @@ public class PedidoDAO implements InterfacePedido{
 
 			ArrayList<Pedido> pedidos = new ArrayList<>();
 
-			String query = "SELECT * FROM pessoa";
+			String query = "SELECT * FROM pedido";
 			try {
 				
 				PreparedStatement ps = con.prepareStatement(query);

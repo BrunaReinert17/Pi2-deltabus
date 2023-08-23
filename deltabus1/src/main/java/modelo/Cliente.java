@@ -9,6 +9,10 @@ public class Cliente  {
 	private long cnpj;
 	private Endereco endereco;
 	
+	public Cliente() {
+		super();
+	}
+	
 	public Cliente(String nome,int numeroTelefone,String email,double cpf,long cnpj,Endereco endereco) {
 		super();
 		this.nome = nome;

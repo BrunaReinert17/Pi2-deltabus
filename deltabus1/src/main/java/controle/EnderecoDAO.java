@@ -25,7 +25,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 			Endereco enderecoConfirmado = new Endereco(0, null, null, null, null, null);
 
 			while (rs.next()) {
-				Long cep = rs.getLong("cep");
+				int cep = rs.getInt("cep");
 				String cidade = rs.getString("cidade");
 				String bairro = rs.getString("bairro");
 				String rua = rs.getString("rua");
