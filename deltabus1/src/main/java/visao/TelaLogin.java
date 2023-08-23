@@ -10,6 +10,7 @@ import utilidades.RoundButton;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -23,6 +24,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
+
+import controle.UsuarioDAO;
+import modelo.Usuario;
+
 import javax.swing.border.BevelBorder;
 
 public class TelaLogin extends JFrame {
@@ -32,7 +37,7 @@ public class TelaLogin extends JFrame {
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel;
 	private RoundButton btnNewButton;
-	private JPasswordField passwordField;
+	private JPasswordField txtSenha;
 
 	/**
 	 * Launch the application.
@@ -78,11 +83,31 @@ public class TelaLogin extends JFrame {
 		btnNewButton = new RoundButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaPrincipal telaPrincipal = new TelaPrincipal();
-				telaPrincipal.setLocationRelativeTo(null);
-				telaPrincipal.setVisible(true);
-				dispose();
+				
+				UsuarioDAO usuarioDAO = new UsuarioDAO();
+				Usuario usuario = new Usuario();
+				String email  = txtEmail.getText();
+				String senha = txtSenha.getText();
+				usuario.setEmail(email);
+				usuario.setSenha(senha);
+				Usuario retorno = new Usuario();
+				retorno = usuarioDAO.consultarLogin(usuario);
+				if (!email.isEmpty() && !senha.isEmpty()) {
+					
+				
+				if( retorno!=null &&retorno.getEmail().equals(email) &&retorno.getSenha().equals(senha)){
+					TelaPrincipal telaPrincipal = new TelaPrincipal();
+					telaPrincipal.setLocationRelativeTo(null);
+					telaPrincipal.setVisible(true);
+					dispose();
+		}else {
+			JOptionPane.showMessageDialog(null, "erro");
+		}
+				
 			}
+			else {
+				JOptionPane.showMessageDialog(null, "Senha ou Usuario não preenchidos!");
+			}}
 		});
 		btnNewButton.setBounds(112, 394, 219, 42);
 		btnNewButton.setForeground(new Color(255, 255, 255));
@@ -108,10 +133,10 @@ public class TelaLogin extends JFrame {
 		lblNewLabel.setBounds(-386, 11, 916, 225);
 		panel1.add(lblNewLabel);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBackground(UIManager.getColor("CheckBox.background"));
-		passwordField.setBounds(87, 309, 274, 31);
-		panel1.add(passwordField);
+		txtSenha = new JPasswordField();
+		txtSenha.setBackground(UIManager.getColor("CheckBox.background"));
+		txtSenha.setBounds(87, 309, 274, 31);
+		panel1.add(txtSenha);
 		
 		JLabel lblNewLabel_3 = new JLabel("Senha : ");
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));

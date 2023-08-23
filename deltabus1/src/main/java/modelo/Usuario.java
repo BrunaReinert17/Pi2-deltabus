@@ -7,6 +7,12 @@ public class Usuario {
 	private String senha;
 	private String cargo;
 
+	
+	
+	public Usuario() {
+		super();
+	}
+
 	public Usuario(long idUsuario, String email, String senha, String cargo) {
 		super();
 		this.idUsuario = idUsuario;
@@ -47,4 +53,10 @@ public class Usuario {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", email=" + email + ", senha=" + senha + ", cargo=" + cargo + "]";
+	}
+	
 }

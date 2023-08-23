@@ -30,31 +30,18 @@ public class Veiculo {
 		super();
 
 		this.idVeiculo = idVeiculo;
-
 		this.marca = marca;
-
 		this.modelo = modelo;
-
 		this.preco = preco;
-
 		this.ano = ano;
-
 		this.acessorios = acessorios;
-
 		this.lotacao = lotacao;
-
 		this.placa = placa;
-
 		this.renavam = renavam;
-
 		this.cor = cor;
-
 		this.TipoFrota = TipoFrota;
-
 		this.Kmveiculo = Kmveiculo;
-
 		this.TipoCombustivel = TipoCombustivel;
-
 		this.situacao = situacao;
 
 	}

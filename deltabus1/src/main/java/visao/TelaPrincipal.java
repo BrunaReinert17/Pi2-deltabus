@@ -71,42 +71,21 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setBounds(95, 829, 180, 47);
-		panel.add(lblNewLabel_5);
-		lblNewLabel_5.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone3.png")));
-		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setBounds(34, 534, 102, 37);
-		panel.add(lblNewLabel_4);
-		lblNewLabel_4.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/Icone2.png")));
-		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(-400, 411, 528, 89);
-		panel.add(lblNewLabel_3);
-		lblNewLabel_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone.png")));
-		btnVerificar.setForeground(new Color(255, 255, 255));
+		btnVerificar.setForeground(Color.WHITE);
 		btnVerificar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnVerificar.setBackground(new Color(0, 128, 128));
-		btnVerificar.setBounds(90, 534, 199, 43);
+		btnVerificar.setBounds(90, 596, 199, 43);
 		panel.add(btnVerificar);
 
 		JButton btnLogout = new RoundButton("Logout");
-		btnLogout.setText("");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaLogin telaLogin = new TelaLogin();
-				telaLogin.setLocationRelativeTo(null);
-				telaLogin.setVisible(true);
-				dispose();
-			
 			}
 		});
 		btnLogout.setForeground(new Color(255, 255, 255));
 		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnLogout.setBackground(new Color(255, 255, 255));
-		btnLogout.setBounds(120, 815, 140, 61);
+		btnLogout.setBackground(new Color(0, 0, 0));
+		btnLogout.setBounds(120, 815, 140, 43);
 		panel.add(btnLogout);
 
 		JLabel lblNewLabel_1 = new JLabel("Bem Vindo: Administrador");
@@ -121,13 +100,12 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
 
 		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
-		btnCadastrarUsuarios.setText("    Cadastro de Usuário");
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
 			}
 		});
-		btnCadastrarUsuarios.setForeground(Color.WHITE);
+		btnCadastrarUsuarios.setForeground(new Color(0, 0, 0));
 		btnCadastrarUsuarios.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
@@ -138,6 +116,30 @@ public class TelaPrincipal extends JFrame {
 		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(-395, 411, 528, 89);
+		panel.add(lblNewLabel_3);
+		lblNewLabel_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone.png")));
+		
+		
+		
+		RoundButton rndbtnListar = new RoundButton("Verificar");
+		rndbtnListar.setText("Listar");
+		rndbtnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelTeste.setVisible(false);
+				ListarUsuario listarUsuario = new ListarUsuario();
+				listarUsuario.setLocationRelativeTo(null);
+				listarUsuario.setVisible(true);
+				
+			}
+		});
+		rndbtnListar.setForeground(Color.WHITE);
+		rndbtnListar.setFont(new Font("Dialog", Font.BOLD, 15));
+		rndbtnListar.setBackground(new Color(0, 128, 128));
+		rndbtnListar.setBounds(90, 530, 199, 43);
+		panel.add(rndbtnListar);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
@@ -154,8 +156,8 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(panelTeste);
 		
 				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setBounds(-164, 164, 1456, 407);
+				panelUsuario.add(lblNewLabel);
 				lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/Telas Pi (2).png")));
-				lblNewLabel.setBounds(255, 283, 1456, 407);
-				contentPane.add(lblNewLabel);
 	}
 }

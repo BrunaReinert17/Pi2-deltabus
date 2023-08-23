@@ -114,7 +114,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 			ps.setString(2, usuario.getSenha());
 
 			ResultSet rs = ps.executeQuery();
-		//	Usuario usuarioConectado = new Usuario();
+			Usuario usuarioConectado = new Usuario();
 			
 			while (rs.next()) {
 				long idUsuario = rs.getLong("idusuario");
@@ -122,12 +122,12 @@ public class UsuarioDAO implements InterfaceUsuario {
 				String senha = rs.getString("senha");
 				String cargo = rs.getString("cargo");
 
-				//usuarioConectado.setIdUsuario(idUsuario);
-				//usuarioConectado.setEmail(email);
-				//usuarioConectado.setSenha(senha);
-				//usuarioConectado.setCargo(cargo);
+				usuarioConectado.setIdUsuario(idUsuario);
+				usuarioConectado.setEmail(email);
+				usuarioConectado.setSenha(senha);
+				usuarioConectado.setCargo(cargo);
 
-			//	return usuarioConectado;
+				return usuarioConectado;
 			}
 
 		} catch (SQLException e) {

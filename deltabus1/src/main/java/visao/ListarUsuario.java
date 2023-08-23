@@ -15,10 +15,13 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controle.FuncionarioDAO;
+import modelo.Funcionario;
 import utilidades.RoundButton;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ListarUsuario extends JFrame {
@@ -27,6 +30,7 @@ public class ListarUsuario extends JFrame {
 	private JTable table;
 	private JPanel panel;
 	private JPanel panel_1;
+	private ArrayList<Funcionario> listFuncionario; 
 
 
 
@@ -77,11 +81,9 @@ public class ListarUsuario extends JFrame {
 		table.setBackground(new Color(255, 255, 255));
 		table.setFont(new Font("Dialog", Font.BOLD, 14));
 
-		table.getColumn(0).setPreferredWidth(5);
-		table.getColumn(1).setPreferredWidth(5000);
 
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento"          , "Genero", "Endereço" }));
+				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" }));
 		scrollPane.setViewportView(table);
 
 		panel_1 = new JPanel();
@@ -102,6 +104,19 @@ public class ListarUsuario extends JFrame {
 		lblNewLabel_1.setBounds(217, 561, 412, 14);
 		contentPane.add(lblNewLabel_1);
 
-
+		atualizarTabela();
 	}
+	private void atualizarTabela() {
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		listFuncionario = funcionarioDAO.consultarTodos();
+		System.out.println(listFuncionario);
+		for (int i = 0; i < listFuncionario.size(); i++) {
+			Funcionario funcionario = listFuncionario.get(i);
+			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
+
+		}
+		table.setModel(tabela);
+	}
+
 }
