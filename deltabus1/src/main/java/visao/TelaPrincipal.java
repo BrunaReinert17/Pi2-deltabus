@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
+import javax.swing.SwingConstants;
 
 public class TelaPrincipal extends JFrame {
 
@@ -69,6 +70,11 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(-400, 411, 528, 89);
+		panel.add(lblNewLabel_3);
+		lblNewLabel_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone.png")));
 		btnVerificar.setForeground(new Color(255, 255, 255));
 		btnVerificar.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnVerificar.setBackground(new Color(0, 128, 128));
