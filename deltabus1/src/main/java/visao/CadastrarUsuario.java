@@ -255,7 +255,7 @@ public class CadastrarUsuario extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		bntDeletar.setBounds(423, 674, 132, 33);
+		bntDeletar.setBounds(446, 674, 132, 33);
 		add(bntDeletar);
 
 		btnConfirmar = new RoundButton("Confirmar");
@@ -265,14 +265,22 @@ public class CadastrarUsuario extends JPanel {
 		});
 		btnConfirmar.setForeground(Color.WHITE);
 		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 14));
-		btnConfirmar.setBackground(Color.BLACK);
-		btnConfirmar.setBounds(612, 674, 132, 31);
+		btnConfirmar.setBackground(new Color(0, 128, 128));
+		btnConfirmar.setBounds(612, 674, 132, 33);
 		add(btnConfirmar);
 		
 		
 		txtDataNasci.setBounds(178, 376, 149, 29);
 		add(txtDataNasci);
 		txtDataNasci.setColumns(10);
+		
+		RoundButton bntDeletar_1 = new RoundButton("Deletar");
+		bntDeletar_1.setText("Buscar");
+		bntDeletar_1.setForeground(Color.WHITE);
+		bntDeletar_1.setFont(new Font("Dialog", Font.BOLD, 14));
+		bntDeletar_1.setBackground(new Color(0, 128, 128));
+		bntDeletar_1.setBounds(403, 264, 98, 30);
+		add(bntDeletar_1);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

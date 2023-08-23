@@ -72,6 +72,16 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setBounds(95, 829, 180, 47);
+		panel.add(lblNewLabel_5);
+		lblNewLabel_5.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone3.png")));
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setBounds(34, 534, 102, 37);
+		panel.add(lblNewLabel_4);
+		lblNewLabel_4.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/Icone2.png")));
+		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(-400, 411, 528, 89);
 		panel.add(lblNewLabel_3);
@@ -83,14 +93,20 @@ public class TelaPrincipal extends JFrame {
 		panel.add(btnVerificar);
 
 		JButton btnLogout = new RoundButton("Logout");
+		btnLogout.setText("");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TelaLogin telaLogin = new TelaLogin();
+				telaLogin.setLocationRelativeTo(null);
+				telaLogin.setVisible(true);
+				dispose();
+			
 			}
 		});
 		btnLogout.setForeground(new Color(255, 255, 255));
 		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnLogout.setBackground(new Color(0, 0, 0));
-		btnLogout.setBounds(120, 815, 140, 43);
+		btnLogout.setBackground(new Color(255, 255, 255));
+		btnLogout.setBounds(120, 815, 140, 61);
 		panel.add(btnLogout);
 
 		JLabel lblNewLabel_1 = new JLabel("Bem Vindo: Administrador");
@@ -105,6 +121,7 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
 
 		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
+		btnCadastrarUsuarios.setText("    Cadastro de Usuário");
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
