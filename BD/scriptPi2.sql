@@ -1,7 +1,7 @@
 -- DROP DATABASES deltaBus IF EXISTS 
 
-CREATE SCHEMA IF NOT EXISTS `deltaBus` ;
-USE deltabus;
+CREATE SCHEMA IF NOT EXISTS `deltaBus2` ;
+USE deltabus2;
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Veiculo`
@@ -128,17 +128,17 @@ VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023-08-17', 'Ar condici
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua, estado, UF)
-VALUES ('21346561', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
+VALUES ('21346562', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468438, 21346561);
+VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468439, 21346562);
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
 INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Veiculo_idVeiculo,Clientes_cnpj) 
-VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468438');
+VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468439');
 
 --  INSERT Usuario --
 INSERT INTO Usuario ( senha, email, cargo)
@@ -149,4 +149,4 @@ VALUES ( '1312', 'bruna@gmail.com', 'funcionario');
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('15678901', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346560);
+VALUES ('15678901', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346562);
