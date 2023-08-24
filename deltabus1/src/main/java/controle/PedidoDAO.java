@@ -41,7 +41,7 @@ public class PedidoDAO implements InterfacePedido{
 						
 					 pedido.setVeiculo(rs.getInt("veiculo"));
 					 pedido.setCliente(rs.getString("cliente"));
-					 pedido.setDataCompra(rs.getString("datacompra"));
+					 //pedido.setDataCompra(rs.getString("datacompra"));
 					 pedido.setValorPago(rs.getDouble("valorpago"));
 					 pedido.setTipoPagamento(rs.getString("cnpj"));
 

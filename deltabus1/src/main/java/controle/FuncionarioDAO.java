@@ -47,7 +47,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 			stm.setString(2, funcionario.getNome());
 			stm.setDate(3, java.sql.Date.valueOf(funcionario.getDatanasci()));
 			stm.setString(4, funcionario.getGenero());
-			//stm.setString(5, funcionario.getNumeroTelefone());
+			stm.setString(5, funcionario.getNumeroTelefone());
 			stm.setLong(6, funcionario.getUsuario().getIdUsuario());
 			stm.setLong(7, funcionario.getEndereco().getCep());
 

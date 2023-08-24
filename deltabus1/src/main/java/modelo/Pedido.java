@@ -90,9 +90,5 @@ public class Pedido {
 
 	}
 
-	public void setDataCompra(String string) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
