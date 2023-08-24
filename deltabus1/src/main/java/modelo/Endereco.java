@@ -6,7 +6,6 @@ public class Endereco {
 	private String cidade;
 	private String bairro;
 	private String rua;
-	private String estado;
 	private String Uf;
 	
 	
@@ -19,7 +18,6 @@ public class Endereco {
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.rua = rua;
-		this.estado = estado;
 		this.Uf = UF;
 		
 	}
@@ -64,17 +62,6 @@ public class Endereco {
 		this.rua = rua;
 	}
 
-
-	public String getEstado() {
-		return estado;
-	}
-
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-
 	public String getUf() {
 		return Uf;
 	}
@@ -85,8 +72,7 @@ public class Endereco {
 	}
 	@Override
 	public String toString() {
-		return "Endereco [cep=" + cep + ", cidade=" + cidade + ", bairro=" + bairro + ", rua=" + rua + ", estado="
-				+ estado + ", Uf=" + Uf + "]";
+		return "Endereco [cep=" + cep + ", cidade=" + cidade + ", bairro=" + bairro + ", rua=" + rua + ", Uf=" + Uf + "]";
 	}
 	
 }

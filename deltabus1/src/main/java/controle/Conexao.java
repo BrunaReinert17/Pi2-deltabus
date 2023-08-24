@@ -10,7 +10,7 @@ public class Conexao {
 	private static final String DATABASE = "deltaBus";
 	private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE + "?serverTimezone=UTC";
 	private static final String USER = "root";
-	private static final String PSW = "root";
+	private static final String PSW = "Aluno";
 
 	public Conexao() {
 	}

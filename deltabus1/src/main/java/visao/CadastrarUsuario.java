@@ -55,7 +55,6 @@ public class CadastrarUsuario extends JPanel {
 	private JLabel lblSenha;
 	private JComboBox cbFuncao;
 	private JLabel lblFuno;
-	private JButton bntDeletar;
 	private JButton btnConfirmar;
 	private JTextField txtDataNasci;
 	
@@ -66,7 +65,7 @@ public class CadastrarUsuario extends JPanel {
 	private JLabel txtRua;
 	private JTextField textRua;
 	private JTextField textField;
-	private JLabel lblNewLabel_1;
+	private JLabel lblLimpar;
 
 	public CadastrarUsuario() {
 		setLocale("Login");
@@ -79,11 +78,11 @@ public class CadastrarUsuario extends JPanel {
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
-		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(1035, 92, 110, 33);
-		lblNewLabel_1.setBackground(new Color(245, 245, 245));
-		lblNewLabel_1.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/Icone4.png")));
-		add(lblNewLabel_1);
+		lblLimpar = new JLabel("");
+		lblLimpar.setBounds(1035, 92, 110, 33);
+		lblLimpar.setBackground(new Color(245, 245, 245));
+		lblLimpar.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/Icone4.png")));
+		add(lblLimpar);
 
 		JLabel lblNewLabel = new JLabel("Cadastrar Usuários");
 		lblNewLabel.setBounds(25, 11, 182, 14);
@@ -363,19 +362,8 @@ public class CadastrarUsuario extends JPanel {
 		lblFuno.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblFuno);
 
-		bntDeletar = new RoundButton("Deletar");
-		bntDeletar.setBounds(443, 629, 132, 33);
-		bntDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
-		bntDeletar.setForeground(Color.WHITE);
-		bntDeletar.setBackground(new Color(0, 0, 0));
-		bntDeletar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		add(bntDeletar);
-
 		btnConfirmar = new RoundButton("Confirmar");
-		btnConfirmar.setBounds(614, 629, 132, 33);
+		btnConfirmar.setBounds(521, 627, 132, 33);
 		btnConfirmar.setText("Cadastrar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -415,7 +403,7 @@ public class CadastrarUsuario extends JPanel {
 								JOptionPane.showMessageDialog(null, "Cadastrado");
 								limparDados();
 							}else {
-								JOptionPane.showMessageDialog(null,"ERrO");
+								JOptionPane.showMessageDialog(null,"ErrO");
 							}
 						}
 						
