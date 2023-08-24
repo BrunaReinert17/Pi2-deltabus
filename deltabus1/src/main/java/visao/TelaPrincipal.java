@@ -82,6 +82,11 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 				
+				JLabel lblNewLabel_7 = new JLabel("");
+				lblNewLabel_7.setBounds(92, 337, 134, 43);
+				panel.add(lblNewLabel_7);
+				lblNewLabel_7.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/IconeHome.png")));
+				
 				JLabel lblNewLabel_5 = new JLabel("");
 				lblNewLabel_5.setBounds(46, 530, 141, 33);
 				panel.add(lblNewLabel_5);
@@ -175,6 +180,22 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel.setBounds(-395, 411, 533, 79);
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/Icone.png")));
+		
+		RoundButton btnHome = new RoundButton("Logout");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaPrincipal telaPrincipal = new TelaPrincipal();
+				telaPrincipal.setLocationRelativeTo(null);
+				telaPrincipal.setVisible(true);
+				dispose();
+			}
+		});
+		btnHome.setText("");
+		btnHome.setForeground(Color.WHITE);
+		btnHome.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
+		btnHome.setBackground(Color.WHITE);
+		btnHome.setBounds(162, 337, 64, 43);
+		panel.add(btnHome);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
