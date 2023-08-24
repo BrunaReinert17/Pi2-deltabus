@@ -82,13 +82,18 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 				
+				JLabel lblNewLabel_5 = new JLabel("");
+				lblNewLabel_5.setBounds(46, 530, 141, 33);
+				panel.add(lblNewLabel_5);
+				lblNewLabel_5.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone-5.png")));
+				
 				JLabel lblNewLabel_4 = new JLabel("");
 				lblNewLabel_4.setBounds(36, 596, 92, 33);
 				panel.add(lblNewLabel_4);
 				lblNewLabel_4.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/Icone2.png")));
 		
 				JLabel lblNewLabel_3 = new JLabel("");
-				lblNewLabel_3.setBounds(-395, 421, 522, 79);
+				lblNewLabel_3.setBounds(-395, 421, 523, 73);
 				panel.add(lblNewLabel_3);
 				lblNewLabel_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone.png")));
 		btnVerificar.setForeground(Color.WHITE);
@@ -175,6 +180,11 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel1.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
 		lblNewLabel1.setBounds(1186, 868, 830, 126);
 		contentPane.add(lblNewLabel1);
+		
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/Telas Pi (2).png")));
+		lblNewLabel_6.setBounds(263, 55, 1597, 959);
+		contentPane.add(lblNewLabel_6);
 
 	}
 }

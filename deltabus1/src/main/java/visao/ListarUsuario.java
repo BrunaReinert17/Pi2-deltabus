@@ -74,7 +74,7 @@ public class ListarUsuario extends JFrame {
 		panel.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(20, 18, 1142, 684);
+		scrollPane.setBounds(10, 11, 1164, 702);
 		panel.add(scrollPane);
 
 		table = new JTable();
@@ -88,14 +88,14 @@ public class ListarUsuario extends JFrame {
 
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
-		panel_1.setBounds(0, 0, 1184, 38);
+		panel_1.setBounds(0, 0, 1200, 46);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("      Listagem de Usuarios\r\n");
 		lblNewLabel.setBounds(0, 0, 352, 38);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
 
