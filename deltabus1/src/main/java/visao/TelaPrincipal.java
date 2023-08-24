@@ -60,6 +60,15 @@ public class TelaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+				CadastrarUsuario panelUsuario = new CadastrarUsuario();
+				panelUsuario.setToolTipText("");
+				panelUsuario.setLocation(579, 97);
+				panelTeste = panelUsuario;
+				panelTeste.setBounds(568, 104, 1200, 800);
+				panelTeste.setVisible(false);
+				
+						contentPane.add(panelTeste);
+		
 	
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
@@ -72,8 +81,18 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+				
+				JLabel lblNewLabel_4 = new JLabel("");
+				lblNewLabel_4.setBounds(36, 596, 92, 33);
+				panel.add(lblNewLabel_4);
+				lblNewLabel_4.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/Icone2.png")));
+		
+				JLabel lblNewLabel_3 = new JLabel("");
+				lblNewLabel_3.setBounds(-395, 421, 522, 79);
+				panel.add(lblNewLabel_3);
+				lblNewLabel_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone.png")));
 		btnVerificar.setForeground(Color.WHITE);
-		btnVerificar.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnVerificar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnVerificar.setBackground(new Color(0, 128, 128));
 		btnVerificar.setBounds(90, 596, 199, 43);
 		panel.add(btnVerificar);
@@ -90,13 +109,14 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
 
 		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
+		btnCadastrarUsuarios.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
 			}
 		});
 		btnCadastrarUsuarios.setForeground(new Color(0, 0, 0));
-		btnCadastrarUsuarios.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnCadastrarUsuarios.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
@@ -107,13 +127,9 @@ public class TelaPrincipal extends JFrame {
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
 
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(-395, 411, 528, 89);
-		panel.add(lblNewLabel_3);
-		lblNewLabel_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/icone.png")));
-
 		RoundButton rndbtnListar = new RoundButton("Listar");
-		rndbtnListar.setText("Listagem");
+		rndbtnListar.setHorizontalAlignment(SwingConstants.RIGHT);
+		rndbtnListar.setText("Listagem de Usuários");
 		rndbtnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(false);
@@ -149,24 +165,16 @@ public class TelaPrincipal extends JFrame {
 		btnLogout.setBackground(Color.WHITE);
 		btnLogout.setBounds(109, 769, 146, 54);
 		panel.add(btnLogout);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(-395, 411, 533, 79);
+		panel.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/Icone.png")));
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
 		lblNewLabel1.setBounds(1186, 868, 830, 126);
 		contentPane.add(lblNewLabel1);
 
-		CadastrarUsuario panelUsuario = new CadastrarUsuario();
-		panelUsuario.setToolTipText("");
-		panelUsuario.setLocation(579, 97);
-		panelTeste = panelUsuario;
-		panelTeste.setBounds(568, 104, 1200, 800);
-		panelTeste.setVisible(false);
-
-		contentPane.add(panelTeste);
-
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(-137, 238, 1456, 407);
-		panelUsuario.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/Telas Pi (2).png")));
 	}
 }

@@ -56,7 +56,7 @@ public class ListarUsuario extends JFrame {
 	public ListarUsuario() {
 		setTitle("Cadastrar Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(800, 800, 800, 700);
+		setBounds(300, 300, 1200, 800);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -69,12 +69,12 @@ public class ListarUsuario extends JFrame {
 		panel.setBackground(new Color(0, 0, 0));
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),
 				"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
-		panel.setBounds(57, 121, 663, 415);
+		panel.setBounds(0, 37, 1184, 724);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 18, 643, 386);
+		scrollPane.setBounds(20, 18, 1142, 684);
 		panel.add(scrollPane);
 
 		table = new JTable();
@@ -88,12 +88,12 @@ public class ListarUsuario extends JFrame {
 
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
-		panel_1.setBounds(57, 100, 663, 23);
+		panel_1.setBounds(0, 0, 1184, 38);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("   Listagem de Usuarios\r\n");
-		lblNewLabel.setBounds(0, 0, 663, 23);
+		JLabel lblNewLabel = new JLabel("      Listagem de Usuarios\r\n");
+		lblNewLabel.setBounds(0, 0, 352, 38);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
