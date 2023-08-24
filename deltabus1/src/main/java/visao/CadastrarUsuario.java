@@ -183,8 +183,10 @@ public class CadastrarUsuario extends JPanel {
 		txtDataNasci  = new JFormattedTextField(mascaraCpf);
 		/**********/
 		ArrayList<String> genero = new ArrayList<String>();
+		genero.add("");
 		genero.add("Masculino");
 		genero.add("Feminino");
+		genero.add("Outro");
 		
 		cbGenero = new JComboBox();
 		cbGenero.addAncestorListener(new AncestorListener() {
@@ -199,7 +201,6 @@ public class CadastrarUsuario extends JPanel {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		cbGenero.setModel(new DefaultComboBoxModel(new String[] {"","Feminino", "Masculino"}));
 		cbGenero.setFont(new Font("Dialog", Font.BOLD, 13));
 		cbGenero.setBounds(397, 365, 182, 31);
 		add(cbGenero);
@@ -233,9 +234,11 @@ public class CadastrarUsuario extends JPanel {
 		add(txtBairro);
 		
 		ArrayList<String> cidade = new ArrayList<>();
+		cidade.add("");
 		cidade.add("Majé");
 		cidade.add("Ilhota");
-		
+		cidade.add("Gaspar");
+		cidade.add("Blumenau");
 		
 		cbCidade = new JComboBox();
 		cbCidade.addAncestorListener(new AncestorListener() {
@@ -265,8 +268,11 @@ public class CadastrarUsuario extends JPanel {
 		add(lblBairro);
 
 		ArrayList<String> uf = new ArrayList<>();
+		uf.add("");
 		uf.add("SC");
-		uf.add("AC");
+		uf.add("SP");
+		uf.add("RS");
+		uf.add("PR");
 		
 		cbUf = new JComboBox();
 		cbUf.addAncestorListener(new AncestorListener() {
@@ -397,8 +403,8 @@ public class CadastrarUsuario extends JPanel {
 		});
 		btnConfirmar.setForeground(Color.WHITE);
 		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 14));
-		btnConfirmar.setBackground(Color.BLACK);
-		btnConfirmar.setBounds(178, 651, 132, 31);
+		btnConfirmar.setBackground(new Color(0, 128, 128));
+		btnConfirmar.setBounds(324, 608, 132, 31);
 		add(btnConfirmar);
 		
 		
@@ -406,16 +412,19 @@ public class CadastrarUsuario extends JPanel {
 		add(txtDataNasci);
 		txtDataNasci.setColumns(10);
 		
-		JButton buttonBuscar = new JButton("Buscar");
+		JButton buttonBuscar = new RoundButton("Buscar");
+		buttonBuscar.setBackground(new Color(0, 128, 128));
 		buttonBuscar.setForeground(Color.WHITE);
 		buttonBuscar.setFont(new Font("Dialog", Font.BOLD, 14));
 		buttonBuscar.setBounds(394, 264, 132, 30);
 		add(buttonBuscar);
 		
-		JButton buttonLimparCampo = new JButton("Limpar Campo");
-		buttonLimparCampo.setForeground(Color.WHITE);
-		buttonLimparCampo.setFont(new Font("Dialog", Font.BOLD, 14));
-		buttonLimparCampo.addActionListener(new ActionListener() {
+		
+		JButton btnLimparCampo = new RoundButton("Limpar Campo");
+		btnLimparCampo.setBackground(Color.BLACK);
+		btnLimparCampo.setForeground(Color.WHITE);
+		btnLimparCampo.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				 txtNome.setText("");
@@ -432,22 +441,14 @@ public class CadastrarUsuario extends JPanel {
 
 			 txtCep.setText("");
 
-				
-
-				
-				
 				 txtSenha.setText("");
 				
 				txtBairro.setText("");
-				
-				
-				
-				
-				
+			
 			}
 		});
-		buttonLimparCampo.setBounds(178, 693, 132, 30);
-		add(buttonLimparCampo);
+		btnLimparCampo.setBounds(466, 609, 140, 30);
+		add(btnLimparCampo);
 		
 		JLabel lblGnero_1 = new JLabel("Gênero:");
 		lblGnero_1.setFont(new Font("Dialog", Font.BOLD, 18));

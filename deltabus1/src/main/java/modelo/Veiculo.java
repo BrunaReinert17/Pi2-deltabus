@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Veiculo {
@@ -8,7 +9,7 @@ public class Veiculo {
 	private String marca;
 	private String modelo;
 	private Double preco;
-	private LocalDate ano;
+	private Date ano;
 	private String acessorios;
 	private int lotacao;
 	private String placa;
@@ -23,7 +24,7 @@ public class Veiculo {
 		super();
 	}
 	
-	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, LocalDate ano, String acessorios,
+	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, Date ano, String acessorios,
 			int lotacao, String placa, String renavam, String cor, String TipoFrota, int Kmveiculo,
 			String TipoCombustivel, boolean situacao) {
 
@@ -94,15 +95,15 @@ public class Veiculo {
 
 	}
 
-	public LocalDate getAno() {
+	public Date getAno() {
 
 		return ano;
 
 	}
 
-	public void setAno(LocalDate ano) {
+	public void setAno(Date date) {
 
-		this.ano = ano;
+		this.ano = date;
 
 	}
 

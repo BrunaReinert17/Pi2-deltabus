@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class Pedido {
 
 	private int veiculo;
-
 	private String cliente;
-
-	private LocalDate dataCompra;
-
+	private long dataCompra;
 	private Double valorPago;
-
 	private String tipoPagamento;
 
-	public Pedido(int veiculo, String cliente, LocalDate dataCompra, Double valorPago, String tipoPagamento) {
+	public Pedido() {
+		super();
+	}
+	
+	public Pedido(int veiculo, String cliente, long dataCompra, Double valorPago, String tipoPagamento) {
 
 		super();
 
@@ -54,13 +54,13 @@ public class Pedido {
 
 	}
 
-	public LocalDate getDataCompra() {
+	public long getDataCompra() {
 
 		return dataCompra;
 
 	}
 
-	public void setDataCompra(LocalDate dataCompra) {
+	public void setDataCompra(long dataCompra) {
 
 		this.dataCompra = dataCompra;
 
@@ -88,6 +88,11 @@ public class Pedido {
 
 		this.tipoPagamento = tipoPagamento;
 
+	}
+
+	public void setDataCompra(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

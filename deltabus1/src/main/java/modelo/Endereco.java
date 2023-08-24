@@ -25,7 +25,7 @@ public class Endereco {
 	}
 
 
-	public long getCep() {
+	public int getCep() {
 		return cep;
 	}
 

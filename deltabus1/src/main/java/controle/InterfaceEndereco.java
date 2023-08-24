@@ -8,8 +8,6 @@ public interface InterfaceEndereco {
 
 	public boolean inserirEndereco(Endereco endereco);
 
-	//public ArrayList<Estado> ConsultaEstadoCidade();
-
 	public boolean excluirEndereco(Endereco endereco);
 
 	public boolean alterarEndereco(Endereco endereco);

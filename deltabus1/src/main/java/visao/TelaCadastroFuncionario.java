@@ -48,7 +48,7 @@ public class TelaCadastroFuncionario extends JFrame {
 	 */
 	public TelaCadastroFuncionario() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCadastroFuncionario.class.getResource("/imagem/logoampliada.png")));
-		setTitle("Cadastrar Funcionário");
+		setTitle("Telateste");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1500);
 		contentPane = new JPanel();

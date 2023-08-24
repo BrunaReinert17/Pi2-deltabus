@@ -131,7 +131,6 @@ public class UsuarioDAO implements InterfaceUsuario {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		} finally {

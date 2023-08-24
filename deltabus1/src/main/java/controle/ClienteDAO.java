@@ -73,7 +73,7 @@ public class ClienteDAO implements InterfaceCliente {
 	            stm.setString(3, cliente.getEmail());
 	            stm.setDouble(4,cliente.getCpf());
 	            stm.setLong(5, cliente.getCnpj());
-	            //stm.setInt(7, cliente.getEndereco().getCep());
+	            stm.setInt(7, cliente.getEndereco().getCep());
 	        	
 	            valida = stm.executeUpdate();
 	        } catch (Exception e) {

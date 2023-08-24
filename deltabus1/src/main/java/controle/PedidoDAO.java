@@ -37,13 +37,13 @@ public class PedidoDAO implements InterfacePedido{
 				while (rs.next()) {
 					 String id_pedido = rs.getString("id_pedido");
 
-					// Pedido pedido = new Pedido();
+					 Pedido pedido = new Pedido();
 						
-					// pedido.setVeiculo(rs.getInt("veiculo"));
-					// pedido.setCliente(rs.getString("cliente"));
-					 //pedido.setDataCompra(rs.getString("datacompra"));
-					// pedido.setValorPago(rs.getDouble("valorpago"));
-					// pedido.setTipoPagamento(rs.getString("cnpj"));
+					 pedido.setVeiculo(rs.getInt("veiculo"));
+					 pedido.setCliente(rs.getString("cliente"));
+					 pedido.setDataCompra(rs.getString("datacompra"));
+					 pedido.setValorPago(rs.getDouble("valorpago"));
+					 pedido.setTipoPagamento(rs.getString("cnpj"));
 
 
 				}
@@ -69,7 +69,7 @@ public class PedidoDAO implements InterfacePedido{
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, pedido.getVeiculo());
-			//ps.setLong(2, pedido.getDataCompra());
+			ps.setLong(2, pedido.getDataCompra());
 			ps.setDouble(3, pedido.getValorPago());
 			ps.setString(4, pedido.getTipoPagamento());
 			ps.setInt(5, pedido.getVeiculo());

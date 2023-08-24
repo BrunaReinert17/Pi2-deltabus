@@ -98,11 +98,6 @@ public class ListarUsuario extends JFrame {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("OBS: tem que transferir para JPanel e tirar do JFrame");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(217, 561, 412, 14);
-		contentPane.add(lblNewLabel_1);
 
 		atualizarTabela();
 	}

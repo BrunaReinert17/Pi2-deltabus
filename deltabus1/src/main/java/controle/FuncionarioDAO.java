@@ -64,13 +64,11 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 
 	@Override
 	public boolean deletarFuncionario(Funcionario funcionario) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Funcionario alterarFuncionario(Funcionario funcionario) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -84,24 +82,24 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-			//	Funcionario funcionario = new Funcionario();
+				Funcionario funcionario = new Funcionario();
 				Endereco endereco = new Endereco();
-			//	Usuario usuario = new Usuario();
+				Usuario usuario = new Usuario();
 			
 				System.out.println("e");
 
 				endereco.setCep(rs.getInt("endereco_cep"));
-			//	usuario.setIdUsuario(rs.getLong("Usuario_idUsuario"));
-				//funcionario.setCpf(rs.getLong("cpf"));
-				//funcionario.setNome(rs.getString("nome"));
-				//funcionario.setGenero(rs.getString("genero"));
-				//funcionario.setNumeroTelefone(rs.getString("numerotelefone"));
-				//funcionario.setDatanasci(rs.getDate("dataNascimento").toLocalDate());
+				usuario.setIdUsuario(rs.getLong("Usuario_idUsuario"));
+				funcionario.setCpf(rs.getLong("cpf"));
+				funcionario.setNome(rs.getString("nome"));
+				funcionario.setGenero(rs.getString("genero"));
+				funcionario.setNumeroTelefone(rs.getString("numerotelefone"));
+				funcionario.setDatanasci(rs.getDate("dataNascimento").toLocalDate());
 				
-				//funcionario.setUsuario(usuario);
-				//funcionario.setEndereco(endereco);
-			//	System.out.println(funcionario);
-			//	listFunc.add(funcionario);
+				funcionario.setUsuario(usuario);
+				funcionario.setEndereco(endereco);
+				System.out.println(funcionario);
+				listFunc.add(funcionario);
 			}
 		} catch (Exception e) {
 			

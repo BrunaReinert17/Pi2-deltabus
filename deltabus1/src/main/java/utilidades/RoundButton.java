@@ -19,7 +19,6 @@ public class RoundButton extends JButton {
 	}
 
 	public RoundButton(int i) {
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void paintComponent(Graphics g) {
