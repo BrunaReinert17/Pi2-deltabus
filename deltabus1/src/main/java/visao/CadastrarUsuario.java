@@ -55,6 +55,8 @@ public class CadastrarUsuario extends JPanel {
 	private JLabel lblSenha;
 	private JComboBox cbFuncao;
 	private JLabel lblFuno;
+	private JLabel lblFuncao;
+	private JButton bntDeletar;
 	private JButton btnConfirmar;
 	private JTextField txtDataNasci;
 	
@@ -357,10 +359,10 @@ public class CadastrarUsuario extends JPanel {
 		cbFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(cbFuncao);
 
-		lblFuno = new JLabel("Função:");
-		lblFuno.setBounds(362, 520, 155, 23);
-		lblFuno.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblFuno);
+		lblFuncao = new JLabel("Função:");
+		lblFuncao.setBounds(362, 520, 155, 23);
+		lblFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblFuncao);
 
 		btnConfirmar = new RoundButton("Confirmar");
 		btnConfirmar.setBounds(521, 627, 132, 33);

@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import java.awt.Toolkit;
 
-public class TelaCadastroFuncionario extends JFrame {
+public class Inutil extends JFrame {
 
 	private JPanel contentPane;
 	private RoundButton btnadministrador;
@@ -34,7 +34,7 @@ public class TelaCadastroFuncionario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCadastroFuncionario frame = new TelaCadastroFuncionario();
+					Inutil frame = new Inutil();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,8 +46,8 @@ public class TelaCadastroFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroFuncionario() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCadastroFuncionario.class.getResource("/imagem/logoampliada.png")));
+	public Inutil() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Inutil.class.getResource("/imagem/logoampliada.png")));
 		setTitle("Telateste");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1500);
@@ -109,7 +109,7 @@ public class TelaCadastroFuncionario extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFuncionario.class.getResource("/imagem/deltabus.png")));
+		lblNewLabel.setIcon(new ImageIcon(Inutil.class.getResource("/imagem/deltabus.png")));
 		lblNewLabel.setBounds(1186, 868, 830, 126);
 		contentPane.add(lblNewLabel);
 	}

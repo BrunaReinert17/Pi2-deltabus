@@ -15,11 +15,11 @@ public class VeiculoDAO {
 	 private Conexao con;
 
 	    public VeiculoDAO() {
-	        con = Conexao.getInstacia();
+	        con = Conexao.getInstancia();
 	    }
 	    
 	    public ArrayList<Veiculo> listar() {
-			Conexao c = Conexao.getInstacia();
+			Conexao c = Conexao.getInstancia();
 			Connection con = c.conectar();
 
 			ArrayList<Veiculo> veiculos = new ArrayList<>();

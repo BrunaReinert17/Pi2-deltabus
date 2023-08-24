@@ -15,7 +15,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 	@Override
 	public Endereco consultandoEndereco(Endereco endereco) {
 		System.out.println(endereco.toString());
-		con = Conexao.getInstacia();
+		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		try {
 			PreparedStatement ps = c.prepareStatement(
@@ -54,7 +54,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 	@Override
 	public boolean inserirEndereco(Endereco endereco) {
-		con = Conexao.getInstacia();
+		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		PreparedStatement st = null;
 		int valida = 0;

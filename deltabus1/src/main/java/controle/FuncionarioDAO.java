@@ -34,7 +34,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 	@Override
 	public boolean inserirFuncionario(Funcionario funcionario) {
 		System.out.println(funcionario.toString());
-		con = Conexao.getInstacia();
+		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		PreparedStatement st = null;
 		int valida = 0;
@@ -73,7 +73,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 	}
 
 	public ArrayList<Funcionario> consultarTodos() {
-		con = Conexao.getInstacia();
+		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		ArrayList<Funcionario> listFunc = new ArrayList<>();
 		try {

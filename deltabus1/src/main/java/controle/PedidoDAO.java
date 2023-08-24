@@ -18,11 +18,11 @@ public class PedidoDAO implements InterfacePedido{
 	 private Conexao con;
 	 
 	 public PedidoDAO() {
-	        con = Conexao.getInstacia();
+	        con = Conexao.getInstancia();
 	    }
 	 
 	 public ArrayList<Pedido> listar() {
-			Conexao c = Conexao.getInstacia();
+			Conexao c = Conexao.getInstancia();
 			Connection con = c.conectar();
 
 			ArrayList<Pedido> pedidos = new ArrayList<>();
@@ -58,7 +58,7 @@ public class PedidoDAO implements InterfacePedido{
 
 	@Override
 	public boolean inserirPedido(Pedido pedido) {
-		Conexao c = Conexao.getInstacia();
+		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 

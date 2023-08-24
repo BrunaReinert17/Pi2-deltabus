@@ -10,19 +10,19 @@ public class Conexao {
 	private static final String DATABASE = "deltaBus2";
 	private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE + "?serverTimezone=UTC";
 	private static final String USER = "root";
-	private static final String PSW = "Aluno";
+	private static final String PSW = "aluno";
 
 	public Conexao() {
 	}
 
-	public static Conexao getInstacia() {
+	public static Conexao getInstancia() {
 		if (instancia == null) {
 			instancia = new Conexao();
 		}
 		return instancia;
 	}
 
-	public static Connection conectar() {
+	public Connection conectar() {
 		try {
 			conexao = DriverManager.getConnection(URL, USER, PSW);
 		} catch (Exception e) {

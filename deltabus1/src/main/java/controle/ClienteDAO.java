@@ -16,11 +16,11 @@ public class ClienteDAO implements InterfaceCliente {
 	  private Conexao con;
 
 	    public ClienteDAO() {
-	        con = Conexao.getInstacia();
+	        con = Conexao.getInstancia();
 	    }
 	    
 	    public ArrayList<Cliente> listar() {
-			Conexao c = Conexao.getInstacia();
+			Conexao c = Conexao.getInstancia();
 			Connection con = c.conectar();
 
 			ArrayList<Cliente> clientes = new ArrayList<>();

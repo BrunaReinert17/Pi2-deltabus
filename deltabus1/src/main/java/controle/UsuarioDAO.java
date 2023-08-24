@@ -13,12 +13,15 @@ public class UsuarioDAO implements InterfaceUsuario {
     private Conexao con;
 
     public UsuarioDAO() {
-        con = Conexao.getInstacia();
+        con = Conexao.getInstancia();
     }
 
     @Override
     public boolean inserirUsuario(Usuario usuario) {
+    	
+    	Conexao con = Conexao.getInstancia();
         Connection c = con.conectar();
+        
         int valida = 0;
 
         try {
@@ -107,7 +110,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 		try {
 
-			con = Conexao.getInstacia();
+			con = Conexao.getInstancia();
 			Connection c = con.conectar();
 			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
 			ps.setString(1, usuario.getEmail());
