@@ -30,7 +30,7 @@ import modelo.Usuario;
 
 import javax.swing.border.BevelBorder;
 
-public class TelaLogin extends JFrame {
+public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEmail;
@@ -46,7 +46,7 @@ public class TelaLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaLogin frame = new TelaLogin();
+					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,8 +58,8 @@ public class TelaLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaLogin() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaLogin.class.getResource("/imagem/logoampliada.png")));
+	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/imagem/logoampliada.png")));
 		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +96,7 @@ public class TelaLogin extends JFrame {
 				if (!email.isEmpty() && !senha.isEmpty()) {
 
 					if (retorno != null && retorno.getEmail().equals(email) && retorno.getSenha().equals(senha)) {
-						TelaPrincipal telaPrincipal = new TelaPrincipal();
+						MenuAdmin telaPrincipal = new MenuAdmin();
 						telaPrincipal.setLocationRelativeTo(null);
 						telaPrincipal.setVisible(true);
 						dispose();
@@ -124,12 +124,12 @@ public class TelaLogin extends JFrame {
 		txtEmail.setColumns(10);
 
 		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagem/titulo2.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(Login.class.getResource("/imagem/titulo2.png")));
 		lblNewLabel_2.setBounds(-386, 58, 734, 114);
 		panel1.add(lblNewLabel_2);
 
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagem/logo.png")));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagem/logo.png")));
 		lblNewLabel.setBounds(-386, 11, 916, 225);
 		panel1.add(lblNewLabel);
 
@@ -149,7 +149,7 @@ public class TelaLogin extends JFrame {
 		panel1.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagem/fundo.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/imagem/fundo.png")));
 		lblNewLabel_1.setBounds(0, 0, 2040, 1072);
 		contentPane.add(lblNewLabel_1);
 	}
