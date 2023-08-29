@@ -106,7 +106,7 @@ public class Inutil extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBounds(-792, 82, 1210, 211);
 		panel.add(lblNewLabel_2);
-		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagem/perfil.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/perfil.png")));
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Inutil.class.getResource("/imagem/deltabus.png")));
