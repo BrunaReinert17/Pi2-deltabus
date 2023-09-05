@@ -198,7 +198,7 @@ public class MenuAdmin extends JFrame {
 		panel.add(btnHome);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
-		lblNewLabel1.setIcon(new ImageIcon(Inutil.class.getResource("/imagem/deltabus.png")));
+		lblNewLabel1.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/deltabus.png")));
 		lblNewLabel1.setBounds(1186, 868, 830, 126);
 		contentPane.add(lblNewLabel1);
 		
