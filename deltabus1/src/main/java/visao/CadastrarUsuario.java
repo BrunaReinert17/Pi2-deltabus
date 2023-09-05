@@ -205,6 +205,7 @@ public class CadastrarUsuario extends JPanel {
 		txtDataNasci.setBounds(521, 271, 149, 29);
 		txtDataNasci.setFont(new Font("Dialog", Font.BOLD, 13));
 		/**********/
+		
 		ArrayList<String> genero = new ArrayList<String>();
 		genero.add("");
 		genero.add("Masculino");

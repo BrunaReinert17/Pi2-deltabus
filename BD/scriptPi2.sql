@@ -4,7 +4,7 @@ CREATE SCHEMA IF NOT EXISTS `deltaBus2` ;
 USE deltabus2;
 
 -- -----------------------------------------------------
--- Table `deltaBus`.`Veiculo`
+-- Table `deltaBus2`.`Veiculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Veiculo` (
   `idVeiculo` BIGINT(45) NOT NULL auto_increment,
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `Veiculo` (
   PRIMARY KEY (`idVeiculo`));
 
 -- -----------------------------------------------------
--- Table `deltaBus`.`endereco`
+-- Table `deltaBus2`.`endereco`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endereco` (
   `cep` INT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   PRIMARY KEY (`cep`));
 
 -- -----------------------------------------------------
--- Table `deltaBus`.`Clientes`
+-- Table `deltaBus2`.`Clientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clientes` (
   `Nome`  VARCHAR(255) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `Clientes` (
 
 
 -- -----------------------------------------------------
--- Table `deltaBus`.`Pedido`
+-- Table `deltaBus2`.`Pedido`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Pedido` (
 `id_pedidos` int not null auto_increment,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `Pedido` (
 
 
 -- -----------------------------------------------------
--- Table `deltaBus`.`Usuario`
+-- Table `deltaBus2`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Usuario` (
   `idUsuario` int NOT NULL auto_increment,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   PRIMARY KEY (`idUsuario`));
 
 -- ----------------------------------------------------
--- Table `deltaBus`.`funcionarios`
+-- Table `deltaBus2`.`funcionarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS funcionarios (
   `cpf` int NOT NULL,
@@ -128,17 +128,17 @@ VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023-08-17', 'Ar condici
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua, estado, UF)
-VALUES ('21346566', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
+VALUES ('21346568', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468433, 21346566);
+VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468435, 21346568);
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
 INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Veiculo_idVeiculo,Clientes_cnpj) 
-VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468433');
+VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468435');
 
 --  INSERT Usuario --
 INSERT INTO Usuario ( senha, email, cargo)
@@ -149,4 +149,4 @@ VALUES ( '1312', 'bruna@gmail.com', 'funcionario');
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('15678902', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346566);
+VALUES ('15678903', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346568);
