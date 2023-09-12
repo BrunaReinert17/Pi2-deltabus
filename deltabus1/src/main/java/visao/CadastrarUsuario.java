@@ -483,17 +483,17 @@ public class CadastrarUsuario extends JPanel {
 	}
 
 	private void setLocale(String string) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	private void setContentPane(JPanel contentPane) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	private void setDefaultCloseOperation(int exitOnClose) {
-		// TODO Auto-generated method stub
+	
 
 	}
 	public Funcionario verificarDados() {
