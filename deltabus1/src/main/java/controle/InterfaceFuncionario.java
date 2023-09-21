@@ -8,5 +8,5 @@ public interface InterfaceFuncionario {
 
 	public boolean deletarFuncionario(Funcionario funcionario);
 
-	public Funcionario alterarFuncionario(Funcionario funcionario);
+	public boolean alterarFuncionario(Funcionario funcionario);
 }
