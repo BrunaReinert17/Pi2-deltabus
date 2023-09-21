@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `cidade` VARCHAR(45) NOT NULL,
   `bairro` VARCHAR(45) NOT NULL,
   `rua` VARCHAR(45) NOT NULL,
-  `estado` VARCHAR(45) NOT NULL,
   `UF` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cep`));
 
@@ -127,8 +126,8 @@ VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023-08-17', 'Ar condici
 
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
-INSERT INTO endereco (cep, cidade, bairro, rua, estado, UF)
-VALUES ('21346566', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'Santa Catarina', 'SC');
+INSERT INTO endereco (cep, cidade, bairro, rua,UF)
+VALUES ('21346566', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
