@@ -55,7 +55,7 @@ public class LoginErro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnConfirmar.setBounds(139, 112, 56, 29);
+		btnConfirmar.setBounds(144, 120, 56, 29);
 		btnConfirmar.setText("OK");
 		btnConfirmar.setForeground(new Color(255, 255, 255));
 		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -64,12 +64,18 @@ public class LoginErro extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/background.png")));
-		lblNewLabel_1.setBounds(-311, 11, 418, 174);
+		lblNewLabel_1.setBounds(-75, 0, 418, 174);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Preencha os Campos!");
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
-		lblNewLabel.setBounds(95, 59, 191, 29);
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
+		lblNewLabel.setBounds(105, 72, 191, 29);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/logoMensagens.png")));
+		lblNewLabel_2.setBounds(84, 0, 149, 67);
+		contentPane.add(lblNewLabel_2);
 	}
 }
