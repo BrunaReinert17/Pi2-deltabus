@@ -55,7 +55,7 @@ public class LoginErro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnConfirmar.setBounds(139, 120, 56, 29);
+		btnConfirmar.setBounds(139, 112, 56, 29);
 		btnConfirmar.setText("OK");
 		btnConfirmar.setForeground(new Color(255, 255, 255));
 		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -63,22 +63,13 @@ public class LoginErro extends JFrame {
 		contentPane.add(btnConfirmar);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBackground(new Color(245, 245, 245));
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/fundo.png")));
-		lblNewLabel_1.setBounds(0, 0, 330, 174);
+		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/background.png")));
+		lblNewLabel_1.setBounds(-311, 11, 418, 174);
 		contentPane.add(lblNewLabel_1);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(80, 61, 184, 29);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Dados Não Preenchidos!");
-		lblNewLabel.setBounds(5, 5, 174, 20);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(lblNewLabel);
-		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
+		JLabel lblNewLabel = new JLabel("Preencha os Campos!");
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+		lblNewLabel.setBounds(95, 59, 191, 29);
+		contentPane.add(lblNewLabel);
 	}
 }
