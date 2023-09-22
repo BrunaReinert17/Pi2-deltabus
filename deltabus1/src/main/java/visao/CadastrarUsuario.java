@@ -259,7 +259,7 @@ public class CadastrarUsuario extends JPanel {
 		
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
-		cidade.add("Majé");
+		cidade.add("São José");
 		cidade.add("Ilhota");
 		cidade.add("Gaspar");
 		cidade.add("Blumenau");
@@ -339,7 +339,7 @@ public class CadastrarUsuario extends JPanel {
 		
 		ArrayList<String> funcao = new ArrayList<>();
 		funcao.add("Administrador");
-		funcao.add("Funcionário");
+		funcao.add("Funcionario");
 
 		cbFuncao = new JComboBox();
 		cbFuncao.setBounds(362, 541, 155, 30);
@@ -405,7 +405,7 @@ public class CadastrarUsuario extends JPanel {
 								JOptionPane.showMessageDialog(null, "Cadastrado");
 								limparDados();
 							}else {
-								JOptionPane.showMessageDialog(null,"ErrO");
+								JOptionPane.showMessageDialog(null,"Erro");
 							}
 						}
 						
@@ -437,26 +437,32 @@ public class CadastrarUsuario extends JPanel {
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				 txtNome.setText("");
+				txtNome.setText("");
 
 				txtCpf.setText("");
 
-			
-				 txtEmail.setText("");
+				txtEmail.setText("");
 
-			 txtTelefone.setText("");
-					
+				txtTelefone.setText("");
+						
+				txtDataNasci.setText("");
+	
+				txtCep.setText("");
 
-			txtDataNasci.setText("");
-
-			 txtCep.setText("");
-
-				 txtSenha.setText("");
+				txtSenha.setText("");
 				
 				txtBairro.setText("");
 				
 				textRua.setText("");
-			
+				
+				cbUf.setSelectedIndex(-1);
+				
+				cbCidade.setSelectedIndex(-1);
+				
+				cbFuncao.setSelectedIndex(-1);
+				
+				cbGenero.setSelectedIndex(-1);
+
 			}
 		});
 		add(btnLimparCampo);
@@ -480,6 +486,11 @@ public class CadastrarUsuario extends JPanel {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+	}
+
+	protected void setSelectedItem(Object object) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void setLocale(String string) {

@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-public class LoginErro extends JFrame {
+public class LoginErro1 extends JFrame {
 
 	private JPanel contentPane;
 
@@ -27,7 +27,7 @@ public class LoginErro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginErro frame = new LoginErro();
+					LoginErro1 frame = new LoginErro1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class LoginErro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginErro() {
+	public LoginErro1() {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,13 +64,13 @@ public class LoginErro extends JFrame {
 		contentPane.add(btnConfirmar);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(LoginErro1.class.getResource("/imagem/aviso.png")));
 		lblNewLabel_1.setBounds(124, -18, 86, 82);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/mensage1.png")));
-		lblNewLabel.setBounds(39, 75, 254, 39);
+		lblNewLabel.setIcon(new ImageIcon(LoginErro1.class.getResource("/imagem/mensage2.png")));
+		lblNewLabel.setBounds(42, 75, 207, 37);
 		contentPane.add(lblNewLabel);
 	}
 }

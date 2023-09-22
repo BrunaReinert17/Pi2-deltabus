@@ -29,6 +29,7 @@ import controle.UsuarioDAO;
 import modelo.Usuario;
 
 import javax.swing.border.BevelBorder;
+import javax.swing.DropMode;
 
 public class Login extends JFrame {
 
@@ -38,6 +39,8 @@ public class Login extends JFrame {
 	private JLabel lblNewLabel;
 	private RoundButton btnNewButton;
 	private JPasswordField txtSenha;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_6;
 
 	/**
 	 * Launch the application.
@@ -101,52 +104,62 @@ public class Login extends JFrame {
 						telaPrincipal.setVisible(true);
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(null, "erro");
+						JOptionPane.showMessageDialog(null, "Senha ou E-mail Incorretos!");
 					}
 
 				} else {
-					JOptionPane.showMessageDialog(null, "Senha ou Usuario não preenchidos!");
+					JOptionPane.showMessageDialog(null, "Senha ou E-mail não Preenchidos!");
 				}
 			}
 		});
-		btnNewButton.setBounds(112, 394, 219, 42);
+		btnNewButton.setBounds(120, 414, 219, 42);
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(0, 128, 128));
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 18));
 		panel1.add(btnNewButton);
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(87, 247, 274, 31);
+		txtEmail.setBounds(127, 258, 212, 31);
 		panel1.add(txtEmail);
-		txtEmail.setBackground(new Color(245, 245, 245));
+		txtEmail.setBackground(new Color(255, 255, 255));
 		txtEmail.setForeground(new Color(0, 0, 0));
 		txtEmail.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtEmail.setColumns(10);
 
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(Login.class.getResource("/imagem/titulo2.png")));
-		lblNewLabel_2.setBounds(-386, 58, 734, 114);
+		lblNewLabel_2.setBounds(-361, 76, 734, 114);
 		panel1.add(lblNewLabel_2);
 
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagem/logo.png")));
-		lblNewLabel.setBounds(-386, 11, 916, 225);
+		lblNewLabel.setBounds(-361, 66, 916, 150);
 		panel1.add(lblNewLabel);
 
 		txtSenha = new JPasswordField();
-		txtSenha.setBackground(UIManager.getColor("CheckBox.background"));
-		txtSenha.setBounds(87, 309, 274, 31);
+		txtSenha.setBackground(new Color(255, 255, 255));
+		txtSenha.setBounds(127, 319, 212, 31);
 		panel1.add(txtSenha);
 
-		JLabel lblNewLabel_3 = new JLabel("Senha : ");
-		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(87, 290, 66, 14);
-		panel1.add(lblNewLabel_3);
-
-		JLabel lblNewLabel_4 = new JLabel("Email : ");
+		JLabel lblNewLabel_4 = new JLabel("E-mail:");
 		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblNewLabel_4.setBounds(87, 227, 56, 14);
+		lblNewLabel_4.setBounds(128, 239, 56, 14);
 		panel1.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(Login.class.getResource("/imagem/icone email.png")));
+		lblNewLabel_5.setBounds(76, 234, 66, 55);
+		panel1.add(lblNewLabel_5);
+		
+		lblNewLabel_3 = new JLabel("Senha:");
+		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblNewLabel_3.setBounds(128, 300, 56, 14);
+		panel1.add(lblNewLabel_3);
+		
+		lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setIcon(new ImageIcon(Login.class.getResource("/imagem/icone senha.png")));
+		lblNewLabel_6.setBounds(72, 295, 56, 55);
+		panel1.add(lblNewLabel_6);
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/imagem/fundo.png")));

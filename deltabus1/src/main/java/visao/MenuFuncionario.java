@@ -73,12 +73,18 @@ public class MenuFuncionario extends JFrame {
 			}
 		});
 				
+				JLabel lblNewLabel_9 = new JLabel("");
+				lblNewLabel_9.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone historico.png")));
+				lblNewLabel_9.setBounds(72, 662, 56, 43);
+				panel.add(lblNewLabel_9);
+				
 				JLabel lblNewLabel_7 = new JLabel("");
 				lblNewLabel_7.setBounds(92, 337, 134, 43);
 				panel.add(lblNewLabel_7);
 				lblNewLabel_7.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/IconeHome.png")));
 				
 				JLabel lblNewLabel_5 = new JLabel("");
+				lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
 				lblNewLabel_5.setBounds(46, 530, 141, 33);
 				panel.add(lblNewLabel_5);
 				lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone-5.png")));
@@ -110,8 +116,7 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/perfil.png")));
 
 		btnCadastrarClientes = new RoundButton("Cadastro de Clientes");
-		btnCadastrarClientes.setText("Cadastrar Cliente:");
-		btnCadastrarClientes.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnCadastrarClientes.setText("Cadastrar Cliente");
 		btnCadastrarClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -129,7 +134,6 @@ public class MenuFuncionario extends JFrame {
 		panel.add(btnCadastrarClientes);
 
 		RoundButton rndbtnCadastrarVeiculos = new RoundButton("Listar");
-		rndbtnCadastrarVeiculos.setHorizontalAlignment(SwingConstants.RIGHT);
 		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -142,7 +146,7 @@ public class MenuFuncionario extends JFrame {
 		ImagemLogout.setBounds(92, 776, 122, 47);
 		panel.add(ImagemLogout);
 		rndbtnCadastrarVeiculos.setForeground(Color.WHITE);
-		rndbtnCadastrarVeiculos.setFont(new Font("Dialog", Font.BOLD, 15));
+		rndbtnCadastrarVeiculos.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnCadastrarVeiculos.setBackground(new Color(0, 128, 128));
 		rndbtnCadastrarVeiculos.setBounds(90, 530, 199, 43);
 		panel.add(rndbtnCadastrarVeiculos);
@@ -185,6 +189,7 @@ public class MenuFuncionario extends JFrame {
 		panel.add(btnHome);
 		
 		RoundButton rndbtnHistoricoVendas = new RoundButton("Historico");
+		rndbtnHistoricoVendas.setHorizontalAlignment(SwingConstants.RIGHT);
 		rndbtnHistoricoVendas.setText("Histórico de Vendas");
 		rndbtnHistoricoVendas.setForeground(Color.WHITE);
 		rndbtnHistoricoVendas.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -201,6 +206,10 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Telas Pi (2).png")));
 		lblNewLabel_6.setBounds(263, 55, 1597, 959);
 		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_8 = new JLabel("");
+		lblNewLabel_8.setBounds(413, 980, 46, 14);
+		contentPane.add(lblNewLabel_8);
 
 	}
 }
