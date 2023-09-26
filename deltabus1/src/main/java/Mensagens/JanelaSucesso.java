@@ -16,44 +16,32 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-public class LoginErro extends JFrame {
+public class JanelaSucesso extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginErro frame = new LoginErro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JLabel lblSucesso;
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public LoginErro() {
+	public JanelaSucesso(String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 346, 213);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 139, 139));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		lblSucesso = new JLabel("");
+		lblSucesso.setText(mensagem);
 		contentPane.setLayout(null);
-		
-		RoundButton btnConfirmar = new RoundButton("Confirmar");
+
+		RoundButton btnConfirmar = new RoundButton("Ok");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 			}
 		});
 		btnConfirmar.setBounds(146, 123, 55, 29);
@@ -63,14 +51,14 @@ public class LoginErro extends JFrame {
 		btnConfirmar.setBackground(new Color(0, 0, 0));
 		contentPane.add(btnConfirmar);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
-		lblNewLabel_1.setBounds(124, -18, 86, 82);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblSucesso = new JLabel("");
+		lblSucesso.setIcon(new ImageIcon(JanelaSucesso.class.getResource("/imagem/mensage3.png")));
+		lblSucesso.setBounds(59, 72, 261, 40);
+		contentPane.add(lblSucesso);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/mensage1.png")));
-		lblNewLabel.setBounds(39, 75, 254, 39);
-		contentPane.add(lblNewLabel);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(JanelaSucesso.class.getResource("/imagem/logoMensagens2.png")));
+		lblNewLabel_1.setBounds(122, -17, 116, 78);
+		contentPane.add(lblNewLabel_1);
 	}
 }

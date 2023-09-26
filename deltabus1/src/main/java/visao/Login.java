@@ -25,6 +25,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 
+import Mensagens.JanelaErro;
+import Mensagens.JanelaErro1;
 import controle.UsuarioDAO;
 import modelo.Usuario;
 
@@ -104,11 +106,15 @@ public class Login extends JFrame {
 						telaPrincipal.setVisible(true);
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(null, "Senha ou E-mail Incorretos!");
+						JanelaErro janelaErro = new JanelaErro("Senha ou E-mail Incorretos!");
+						janelaErro.setLocationRelativeTo(null);
+						janelaErro.setVisible(true);
 					}
 
 				} else {
-					JOptionPane.showMessageDialog(null, "Senha ou E-mail não Preenchidos!");
+					JanelaErro1 janelaErro = new JanelaErro1("Senha ou E-mail não Preenchidos!");
+					janelaErro.setLocationRelativeTo(null);
+					janelaErro.setVisible(true);
 				}
 			}
 		});
@@ -145,17 +151,17 @@ public class Login extends JFrame {
 		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblNewLabel_4.setBounds(128, 239, 56, 14);
 		panel1.add(lblNewLabel_4);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon(Login.class.getResource("/imagem/icone email.png")));
 		lblNewLabel_5.setBounds(76, 234, 66, 55);
 		panel1.add(lblNewLabel_5);
-		
+
 		lblNewLabel_3 = new JLabel("Senha:");
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblNewLabel_3.setBounds(128, 300, 56, 14);
 		panel1.add(lblNewLabel_3);
-		
+
 		lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setIcon(new ImageIcon(Login.class.getResource("/imagem/icone senha.png")));
 		lblNewLabel_6.setBounds(72, 295, 56, 55);

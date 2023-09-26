@@ -22,6 +22,8 @@ import javax.swing.text.MaskFormatter;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
+import Mensagens.JanelaErro;
+import Mensagens.JanelaSucesso;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
@@ -402,7 +404,9 @@ public class CadastrarUsuario extends JPanel {
 							 funcionario.setUsuario(usuario);
 							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
 							if(resultado = true) {
-								JOptionPane.showMessageDialog(null, "Cadastrado");
+								JanelaSucesso sucesso = new JanelaSucesso("Usuário Cadastrado com Sucesso!");
+								sucesso.setLocationRelativeTo(null);
+								sucesso.setVisible(true);
 								limparDados();
 							}else {
 								JOptionPane.showMessageDialog(null,"Erro");
