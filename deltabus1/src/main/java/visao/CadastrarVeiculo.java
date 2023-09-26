@@ -28,6 +28,7 @@ import controle.UsuarioDAO;
 import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.Usuario;
+import modelo.Veiculo;
 import utilidades.RoundButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.AncestorListener;
@@ -37,39 +38,40 @@ import javax.swing.JTree;
 
 public class CadastrarVeiculo extends JPanel {
 
-	private JTextField txtNome;
-	private JTextField txtEmail;
-	private JTextField txtCpf;
+	private JTextField txtRenavam;
+	private JTextField txtPlaca;
 	private JTextField txtDataDeNascimento;
-	private JTextField txtTelefone;
-	private JLabel lblDataDeNascimento;
-	private JComboBox cbGenero;
-	private JTextField txtCep;
-	private JLabel lblCep;
-	private JTextField txtBairro;
-	private JComboBox cbCidade;
-	private JLabel lblCidade;
+	private JLabel lblSituacao;
+	private JComboBox cbMarca;
+	private JLabel lblCor;
+	private JLabel lblFrota;
 	private JLabel lblBairro;
-	private JLabel lblBairro_1;
-	private JComboBox cbUf;
-	private JLabel lblUf;
-	private JTextField txtSenha;
-	private JLabel lblSenha;
-	private JComboBox cbFuncao;
+	private JLabel lblPlaca;
+	private JLabel lblKlm;
+	private JLabel lblAcessorios;
 	private JLabel lblFuno;
-	private JLabel lblFuncao;
+	private JLabel lblCombustivel;
 	private JButton bntDeletar;
 	private JButton btnConfirmar;
-	private JTextField txtDataNasci;
 	
 	
 	
 	//Variaveis atribuidas
 	private String verificarCampo ;
-	private JLabel txtRua;
-	private JTextField textRua;
+	private JLabel txtAno;
 	private JTextField textField;
 	private JLabel lblLimpar;
+	private JTextField textLotacao;
+	private JTextField textidVeiculo;
+	private JTextField textAno;
+	private JTextField textPreco;
+	private JComboBox cbModelo;
+	private JComboBox cbCor;
+	private JComboBox cbFrota;
+	private JComboBox cbCombustivel;
+	private JComboBox cbAcessorios;
+	private JComboBox cbKlm;
+	private JComboBox cbSituacao;
 	
 	
 	public CadastrarVeiculo() {
@@ -115,40 +117,40 @@ public class CadastrarVeiculo extends JPanel {
 		panel_3.setBackground(new Color(0, 0, 0));
 		add(panel_3);
 
-		txtNome = new JTextField();
-		txtNome.setBounds(217, 176, 307, 30);
-		txtNome.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtNome.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtNome);
-		txtNome.setColumns(10);
+		txtRenavam = new JTextField();
+		txtRenavam.setBounds(295, 112, 271, 30);
+		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtRenavam);
+		txtRenavam.setColumns(10);
 
-		txtEmail = new JTextField();
-		txtEmail.setBounds(649, 176, 325, 30);
-		txtEmail.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtEmail.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtEmail);
-		txtEmail.setColumns(10);
+		txtPlaca = new JTextField();
+		txtPlaca.setBounds(295, 377, 194, 30);
+		txtPlaca.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtPlaca.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtPlaca);
+		txtPlaca.setColumns(10);
 
-		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(217, 157, 67, 14);
-		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
-		add(lblNome);
+		JLabel lblRenavam = new JLabel("Renavam:");
+		lblRenavam.setBounds(218, 120, 67, 14);
+		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 18));
+		add(lblRenavam);
 
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblCpf.setBounds(271, 245, 46, 14);
-		lblNome.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblNome);
+		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblRenavam);
 
-		JLabel lblEmail1 = new JLabel("Email:");
-		lblEmail1.setBounds(649, 157, 67, 14);
-		lblEmail1.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblEmail1);
+		JLabel lblidVeiculo = new JLabel("idVeiculo :");
+		lblidVeiculo.setBounds(211, 671, 74, 14);
+		lblidVeiculo.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblidVeiculo);
 
-		JLabel lblCpf1 = new JLabel("CPF:");
-		lblCpf1.setBounds(217, 252, 46, 14);
-		lblCpf1.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblCpf1);
+		JLabel lblModelo = new JLabel("Modelo : ");
+		lblModelo.setBounds(218, 226, 84, 14);
+		lblModelo.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblModelo);
 
 		/**********/
 		MaskFormatter mascaraCpf = null;
@@ -157,22 +159,12 @@ public class CadastrarVeiculo extends JPanel {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtCpf = new JFormattedTextField(mascaraCpf);
-		txtCpf.setBounds(217, 270, 182, 30);
-		txtCpf.setText("");
-		txtCpf.setFont(new Font("Dialog", Font.BOLD, 13));
-		/**********/
 
-		txtCpf.setBackground(new Color(255, 255, 255));
-		txtCpf.setForeground(new Color(0, 0, 0));
-		txtCpf.setColumns(10);
-		add(txtCpf);
-
-		JLabel lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setBounds(217, 346, 98, 14);
-		lblTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
-		lblTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblTelefone);
+		JLabel lblLotacao = new JLabel("Lotação : ");
+		lblLotacao.setBounds(218, 448, 67, 14);
+		lblLotacao.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblLotacao.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblLotacao);
 
 		
 		/**********/
@@ -182,20 +174,12 @@ public class CadastrarVeiculo extends JPanel {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtTelefone = new JFormattedTextField(mascaraCpf);
-		txtTelefone.setBounds(217, 364, 182, 30);
-		txtTelefone.setText("");
-		/**********/
 		
-		txtTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtTelefone.setColumns(10);
-		add(txtTelefone);
-		
-		lblDataDeNascimento = new JLabel("Data de Nascimento:");
-		lblDataDeNascimento.setBounds(521, 252, 194, 14);
-		lblDataDeNascimento.setFont(new Font("Dialog", Font.BOLD, 18));
-		lblDataDeNascimento.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblDataDeNascimento);
+		lblSituacao = new JLabel("Situação :");
+		lblSituacao.setBounds(670, 448, 67, 14);
+		lblSituacao.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblSituacao.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblSituacao);
 		
 		/**********/
 		MaskFormatter mascaraDataDeNascimento = null;
@@ -204,9 +188,6 @@ public class CadastrarVeiculo extends JPanel {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtDataNasci  = new JFormattedTextField(mascaraCpf);
-		txtDataNasci.setBounds(521, 271, 149, 29);
-		txtDataNasci.setFont(new Font("Dialog", Font.BOLD, 13));
 		/**********/
 		ArrayList<String> genero = new ArrayList<String>();
 		genero.add("");
@@ -214,12 +195,12 @@ public class CadastrarVeiculo extends JPanel {
 		genero.add("Feminino");
 		genero.add("Outro");
 		
-		cbGenero = new JComboBox();
-		cbGenero.setBounds(792, 270, 182, 31);
-		cbGenero.addAncestorListener(new AncestorListener() {
+		cbMarca = new JComboBox();
+		cbMarca.setBounds(295, 165, 222, 33);
+		cbMarca.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < genero.size(); i++) {
-					cbGenero.addItem(genero.get(i));
+					cbMarca.addItem(genero.get(i));
 
 				}
 			}
@@ -228,8 +209,8 @@ public class CadastrarVeiculo extends JPanel {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		cbGenero.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbGenero);
+		cbMarca.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(cbMarca);
 
 	
 		/**********/
@@ -239,26 +220,12 @@ public class CadastrarVeiculo extends JPanel {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtCep  = new JFormattedTextField(mascaraCpf);
-		txtCep.setBounds(521, 364, 149, 30);
-		txtCep.setText("");
-		/**********/
-		
-		txtCep.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtCep.setColumns(10);
-		add(txtCep);
 
-		lblCep = new JLabel("CEP:");
-		lblCep.setBounds(521, 346, 155, 14);
-		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblCep);
-
-		txtBairro = new JTextField();
-		txtBairro.setBounds(521, 447, 182, 30);
-		txtBairro.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtBairro.setColumns(10);
-		add(txtBairro);
+		lblCor = new JLabel("Cor  :");
+		lblCor.setBounds(218, 327, 42, 14);
+		lblCor.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblCor.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblCor);
 		
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
@@ -266,39 +233,20 @@ public class CadastrarVeiculo extends JPanel {
 		cidade.add("Ilhota");
 		cidade.add("Gaspar");
 		cidade.add("Blumenau");
-		
-		cbCidade = new JComboBox();
-		cbCidade.setBounds(217, 447, 182, 30);
-		cbCidade.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-				for (int i = 0; i < cidade.size(); i++) {
-					cbCidade.addItem(cidade.get(i));
-
-				}
-			}
-			public void ancestorMoved(AncestorEvent event) {
-			}
-			public void ancestorRemoved(AncestorEvent event) {
-			}
-		});
-		cbCidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbCidade);
 
 		lblBairro = new JLabel("Bairro:");
 		lblBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblBairro.setBounds(768, 428, 155, 14);
-		cbCidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbCidade);
 
-		lblCidade = new JLabel("Cidade:");
-		lblCidade.setBounds(217, 428, 155, 14);
-		lblCidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblCidade);
+		lblFrota = new JLabel("Frota : ");
+		lblFrota.setBounds(218, 500, 67, 14);
+		lblFrota.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblFrota);
 
-		lblBairro_1 = new JLabel("Bairro:");
-		lblBairro_1.setBounds(521, 428, 155, 14);
-		lblBairro_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblBairro_1);
+		lblPlaca = new JLabel("Placa :");
+		lblPlaca.setBounds(218, 385, 59, 14);
+		lblPlaca.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblPlaca);
 
 		ArrayList<String> uf = new ArrayList<>();
 		uf.add("");
@@ -306,69 +254,28 @@ public class CadastrarVeiculo extends JPanel {
 		uf.add("SP");
 		uf.add("RS");
 		uf.add("PR");
-		
-		cbUf = new JComboBox();
-		cbUf.setBounds(820, 364, 98, 30);
-		cbUf.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-				for (int i = 0; i < uf.size(); i++) {
-					cbUf.addItem(uf.get(i));
 
-				}
-			}
-			public void ancestorMoved(AncestorEvent event) {
-			}
-			public void ancestorRemoved(AncestorEvent event) {
-			}
-		});
-		cbUf.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbUf);
+		lblKlm = new JLabel("Klm :");
+		lblKlm.setBounds(698, 385, 39, 14);
+		lblKlm.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblKlm);
 
-		lblUf = new JLabel("UF:");
-		lblUf.setBounds(820, 346, 155, 14);
-		lblUf.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblUf);
-
-		txtSenha = new JTextField();
-		txtSenha.setBounds(691, 541, 182, 30);
-		txtSenha.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtSenha.setColumns(10);
-		add(txtSenha);
-
-		lblSenha = new JLabel("Senha:");
-		lblSenha.setBounds(691, 524, 155, 14);
-		lblSenha.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblSenha);
+		lblAcessorios = new JLabel("Acessórios :");
+		lblAcessorios.setBounds(195, 615, 84, 14);
+		lblAcessorios.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblAcessorios);
 		
 		ArrayList<String> funcao = new ArrayList<>();
 		funcao.add("Administrador");
 		funcao.add("Funcionário");
 
-		cbFuncao = new JComboBox();
-		cbFuncao.setBounds(362, 541, 155, 30);
-		cbFuncao.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-				for (int i = 0; i < funcao.size(); i++) {
-					cbFuncao.addItem(funcao.get(i));
-
-				}
-			}
-			public void ancestorMoved(AncestorEvent event) {
-			}
-			public void ancestorRemoved(AncestorEvent event) {
-			}
-		});
-		cbFuncao.setModel(new DefaultComboBoxModel(new String[] {""}));
-		cbFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbFuncao);
-
-		lblFuncao = new JLabel("Função:");
-		lblFuncao.setBounds(362, 520, 155, 23);
-		lblFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblFuncao);
+		lblCombustivel = new JLabel("Combustível : ");
+		lblCombustivel.setBounds(195, 552, 90, 23);
+		lblCombustivel.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblCombustivel);
 
 		btnConfirmar = new RoundButton("Confirmar");
-		btnConfirmar.setBounds(521, 627, 132, 33);
+		btnConfirmar.setBounds(655, 684, 216, 33);
 		btnConfirmar.setText("Cadastrar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -427,8 +334,6 @@ public class CadastrarVeiculo extends JPanel {
 		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnConfirmar.setBackground(new Color(0, 128, 128));
 		add(btnConfirmar);
-		add(txtDataNasci);
-		txtDataNasci.setColumns(10);
 		
 		
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
@@ -440,45 +345,114 @@ public class CadastrarVeiculo extends JPanel {
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				 txtNome.setText("");
+				 txtRenavam.setText("");
 
-				txtCpf.setText("");
+				 txtPlaca.setText("");
 
-			
-				 txtEmail.setText("");
-
-			 txtTelefone.setText("");
+			 textLotacao.setText("");
 					
 
-			txtDataNasci.setText("");
+			textidVeiculo.setText("");
 
-			 txtCep.setText("");
+			 textAno.setText("");
 
-				 txtSenha.setText("");
-				
-				txtBairro.setText("");
-				
-				textRua.setText("");
+				 textPreco.setText("");
+				 
+				 cbModelo.setSelectedIndex(-1);
+					
+					cbCor.setSelectedIndex(-1);
+					
+					cbFrota.setSelectedIndex(-1);
+					
+					cbCombustivel.setSelectedIndex(-1);
+					
+                    cbMarca.setSelectedIndex(-1);
+					
+					cbAcessorios.setSelectedIndex(-1);
+					
+					cbKlm.setSelectedIndex(-1);
+					
+					cbSituacao.setSelectedIndex(-1);
+					
+					
 			
 			}
 		});
 		add(btnLimparCampo);
 		
-		JLabel lblGnero_1 = new JLabel("Gênero:");
-		lblGnero_1.setBounds(792, 252, 98, 14);
-		lblGnero_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblGnero_1);
+		JLabel lblMarca = new JLabel("Marca :");
+		lblMarca.setBounds(218, 173, 98, 14);
+		lblMarca.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblMarca);
 		
-		txtRua = new JLabel("Rua:");
-		txtRua.setBounds(792, 428, 155, 14);
-		txtRua.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtRua);
+		txtAno = new JLabel("Ano :");
+		txtAno.setBounds(698, 333, 42, 14);
+		txtAno.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtAno);
 		
-		textRua = new JTextField();
-		textRua.setBounds(792, 447, 182, 31);
-		textRua.setFont(new Font("Dialog", Font.BOLD, 13));
-		textRua.setColumns(10);
-		add(textRua);
+		JComboBox cbModelo = new JComboBox();
+		cbModelo.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbModelo.setBounds(295, 223, 222, 33);
+		add(cbModelo);
+		
+		JComboBox cbCor = new JComboBox();
+		cbCor.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbCor.setBounds(295, 318, 194, 33);
+		add(cbCor);
+		
+		textLotacao = new JTextField();
+		textLotacao.setFont(new Font("Dialog", Font.BOLD, 13));
+		textLotacao.setColumns(10);
+		textLotacao.setBounds(295, 440, 110, 30);
+		add(textLotacao);
+		
+		JComboBox cbFrota = new JComboBox();
+		cbFrota.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbFrota.setBounds(295, 491, 194, 33);
+		add(cbFrota);
+		
+		JComboBox cbCombustivel = new JComboBox();
+		cbCombustivel.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbCombustivel.setBounds(295, 547, 194, 33);
+		add(cbCombustivel);
+		
+		JComboBox cbFrota_1_1 = new JComboBox();
+		cbFrota_1_1.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbFrota_1_1.setBounds(295, 606, 194, 33);
+		add(cbFrota_1_1);
+		
+		textidVeiculo = new JTextField();
+		textidVeiculo.setFont(new Font("Dialog", Font.BOLD, 13));
+		textidVeiculo.setColumns(10);
+		textidVeiculo.setBounds(295, 663, 110, 30);
+		add(textidVeiculo);
+		
+		textAno = new JTextField();
+		textAno.setFont(new Font("Dialog", Font.BOLD, 13));
+		textAno.setColumns(10);
+		textAno.setBounds(750, 325, 194, 30);
+		add(textAno);
+		
+		JComboBox cbCor_1 = new JComboBox();
+		cbCor_1.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbCor_1.setBounds(750, 376, 194, 33);
+		add(cbCor_1);
+		
+		JComboBox cbSituacao = new JComboBox();
+		cbSituacao.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbSituacao.setBounds(750, 439, 194, 33);
+		add(cbSituacao);
+		
+		textPreco = new JTextField();
+		textPreco.setFont(new Font("Dialog", Font.BOLD, 13));
+		textPreco.setColumns(10);
+		textPreco.setBounds(750, 498, 110, 30);
+		add(textPreco);
+		
+		JLabel lblPreco = new JLabel("Preço  :");
+		lblPreco.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblPreco.setBounds(670, 501, 67, 14);
+		add(lblPreco);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -501,172 +475,119 @@ public class CadastrarVeiculo extends JPanel {
 	}
 	public Funcionario verificarDados() {
 		
-		Funcionario funcionario = new Funcionario();
-		Usuario usuario = new Usuario();
-		Endereco endereco = new Endereco();
+		Veiculo veiculo = new Veiculo();
+	
 		
 		
 		verificarCampo = "";
 		
-		String nome = txtNome.getText();
-
-		String cpfTxt = txtCpf.getText().replace(".", "").replace("-", "");
-
-		String genero = (String) cbGenero.getSelectedItem();
-
-		String email = txtEmail.getText();
-
-		String telefone = txtTelefone.getText().replace("-", "").replace("(", "").replace(")",
-				"");
-
-		String dataN = txtDataNasci.getText();
-
-		String cep = txtCep.getText().replace("-", "");
-
-		String UF = (String) cbUf.getSelectedItem();
-
-		String funcao = (String) cbFuncao.getSelectedItem();
+		String renavam = txtRenavam.getText();
 		
-		String senha = txtSenha.getText();
+		String placa = txtPlaca.getText();
 		
-		String bairro = txtBairro.getText();
+		String lotacao = textLotacao.getText();
 		
-		String cidade = (String) cbCidade.getSelectedItem();
+		String idveiculo = textidVeiculo.getText();
 		
-		String rua = txtRua.getText();
-		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
-			verificarCampo += "Nome\n";
+		String ano = textAno.getText();
+		
+		String preco = textPreco.getText();
+
+	
+        String marca = (String) cbMarca.getSelectedItem();
+
+		
+        String modelo = (String) cbModelo.getSelectedItem();
+
+		String cor  = (String) cbCor.getSelectedItem();
+		
+		
+		String frota = (String) cbFrota.getSelectedItem();
+		
+		String combustivel = (String) cbCombustivel.getSelectedItem();
+
+		String acessorios  = (String) cbAcessorios.getSelectedItem();
+		
+		String klm = (String) cbKlm.getSelectedItem();
+
+		String situacao  = (String) cbSituacao.getSelectedItem();
+		
+		
+		
+		
+		
+		
+		if (renavam == null || renavam.trim() == "" || renavam.isEmpty()) {
+			verificarCampo += "Renavam\n";
 		} else {
-			funcionario.setNome(nome);
+			veiculo.setRenavam(renavam);
 		}
 
 
-		if (cpfTxt == null || cpfTxt.trim() == "" || cpfTxt.isEmpty()) {
-			verificarCampo += "CPF\n";
+		if (placa == null || placa.trim() == "" || placa.isEmpty()) {
+			verificarCampo += "Placa\n";
 		} else {
-			long cpf = Long.parseLong(cpfTxt);		
-			funcionario.setCpf(cpf);
+			long cpf = Long.parseLong(placa);		
+			veiculo.setPlaca(placa);
 		}
-		if (email == null || email.trim() == "" || email.isEmpty()) {
-			verificarCampo += "Email\n";
+		if (marca == null || marca.trim() == "" || marca.isEmpty()) {
+			verificarCampo += "Marca\n";
 		} else {
-			usuario.setEmail(email);
+			veiculo.setMarca(marca);
 		}
 		// telefone
-		if (telefone == null || telefone.trim() == "" || telefone.isEmpty()) {
-			verificarCampo += "Telefone\n";
+		if (modelo == null || modelo.trim() == "" || modelo.isEmpty()) {
+			verificarCampo += "Modelo\n";
 		} else {
-			funcionario.setNumeroTelefone(telefone);
+			veiculo.setModelo(modelo);
 
 		}
 		
-		if (genero == null || genero.trim() == "" || genero.isEmpty()) {
-			verificarCampo += "Genero\n";
+		if (cor == null || cor.trim() == "" || cor.isEmpty()) {
+			verificarCampo += "Cor\n";
 		} else {
 			
-			funcionario.setGenero(genero);
+			veiculo.setCor(cor);
 		}
-		// data Nascimento
-		if (dataN == null || dataN.trim() == "" || dataN.isEmpty()) {
-			verificarCampo += "Data\n";
+		
+		
+	//	if (lotacao == null || lotacao.trim() == "" || lotacao.isEmpty()) {
+			//verificarCampo += "Lotaçao\n";
+
+	//	} else {
+	//		veiculo.setLotacao(lotacao);
+	//	}
+		
+		
+		if (frota == null || frota.trim() == "" || frota.isEmpty()) {
+			verificarCampo += "Frota\n";
 		} else {
-			String dataTest = dataN.replace("/", "").trim();
-			if (dataTest.length() == 0) {
-				verificarCampo += "Data\n";
-		
-			} else {
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				LocalDate dta = LocalDate.parse(dataN, formatter);
-				dta.format(formatter);
-
-				// tratamento de data para ver se é menor
-				LocalDate dataAtual = LocalDate.now();
-
-				if (dataAtual.isBefore(dta)) {
-					verificarCampo += "Informe uma data anterior";
-
-				} else {
-					funcionario.setDatanasci(dta);
-				}
-
-			}
+			veiculo.setTipoFrota(frota);
 
 		}
 		
-		if (funcao == null || funcao.trim() == "" || funcao.isEmpty()) {
-			verificarCampo += "funcao\n";
-
+		if (combustivel == null || frota.trim() == "" || frota.isEmpty()) {
+			verificarCampo += "Frota\n";
 		} else {
-			usuario.setCargo(funcao);
-		}
-		if (senha == null || senha.trim() == "" || senha.isEmpty()) {
-			verificarCampo += "senha\n";
-		} else {
-			usuario.setSenha(senha);
+			veiculo.setTipoFrota(frota);
 
-		}
-		
-		
-		if (cep == null || cep.trim() == "" || cep.isEmpty()) {
-			verificarCampo += "cep\n";
-		} else {
-			endereco.setCep(Integer.valueOf(cep));
-
-		}
-		
-		if (cidade == null || cidade.trim() == "" || cidade.isEmpty()) {
-			verificarCampo += "cidade\n";
-		} else {
-			endereco.setCidade(cidade);
-
-		}
-		
-		
-		if (bairro == null || cep.trim() == "" || cep.isEmpty()) {
-			verificarCampo += "bairro\n";
-		} else {
-			endereco.setBairro(bairro);
-
-		}
-		
-		
-		if (rua == null || rua.trim() == "" || rua.isEmpty()) {
-			verificarCampo += "rua\n";
-		} else {
-			endereco.setRua(rua);
-
-		}
-		if (UF == null || UF.trim() == "" || UF.isEmpty()) {
-			verificarCampo += "UF\n";
-		} else {
-			endereco.setUf(UF);
-
-		}
-		if(verificarCampo.trim() == "") {
-			funcionario.setUsuario(usuario);
-			funcionario.setEndereco(endereco);
-			return funcionario;
 		}
 		
 		return null;
 	}
 	public void limparDados() {
-		 txtNome.setText("");
+		 txtRenavam.setText("");
 
-			txtCpf.setText("");
+		 txtPlaca.setText("");
 
-		
-			 txtEmail.setText("");
-
-		 txtTelefone.setText("");
-				
-
-		txtDataNasci.setText("");
-
-		 txtCep.setText("");
-
-			 txtSenha.setText("");
+	 textLotacao.setText("");
 			
-			txtBairro.setText("");
+
+	textidVeiculo.setText("");
+
+	 textAno.setText("");
+
+		 textPreco.setText("");
+	
 	}
 }

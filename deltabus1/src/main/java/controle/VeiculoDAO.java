@@ -44,7 +44,7 @@ public class VeiculoDAO {
 					v.setPreco(rs.getDouble("preco"));
 				//	v.setAno(rs.getLocalDate("ano"));
 					v.setAcessorios(rs.getString("acessorios"));
-					v.setLotacao(rs.getInt("lotacao"));
+					//v.setLotacao(rs.getInt("lotacao"));
 					v.setPlaca(rs.getString("placa"));
 					v.setRenavam(rs.getString("renavam"));
 					v.setCor(rs.getString("cor"));
