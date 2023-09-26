@@ -125,11 +125,11 @@ public class Veiculo {
 
 	}
 
-	//public void setLotacao(String lotacao2) {
+    public void setLotacao(int lotacao) {
 
-	//	this.lotacao = lotacao2;
+		this.lotacao = lotacao;
 
-//	}
+	}
 
 	public String getPlaca() {
 

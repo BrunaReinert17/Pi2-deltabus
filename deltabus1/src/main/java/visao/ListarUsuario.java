@@ -214,6 +214,7 @@ private void deletarFuncionario() {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = textCPF.getText();
+				
 				atualizarTabela();
 			}
 		});

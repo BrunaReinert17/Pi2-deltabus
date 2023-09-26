@@ -42,9 +42,9 @@ public class VeiculoDAO {
 					v.setMarca(rs.getString("marca"));
 					v.setModelo(rs.getString("modelo"));
 					v.setPreco(rs.getDouble("preco"));
-				//	v.setAno(rs.getLocalDate("ano"));
+					v.setAno(rs.getDate("ano"));
 					v.setAcessorios(rs.getString("acessorios"));
-					//v.setLotacao(rs.getInt("lotacao"));
+					v.setLotacao(rs.getInt("lotacao"));
 					v.setPlaca(rs.getString("placa"));
 					v.setRenavam(rs.getString("renavam"));
 					v.setCor(rs.getString("cor"));
@@ -73,7 +73,7 @@ public class VeiculoDAO {
 		            stm.setString(2, veiculo.getMarca());
 		            stm.setString(3, veiculo.getModelo());
 		            stm.setDouble(4,veiculo.getPreco());
-		            //stm.setDate(5, veiculo.getAno());
+		            stm.setDate(5, veiculo.getAno());
 		            stm.setString(6, veiculo.getAcessorios());
 		            stm.setInt(7, veiculo.getLotacao());
 		            stm.setString(8, veiculo.getPlaca());

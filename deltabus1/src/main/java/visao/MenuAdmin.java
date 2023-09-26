@@ -60,7 +60,7 @@ public class MenuAdmin extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		//aqui
 				CadastrarUsuario panelUsuario = new CadastrarUsuario();
 				panelUsuario.setToolTipText("");
 				panelUsuario.setLocation(579, 97);
@@ -124,6 +124,7 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
+				//aqui
 			}
 		});
 		btnCadastrarUsuarios.setForeground(new Color(0, 0, 0));
@@ -147,7 +148,7 @@ public class MenuAdmin extends JFrame {
 				ListarUsuario listarUsuario = new ListarUsuario();
 				listarUsuario.setLocationRelativeTo(null);
 				listarUsuario.setVisible(true);
-
+				//aqui
 			}
 		});
 
