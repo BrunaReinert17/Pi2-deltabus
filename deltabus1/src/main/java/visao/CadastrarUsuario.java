@@ -57,7 +57,7 @@ public class CadastrarUsuario extends JPanel {
 	private JLabel lblFuno;
 	private JLabel lblFuncao;
 	private JButton bntDeletar;
-	private JButton btnConfirmar;
+	private JButton btnCadastrar;
 	private JTextField txtDataNasci;
 	
 	
@@ -175,7 +175,7 @@ public class CadastrarUsuario extends JPanel {
 		/**********/
 		MaskFormatter mascaraTelefone = null;
 		try {
-			mascaraCpf = new MaskFormatter("(##)#####-####");
+			mascaraCpf = new MaskFormatter("(##)####-####");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
@@ -364,10 +364,10 @@ public class CadastrarUsuario extends JPanel {
 		lblFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblFuncao);
 
-		btnConfirmar = new RoundButton("Confirmar");
-		btnConfirmar.setBounds(521, 627, 132, 33);
-		btnConfirmar.setText("Cadastrar");
-		btnConfirmar.addActionListener(new ActionListener() {
+		btnCadastrar = new RoundButton("Confirmar");
+		btnCadastrar.setBounds(521, 627, 132, 33);
+		btnCadastrar.setText("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				Funcionario funcionario = verificarDados();
@@ -420,10 +420,10 @@ public class CadastrarUsuario extends JPanel {
 				
 			}
 		});
-		btnConfirmar.setForeground(Color.WHITE);
-		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnConfirmar.setBackground(new Color(0, 128, 128));
-		add(btnConfirmar);
+		btnCadastrar.setForeground(Color.WHITE);
+		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnCadastrar.setBackground(new Color(0, 128, 128));
+		add(btnCadastrar);
 		add(txtDataNasci);
 		txtDataNasci.setColumns(10);
 		

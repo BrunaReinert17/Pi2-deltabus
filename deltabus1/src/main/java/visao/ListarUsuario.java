@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -34,6 +35,9 @@ public class ListarUsuario extends JFrame {
 	private JPanel panel_1;
 	private ArrayList<Funcionario> listFuncionario;
 	private JTextField textCPF;
+	private Funcionario funcionarioClick;
+	private JButton voltar;
+	
 	
 private void deletarFuncionario() {
 		
@@ -52,22 +56,7 @@ private void deletarFuncionario() {
 		
 	}
 	
-	
-/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListarUsuario frame = new ListarUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -118,7 +107,7 @@ private void deletarFuncionario() {
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
 		
-		RoundButton rndbtnDeletar = new RoundButton("Limpar Campo");
+		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deletarFuncionario();
@@ -133,13 +122,85 @@ private void deletarFuncionario() {
 		panel_1.add(rndbtnDeletar);
 		
 		
-		RoundButton rndbtnConfirmar = new RoundButton("Limpar Campo");
-		rndbtnConfirmar.setText("Alterar");
-		rndbtnConfirmar.setForeground(Color.WHITE);
-		rndbtnConfirmar.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnConfirmar.setBackground(new Color(0, 128, 128));
-		rndbtnConfirmar.setBounds(918, 4, 114, 33);
-		panel_1.add(rndbtnConfirmar);
+		RoundButton rndbtnAlterar = new RoundButton("Alterar");
+		rndbtnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int position = table.getSelectedRow();
+				
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Nenhum usuario Selecionado");
+					return;
+				}
+				funcionarioClick = listFuncionario.get(position);
+				preencherFuncionarioTabela(funcionarioClick);
+				
+				funcionarioClick = new Funcionario();
+				
+				rndbtnAlterar.setVisible(false);
+				panel_1.remove(rndbtnAlterar);
+				
+				rndbtnAlterar.setVisible(false);
+				panel.remove(rndbtnAlterar);
+				
+				rndbtnDeletar.setVisible(false);
+				panel_1.remove(rndbtnDeletar);
+				
+				voltar = new JButton("Cancelar");
+				voltar.setForeground(new Color(255, 255, 255));
+				voltar.setBackground(new Color(149,208,157));
+				
+				voltar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						limparBorda();
+						
+						rndbtnAlterar.setFont(new Font("Dialog",Font.BOLD,14));
+						panel_1.add(rndbtnAlterar, "cell 1 5, grow");
+						rndbtnAlterar.setVisible(true);
+						
+						panel_1.remove(voltar);
+						
+					//	bntSalvar.setVisible(false);
+						panel.remove(rndbtnAlterar);
+						
+						limparTela();
+						
+						
+						
+					}
+
+					private void limparTela() {
+						// TODO Auto-generated method stub
+						
+					}
+
+					private void limparBorda() {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				voltar.setFont(new Font("Dialog",Font.BOLD,14));
+				panel_1.add(voltar,"cell 1 5, grow");
+				
+				
+				
+				
+				
+
+				
+			}
+
+			private void preencherFuncionarioTabela(Funcionario funcionarioClick) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		rndbtnAlterar.setText("Alterar");
+		rndbtnAlterar.setForeground(Color.WHITE);
+		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+		rndbtnAlterar.setBackground(new Color(0, 128, 128));
+		rndbtnAlterar.setBounds(918, 4, 114, 33);
+		panel_1.add(rndbtnAlterar);
 		
 		textCPF = new JTextField();
 		textCPF.setBounds(496, 12, 177, 20);
