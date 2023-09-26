@@ -1,100 +1,77 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 import modelo.Cliente;
-import modelo.Endereco;
-import modelo.Pedido;
 
 public class ClienteDAO implements InterfaceCliente {
 
-	  private Conexao con;
+	private Conexao con;
 
-	    public ClienteDAO() {
-	        con = Conexao.getInstancia();
-	    }
-	    
-	    public ArrayList<Cliente> listar() {
-			Conexao c = Conexao.getInstancia();
-			Connection con = c.conectar();
+	public ClienteDAO() {
+		con = Conexao.getInstancia();
+	}
 
-			ArrayList<Cliente> clientes = new ArrayList<>();
+	@Override
+	public Cliente selecionar(Cliente clienteModelo) {
+		Connection c = con.conectar();
+		try {
+			PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario where senha = ? AND email = ?");
+			ps.setString(1, clienteModelo.getNome());
+			ps.setString(2, clienteModelo.getEmail());
 
-			String query = "SELECT * FROM clientes";
-			try {
-				
-				PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
 
-				
-				ResultSet rs = ps.executeQuery();
-				while (rs.next()) {
-					 String nome = rs.getString("nome");
-
-					
-
-					Cliente cliente = new Cliente();
-					Endereco endereco = new Endereco();
-					
-					cliente.setNome(rs.getString("nome"));
-					cliente.setNumeroTelefone(rs.getInt("numeroTelefone"));
-					cliente.setEmail(rs.getString("email"));
-					cliente.setCpf(rs.getDouble("cpf"));
-					cliente.setCnpj(rs.getLong("cnpj"));
-					endereco.setCep(rs.getInt("endereco_cep"));
-					cliente.setEndereco(endereco);
-					
-
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+			if (rs.next()) {
+				String nome = rs.getString("nome");
+				int NumeroTelefone = rs.getInt("numeroTelefone");
+				String email = rs.getString("email");
+				String PessoaJuridica_ou_Fisica = rs.getString("PessoaJuridica_ou_Fisica");
+				int Cep = rs.getInt("endereco_cep");
+				// Endereco Endereco = rs.getEndereco("endereco");
 			}
-
-			c.fecharConexao();
-
-			return clientes;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
 		}
-	    
-	
+		return null;
+	}
+
 	@Override
 	public boolean inserirCliente(Cliente cliente) {
-		 Connection c = con.conectar();
-	        int valida = 0;
+		Connection c = con.conectar();
+		int valida = 0;
 
-	        try {
-	            String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, endereco_cep) VALUES (?, ?, ?, ?)";
-	            PreparedStatement stm = c.prepareStatement(query);
-	            stm.setString(1, cliente.getNome());
-	            stm.setInt(2, cliente.getNumeroTelefone());
-	            stm.setString(3, cliente.getEmail());
-	            stm.setDouble(4,cliente.getCpf());
-	            stm.setLong(5, cliente.getCnpj());
-	            stm.setInt(7, cliente.getEndereco().getCep());
-	        	
-	            valida = stm.executeUpdate();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        } finally {
-	            con.fecharConexao();
-	        }
-	        return valida != 0;
-	    }
-	
-	
+		try {
+			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, PessoaJuridica_ou_Fisica, endereco_cep) VALUES (?, ?, ?, ?)";
+			PreparedStatement stm = c.prepareStatement(query);
+			stm.setString(1, cliente.getNome());
+			stm.setString(2, cliente.getNumeroTelefone());
+			stm.setString(3, cliente.getEmail());
+			stm.setString(4, cliente.getPessoaJuridica_ou_Fisica());
+			stm.setInt(7, cliente.getEndereco().getCep());
+
+			valida = stm.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+		return valida != 0;
+	}
 
 	@Override
 	public boolean deletarCliente(Cliente cliente) {
-		
+
 		return false;
 	}
 
 	@Override
 	public Cliente alterarCliente(Cliente cliente) {
-		
+
 		return null;
 	}
 

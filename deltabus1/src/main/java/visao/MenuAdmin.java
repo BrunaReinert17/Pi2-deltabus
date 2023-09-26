@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import utilidades.RoundButton;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
+import java.awt.Frame;
 
 public class MenuAdmin extends JFrame {
 
@@ -46,8 +47,8 @@ public class MenuAdmin extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuAdmin() {
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuAdmin.class.getResource("/imagem/logoampliada.png")));
-		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Principal Administrador");
 		setTitle("Menu");
 		setBackground(new Color(51, 102, 102));

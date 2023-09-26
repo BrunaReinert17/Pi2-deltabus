@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import utilidades.RoundButton;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
+import java.awt.Frame;
 
 public class MenuFuncionario extends JFrame {
 
@@ -24,6 +25,7 @@ public class MenuFuncionario extends JFrame {
 	private RoundButton btnCadastrarClientes;
 	private RoundButton btnCadastrarVendas;
 	private RoundButton bntLogout;
+	private JPanel panelTeste;
 
 	/**
 	 * Launch the application.
@@ -45,8 +47,8 @@ public class MenuFuncionario extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuFuncionario() {
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuAdmin.class.getResource("/imagem/logoampliada.png")));
-		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Principal Funcionario");
 		setTitle("Menu");
 		setBackground(new Color(51, 102, 102));
@@ -58,6 +60,15 @@ public class MenuFuncionario extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		CadastrarCliente panelCliente = new CadastrarCliente();
+		panelCliente.setToolTipText("");
+		panelCliente.setLocation(579, 97);
+		panelTeste = panelCliente;
+		panelTeste.setBounds(568, 104, 1200, 800);
+		panelTeste.setVisible(false);
+		
+				contentPane.add(panelTeste);
 		
 	
 		JPanel panel = new JPanel();
@@ -116,9 +127,10 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/perfil.png")));
 
 		btnCadastrarClientes = new RoundButton("Cadastro de Clientes");
-		btnCadastrarClientes.setText("Cadastrar Cliente");
+		btnCadastrarClientes.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnCadastrarClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				panelTeste.setVisible(true);
 			}
 		});
 		btnCadastrarClientes.setForeground(new Color(0, 0, 0));
