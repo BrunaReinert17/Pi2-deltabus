@@ -13,15 +13,15 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 
-public class JanelaErro extends JFrame {
+public class CadastroErro1 extends JFrame {
 
 	private JPanel contentPane;
-	private JLabel lblMsg;
+	private JLabel lblDadoInvalido;
 
 	/**
 	 * Create the frame.
 	 */
-	public JanelaErro(String mensagem) {
+	public CadastroErro1 (String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -31,8 +31,8 @@ public class JanelaErro extends JFrame {
 
 		setContentPane(contentPane);
 
-		lblMsg = new JLabel("");
-		lblMsg.setText(mensagem);
+		lblDadoInvalido = new JLabel("");
+		lblDadoInvalido.setText(mensagem);
 		contentPane.setLayout(null);
 
 		RoundButton btnOk = new RoundButton("Ok");
@@ -48,13 +48,13 @@ public class JanelaErro extends JFrame {
 		contentPane.add(btnOk);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(JanelaErro.class.getResource("/imagem/aviso.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
 		lblNewLabel_1.setBounds(124, -18, 86, 82);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(JanelaErro.class.getResource("/imagem/mensage2.png")));
-		lblNewLabel.setBounds(39, 83, 259, 29);
-		contentPane.add(lblNewLabel);
+		JLabel lblErroCadastro = new JLabel("");
+		lblErroCadastro.setIcon(new ImageIcon(CadastroErro1.class.getResource("/imagem/message5.png")));
+		lblErroCadastro.setBounds(61, 83, 259, 29);
+		contentPane.add(lblErroCadastro);
 	}
 }

@@ -48,7 +48,7 @@ public class CadastrarCliente extends JPanel {
 	private JLabel lblUf;
 	private JLabel lblFuno;
 	private JButton bntDeletar;
-	private JButton btnConfirmar;
+	private JButton btnCadastrar;
 
 	// Variaveis atribuidas
 	private String verificarCampo;
@@ -73,7 +73,7 @@ public class CadastrarCliente extends JPanel {
 		lblLimpar.setIcon(new ImageIcon(CadastrarCliente.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
 
-		JLabel lblNewLabel = new JLabel("Cadastrar Usuários");
+		JLabel lblNewLabel = new JLabel("Cadastrar Clientes");
 		lblNewLabel.setBounds(25, 11, 182, 14);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
@@ -100,21 +100,21 @@ public class CadastrarCliente extends JPanel {
 		add(panel_3);
 
 		txtNome = new JTextField();
-		txtNome.setBounds(217, 176, 307, 30);
+		txtNome.setBounds(252, 195, 276, 30);
 		txtNome.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtNome.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtNome);
 		txtNome.setColumns(10);
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(649, 176, 325, 30);
+		txtEmail.setBounds(684, 195, 276, 30);
 		txtEmail.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtEmail.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtEmail);
 		txtEmail.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(217, 157, 67, 14);
+		lblNome.setBounds(252, 176, 67, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
 		add(lblNome);
 
@@ -125,12 +125,12 @@ public class CadastrarCliente extends JPanel {
 		add(lblNome);
 
 		JLabel lblEmail1 = new JLabel("Email:");
-		lblEmail1.setBounds(649, 157, 67, 14);
+		lblEmail1.setBounds(684, 176, 67, 14);
 		lblEmail1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblEmail1);
 
 		JLabel lblnumeroTelefone = new JLabel("Telefone:");
-		lblnumeroTelefone.setBounds(649, 261, 98, 14);
+		lblnumeroTelefone.setBounds(684, 280, 98, 14);
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblnumeroTelefone);
@@ -143,7 +143,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtnumeroTelefone = new JFormattedTextField(mascaranumeroTelefone);
-		txtnumeroTelefone.setBounds(649, 286, 182, 30);
+		txtnumeroTelefone.setBounds(684, 305, 182, 30);
 		txtnumeroTelefone.setText("");
 		/**********/
 
@@ -157,7 +157,7 @@ public class CadastrarCliente extends JPanel {
 		pessoajuridica_ou_fisica.add("CNPJ");
 
 		cbPessoaJuridica_ou_Fisica = new JComboBox();
-		cbPessoaJuridica_ou_Fisica.setBounds(217, 281, 276, 31);
+		cbPessoaJuridica_ou_Fisica.setBounds(252, 300, 182, 31);
 		cbPessoaJuridica_ou_Fisica.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < pessoajuridica_ou_fisica.size(); i++) {
@@ -183,7 +183,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtCep = new JFormattedTextField(mascaraCep);
-		txtCep.setBounds(217, 364, 149, 30);
+		txtCep.setBounds(252, 383, 142, 30);
 		txtCep.setText("");
 		/**********/
 
@@ -192,13 +192,13 @@ public class CadastrarCliente extends JPanel {
 		add(txtCep);
 
 		lblCep = new JLabel("CEP:");
-		lblCep.setBounds(217, 346, 155, 14);
+		lblCep.setBounds(252, 365, 155, 14);
 		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCep);
 
 		txtBairro = new JTextField();
-		txtBairro.setBounds(649, 447, 182, 30);
+		txtBairro.setBounds(684, 466, 182, 30);
 		txtBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtBairro.setColumns(10);
 		add(txtBairro);
@@ -211,7 +211,7 @@ public class CadastrarCliente extends JPanel {
 		cidade.add("Blumenau");
 
 		cbCidade = new JComboBox();
-		cbCidade.setBounds(217, 447, 182, 30);
+		cbCidade.setBounds(252, 466, 182, 30);
 		cbCidade.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < cidade.size(); i++) {
@@ -236,12 +236,12 @@ public class CadastrarCliente extends JPanel {
 		add(cbCidade);
 
 		lblCidade = new JLabel("Cidade:");
-		lblCidade.setBounds(217, 428, 155, 14);
+		lblCidade.setBounds(252, 447, 155, 14);
 		lblCidade.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCidade);
 
 		lblBairro_1 = new JLabel("Bairro:");
-		lblBairro_1.setBounds(649, 422, 155, 14);
+		lblBairro_1.setBounds(684, 441, 155, 14);
 		lblBairro_1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblBairro_1);
 
@@ -253,7 +253,7 @@ public class CadastrarCliente extends JPanel {
 		uf.add("PR");
 
 		cbUf = new JComboBox();
-		cbUf.setBounds(649, 364, 98, 30);
+		cbUf.setBounds(684, 383, 142, 30);
 		cbUf.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < uf.size(); i++) {
@@ -272,14 +272,14 @@ public class CadastrarCliente extends JPanel {
 		add(cbUf);
 
 		lblUf = new JLabel("UF:");
-		lblUf.setBounds(649, 346, 155, 14);
+		lblUf.setBounds(684, 365, 155, 14);
 		lblUf.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblUf);
 
-		btnConfirmar = new RoundButton("Confirmar");
-		btnConfirmar.setBounds(453, 568, 132, 33);
-		btnConfirmar.setText("Cadastrar");
-		btnConfirmar.addActionListener(new ActionListener() {
+		btnCadastrar = new RoundButton("Confirmar");
+		btnCadastrar.setBounds(498, 582, 132, 33);
+		btnCadastrar.setText("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				Cliente cliente = verificarDados();
@@ -324,10 +324,10 @@ public class CadastrarCliente extends JPanel {
 
 			}
 		});
-		btnConfirmar.setForeground(Color.WHITE);
-		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnConfirmar.setBackground(new Color(0, 128, 128));
-		add(btnConfirmar);
+		btnCadastrar.setForeground(Color.WHITE);
+		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnCadastrar.setBackground(new Color(0, 128, 128));
+		add(btnCadastrar);
 
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
 		btnLimparCampo.setBounds(1061, 92, 84, 33);
@@ -358,8 +358,8 @@ public class CadastrarCliente extends JPanel {
 		});
 		add(btnLimparCampo);
 
-		JLabel lblPJuridica_ou_Fisica = new JLabel("PessoaJuridica ou Fisica:");
-		lblPJuridica_ou_Fisica.setBounds(217, 261, 169, 14);
+		JLabel lblPJuridica_ou_Fisica = new JLabel("Pessoa Juridica ou Fisica:");
+		lblPJuridica_ou_Fisica.setBounds(252, 280, 169, 14);
 		lblPJuridica_ou_Fisica.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblPJuridica_ou_Fisica);
 

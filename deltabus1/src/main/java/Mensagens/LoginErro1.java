@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 
-public class JanelaErro1 extends JFrame {
+public class LoginErro1 extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblMsg1;
@@ -21,7 +21,7 @@ public class JanelaErro1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JanelaErro1(String mensagem) {
+	public LoginErro1(String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -48,12 +48,12 @@ public class JanelaErro1 extends JFrame {
 		contentPane.add(btnOk);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(JanelaErro.class.getResource("/imagem/aviso.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
 		lblNewLabel_1.setBounds(124, -18, 86, 82);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblMsg = new JLabel("");
-		lblMsg.setIcon(new ImageIcon(JanelaErro.class.getResource("/imagem/mensage1.png")));
+		lblMsg.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/mensage1.png")));
 		lblMsg.setBounds(39, 75, 254, 39);
 		contentPane.add(lblMsg);
 	}

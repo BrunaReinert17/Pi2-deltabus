@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-public class JanelaSucesso extends JFrame {
+public class CadastroSucesso extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblSucesso;
@@ -25,7 +25,7 @@ public class JanelaSucesso extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JanelaSucesso(String mensagem) {
+	public CadastroSucesso(String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -52,12 +52,12 @@ public class JanelaSucesso extends JFrame {
 		contentPane.add(btnConfirmar);
 		
 		JLabel lblSucesso = new JLabel("");
-		lblSucesso.setIcon(new ImageIcon(JanelaSucesso.class.getResource("/imagem/mensage3.png")));
+		lblSucesso.setIcon(new ImageIcon(CadastroSucesso.class.getResource("/imagem/mensage3.png")));
 		lblSucesso.setBounds(59, 72, 261, 40);
 		contentPane.add(lblSucesso);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(JanelaSucesso.class.getResource("/imagem/logoMensagens2.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(CadastroSucesso.class.getResource("/imagem/logoMensagens2.png")));
 		lblNewLabel_1.setBounds(122, -17, 116, 78);
 		contentPane.add(lblNewLabel_1);
 	}

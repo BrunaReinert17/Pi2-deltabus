@@ -25,8 +25,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 
-import Mensagens.JanelaErro;
-import Mensagens.JanelaErro1;
+import Mensagens.LoginErro;
+import Mensagens.LoginErro1;
 import controle.UsuarioDAO;
 import modelo.Usuario;
 
@@ -106,13 +106,13 @@ public class Login extends JFrame {
 						telaPrincipal.setVisible(true);
 						dispose();
 					} else {
-						JanelaErro janelaErro = new JanelaErro("Senha ou E-mail Incorretos!");
+						LoginErro janelaErro = new LoginErro("Senha ou E-mail Incorretos!");
 						janelaErro.setLocationRelativeTo(null);
 						janelaErro.setVisible(true);
 					}
 
 				} else {
-					JanelaErro1 janelaErro = new JanelaErro1("Senha ou E-mail não Preenchidos!");
+					LoginErro1 janelaErro = new LoginErro1("Senha ou E-mail não Preenchidos!");
 					janelaErro.setLocationRelativeTo(null);
 					janelaErro.setVisible(true);
 				}

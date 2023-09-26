@@ -22,8 +22,10 @@ import javax.swing.text.MaskFormatter;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
-import Mensagens.JanelaErro;
-import Mensagens.JanelaSucesso;
+import Mensagens.LoginErro;
+import Mensagens.CadastroErro;
+import Mensagens.CadastroErro1;
+import Mensagens.CadastroSucesso;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
@@ -374,10 +376,14 @@ public class CadastrarUsuario extends JPanel {
 				
 				Funcionario funcionario = verificarDados();
 				
+				
 				Usuario usuario = new Usuario();
 				if (funcionario == null ) {
-					JOptionPane.showMessageDialog(null, verificarCampo, "Dados inválidos:",
-							JOptionPane.ERROR_MESSAGE, null);
+					CadastroErro erro = new CadastroErro ("Dados inválidos!");
+					erro.setLocationRelativeTo(null);
+					erro.setVisible(true);
+					//JOptionPane.showMessageDialog(null, verificarCampo, "Dados inválidos:",
+						//	JOptionPane.ERROR_MESSAGE, null);
 
 				}else {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -404,12 +410,14 @@ public class CadastrarUsuario extends JPanel {
 							 funcionario.setUsuario(usuario);
 							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
 							if(resultado = true) {
-								JanelaSucesso sucesso = new JanelaSucesso("Usuário Cadastrado com Sucesso!");
+								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								limparDados();
 							}else {
-								JOptionPane.showMessageDialog(null,"Erro");
+								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+								erro1.setLocationRelativeTo(null);
+								erro1.setVisible(true);
 							}
 						}
 						
