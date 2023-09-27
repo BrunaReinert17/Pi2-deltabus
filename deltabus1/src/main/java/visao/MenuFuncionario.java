@@ -34,7 +34,7 @@ public class MenuFuncionario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuAdmin frame = new MenuAdmin();
+					MenuFuncionario frame = new MenuFuncionario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class MenuFuncionario extends JFrame {
 	 */
 	public MenuFuncionario() {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuAdmin.class.getResource("/imagem/logoampliada.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuFuncionario.class.getResource("/imagem/logoampliada.png")));
 		setTitle("Principal Funcionario");
 		setTitle("Menu");
 		setBackground(new Color(51, 102, 102));
@@ -92,23 +92,23 @@ public class MenuFuncionario extends JFrame {
 				JLabel lblNewLabel_7 = new JLabel("");
 				lblNewLabel_7.setBounds(92, 337, 134, 43);
 				panel.add(lblNewLabel_7);
-				lblNewLabel_7.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/IconeHome.png")));
+				lblNewLabel_7.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/IconeHome.png")));
 				
 				JLabel lblNewLabel_5 = new JLabel("");
 				lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
 				lblNewLabel_5.setBounds(46, 530, 141, 33);
 				panel.add(lblNewLabel_5);
-				lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone-5.png")));
+				lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
 				
 				JLabel lblNewLabel_4 = new JLabel("");
 				lblNewLabel_4.setBounds(36, 596, 92, 33);
 				panel.add(lblNewLabel_4);
-				lblNewLabel_4.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Icone2.png")));
+				lblNewLabel_4.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Icone2.png")));
 		
 				JLabel lblNewLabel_3 = new JLabel("");
 				lblNewLabel_3.setBounds(-395, 421, 523, 73);
 				panel.add(lblNewLabel_3);
-				lblNewLabel_3.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone.png")));
+				lblNewLabel_3.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone.png")));
 		btnCadastrarVendas.setForeground(Color.WHITE);
 		btnCadastrarVendas.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrarVendas.setBackground(new Color(0, 128, 128));
@@ -149,7 +149,7 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				panelTeste.setVisible(true);
 			}
 		});
 

@@ -31,6 +31,9 @@ public class ListagemUsuarios extends JPanel {
 	private JPanel panel_1;
 	private ArrayList<Funcionario> listFuncionario;
 	private JTextField textCPF;
+	private Funcionario funcionarioClick;
+	private JButton voltar;
+
 	
 private void deletarFuncionario() {
 		
@@ -57,7 +60,7 @@ private void deletarFuncionario() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ListarUsuario frame = new ListarUsuario();
+					ListagemUsuarios frame = new ListagemUsuarios();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

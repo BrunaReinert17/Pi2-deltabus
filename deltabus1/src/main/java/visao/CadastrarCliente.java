@@ -22,6 +22,9 @@ import javax.swing.text.MaskFormatter;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
+import Mensagens.CadastroErro;
+import Mensagens.CadastroErro1;
+import Mensagens.CadastroSucesso;
 import controle.ClienteDAO;
 import controle.EnderecoDAO;
 import modelo.Cliente;
@@ -284,9 +287,10 @@ public class CadastrarCliente extends JPanel {
 
 				Cliente cliente = verificarDados();
 				if (cliente == null) {
-					JOptionPane.showMessageDialog(null, verificarCampo, "Dados inválidos:", JOptionPane.ERROR_MESSAGE,
-							null);
-
+					CadastroErro erro = new CadastroErro ("Dados inválidos!");
+					erro.setLocationRelativeTo(null);
+					erro.setVisible(true);
+					
 				} else {
 					ClienteDAO clienteDAO = new ClienteDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
@@ -309,10 +313,14 @@ public class CadastrarCliente extends JPanel {
 							cliente.setCliente(cliente);
 							boolean resultado = clienteDAO.inserirCliente(cliente);
 							if (resultado = true) {
-								JOptionPane.showMessageDialog(null, "Cadastrado");
+								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
+								sucesso.setLocationRelativeTo(null);
+								sucesso.setVisible(true);
 								limparDados();
 							} else {
-								JOptionPane.showMessageDialog(null, "Erro");
+								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+								erro1.setLocationRelativeTo(null);
+								erro1.setVisible(true);
 							}
 						}
 

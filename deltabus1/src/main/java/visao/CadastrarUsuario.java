@@ -382,9 +382,7 @@ public class CadastrarUsuario extends JPanel {
 					CadastroErro erro = new CadastroErro ("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
-					//JOptionPane.showMessageDialog(null, verificarCampo, "Dados inválidos:",
-						//	JOptionPane.ERROR_MESSAGE, null);
-
+					
 				}else {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
