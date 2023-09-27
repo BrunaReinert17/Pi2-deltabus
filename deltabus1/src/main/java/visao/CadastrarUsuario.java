@@ -368,7 +368,7 @@ public class CadastrarUsuario extends JPanel {
 		lblFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblFuncao);
 
-		btnCadastrar = new RoundButton("Confirmar");
+		btnCadastrar = new RoundButton("Cadastrar");
 		btnCadastrar.setBounds(521, 627, 132, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {

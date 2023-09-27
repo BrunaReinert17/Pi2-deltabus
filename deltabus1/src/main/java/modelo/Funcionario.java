@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Funcionario {
 
+	public static final Funcionario FUNCIONARIEDITADO = null;
 	private String nome;
 	private LocalDate datanasci;
 	private String genero;
@@ -91,10 +92,6 @@ public class Funcionario {
 		this.numeroTelefone = numeroTelefone;
 
 	}
-
-
-	
-
 	public long getCpf() {
 
 		return cpf;
@@ -135,6 +132,11 @@ public class Funcionario {
 	public String toString() {
 		return "Funcionario [nome=" + nome + ", datanasci=" + datanasci + ", genero=" + genero + ", numeroTelefone="
 				+ numeroTelefone + ", cpf=" + cpf + ", endereco=" + endereco + ", usuario=" + usuario + "]";
+	}
+
+	public Funcionario  editarFuncionario(Funcionario funcionario) {
+		// TODO Auto-generated method stub
+		return funcionario ;
 	}
 
 	
