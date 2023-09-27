@@ -330,8 +330,12 @@ public class ListarUsuario extends JFrame {
 		btnPesquisar.setBackground(new Color(0, 128, 128));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
 				String cpfpesquisa = textCPF.getText();
 
+=======
+				pesquisar();
+>>>>>>> Stashed changes
 				atualizarTabela();
 			}
 		});
@@ -358,5 +362,24 @@ public class ListarUsuario extends JFrame {
 
 		}
 		table.setModel(tabela);
+	}
+public void pesquisar() {
+	
+	Long cpf =  Long.valueOf(textCPF.getText());
+		
+		ArrayList<Funcionario> listFunc = FuncionarioDAO.Pesquisar(cpf);
+		DefaultTableModel tabelas = (DefaultTableModel)table.getModel();
+		tabelas.setRowCount(0);
+		
+		for(Funcionario f : listFunc) {
+			tabelas.addRow(new Object[] {
+					f.getNome(),
+					f.getCpf(),
+					f.getNumeroTelefone(),
+					f.getDatanasci(),
+					f.getGenero(),
+					f.getEndereco()
+			});
+		}
 	}
 }

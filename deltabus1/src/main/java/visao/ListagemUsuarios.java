@@ -169,4 +169,5 @@ private void deletarFuncionario() {
 		}
 		table.setModel(tabela);
 	}
+	
 }
