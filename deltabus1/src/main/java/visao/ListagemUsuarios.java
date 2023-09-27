@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,7 +22,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Mensagens.ListagemErro;
 import controle.FuncionarioDAO;
+import modelo.Endereco;
 import modelo.Funcionario;
 import utilidades.RoundButton;
 
@@ -33,6 +37,8 @@ public class ListagemUsuarios extends JPanel {
 	private JTextField textCPF;
 	private Funcionario funcionarioClick;
 	private JButton voltar;
+	private AbstractButton btnSalvar;
+	private String validacao = "";
 
 	
 private void deletarFuncionario() {
@@ -96,7 +102,7 @@ private void deletarFuncionario() {
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
 		
-		RoundButton rndbtnDeletar = new RoundButton("Limpar Campo");
+		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deletarFuncionario();
@@ -111,13 +117,205 @@ private void deletarFuncionario() {
 		panel_1.add(rndbtnDeletar);
 		
 		
-		RoundButton rndbtnConfirmar = new RoundButton("Limpar Campo");
-		rndbtnConfirmar.setText("Alterar");
-		rndbtnConfirmar.setForeground(Color.WHITE);
-		rndbtnConfirmar.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnConfirmar.setBackground(new Color(0, 128, 128));
-		rndbtnConfirmar.setBounds(918, 4, 114, 33);
-		panel_1.add(rndbtnConfirmar);
+		RoundButton rndbtnAlterar = new RoundButton("Alterar");
+		rndbtnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int position = table.getSelectedRow();
+
+				
+				if(position == -1) {
+					ListagemErro naoSelecionado = new ListagemErro("Nenhum Usuário Selecionado!");
+					naoSelecionado.setLocationRelativeTo(null);
+					naoSelecionado.setVisible(true);
+
+
+				if (position == -1) {
+					JOptionPane.showMessageDialog(null, "Nenhum usuario Selecionado");
+
+					return;
+				}
+				funcionarioClick = listFuncionario.get(position);
+				preencherFuncionarioTabela(funcionarioClick);
+
+				funcionarioClick = new Funcionario();
+
+				rndbtnAlterar.setVisible(false);
+				panel.remove(rndbtnAlterar);
+
+				rndbtnAlterar.setVisible(false);
+				panel.remove(rndbtnAlterar);
+
+				rndbtnDeletar.setVisible(false);
+				panel.remove(rndbtnDeletar);
+
+				voltar = new JButton("Cancelar");
+				voltar.setForeground(new Color(255, 255, 255));
+				voltar.setBackground(new Color(149, 208, 157));
+
+				voltar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						limparBorda();
+
+						rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
+						panel.add(rndbtnAlterar, "cell 1 5, grow");
+						rndbtnAlterar.setVisible(true);
+
+						panel.remove(voltar);
+
+						btnSalvar.setVisible(false);
+						panel.remove(rndbtnAlterar);
+
+						limparTela();
+
+					}
+
+					private void limparTela() {
+						// TODO Auto-generated method stub
+
+					}
+
+					private void limparBorda() {
+						// TODO Auto-generated method stub
+
+					}
+				});
+				rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
+				panel.add(rndbtnAlterar, "cell 1 5, grow");
+
+				btnSalvar = new JButton("Salvar");
+				btnSalvar.setForeground(new Color(255, 255, 255));
+				btnSalvar.setBackground(new Color(149, 208, 157));
+				btnSalvar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						validacao = "";
+
+						Funcionario funcionario = new Funcionario();
+						var nome = new CadastrarUsuario();
+						var cpf = new CadastrarUsuario();
+						var telefone = new CadastrarUsuario();
+						var dataNasci = new CadastrarUsuario();
+						var genero = new CadastrarUsuario();
+						var endereco = new Endereco();
+						
+						
+						funcionario = setarObjetoFuncionario();
+						nome = setarObjetoNome();
+						cpf = setarObjetoCpf();
+						telefone = setarObjetoTelefone();
+					    dataNasci = setarObjetoDataNasci();
+						genero = setarObjetoGenero();
+					    endereco = setarObjetoEndereco();
+						
+						
+						
+						if (funcionario != null && endereco != null ) {
+							
+							funcionario.setEndereco(endereco);
+							
+						
+
+							Funcionario cadastroFuncionarioHelper = new Funcionario();
+							Funcionario retorno = cadastroFuncionarioHelper.editarFuncionario(funcionario);
+							if (Funcionario.FUNCIONARIEDITADO == retorno) {
+								JOptionPane.showMessageDialog(null, "Funcionario editado");
+								atualizarTabela();
+								limparTela();
+
+							} else {
+								JOptionPane.showMessageDialog(null, "Erro ao editar");
+							}
+
+							panel.add(rndbtnAlterar);
+							rndbtnAlterar.setVisible(true);
+
+							rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
+							panel.add(rndbtnAlterar, "cell 1 5,growx");
+							rndbtnAlterar.setVisible(true);
+
+							rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 14));
+							panel.add(rndbtnDeletar, "cell 3 5,grow");
+							rndbtnDeletar.setVisible(true);
+							limparTela();
+							voltar.setVisible(true);
+							panel.remove(voltar);
+							limparTela();
+
+							btnSalvar.setVisible(true);
+							panel.remove(btnSalvar);
+
+						} else {
+							JOptionPane.showMessageDialog(null, validacao, "Dados inválidos:",
+									JOptionPane.ERROR_MESSAGE, null);
+						}
+
+					}
+
+					private Endereco setarObjetoEndereco() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					private Funcionario setarObjetoFuncionario() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					private CadastrarUsuario setarObjetoNome() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					private CadastrarUsuario setarObjetoGenero() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					private CadastrarUsuario setarObjetoDataNasci() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					private CadastrarUsuario setarObjetoTelefone() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					private CadastrarUsuario setarObjetoCpf() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					private void limparTela() {
+						// TODO Auto-generated method stub
+
+					}
+
+				});
+				
+				
+				rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
+				panel_1.add(rndbtnAlterar, "cell 1 5, grow");
+				}
+
+			
+			}
+
+			private void preencherFuncionarioTabela(Funcionario funcionarioClick) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+		});
+
+		rndbtnAlterar.setText("Alterar");
+		rndbtnAlterar.setForeground(Color.WHITE);
+		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+		rndbtnAlterar.setBackground(new Color(0, 128, 128));
+		rndbtnAlterar.setBounds(918, 4, 114, 33);
+		panel_1.add(rndbtnAlterar);
+
+	
 		
 		textCPF = new JTextField();
 		textCPF.setBounds(496, 12, 177, 20);
@@ -168,6 +366,11 @@ private void deletarFuncionario() {
 
 		}
 		table.setModel(tabela);
+	}
+
+	public void setLocationRelativeTo(Object object) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

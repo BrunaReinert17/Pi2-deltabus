@@ -38,7 +38,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 			stm.setLong(6, funcionario.getUsuario().getIdUsuario());
 			stm.setLong(7, funcionario.getEndereco().getCep());
 
-			valida = stm.executeUpdate("cpf");
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

@@ -148,7 +148,7 @@ public class MenuAdmin extends JFrame {
 		rndbtnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(false);
-				ListarUsuario listarUsuario = new ListarUsuario();
+				ListagemUsuarios listarUsuario = new ListagemUsuarios();
 				listarUsuario.setLocationRelativeTo(null);
 				listarUsuario.setVisible(true);
 				//aqui
