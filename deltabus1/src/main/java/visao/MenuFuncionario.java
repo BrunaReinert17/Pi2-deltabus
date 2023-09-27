@@ -59,6 +59,15 @@ public class MenuFuncionario extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		CadastrarVeiculo veiculo = new CadastrarVeiculo();
+		veiculo.setToolTipText("");
+		veiculo.setLocation(579, 97);
+		panelTeste = veiculo;
+		panelTeste.setBounds(568, 104, 1200, 800);
+		panelTeste.setVisible(false);
+		
+				contentPane.add(panelTeste);
+
 		contentPane.setLayout(null);
 		
 		CadastrarCliente panelCliente = new CadastrarCliente();
@@ -149,7 +158,8 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelTeste.setVisible(true);
+				veiculo.setVisible(true);
+				
 			}
 		});
 

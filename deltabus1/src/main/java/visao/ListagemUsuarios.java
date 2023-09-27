@@ -48,25 +48,6 @@ private void deletarFuncionario() {
 		
 		objfuncionariodao.deletarFuncionario(objfuncionario);
 		
-		
-		
-	}
-	
-	
-/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListagemUsuarios frame = new ListagemUsuarios();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 
 	public ListagemUsuarios() {
@@ -90,7 +71,7 @@ private void deletarFuncionario() {
 		panel.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 1164, 702);
+		scrollPane.setBounds(10, 22, 1164, 702);
 		panel.add(scrollPane);
 
 		table = new JTable();
