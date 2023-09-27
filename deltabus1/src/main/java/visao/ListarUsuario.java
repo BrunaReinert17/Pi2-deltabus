@@ -16,6 +16,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Mensagens.CadastroErro1;
+import Mensagens.ListagemErro;
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
 import utilidades.RoundButton;
@@ -63,7 +65,6 @@ private void deletarFuncionario() {
 	 */
 	public ListarUsuario() {
 		setTitle("Cadastrar Usuario");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 300, 1200, 800);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
@@ -128,7 +129,9 @@ private void deletarFuncionario() {
 				int position = table.getSelectedRow();
 				
 				if(position == -1) {
-					JOptionPane.showMessageDialog(null, "Nenhum usuario Selecionado");
+					ListagemErro naoSelecionado = new ListagemErro("Nenhum Usuário Selecionado!");
+					naoSelecionado.setLocationRelativeTo(null);
+					naoSelecionado.setVisible(true);
 					return;
 				}
 				funcionarioClick = listFuncionario.get(position);
