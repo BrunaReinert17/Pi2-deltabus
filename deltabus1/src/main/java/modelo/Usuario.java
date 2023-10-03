@@ -58,5 +58,15 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", email=" + email + ", senha=" + senha + ", cargo=" + cargo + "]";
 	}
+
+	public void setNome(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setIdade(int i) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
