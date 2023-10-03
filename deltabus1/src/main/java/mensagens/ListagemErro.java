@@ -51,15 +51,5 @@ public class ListagemErro extends JFrame {
             }
         });
 		contentPane.add(btnOk);
-
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
-		lblNewLabel_1.setBounds(124, -18, 86, 82);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNaoSelecionado = new JLabel("");
-		lblNaoSelecionado.setIcon(new ImageIcon(ListagemErro.class.getResource("/imagem/message6.png")));
-		lblNaoSelecionado.setBounds(71, 68, 204, 56);
-		contentPane.add(lblNaoSelecionado);
 	}
 }

@@ -58,9 +58,9 @@ public class CadastroSucesso extends JFrame {
 		lblSucesso.setBounds(59, 72, 261, 40);
 		contentPane.add(lblSucesso);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(CadastroSucesso.class.getResource("/imagem/logoMensagens2.png")));
-		lblNewLabel_1.setBounds(122, -17, 116, 78);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(CadastroSucesso.class.getResource("/imagem/MensageCerto.png")));
+		lblNewLabel.setBounds(122, -21, 129, 82);
+		contentPane.add(lblNewLabel);
 	}
 }

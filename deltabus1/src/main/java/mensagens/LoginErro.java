@@ -17,6 +17,7 @@ public class LoginErro extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblMsg;
+	private JLabel lblAviso;
 
 	/**
 	 * Create the frame.
@@ -51,15 +52,15 @@ public class LoginErro extends JFrame {
             }
         });
 		contentPane.add(btnOk);
-
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
-		lblNewLabel_1.setBounds(124, -18, 86, 82);
-		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/mensage2.png")));
 		lblNewLabel.setBounds(39, 83, 259, 29);
 		contentPane.add(lblNewLabel);
+		
+		lblAviso = new JLabel("");
+		lblAviso.setIcon(new ImageIcon(LoginErro1.class.getResource("/imagem/MensageAviso.png")));
+		lblAviso.setBounds(123, -20, 110, 84);
+		contentPane.add(lblAviso);
 	}
 }

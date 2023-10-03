@@ -52,14 +52,14 @@ public class LoginErro1 extends JFrame {
         });
 		contentPane.add(btnOk);
 
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
-		lblNewLabel_1.setBounds(124, -18, 86, 82);
-		contentPane.add(lblNewLabel_1);
-
 		JLabel lblMsg = new JLabel("");
 		lblMsg.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/mensage1.png")));
 		lblMsg.setBounds(39, 75, 254, 39);
 		contentPane.add(lblMsg);
+		
+		JLabel lblAviso = new JLabel("");
+		lblAviso.setIcon(new ImageIcon(LoginErro1.class.getResource("/imagem/MensageAviso.png")));
+		lblAviso.setBounds(123, -20, 110, 84);
+		contentPane.add(lblAviso);
 	}
 }

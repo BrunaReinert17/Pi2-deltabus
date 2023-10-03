@@ -40,7 +40,7 @@ public class CadastroErro1 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnOk.setBounds(146, 123, 55, 29);
+		btnOk.setBounds(143, 122, 55, 29);
 		btnOk.setText("OK");
 		btnOk.setForeground(new Color(255, 255, 255));
 		btnOk.setFont(new Font("Dialog", Font.BOLD, 11));
@@ -52,15 +52,10 @@ public class CadastroErro1 extends JFrame {
         });
 		
 		contentPane.add(btnOk);
-
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
-		lblNewLabel_1.setBounds(124, -18, 86, 82);
-		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblErroCadastro = new JLabel("");
-		lblErroCadastro.setIcon(new ImageIcon(CadastroErro1.class.getResource("/imagem/message5.png")));
-		lblErroCadastro.setBounds(61, 83, 259, 29);
-		contentPane.add(lblErroCadastro);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(CadastroErro1.class.getResource("/imagem/MensageAviso.png")));
+		lblNewLabel.setBounds(121, -16, 105, 78);
+		contentPane.add(lblNewLabel);
 	}
 }

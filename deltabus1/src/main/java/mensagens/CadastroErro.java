@@ -51,15 +51,15 @@ public class CadastroErro extends JFrame {
             }
         });
 		contentPane.add(btnOk);
-
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LoginErro.class.getResource("/imagem/aviso.png")));
-		lblNewLabel_1.setBounds(124, -18, 86, 82);
-		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblDadoInvalido = new JLabel("");
 		lblDadoInvalido.setIcon(new ImageIcon(CadastroErro.class.getResource("/imagem/mensage4.png")));
 		lblDadoInvalido.setBounds(55, 75, 198, 39);
 		contentPane.add(lblDadoInvalido);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(CadastroErro.class.getResource("/imagem/MensageAviso.png")));
+		lblNewLabel.setBounds(124, -15, 107, 76);
+		contentPane.add(lblNewLabel);
 	}
 }

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 import java.awt.SystemColor;
@@ -32,6 +33,7 @@ import modelo.Usuario;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.DropMode;
+import javax.swing.SwingConstants;
 
 public class Login extends JFrame {
 
@@ -112,9 +114,9 @@ public class Login extends JFrame {
 					}
 
 				} else {
-					LoginErro1 janelaErro = new LoginErro1("Senha ou E-mail não Preenchidos!");
-					janelaErro.setLocationRelativeTo(null);
-					janelaErro.setVisible(true);
+					LoginErro1 janelaErro1 = new LoginErro1("Senha ou E-mail não Preenchidos!");
+					janelaErro1.setLocationRelativeTo(null);
+					janelaErro1.setVisible(true);
 				}
 			}
 		});
@@ -166,6 +168,25 @@ public class Login extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(Login.class.getResource("/imagem/icone senha.png")));
 		lblNewLabel_6.setBounds(72, 295, 56, 55);
 		panel1.add(lblNewLabel_6);
+		
+		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
+		showPasswordCheckBox.setBounds(126, 357, 132, 15);
+		panel1.add(showPasswordCheckBox);
+		showPasswordCheckBox.setBackground(Color.WHITE);
+		showPasswordCheckBox.setFont(new Font("Dialog", Font.PLAIN, 11));
+		
+				showPasswordCheckBox.addActionListener(new ActionListener() {
+		
+					@Override
+					public void actionPerformed(ActionEvent e) {
+		
+						if (showPasswordCheckBox.isSelected()) {
+							txtSenha.setEchoChar((char) 0);
+						} else {
+							txtSenha.setEchoChar('\u2022');
+						}
+					}
+				});
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/imagem/fundo.png")));
