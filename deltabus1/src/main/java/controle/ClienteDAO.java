@@ -3,6 +3,7 @@ package controle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import modelo.Cliente;
 
@@ -66,13 +67,54 @@ public class ClienteDAO implements InterfaceCliente {
 	@Override
 	public boolean deletarCliente(Cliente cliente) {
 
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM Cliente\r\n  WHERE Cpf = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, cliente.getPessoaJuridica_ou_Fisica());
+			ps.executeUpdate();
+
+			c.fecharConexao();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
 		return false;
 	}
 
-	@Override
 	public Cliente alterarCliente(Cliente cliente) {
 
-		return null;
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+String query = "UPDATE Cliente SET nome = ?, numeroTelefone = ?, email = ?, cnpj = ?, endereco_cep = ? WHERE cpf = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, cliente.getNome());
+			ps.setString(2, cliente.getNumeroTelefone());
+			ps.setString(3, cliente.getEmail());
+			ps.setString(4, cliente.getPessoaJuridica_ou_Fisica());
+			ps.setLong(5, cliente.getEndereco().getCep());
+
+			ps.executeUpdate();
+
+			c.fecharConexao();
+			return cliente;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return cliente;
 	}
+
 
 }

@@ -63,6 +63,16 @@ public class MenuAdmin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		
+		ListagemUsuarios listarUsuarios = new ListagemUsuarios();
+		listarUsuarios.setToolTipText("");
+		listarUsuarios.setLocation(579, 97);
+		panelTeste = listarUsuarios;
+		panelTeste.setBounds(568, 104, 1200, 800);
+		panelTeste.setVisible(false);
+		
+		contentPane.add(panelTeste);
+
 		contentPane.setLayout(null);
 		// aqui
 		CadastrarUsuario panelUsuario = new CadastrarUsuario();
@@ -141,6 +151,11 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
+		
+		panelTeste1 = new JPanel();
+		panelTeste1.setBounds(568, 104, 1200, 800);
+		panelTeste1.setVisible(false);
+		
 
 		RoundButton rndbtnListar = new RoundButton("Listagem");
 		rndbtnListar.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -148,7 +163,8 @@ public class MenuAdmin extends JFrame {
 		rndbtnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste1.setVisible(true);
-				ListagemUsuarios listarUsuarios = new ListagemUsuarios();
+				ListagemUsuarios listarveiculos = new ListagemUsuarios();
+				listarUsuarios.atualizarTabela1();
 			}
 		});
 

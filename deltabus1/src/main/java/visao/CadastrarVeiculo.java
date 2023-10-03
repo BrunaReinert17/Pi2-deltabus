@@ -27,7 +27,9 @@ import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
+
 import mensagens.CadastroErro;
+
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
 import modelo.Endereco;
@@ -477,11 +479,37 @@ public class CadastrarVeiculo extends JPanel {
 		RoundButton btnCadastrar = new RoundButton("Confirmar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Veiculo veiculo = verificarDados();
+
+                if (veiculo != null) {
+                    VeiculoDAO veiculoDAO = new VeiculoDAO();
+                    boolean resultado = veiculoDAO.inserirVeiculo(veiculo);
+
+                    if (resultado) {
+                        // O veículo foi cadastrado com sucesso
+                        CadastroSucesso sucesso = new CadastroSucesso("Veículo Cadastrado com Sucesso!");
+                        sucesso.setLocationRelativeTo(null);
+                        sucesso.setVisible(true);
+                        limparDados(); // Limpa os campos após o cadastro
+                    } else {
+                        // Ocorreu um erro durante o cadastro
+                        CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+                        erro1.setLocationRelativeTo(null);
+                        erro1.setVisible(true);
+                    }
+                }
 				
 				
 			}
 			});
+
+				 
+	          
+
+
 		btnCadastrar.setText("Cadastrar");
+		
+		
 		btnCadastrar.setForeground(Color.WHITE);
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrar.setBackground(new Color(0, 128, 128));
@@ -507,7 +535,7 @@ public class CadastrarVeiculo extends JPanel {
 	
 
 	}
-	public Funcionario verificarDados() {
+	public Veiculo verificarDados() {
 		
 		Veiculo veiculo = new Veiculo();
 	
@@ -540,9 +568,13 @@ public class CadastrarVeiculo extends JPanel {
 		
 		String combustivel = (String) cbCombustivel.getSelectedItem();
 
+
 		String acessorios  = (String) cbAcessorio.getSelectedItem();
 		
-		String klm = (String) cbKlm.getSelectedItem();
+
+		String acessorio  = (String) cbAcessorio.getSelectedItem();
+	
+
 
 		String situacao  = (String) cbSituacao.getSelectedItem();
 		
@@ -607,10 +639,10 @@ public class CadastrarVeiculo extends JPanel {
 
 		}
 		
-		if (acessorios == null || acessorios.trim() == "" || acessorios.isEmpty()) {
+		if (acessorio == null || acessorio.trim() == "" || acessorio.isEmpty()) {
 			verificarCampo += "Acessorios\n";
 		} else {
-			veiculo.setAcessorios(acessorios);
+			veiculo.setAcessorios(acessorio);
 
 		}
 		
@@ -629,13 +661,6 @@ public class CadastrarVeiculo extends JPanel {
 
 		}
 		
-		
-		if (klm == null || klm.trim() == "" || klm.isEmpty()) {
-			verificarCampo += "klm\n";
-		} else {
-			veiculo.setKmveiculo(Integer.valueOf(klm));
-
-		}
 		
 		
 		if (situacao == null || situacao.trim() == "" || situacao.isEmpty()) {

@@ -80,13 +80,55 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 	@Override
 	public boolean excluirEndereco(Endereco endereco) {
-		
+
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM Endereco\r\n  WHERE Cep = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setFloat(1, endereco.getCep());
+			ps.executeUpdate();
+
+			c.fecharConexao();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
 		return false;
 	}
 
-	@Override
 	public boolean alterarEndereco(Endereco endereco) {
-		
+
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "UPDATE Endereco\r\n   SET" + "cidade = ?\r\n" + "bairro = ?" + "rua = ?" + " estado = ?"
+				+ "Uf = ? ,  WHERE cep = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, endereco.getCidade());
+			ps.setString(2, endereco.getBairro());
+			ps.setString(3, endereco.getRua());
+			
+			ps.setString(5, endereco.getUf());
+			ps.setLong(6, endereco.getCep());
+
+			ps.executeUpdate();
+
+			c.fecharConexao();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 

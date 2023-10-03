@@ -16,8 +16,7 @@ public class Veiculo {
 	private String renavam;
 	private String cor;
 	private String TipoFrota;
-	private int Kmveiculo;
-	private String TipoCombustivel;
+    private String TipoCombustivel;
 	private boolean situacao;
 	
 	public Veiculo() {
@@ -25,7 +24,7 @@ public class Veiculo {
 	}
 	
 	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, Date ano, String acessorios,
-			int lotacao, String placa, String renavam, String cor, String TipoFrota, int Kmveiculo,
+			int lotacao, String placa, String renavam, String cor, String TipoFrota,
 			String TipoCombustivel, boolean situacao) {
 
 		super();
@@ -41,7 +40,6 @@ public class Veiculo {
 		this.renavam = renavam;
 		this.cor = cor;
 		this.TipoFrota = TipoFrota;
-		this.Kmveiculo = Kmveiculo;
 		this.TipoCombustivel = TipoCombustivel;
 		this.situacao = situacao;
 
@@ -179,17 +177,6 @@ public class Veiculo {
 
 	}
 
-	public int getKmveiculo() {
-
-		return Kmveiculo;
-
-	}
-
-	public void setKmveiculo(int kmveiculo) {
-
-		Kmveiculo = kmveiculo;
-
-	}
 
 	public String getTipoCombustivel() {
 

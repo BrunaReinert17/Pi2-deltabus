@@ -23,9 +23,13 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controle.FuncionarioDAO;
+import controle.UsuarioDAO;
+import controle.VeiculoDAO;
 import mensagens.ListagemErro;
 import modelo.Endereco;
 import modelo.Funcionario;
+import modelo.Usuario;
+import modelo.Veiculo;
 import utilidades.RoundButton;
 
 public class ListagemUsuarios extends JPanel {
@@ -39,6 +43,7 @@ public class ListagemUsuarios extends JPanel {
 	private JButton voltar;
 	private AbstractButton btnSalvar;
 	private String validacao = "";
+	private ArrayList<Usuario> listUsuario;
 
 private void deletarFuncionario() {
 		long cpf;
@@ -275,4 +280,22 @@ private void deletarFuncionario() {
 
 	public void setLocationRelativeTo(Object object) {
 	}
+	
+	
+	public void atualizarTabela1() {
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço"  });
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		listUsuario = usuarioDAO.listar();
+		System.out.println(listUsuario);
+		for (int i = 0; i < listUsuario.size(); i++) {
+			Usuario usuario = listUsuario.get(i);
+			//tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
+
+		}
+		table.setModel(tabela);
+		
+	}
+	
+	
+	
 }

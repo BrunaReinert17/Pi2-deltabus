@@ -336,6 +336,7 @@ public class CadastrarUsuario extends JPanel {
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				Funcionario funcionario = verificarDados();
 				Usuario usuario = new Usuario();
 				if (funcionario == null) {
@@ -346,6 +347,7 @@ public class CadastrarUsuario extends JPanel {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
+					
 					Endereco endereco = enderecoDAO.consultandoEndereco(funcionario.getEndereco());
 					boolean ende = false;
 					if (endereco == null) {
@@ -355,16 +357,19 @@ public class CadastrarUsuario extends JPanel {
 					if (ende != false) {
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
 						System.out.println(funcionario.getUsuario());
+						
 						if (usuarioRetornoCadastro != false) {
 							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
 							System.out.println(usuario);
 							funcionario.setUsuario(usuario);
 							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
+							
 							if (resultado = true) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								limparDados();
+								
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
 								erro1.setLocationRelativeTo(null);
