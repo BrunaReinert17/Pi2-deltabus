@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import mensagens.CadastroErro1;
 import mensagens.LoginErro;
+import mensagens.Logout;
 import utilidades.RoundButton;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -26,7 +28,6 @@ public class MenuAdmin extends JFrame {
 
 	private JPanel contentPane;
 	private RoundButton btnCadastrarUsuarios;
-	private RoundButton btnVerificar;
 	private RoundButton bntLogout;
 	private JPanel panelTeste;
 	private JPanel panelTeste1;
@@ -90,12 +91,6 @@ public class MenuAdmin extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		btnVerificar = new RoundButton("Verificar");
-		btnVerificar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-
 		JLabel lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBounds(92, 337, 134, 43);
 		panel.add(lblNewLabel_7);
@@ -115,11 +110,6 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_3.setBounds(-395, 421, 523, 73);
 		panel.add(lblNewLabel_3);
 		lblNewLabel_3.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone.png")));
-		btnVerificar.setForeground(Color.WHITE);
-		btnVerificar.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnVerificar.setBackground(new Color(0, 128, 128));
-		btnVerificar.setBounds(90, 596, 199, 43);
-		panel.add(btnVerificar);
 
 		JLabel lblNewLabel_1 = new JLabel("Bem Vindo: Administrador");
 		lblNewLabel_1.setForeground(new Color(0, 128, 128));
@@ -137,7 +127,6 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
-				// aqui
 			}
 		});
 		btnCadastrarUsuarios.setForeground(new Color(0, 0, 0));
@@ -182,10 +171,9 @@ public class MenuAdmin extends JFrame {
 		btnLogout.setText("");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login telaLogin = new Login();
-				telaLogin.setLocationRelativeTo(null);
-				telaLogin.setVisible(true);
-				dispose();
+				Logout logout = new Logout("Tem certeza de que deseja sair?");
+				logout.setLocationRelativeTo(null);
+				logout.setVisible(true);
 			}
 		});
 		btnLogout.setForeground(new Color(255, 255, 255));
@@ -199,7 +187,7 @@ public class MenuAdmin extends JFrame {
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Icone.png")));
 
-		RoundButton btnHome = new RoundButton("Logout");
+		RoundButton btnHome = new RoundButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuAdmin telaPrincipal = new MenuAdmin();

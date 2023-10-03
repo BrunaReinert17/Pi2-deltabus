@@ -377,7 +377,9 @@ public class CadastrarUsuario extends JPanel {
 							}
 						}
 					} else {
-						JOptionPane.showMessageDialog(null, "Erro");
+						CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+						erro1.setLocationRelativeTo(null);
+						erro1.setVisible(true);
 					}
 				}
 			}

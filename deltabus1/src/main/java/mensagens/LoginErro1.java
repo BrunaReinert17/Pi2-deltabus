@@ -45,6 +45,11 @@ public class LoginErro1 extends JFrame {
 		btnOk.setForeground(new Color(255, 255, 255));
 		btnOk.setFont(new Font("Dialog", Font.BOLD, 11));
 		btnOk.setBackground(new Color(0, 0, 0));
+		btnOk.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose(); 
+            }
+        });
 		contentPane.add(btnOk);
 
 		JLabel lblNewLabel_1 = new JLabel("");

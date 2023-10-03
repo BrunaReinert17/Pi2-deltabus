@@ -37,19 +37,21 @@ public class CadastroSucesso extends JFrame {
 		lblSucesso = new JLabel("");
 		lblSucesso.setText(mensagem);
 		contentPane.setLayout(null);
+		
+		
 
-		RoundButton btnConfirmar = new RoundButton("Ok");
-		btnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-			}
-		});
-		btnConfirmar.setBounds(146, 123, 55, 29);
-		btnConfirmar.setText("OK");
-		btnConfirmar.setForeground(new Color(255, 255, 255));
-		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 11));
-		btnConfirmar.setBackground(new Color(0, 0, 0));
-		contentPane.add(btnConfirmar);
+		RoundButton btnOk = new RoundButton("Ok");
+		btnOk.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose(); 
+            }
+        });
+		btnOk.setBounds(146, 123, 55, 29);
+		btnOk.setText("OK");
+		btnOk.setForeground(new Color(255, 255, 255));
+		btnOk.setFont(new Font("Dialog", Font.BOLD, 11));
+		btnOk.setBackground(new Color(0, 0, 0));
+		contentPane.add(btnOk);
 		
 		JLabel lblSucesso = new JLabel("");
 		lblSucesso.setIcon(new ImageIcon(CadastroSucesso.class.getResource("/imagem/mensage3.png")));
