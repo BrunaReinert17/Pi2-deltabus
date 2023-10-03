@@ -23,9 +23,9 @@ public class MenuFuncionario extends JFrame {
 
 	private JPanel contentPane;
 	private RoundButton btnCadastrarClientes;
-	private RoundButton btnCadastrarVendas;
 	private RoundButton bntLogout;
 	private JPanel panelTeste;
+	private JPanel panelTeste1;
 
 	/**
 	 * Launch the application.
@@ -48,12 +48,13 @@ public class MenuFuncionario extends JFrame {
 	 */
 	public MenuFuncionario() {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuFuncionario.class.getResource("/imagem/logoampliada.png")));
+		setIconImage(
+				Toolkit.getDefaultToolkit().getImage(MenuFuncionario.class.getResource("/imagem/logoampliada.png")));
 		setTitle("Principal Funcionario");
 		setTitle("Menu");
 		setBackground(new Color(51, 102, 102));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1500);
+		setBounds(100, 100, 1382, 796);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,66 +64,57 @@ public class MenuFuncionario extends JFrame {
 		veiculo.setToolTipText("");
 		veiculo.setLocation(579, 97);
 		panelTeste = veiculo;
-		panelTeste.setBounds(568, 104, 1200, 800);
+		panelTeste.setBounds(374, 0, 1200, 800);
 		panelTeste.setVisible(false);
-		
-				contentPane.add(panelTeste);
+
+		contentPane.add(panelTeste);
 
 		contentPane.setLayout(null);
-		
+
 		CadastrarCliente panelCliente = new CadastrarCliente();
 		panelCliente.setToolTipText("");
 		panelCliente.setLocation(579, 97);
 		panelTeste = panelCliente;
 		panelTeste.setBounds(568, 104, 1200, 800);
 		panelTeste.setVisible(false);
-		
-				contentPane.add(panelTeste);
-		
-	
+
+		contentPane.add(panelTeste);
+
+		ListagemVeiculos listarveiculos = new ListagemVeiculos();
+		listarveiculos.setToolTipText("");
+		listarveiculos.setLocation(579, 97);
+		panelTeste1 = listarveiculos;
+		panelTeste1.setBounds(568, 104, 1200, 800);
+		panelTeste1.setVisible(false);
+
+		contentPane.add(panelTeste1);
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 376, 1061);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		btnCadastrarVendas = new RoundButton("Vendas");
-		btnCadastrarVendas.setText("Cadastrar Venda");
-		btnCadastrarVendas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-				
-				JLabel lblNewLabel_9 = new JLabel("");
-				lblNewLabel_9.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone historico.png")));
-				lblNewLabel_9.setBounds(72, 662, 56, 43);
-				panel.add(lblNewLabel_9);
-				
-				JLabel lblNewLabel_7 = new JLabel("");
-				lblNewLabel_7.setBounds(92, 337, 134, 43);
-				panel.add(lblNewLabel_7);
-				lblNewLabel_7.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/IconeHome.png")));
-				
-				JLabel lblNewLabel_5 = new JLabel("");
-				lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
-				lblNewLabel_5.setBounds(46, 530, 141, 33);
-				panel.add(lblNewLabel_5);
-				lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
-				
-				JLabel lblNewLabel_4 = new JLabel("");
-				lblNewLabel_4.setBounds(36, 596, 92, 33);
-				panel.add(lblNewLabel_4);
-				lblNewLabel_4.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Icone2.png")));
-		
-				JLabel lblNewLabel_3 = new JLabel("");
-				lblNewLabel_3.setBounds(-395, 421, 523, 73);
-				panel.add(lblNewLabel_3);
-				lblNewLabel_3.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone.png")));
-		btnCadastrarVendas.setForeground(Color.WHITE);
-		btnCadastrarVendas.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnCadastrarVendas.setBackground(new Color(0, 128, 128));
-		btnCadastrarVendas.setBounds(90, 596, 199, 43);
-		panel.add(btnCadastrarVendas);
+		JLabel lblNewLabel_10 = new JLabel("");
+		lblNewLabel_10.setBounds(46, 574, 82, 65);
+		panel.add(lblNewLabel_10);
+		lblNewLabel_10.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
+
+		JLabel lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setBounds(92, 337, 134, 43);
+		panel.add(lblNewLabel_7);
+		lblNewLabel_7.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/IconeHome.png")));
+
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_5.setBounds(46, 530, 141, 33);
+		panel.add(lblNewLabel_5);
+		lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
+
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(-395, 421, 523, 73);
+		panel.add(lblNewLabel_3);
+		lblNewLabel_3.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone.png")));
 
 		JLabel lblNewLabel_1 = new JLabel("Bem Vindo: Funcionario");
 		lblNewLabel_1.setForeground(new Color(0, 128, 128));
@@ -159,13 +151,13 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				veiculo.setVisible(true);
-				
+
 			}
 		});
 
 		JLabel ImagemLogout = new JLabel("");
 		ImagemLogout.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone3.png")));
-		ImagemLogout.setBounds(92, 776, 122, 47);
+		ImagemLogout.setBounds(92, 839, 122, 47);
 		panel.add(ImagemLogout);
 		rndbtnCadastrarVeiculos.setForeground(Color.WHITE);
 		rndbtnCadastrarVeiculos.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -186,14 +178,14 @@ public class MenuFuncionario extends JFrame {
 		btnLogout.setForeground(new Color(255, 255, 255));
 		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
 		btnLogout.setBackground(Color.WHITE);
-		btnLogout.setBounds(109, 769, 146, 54);
+		btnLogout.setBounds(109, 832, 146, 54);
 		panel.add(btnLogout);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(-395, 411, 533, 79);
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Icone.png")));
-		
+
 		RoundButton btnHome = new RoundButton("Logout");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -209,26 +201,33 @@ public class MenuFuncionario extends JFrame {
 		btnHome.setBackground(Color.WHITE);
 		btnHome.setBounds(162, 337, 64, 43);
 		panel.add(btnHome);
-		
-		RoundButton rndbtnHistoricoVendas = new RoundButton("Historico");
-		rndbtnHistoricoVendas.setHorizontalAlignment(SwingConstants.RIGHT);
-		rndbtnHistoricoVendas.setText("Histórico de Vendas");
-		rndbtnHistoricoVendas.setForeground(Color.WHITE);
-		rndbtnHistoricoVendas.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnHistoricoVendas.setBackground(new Color(0, 128, 128));
-		rndbtnHistoricoVendas.setBounds(92, 662, 199, 43);
-		panel.add(rndbtnHistoricoVendas);
+
+		RoundButton btnlistaVeiculo = new RoundButton("Listagem de Veiculos");
+		btnlistaVeiculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelTeste1.setVisible(true);
+				ListagemVeiculos listarveiculos = new ListagemVeiculos();
+				listarveiculos.atualizarTabela();
+			}
+		});
+
+		btnlistaVeiculo.setText("Listagem de Veiculos");
+		btnlistaVeiculo.setBackground(new Color(0, 128, 128));
+		btnlistaVeiculo.setForeground(new Color(255, 255, 255));
+		btnlistaVeiculo.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnlistaVeiculo.setBounds(90, 596, 199, 43);
+		panel.add(btnlistaVeiculo);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/deltabus.png")));
 		lblNewLabel1.setBounds(1186, 868, 830, 126);
 		contentPane.add(lblNewLabel1);
-		
+
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Telas Pi (2).png")));
 		lblNewLabel_6.setBounds(263, 55, 1597, 959);
 		contentPane.add(lblNewLabel_6);
-		
+
 		JLabel lblNewLabel_8 = new JLabel("");
 		lblNewLabel_8.setBounds(413, 980, 46, 14);
 		contentPane.add(lblNewLabel_8);

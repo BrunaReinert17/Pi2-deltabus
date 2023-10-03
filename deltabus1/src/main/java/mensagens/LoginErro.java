@@ -1,4 +1,4 @@
-package Mensagens;
+package mensagens;
 
 import java.awt.Color;
 import java.awt.Font;

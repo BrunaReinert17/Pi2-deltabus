@@ -22,11 +22,11 @@ import javax.swing.text.MaskFormatter;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
-import Mensagens.CadastroErro;
-import Mensagens.CadastroErro1;
-import Mensagens.CadastroSucesso;
 import controle.ClienteDAO;
 import controle.EnderecoDAO;
+import mensagens.CadastroErro;
+import mensagens.CadastroErro1;
+import mensagens.CadastroSucesso;
 import modelo.Cliente;
 import modelo.Endereco;
 import utilidades.RoundButton;

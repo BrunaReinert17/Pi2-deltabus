@@ -25,9 +25,9 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 
-import Mensagens.LoginErro;
-import Mensagens.LoginErro1;
 import controle.UsuarioDAO;
+import mensagens.LoginErro;
+import mensagens.LoginErro1;
 import modelo.Usuario;
 
 import javax.swing.border.BevelBorder;

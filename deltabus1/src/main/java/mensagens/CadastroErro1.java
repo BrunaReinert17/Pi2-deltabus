@@ -1,4 +1,4 @@
-package Mensagens;
+package mensagens;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 
-public class CadastroErro extends JFrame {
+public class CadastroErro1 extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblDadoInvalido;
@@ -21,7 +21,7 @@ public class CadastroErro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroErro (String mensagem) {
+	public CadastroErro1 (String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -52,9 +52,9 @@ public class CadastroErro extends JFrame {
 		lblNewLabel_1.setBounds(124, -18, 86, 82);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblDadoInvalido = new JLabel("");
-		lblDadoInvalido.setIcon(new ImageIcon(CadastroErro.class.getResource("/imagem/mensage4.png")));
-		lblDadoInvalido.setBounds(55, 75, 198, 39);
-		contentPane.add(lblDadoInvalido);
+		JLabel lblErroCadastro = new JLabel("");
+		lblErroCadastro.setIcon(new ImageIcon(CadastroErro1.class.getResource("/imagem/message5.png")));
+		lblErroCadastro.setBounds(61, 83, 259, 29);
+		contentPane.add(lblErroCadastro);
 	}
 }

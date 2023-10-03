@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Mensagens.LoginErro;
+import mensagens.LoginErro;
 import utilidades.RoundButton;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -29,6 +29,7 @@ public class MenuAdmin extends JFrame {
 	private RoundButton btnVerificar;
 	private RoundButton bntLogout;
 	private JPanel panelTeste;
+	private JPanel panelTeste1;
 
 	/**
 	 * Launch the application.
@@ -56,24 +57,34 @@ public class MenuAdmin extends JFrame {
 		setTitle("Menu");
 		setBackground(new Color(51, 102, 102));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1500);
+		setBounds(100, 100, 1382, 772);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		//aqui
-				CadastrarUsuario panelUsuario = new CadastrarUsuario();
-				panelUsuario.setToolTipText("");
-				panelUsuario.setLocation(579, 97);
-				panelTeste = panelUsuario;
-				panelTeste.setBounds(568, 104, 1200, 800);
-				panelTeste.setVisible(false);
-				
-						contentPane.add(panelTeste);
+		// aqui
+		CadastrarUsuario panelUsuario = new CadastrarUsuario();
+		panelUsuario.setToolTipText("");
+		panelUsuario.setLocation(579, 97);
+		panelTeste = panelUsuario;
+		panelTeste.setBounds(568, 104, 1200, 800);
+		panelTeste.setVisible(false);
 		
-	
+		contentPane.add(panelTeste);
+
+		
+		ListagemUsuarios listarUsuarios = new ListagemUsuarios();
+		listarUsuarios.setToolTipText("");
+		listarUsuarios.setLocation(579, 97);
+		listarUsuarios = listarUsuarios;
+		panelTeste1.setBounds(568, 104, 1200, 800);
+		panelTeste1.setVisible(false);
+
+		contentPane.add(panelTeste1);
+
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 376, 1061);
@@ -85,26 +96,26 @@ public class MenuAdmin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-				
-				JLabel lblNewLabel_7 = new JLabel("");
-				lblNewLabel_7.setBounds(92, 337, 134, 43);
-				panel.add(lblNewLabel_7);
-				lblNewLabel_7.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/IconeHome.png")));
-				
-				JLabel lblNewLabel_5 = new JLabel("");
-				lblNewLabel_5.setBounds(46, 530, 141, 33);
-				panel.add(lblNewLabel_5);
-				lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone-5.png")));
-				
-				JLabel lblNewLabel_4 = new JLabel("");
-				lblNewLabel_4.setBounds(36, 596, 92, 33);
-				panel.add(lblNewLabel_4);
-				lblNewLabel_4.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Icone2.png")));
-		
-				JLabel lblNewLabel_3 = new JLabel("");
-				lblNewLabel_3.setBounds(-395, 421, 523, 73);
-				panel.add(lblNewLabel_3);
-				lblNewLabel_3.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone.png")));
+
+		JLabel lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setBounds(92, 337, 134, 43);
+		panel.add(lblNewLabel_7);
+		lblNewLabel_7.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/IconeHome.png")));
+
+		JLabel lblListar = new JLabel("");
+		lblListar.setBounds(46, 530, 141, 33);
+		panel.add(lblListar);
+		lblListar.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone-5.png")));
+
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setBounds(36, 596, 92, 33);
+		panel.add(lblNewLabel_4);
+		lblNewLabel_4.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Icone2.png")));
+
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(-395, 421, 523, 73);
+		panel.add(lblNewLabel_3);
+		lblNewLabel_3.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone.png")));
 		btnVerificar.setForeground(Color.WHITE);
 		btnVerificar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnVerificar.setBackground(new Color(0, 128, 128));
@@ -127,7 +138,7 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
-				//aqui
+				// aqui
 			}
 		});
 		btnCadastrarUsuarios.setForeground(new Color(0, 0, 0));
@@ -142,16 +153,13 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
 
-		RoundButton rndbtnListar = new RoundButton("Listar");
+		RoundButton rndbtnListar = new RoundButton("Listagem");
 		rndbtnListar.setHorizontalAlignment(SwingConstants.RIGHT);
 		rndbtnListar.setText("Listagem de Usuários");
 		rndbtnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelTeste.setVisible(false);
-				ListagemUsuarios listarUsuario = new ListagemUsuarios();
-				listarUsuario.setLocationRelativeTo(null);
-				listarUsuario.setVisible(true);
-				//aqui
+				panelTeste1.setVisible(true);
+				ListagemUsuarios listarUsuarios = new ListagemUsuarios();
 			}
 		});
 
@@ -180,12 +188,12 @@ public class MenuAdmin extends JFrame {
 		btnLogout.setBackground(Color.WHITE);
 		btnLogout.setBounds(109, 769, 146, 54);
 		panel.add(btnLogout);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(-395, 411, 533, 79);
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Icone.png")));
-		
+
 		RoundButton btnHome = new RoundButton("Logout");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -195,7 +203,7 @@ public class MenuAdmin extends JFrame {
 				dispose();
 			}
 		});
-        
+
 		btnHome.setText("");
 		btnHome.setForeground(Color.WHITE);
 		btnHome.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
@@ -207,7 +215,7 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel1.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/deltabus.png")));
 		lblNewLabel1.setBounds(1186, 868, 830, 126);
 		contentPane.add(lblNewLabel1);
-		
+
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi (2).png")));
 		lblNewLabel_6.setBounds(263, 55, 1597, 959);
