@@ -62,6 +62,9 @@ public class VeiculoDAO {
 
 			return veiculos;
 		}
+	    
+	    
+	   
 		public boolean inserirVeiculo (Veiculo veiculo) {
 			 Connection c = con.conectar();
 		        int valida = 0;
