@@ -479,18 +479,24 @@ public class CadastrarVeiculo extends JPanel {
 		RoundButton btnCadastrar = new RoundButton("Confirmar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				Veiculo veiculo = verificarDados();
+				
+				boolean veiculoRetornoCadastro = false;
+				
+				
 
                 if (veiculo != null) {
-                    VeiculoDAO veiculoDAO = new VeiculoDAO();
+                	VeiculoDAO veiculoDAO = new VeiculoDAO();
                     boolean resultado = veiculoDAO.inserirVeiculo(veiculo);
 
-                    if (resultado) {
+                    if (resultado == true) {
                         // O veículo foi cadastrado com sucesso
                         CadastroSucesso sucesso = new CadastroSucesso("Veículo Cadastrado com Sucesso!");
                         sucesso.setLocationRelativeTo(null);
                         sucesso.setVisible(true);
-                        limparDados(); // Limpa os campos após o cadastro
+                       limparDados(); // Limpa os campos após o cadastro
                     } else {
                         // Ocorreu um erro durante o cadastro
                         CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
@@ -657,7 +663,7 @@ public class CadastrarVeiculo extends JPanel {
 		if (ano == null || ano.trim() == "" || ano.isEmpty()) {
 			verificarCampo += "Ano\n";
 		} else {
-			veiculo.setAno(Date.valueOf(ano));
+			veiculo.setAno(ano);
 
 		}
 		

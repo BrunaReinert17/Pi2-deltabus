@@ -38,20 +38,19 @@ public class ListagemVeiculos extends JPanel {
 
 	
 
-private void deletarFuncionario() {
+private void deletarVeiculo() {
 		
-		long cpf;
+		Long idveiculo;
 		
-		cpf = Long.valueOf(textRenavam.getText());
+		idveiculo = Long.valueOf(textRenavam.getText());
 		
-		Funcionario objfuncionario = new Funcionario();
-		objfuncionario.setCpf(cpf);
+		Veiculo objveiculo = new Veiculo();
+		objveiculo.setIdVeiculo(idveiculo);
 		
-		FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
+		VeiculoDAO objveiculodao = new VeiculoDAO();
 		
-		objfuncionariodao.deletarFuncionario(objfuncionario);
-		
-	}
+		objveiculodao.excluirVeiculo(objveiculo);
+		}
 
 	
 	

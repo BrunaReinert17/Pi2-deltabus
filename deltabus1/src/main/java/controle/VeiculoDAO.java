@@ -32,7 +32,7 @@ public class VeiculoDAO {
 				
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
-					 long veiculo = rs.getLong("veiculo");
+					
 
 					 Veiculo v = new Veiculo();
 					
@@ -40,7 +40,7 @@ public class VeiculoDAO {
 					v.setMarca(rs.getString("marca"));
 					v.setModelo(rs.getString("modelo"));
 					v.setPreco(rs.getDouble("preco"));
-					v.setAno(rs.getDate("ano"));
+					v.setAno(rs.getString("ano"));
 					v.setAcessorios(rs.getString("acessorios"));
 					v.setLotacao(rs.getInt("lotacao"));
 					v.setPlaca(rs.getString("placa"));
@@ -67,20 +67,21 @@ public class VeiculoDAO {
 		        int valida = 0;
 
 		        try {
-		            String query = "INSERT INTO Veiculos(marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, consultarEstoque_Codigoveiculo, placa, renavam, situacao) VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?)";
+		            String query = "INSERT INTO Veiculos(IdVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?,?)";
 		            PreparedStatement stm = c.prepareStatement(query);
 		            stm.setLong(1, veiculo.getIdVeiculo());
 		            stm.setString(2, veiculo.getMarca());
 		            stm.setString(3, veiculo.getModelo());
 		            stm.setDouble(4,veiculo.getPreco());
-		            stm.setDate(5, veiculo.getAno());
+		            stm.setString(5, veiculo.getAno());
 		            stm.setString(6, veiculo.getAcessorios());
 		            stm.setInt(7, veiculo.getLotacao());
 		            stm.setString(8, veiculo.getPlaca());
 		            stm.setString(9, veiculo.getRenavam());
 		            stm.setString(10, veiculo.getCor());
 		            stm.setString(11, veiculo.getTipoFrota());
-		            stm.setString(13, veiculo.getTipoCombustivel());
+		            stm.setString(12, veiculo.getTipoCombustivel());
+		            stm.setBoolean(13, veiculo.isSituacao());
 		            
 		            valida = stm.executeUpdate();
 		        } catch (Exception e) {
@@ -130,7 +131,7 @@ public class VeiculoDAO {
 					ps.setString(1, veiculo.getMarca());
 					ps.setString(2, veiculo.getModelo());
 					ps.setDouble(3, veiculo.getPreco());
-				//	ps.setDate(4,java.sql.Date.valueOf( veiculo.getAno()));
+					ps.setDate(4,java.sql.Date.valueOf( veiculo.getAno()));
 					ps.setString(5, veiculo.getAcessorios());
 					ps.setInt(6, veiculo.getLotacao());
 					ps.setString(7, veiculo.getPlaca());
