@@ -184,10 +184,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 		return null;
 	}
 
-	public Integer inserir(Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	
 

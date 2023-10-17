@@ -12,12 +12,14 @@ public class UsuarioDAOTest {
 	@Test
 	public void testMetodoInserirUsuario() {
 		Usuario u = new Usuario();
-		u.setNome("Maria");
-		u.setIdade(19);
+		u.setEmail("aluno@gmail.com");
+		u.setSenha("12345");
+		u.setCargo("Administrador");
+	
 		
 		UsuarioDAO dao = new UsuarioDAO();
-		Integer IdUsuarioInserido = dao.inserir(null);
-		assertEquals(false,IdUsuarioInserido);
+		boolean IdUsuarioInserido = dao.inserirUsuario(u);
+		assertEquals(true,IdUsuarioInserido);
 		//testes unitarios
 		
 		
