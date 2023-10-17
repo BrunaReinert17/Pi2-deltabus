@@ -57,5 +57,11 @@ public class CadastroErro1 extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(CadastroErro1.class.getResource("/imagem/MensageAviso.png")));
 		lblNewLabel.setBounds(121, -16, 105, 78);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Erro de Cadastro, tente novamente!");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(76, 85, 216, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 }

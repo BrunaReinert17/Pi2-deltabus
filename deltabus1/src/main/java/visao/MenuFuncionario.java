@@ -74,12 +74,16 @@ public class MenuFuncionario extends JFrame {
 		panelTeste.setVisible(false);
 
 		contentPane.add(panelTeste);
+		
 		CadastrarVeiculo veiculo = new CadastrarVeiculo();
-		veiculo.setBounds(-178, -90, 1200, 800);
-		panelCliente.add(veiculo);
 		veiculo.setToolTipText("");
+		veiculo.setLocation(579, 97);
 		panelTeste3 = veiculo;
+		panelTeste3.setBounds(568, 104, 1200, 800);
 		panelTeste3.setVisible(false);
+		
+		contentPane.add(panelTeste3);
+
 
 		ListagemVeiculos listarveiculos = new ListagemVeiculos();
 		listarveiculos.setToolTipText("");
@@ -165,6 +169,12 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste3.setVisible(true);
+				panelTeste.setVisible(false);
+				panelTeste1.setVisible(false);
+				panelTeste2.setVisible(false);
+				
+			
+
 			}
 		});
 
@@ -219,8 +229,11 @@ public class MenuFuncionario extends JFrame {
 		btnlistaVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste1.setVisible(true);
-				ListagemVeiculos listarveiculos = new ListagemVeiculos();
-				listarveiculos.atualizarTabela();
+				panelTeste.setVisible(false);
+				panelTeste3.setVisible(false);
+				panelTeste2.setVisible(false);
+				//ListagemVeiculos listarveiculos = new ListagemVeiculos();
+				//listarveiculos.atualizarTabela();
 			}
 		});
 
@@ -237,6 +250,9 @@ public class MenuFuncionario extends JFrame {
 		btnCadastrarClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste2.setVisible(true);
+				panelTeste.setVisible(false);
+				panelTeste1.setVisible(false);
+				panelTeste3.setVisible(false);
 			}
 		});
 		rndbtnCadastroDeVendas.setForeground(new Color(255, 255, 255));
