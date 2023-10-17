@@ -168,13 +168,11 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("entrou");
 				panelTeste3.setVisible(true);
 				panelTeste.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
-				
-			
-
 			}
 		});
 
@@ -244,10 +242,10 @@ public class MenuFuncionario extends JFrame {
 		btnlistaVeiculo.setBounds(90, 596, 199, 43);
 		panel.add(btnlistaVeiculo);
 		
-		RoundButton rndbtnCadastroDeVendas = new RoundButton("Cadastro de Vendas");
-		rndbtnCadastroDeVendas.setText("Cadastrar Vendas");
-		rndbtnCadastroDeVendas.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnCadastrarClientes.addActionListener(new ActionListener() {
+		RoundButton btnCadastroDeVendas = new RoundButton("Cadastro de Vendas");
+		btnCadastroDeVendas.setText("Cadastrar Vendas");
+		btnCadastroDeVendas.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnCadastroDeVendas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste2.setVisible(true);
 				panelTeste.setVisible(false);
@@ -255,11 +253,11 @@ public class MenuFuncionario extends JFrame {
 				panelTeste3.setVisible(false);
 			}
 		});
-		rndbtnCadastroDeVendas.setForeground(new Color(255, 255, 255));
-		rndbtnCadastroDeVendas.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnCadastroDeVendas.setBackground(new Color(0, 128, 128));
-		rndbtnCadastroDeVendas.setBounds(92, 664, 199, 43);
-		panel.add(rndbtnCadastroDeVendas);
+		btnCadastroDeVendas.setForeground(new Color(255, 255, 255));
+		btnCadastroDeVendas.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnCadastroDeVendas.setBackground(new Color(0, 128, 128));
+		btnCadastroDeVendas.setBounds(92, 664, 199, 43);
+		panel.add(btnCadastroDeVendas);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/deltabus.png")));

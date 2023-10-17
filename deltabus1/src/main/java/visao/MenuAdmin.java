@@ -48,9 +48,6 @@ public class MenuAdmin extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public MenuAdmin() {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuAdmin.class.getResource("/imagem/logoampliada.png")));
