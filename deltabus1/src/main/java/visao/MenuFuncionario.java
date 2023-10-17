@@ -63,14 +63,6 @@ public class MenuFuncionario extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		CadastrarVeiculo veiculo = new CadastrarVeiculo();
-		veiculo.setToolTipText("");
-		veiculo.setLocation(579, 97);
-		panelTeste3 = veiculo;
-		panelTeste3.setBounds(374, 0, 1200, 800);
-		panelTeste3.setVisible(false);
-
-		contentPane.add(panelTeste3);
 
 		contentPane.setLayout(null);
 
@@ -82,6 +74,12 @@ public class MenuFuncionario extends JFrame {
 		panelTeste.setVisible(false);
 
 		contentPane.add(panelTeste);
+		CadastrarVeiculo veiculo = new CadastrarVeiculo();
+		veiculo.setBounds(-178, -90, 1200, 800);
+		panelCliente.add(veiculo);
+		veiculo.setToolTipText("");
+		panelTeste3 = veiculo;
+		panelTeste3.setVisible(false);
 
 		ListagemVeiculos listarveiculos = new ListagemVeiculos();
 		listarveiculos.setToolTipText("");
@@ -144,6 +142,10 @@ public class MenuFuncionario extends JFrame {
 		btnCadastrarClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
+				panelTeste3.setVisible(false);
+				panelTeste1.setVisible(false);
+				panelTeste2.setVisible(false);
+				
 			}
 		});
 		btnCadastrarClientes.setForeground(new Color(0, 0, 0));
@@ -158,12 +160,11 @@ public class MenuFuncionario extends JFrame {
 		btnCadastrarClientes.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarClientes);
 
-		RoundButton rndbtnCadastrarVeiculos = new RoundButton("Listar");
+		RoundButton rndbtnCadastrarVeiculos = new RoundButton("Cadastrar");
 		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste3.setVisible(true);
-
 			}
 		});
 

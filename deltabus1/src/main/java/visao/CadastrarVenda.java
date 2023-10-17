@@ -157,10 +157,7 @@ public class CadastrarVenda extends JPanel {
 		txtCpf.setColumns(10);
 		add(txtCpf);
 		
-		btnCadastrar.setForeground(Color.WHITE);
-		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnCadastrar.setBackground(new Color(0, 128, 128));
-		add(btnCadastrar);
+		
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
 		btnLimparCampo.setBounds(1061, 92, 84, 33);
 		btnLimparCampo.setText("");
