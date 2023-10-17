@@ -34,14 +34,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 
 public class CadastrarCliente extends JPanel {
 	private JTextField txtNome;
 	private JTextField txtEmail;
 	private JTextField txtnumeroTelefone;
-	private JComboBox cbPessoaJuridica_ou_Fisica;
 	private JTextField txtCep;
 	private JLabel lblCep;
+	private JTextField txtCpf2;
 	private JTextField txtBairro;
 	private JComboBox cbCidade;
 	private JLabel lblCidade;
@@ -133,7 +134,7 @@ public class CadastrarCliente extends JPanel {
 		add(lblEmail1);
 
 		JLabel lblnumeroTelefone = new JLabel("Telefone:");
-		lblnumeroTelefone.setBounds(684, 280, 98, 14);
+		lblnumeroTelefone.setBounds(683, 267, 98, 14);
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblnumeroTelefone);
@@ -146,7 +147,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtnumeroTelefone = new JFormattedTextField(mascaranumeroTelefone);
-		txtnumeroTelefone.setBounds(684, 305, 182, 30);
+		txtnumeroTelefone.setBounds(684, 290, 182, 30);
 		txtnumeroTelefone.setText("");
 		/**********/
 
@@ -158,25 +159,6 @@ public class CadastrarCliente extends JPanel {
 		pessoajuridica_ou_fisica.add("");
 		pessoajuridica_ou_fisica.add("CPF");
 		pessoajuridica_ou_fisica.add("CNPJ");
-
-		cbPessoaJuridica_ou_Fisica = new JComboBox();
-		cbPessoaJuridica_ou_Fisica.setBounds(252, 300, 182, 31);
-		cbPessoaJuridica_ou_Fisica.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-				for (int i = 0; i < pessoajuridica_ou_fisica.size(); i++) {
-					cbPessoaJuridica_ou_Fisica.addItem(pessoajuridica_ou_fisica.get(i));
-
-				}
-			}
-
-			public void ancestorMoved(AncestorEvent event) {
-			}
-
-			public void ancestorRemoved(AncestorEvent event) {
-			}
-		});
-		cbPessoaJuridica_ou_Fisica.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbPessoaJuridica_ou_Fisica);
 
 		/**********/
 		MaskFormatter mascaraCep = null;
@@ -256,7 +238,7 @@ public class CadastrarCliente extends JPanel {
 		uf.add("PR");
 
 		cbUf = new JComboBox();
-		cbUf.setBounds(684, 383, 142, 30);
+		cbUf.setBounds(683, 383, 142, 30);
 		cbUf.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < uf.size(); i++) {
@@ -363,16 +345,31 @@ public class CadastrarCliente extends JPanel {
 
 				cbCidade.setSelectedIndex(-1);
 
-				cbPessoaJuridica_ou_Fisica.setSelectedIndex(-1);
-
 			}
 		});
 		add(btnLimparCampo);
-
-		JLabel lblPJuridica_ou_Fisica = new JLabel("Pessoa Juridica ou Fisica:");
-		lblPJuridica_ou_Fisica.setBounds(252, 280, 169, 14);
-		lblPJuridica_ou_Fisica.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblPJuridica_ou_Fisica);
+		
+		
+		JLabel lblCpf2 = new JLabel("CPF");
+		lblCpf2.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblCpf2.setBounds(252, 267, 155, 14);
+		add(lblCpf2);
+		/**********/
+		MaskFormatter mascaraCpf2 = null;
+		try {
+			mascaraCpf2 = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtCpf2 = new JFormattedTextField(mascaraCpf2);
+		txtCpf2.setBounds(252, 290, 182, 30);
+		txtCpf2.setText("");
+		txtCpf2.setFont(new Font("Dialog", Font.BOLD, 13));
+		/**********/
+		txtCpf2.setBackground(new Color(255, 255, 255));
+		txtCpf2.setForeground(new Color(0, 0, 0));
+		txtCpf2.setColumns(10);
+		add(txtCpf2);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -404,8 +401,6 @@ public class CadastrarCliente extends JPanel {
 		verificarCampo = "";
 
 		String nome = txtNome.getText();
-
-		String PessoaJuridica_ou_Fisica = (String) cbPessoaJuridica_ou_Fisica.getSelectedItem();
 
 		String email = txtEmail.getText();
 

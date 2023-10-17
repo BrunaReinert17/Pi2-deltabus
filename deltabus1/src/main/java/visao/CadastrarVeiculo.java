@@ -98,7 +98,7 @@ public class CadastrarVeiculo extends JPanel {
 		lblLimpar.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
 
-		JLabel lblNewLabel = new JLabel("Cadastrar Veiculos");
+		JLabel lblNewLabel = new JLabel("Adicionar Veiculos");
 		lblNewLabel.setBounds(25, 11, 182, 14);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));

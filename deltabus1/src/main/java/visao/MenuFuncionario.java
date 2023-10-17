@@ -26,6 +26,9 @@ public class MenuFuncionario extends JFrame {
 	private RoundButton bntLogout;
 	private JPanel panelTeste;
 	private JPanel panelTeste1;
+	private JPanel panelTeste2;
+	private JPanel panelTeste3;
+
 
 	/**
 	 * Launch the application.
@@ -63,11 +66,11 @@ public class MenuFuncionario extends JFrame {
 		CadastrarVeiculo veiculo = new CadastrarVeiculo();
 		veiculo.setToolTipText("");
 		veiculo.setLocation(579, 97);
-		panelTeste = veiculo;
-		panelTeste.setBounds(374, 0, 1200, 800);
-		panelTeste.setVisible(false);
+		panelTeste3 = veiculo;
+		panelTeste3.setBounds(374, 0, 1200, 800);
+		panelTeste3.setVisible(false);
 
-		contentPane.add(panelTeste);
+		contentPane.add(panelTeste3);
 
 		contentPane.setLayout(null);
 
@@ -88,6 +91,15 @@ public class MenuFuncionario extends JFrame {
 		panelTeste1.setVisible(false);
 
 		contentPane.add(panelTeste1);
+		
+		CadastrarVenda cadastrarVendas = new CadastrarVenda();
+		cadastrarVendas.setToolTipText("");
+		cadastrarVendas.setLocation(579, 97);
+		panelTeste2 = cadastrarVendas;
+		panelTeste2.setBounds(568, 104, 1200, 800);
+		panelTeste2.setVisible(false);
+
+		contentPane.add(panelTeste2);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
@@ -150,7 +162,7 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				veiculo.setVisible(true);
+				panelTeste3.setVisible(true);
 
 			}
 		});
@@ -217,6 +229,20 @@ public class MenuFuncionario extends JFrame {
 		btnlistaVeiculo.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnlistaVeiculo.setBounds(90, 596, 199, 43);
 		panel.add(btnlistaVeiculo);
+		
+		RoundButton rndbtnCadastroDeVendas = new RoundButton("Cadastro de Vendas");
+		rndbtnCadastroDeVendas.setText("Cadastrar Vendas");
+		rndbtnCadastroDeVendas.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnCadastrarClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelTeste2.setVisible(true);
+			}
+		});
+		rndbtnCadastroDeVendas.setForeground(new Color(255, 255, 255));
+		rndbtnCadastroDeVendas.setFont(new Font("Dialog", Font.BOLD, 16));
+		rndbtnCadastroDeVendas.setBackground(new Color(0, 128, 128));
+		rndbtnCadastroDeVendas.setBounds(92, 664, 199, 43);
+		panel.add(rndbtnCadastroDeVendas);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/deltabus.png")));

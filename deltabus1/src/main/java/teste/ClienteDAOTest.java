@@ -20,6 +20,7 @@ public class ClienteDAOTest {
 
 	//	c.setEndereco();
 
+		//c.setEndereco();
 		
 		
 		ClienteDAO dao = new ClienteDAO();
