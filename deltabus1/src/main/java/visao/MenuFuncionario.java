@@ -168,11 +168,11 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("entrou");
 				panelTeste3.setVisible(true);
 				panelTeste.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
+
 			}
 		});
 
@@ -230,8 +230,7 @@ public class MenuFuncionario extends JFrame {
 				panelTeste.setVisible(false);
 				panelTeste3.setVisible(false);
 				panelTeste2.setVisible(false);
-				//ListagemVeiculos listarveiculos = new ListagemVeiculos();
-				//listarveiculos.atualizarTabela();
+				
 			}
 		});
 

@@ -1,6 +1,8 @@
 package visao;
 
 import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -61,11 +63,11 @@ private void deletarVeiculo() {
 		JPanel panel = new JPanel();
 		panel.setBounds(27, 64, 1125, 735);
 		add(panel);
-		panel.setLayout(null);
+		panel.setLayout(new BorderLayout());
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 1136, 28);
-		panel.add(scrollPane);
+		panel.add(scrollPane, BorderLayout.CENTER);
 		
 		
 		table = new JTable();

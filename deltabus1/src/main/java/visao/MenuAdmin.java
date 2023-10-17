@@ -63,6 +63,7 @@ public class MenuAdmin extends JFrame {
 		setContentPane(contentPane);
 		
 		ListagemUsuarios listarUsuarios = new ListagemUsuarios();
+		
 		listarUsuarios.setToolTipText("");
 		listarUsuarios.setLocation(579, 97);
 		panelTeste1 = listarUsuarios;
@@ -146,11 +147,10 @@ public class MenuAdmin extends JFrame {
 		rndbtnListar.setText("Listagem de Usuários");
 		rndbtnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("entrou");
+				
 				panelTeste1.setVisible(true);
 				panelTeste.setVisible(false);
-				//ListagemUsuarios listarveiculos = new ListagemUsuarios();
-				//listarUsuarios.atualizarTabela1();
+				
 			}
 		});
 
@@ -208,7 +208,7 @@ public class MenuAdmin extends JFrame {
 
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi (2).png")));
-		lblNewLabel_6.setBounds(263, 55, 1597, 959);
+		lblNewLabel_6.setBounds(201, 11, 1659, 1003);
 		contentPane.add(lblNewLabel_6);
 
 	}

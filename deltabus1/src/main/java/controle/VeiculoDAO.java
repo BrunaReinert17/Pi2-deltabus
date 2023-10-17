@@ -37,17 +37,18 @@ public class VeiculoDAO {
 					 Veiculo v = new Veiculo();
 					
 					v.setIdVeiculo(rs.getLong("idveiculo"));
+					v.setRenavam(rs.getString("renavam"));
 					v.setMarca(rs.getString("marca"));
 					v.setModelo(rs.getString("modelo"));
-					v.setPreco(rs.getDouble("preco"));
-					v.setAno(rs.getInt("ano"));
-					v.setAcessorios(rs.getString("acessorios"));
-					v.setLotacao(rs.getInt("lotacao"));
-					v.setPlaca(rs.getString("placa"));
-					v.setRenavam(rs.getString("renavam"));
 					v.setCor(rs.getString("cor"));
+					v.setPlaca(rs.getString("placa"));
+					v.setLotacao(rs.getInt("lotacao"));
 					v.setTipoFrota(rs.getString("tipofrota"));
 					v.setTipoCombustivel(rs.getString("tipocombustivel"));
+					v.setAcessorios(rs.getString("acessorios"));
+					v.setAno(rs.getInt("ano"));
+					v.setPreco(rs.getDouble("preco"));
+					veiculos.add(v);
 					
 				}
 				

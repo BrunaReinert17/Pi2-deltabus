@@ -54,28 +54,19 @@ private void deletarFuncionario() {
 		objfuncionariodao.deletarFuncionario(objfuncionario);
 	}
 	public ListagemUsuarios() {
-		setLocale("Login");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 300, 1200, 800);
-		
-		JPanel contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 102, 102));
-		contentPane.setForeground(new Color(0, 102, 0));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
-
-		contentPane.setLayout(null);
+		
 		panel = new JPanel();
+		panel.setLayout(null);
 		panel.setForeground(new Color(0, 102, 0));
 		panel.setBackground(new Color(245, 245, 245));
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
-		panel.setBounds(0, 37, 1184, 724);
-		contentPane.add(panel);
+		panel.setBounds(0, 37, 1184, 689);
+		add(panel);
 		panel.setLayout(null);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 22, 1164, 702);
+		scrollPane.setBounds(10, 22, 1126, 702);
 		panel.add(scrollPane);
 		table = new JTable();
 		table.setBackground(new Color(255, 255, 255));
@@ -83,11 +74,11 @@ private void deletarFuncionario() {
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" }));
 		scrollPane.setViewportView(table);
-		/**
+		
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
 		panel_1.setBounds(0, 0, 1200, 46);
-		contentPane.add(panel_1);
+		add(panel_1);
 		panel_1.setLayout(null);
 		JLabel lblNewLabel = new JLabel("      Listagem de Usuarios\r\n");
 		lblNewLabel.setBounds(0, 0, 352, 38);
@@ -99,7 +90,7 @@ private void deletarFuncionario() {
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deletarFuncionario();
-				atualizarTabela();
+				
 			}
 		});
 		rndbtnDeletar.setText("Deletar");
@@ -178,7 +169,6 @@ private void deletarFuncionario() {
 							Funcionario retorno = cadastroFuncionarioHelper.editarFuncionario(funcionario);
 							if (Funcionario.FUNCIONARIEDITADO == retorno) {
 								JOptionPane.showMessageDialog(null, "Funcionario editado");
-								atualizarTabela();
 								limparTela();
 							} else {
 								JOptionPane.showMessageDialog(null, "Erro ao editar");
@@ -259,15 +249,13 @@ private void deletarFuncionario() {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = textCPF.getText();
-				atualizarTabela();
+				
 			}
 		});
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
-		atualizarTabela();
-		*/
-		System.out.println("listagem");
-		setContentPane(contentPane);
+		
+		
 
 	}
 	private void setLocale(String string) {
@@ -275,35 +263,6 @@ private void deletarFuncionario() {
 	private void setDefaultCloseOperation(int exitOnClose) {
 	}
 	private void setContentPane(JPanel contentPane2) {
-	}
-	private void atualizarTabela() {
-		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
-		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		listFuncionario = funcionarioDAO.consultarTodos();
-		System.out.println(listFuncionario);
-		for (int i = 0; i < listFuncionario.size(); i++) {
-			Funcionario funcionario = listFuncionario.get(i);
-			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
-		}
-		table.setModel(tabela);
-	}
-
-	public void setLocationRelativeTo(Object object) {
-	}
-	
-	
-	public void atualizarTabela1() {
-		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço"  });
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		listUsuario = usuarioDAO.listar();
-		System.out.println(listUsuario);
-		for (int i = 0; i < listUsuario.size(); i++) {
-			Usuario usuario = listUsuario.get(i);
-			//tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
-
-		}
-		table.setModel(tabela);
-		
 	}
 	
 	
