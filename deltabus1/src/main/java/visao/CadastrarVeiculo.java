@@ -599,8 +599,7 @@ public class CadastrarVeiculo extends JPanel {
 		if (placa == null || placa.trim() == "" || placa.isEmpty()) {
 			verificarCampo += "Placa\n";
 		} else {
-			long cpf = Long.parseLong(placa);		
-			veiculo.setPlaca(placa);
+			veiculo.setPlaca(String.valueOf(placa));
 		}
 		if (marca == null || marca.trim() == "" || marca.isEmpty()) {
 			verificarCampo += "Marca\n";
@@ -663,7 +662,7 @@ public class CadastrarVeiculo extends JPanel {
 		if (ano == null || ano.trim() == "" || ano.isEmpty()) {
 			verificarCampo += "Ano\n";
 		} else {
-			veiculo.setAno(ano);
+			veiculo.setAno(Integer.valueOf(ano));
 
 		}
 		

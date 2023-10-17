@@ -31,7 +31,7 @@ public class ClienteDAO implements InterfaceCliente {
 				String email = rs.getString("email");
 				String PessoaJuridica_ou_Fisica = rs.getString("PessoaJuridica_ou_Fisica");
 				int Cep = rs.getInt("endereco_cep");
-				Endereco Endereco = rs.getEndereco("endereco");
+			//	Endereco Endereco = rs.getEndereco("endereco");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

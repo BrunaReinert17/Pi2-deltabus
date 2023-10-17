@@ -11,14 +11,13 @@ CREATE TABLE IF NOT EXISTS `Veiculo` (
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
   `preco` DOUBLE NOT NULL,
-  `ano` DATE NOT NULL,
+  `ano` INT NOT NULL,
   `acessorios` VARCHAR(45) NOT NULL,
   `lotacao` INT NOT NULL,
   `cor` VARCHAR(45) NOT NULL,
   `tipoFrota` VARCHAR(45) NOT NULL,
   `tipoCombustivel` VARCHAR(45) NOT NULL,
-  `consultarEstoque_Codigoveiculo` INT NOT NULL,
-  `placa` VARCHAR(45) NOT NULL,
+   `placa` VARCHAR(45) NOT NULL,
   `renavam` VARCHAR(45) NOT NULL,
   `situacao` TINYINT NOT NULL,
   PRIMARY KEY (`idVeiculo`));
@@ -121,18 +120,18 @@ SELECT * FROM funcionarios ORDER BY cpf ASC;
 
 -- INSERT Veiculo --
 -- NAO VAI ID 
-INSERT INTO Veiculo (marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, consultarEstoque_Codigoveiculo, placa, renavam, situacao) 
-VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023-08-17', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 123, 'ABC123', '123456789', 2);
+INSERT INTO Veiculo (marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) 
+VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 'ABC123', '123456789', 2);
 
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+VALUES ('21346564', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468438, 21346560);
+VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468438, 21346564);
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
@@ -148,4 +147,4 @@ VALUES ( '1312', 'bruna@gmail.com', 'funcionario');
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('14058567', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346560);
+VALUES ('14058561', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346564);

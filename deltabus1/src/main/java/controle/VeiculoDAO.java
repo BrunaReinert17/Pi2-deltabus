@@ -40,7 +40,7 @@ public class VeiculoDAO {
 					v.setMarca(rs.getString("marca"));
 					v.setModelo(rs.getString("modelo"));
 					v.setPreco(rs.getDouble("preco"));
-					v.setAno(rs.getString("ano"));
+					v.setAno(rs.getInt("ano"));
 					v.setAcessorios(rs.getString("acessorios"));
 					v.setLotacao(rs.getInt("lotacao"));
 					v.setPlaca(rs.getString("placa"));
@@ -67,13 +67,13 @@ public class VeiculoDAO {
 		        int valida = 0;
 
 		        try {
-		            String query = "INSERT INTO Veiculos(IdVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?,?)";
+		            String query = "INSERT INTO Veiculo(IdVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?,?)";
 		            PreparedStatement stm = c.prepareStatement(query);
 		            stm.setLong(1, veiculo.getIdVeiculo());
 		            stm.setString(2, veiculo.getMarca());
 		            stm.setString(3, veiculo.getModelo());
 		            stm.setDouble(4,veiculo.getPreco());
-		            stm.setString(5, veiculo.getAno());
+		            stm.setInt(5, veiculo.getAno());
 		            stm.setString(6, veiculo.getAcessorios());
 		            stm.setInt(7, veiculo.getLotacao());
 		            stm.setString(8, veiculo.getPlaca());
@@ -131,7 +131,7 @@ public class VeiculoDAO {
 					ps.setString(1, veiculo.getMarca());
 					ps.setString(2, veiculo.getModelo());
 					ps.setDouble(3, veiculo.getPreco());
-					ps.setDate(4,java.sql.Date.valueOf( veiculo.getAno()));
+					ps.setInt(4, veiculo.getAno());
 					ps.setString(5, veiculo.getAcessorios());
 					ps.setInt(6, veiculo.getLotacao());
 					ps.setString(7, veiculo.getPlaca());

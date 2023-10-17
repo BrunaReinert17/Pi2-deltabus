@@ -9,7 +9,7 @@ public class Veiculo {
 	private String marca;
 	private String modelo;
 	private Double preco;
-	private String ano;
+	private int ano;
 	private String acessorios;
 	private int lotacao;
 	private String placa;
@@ -23,7 +23,7 @@ public class Veiculo {
 		super();
 	}
 	
-	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, String ano, String acessorios,
+	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, int ano, String acessorios,
 			int lotacao, String placa, String renavam, String cor, String TipoFrota,
 			String TipoCombustivel, boolean situacao) {
 
@@ -93,13 +93,13 @@ public class Veiculo {
 
 	}
 
-	public String getAno() {
+	public int getAno() {
 
 		return ano;
 
 	}
 
-	public void setAno(String ano) {
+	public void setAno(int ano) {
 
 		this.ano = ano;
 
