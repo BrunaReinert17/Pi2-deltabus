@@ -406,7 +406,7 @@ public class CadastrarCliente extends JPanel {
 
 		String email = txtEmail.getText();
 
-		String numeroTelefone = txtnumeroTelefone.getText().replace("-", "").replace("(", "").replace(")", "");
+		//int numeroTelefone = txtnumeroTelefone.getText().replace("-", "").replace("(", "").replace(")", "");
 
 		String cep = txtCep.getText().replace("-", "");
 
@@ -428,12 +428,12 @@ public class CadastrarCliente extends JPanel {
 			cliente.setEmail(email);
 		}
 		// numeroTelefone
-		if (numeroTelefone == null || numeroTelefone.trim() == "" || numeroTelefone.isEmpty()) {
+		/*if (numeroTelefone == null || numeroTelefone.trim() == "" || numeroTelefone.isEmpty()) {
 			verificarCampo += "numeroTelefone\n";
 		} else {
 			cliente.setNumeroTelefone(numeroTelefone);
 
-		}
+		}*/
 
 		if (pessoajuridica_ou_fisica == null || pessoajuridica_ou_fisica.trim() == "" || pessoajuridica_ou_fisica.isEmpty()) {
 			verificarCampo += "PessoaJuridica_ou_Fisica\n";

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Cliente;
+import modelo.Endereco;
 
 public class ClienteDAO implements InterfaceCliente {
 
@@ -19,9 +20,8 @@ public class ClienteDAO implements InterfaceCliente {
 	public Cliente selecionar(Cliente clienteModelo) {
 		Connection c = con.conectar();
 		try {
-			PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario where senha = ? AND email = ?");
-			ps.setString(1, clienteModelo.getNome());
-			ps.setString(2, clienteModelo.getEmail());
+			PreparedStatement ps = c.prepareStatement("SELECT * FROM cliente where cnpj = ?");
+			ps.setString(1, clienteModelo.getCnpj());
 
 			ResultSet rs = ps.executeQuery();
 
@@ -31,7 +31,7 @@ public class ClienteDAO implements InterfaceCliente {
 				String email = rs.getString("email");
 				String PessoaJuridica_ou_Fisica = rs.getString("PessoaJuridica_ou_Fisica");
 				int Cep = rs.getInt("endereco_cep");
-				// Endereco Endereco = rs.getEndereco("endereco");
+				Endereco Endereco = rs.getEndereco("endereco");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,10 +50,10 @@ public class ClienteDAO implements InterfaceCliente {
 			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, PessoaJuridica_ou_Fisica, endereco_cep) VALUES (?, ?, ?, ?)";
 			PreparedStatement stm = c.prepareStatement(query);
 			stm.setString(1, cliente.getNome());
-			stm.setString(2, cliente.getNumeroTelefone());
+			stm.setInt(2, cliente.getNumeroTelefone());
 			stm.setString(3, cliente.getEmail());
 			stm.setString(4, cliente.getPessoaJuridica_ou_Fisica());
-			stm.setInt(7, cliente.getEndereco().getCep());
+			stm.setInt(5, cliente.getEndereco().getCep());
 
 			valida = stm.executeUpdate();
 		} catch (Exception e) {
@@ -97,7 +97,7 @@ String query = "UPDATE Cliente SET nome = ?, numeroTelefone = ?, email = ?, cnpj
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, cliente.getNome());
-			ps.setString(2, cliente.getNumeroTelefone());
+			ps.setInt(2, cliente.getNumeroTelefone());
 			ps.setString(3, cliente.getEmail());
 			ps.setString(4, cliente.getPessoaJuridica_ou_Fisica());
 			ps.setLong(5, cliente.getEndereco().getCep());

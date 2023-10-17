@@ -3,17 +3,18 @@ package modelo;
 public class Cliente  {
 	
 	private String nome;
-	private String numeroTelefone;
+	private int numeroTelefone;
 	private String email;
 	private String PessoaJuridica_ou_Fisica;
 	private Endereco endereco;
 	private Cliente cliente;
+	private int cnpj;
 	
 	public Cliente() {
 		super();
 	}
 	
-	public Cliente(String nome,String numeroTelefone,String email,String PessoaJuridica_ou_Fisica,Endereco endereco, Cliente cliente) {
+	public Cliente(String nome,int numeroTelefone,String email,String PessoaJuridica_ou_Fisica,Endereco endereco, Cliente cliente) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
@@ -33,12 +34,12 @@ public class Cliente  {
 		this.nome = nome;
 	}
 
-	public String getNumeroTelefone() {
+	public int getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(String numeroTelefone2) {
-		this.numeroTelefone = numeroTelefone2;
+	public void setNumeroTelefone(int numeroTelefone) {
+		this.numeroTelefone = numeroTelefone;
 	}
 
 	public String getEmail() {
@@ -75,10 +76,20 @@ public class Cliente  {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	public String getCnpj() {
+		return null;
+	}
+	public void setCnpj(String cnpj) {
+
+		this.cnpj = cnpj;
+
+	}
 	
 	public String toString() {
 		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", PessoaJuridica_ou_Fisica=" + PessoaJuridica_ou_Fisica +",endereco=" + endereco + ", cliente=" + cliente + "]";
 	}
+
+	
 
 
 	
