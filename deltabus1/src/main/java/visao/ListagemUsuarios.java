@@ -33,7 +33,7 @@ import modelo.Veiculo;
 import utilidades.RoundButton;
 
 public class ListagemUsuarios extends JPanel {
-	private JPanel contentPane;
+	
 	private JTable table;
 	private JPanel panel;
 	private JPanel panel_1;
@@ -57,10 +57,15 @@ private void deletarFuncionario() {
 		setLocale("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 300, 1200, 800);
-		contentPane = new JPanel();
+		
+		JPanel contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 102));
+		contentPane.setForeground(new Color(0, 102, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		
+		setBackground(new Color(245, 245, 245));
+		setLayout(null);
+
 		contentPane.setLayout(null);
 		panel = new JPanel();
 		panel.setForeground(new Color(0, 102, 0));
@@ -78,6 +83,7 @@ private void deletarFuncionario() {
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" }));
 		scrollPane.setViewportView(table);
+		/**
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
 		panel_1.setBounds(0, 0, 1200, 46);
@@ -259,6 +265,10 @@ private void deletarFuncionario() {
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
 		atualizarTabela();
+		*/
+		System.out.println("listagem");
+		setContentPane(contentPane);
+
 	}
 	private void setLocale(String string) {
 	}

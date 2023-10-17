@@ -32,6 +32,7 @@ import mensagens.CadastroErro;
 
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.CadastroVeiculo;
 import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.Usuario;
@@ -480,7 +481,6 @@ public class CadastrarVeiculo extends JPanel {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
 				Veiculo veiculo = verificarDados();
 				
 				boolean veiculoRetornoCadastro = false;
@@ -488,14 +488,16 @@ public class CadastrarVeiculo extends JPanel {
 				
 
                 if (veiculo != null) {
+                	
                 	VeiculoDAO veiculoDAO = new VeiculoDAO();
                     boolean resultado = veiculoDAO.inserirVeiculo(veiculo);
+                   
 
                     if (resultado == true) {
                         // O veículo foi cadastrado com sucesso
-                        CadastroSucesso sucesso = new CadastroSucesso("Veículo Cadastrado com Sucesso!");
-                        sucesso.setLocationRelativeTo(null);
-                        sucesso.setVisible(true);
+                        CadastroVeiculo cadastro = new CadastroVeiculo("Veículo Cadastrado com Sucesso!");
+                        cadastro.setLocationRelativeTo(null);
+                        cadastro.setVisible(true);
                        limparDados(); // Limpa os campos após o cadastro
                     } else {
                         // Ocorreu um erro durante o cadastro
@@ -683,7 +685,7 @@ public class CadastrarVeiculo extends JPanel {
 
 		}
 		
-		return null;
+		return veiculo;
 	}
 	public void limparDados() {
 		 txtRenavam.setText("");

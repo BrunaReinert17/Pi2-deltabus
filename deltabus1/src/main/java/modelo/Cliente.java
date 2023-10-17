@@ -79,7 +79,7 @@ public class Cliente  {
 	public String getCnpj() {
 		return null;
 	}
-	public void setCnpj(String cnpj) {
+	public void setCnpj(int cnpj) {
 
 	//	this.cnpj = cnpj;
 

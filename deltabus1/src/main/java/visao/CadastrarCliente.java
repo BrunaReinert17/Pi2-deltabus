@@ -284,6 +284,7 @@ public class CadastrarCliente extends JPanel {
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 
 				Cliente cliente = verificarDados();
 				if (cliente == null) {
@@ -296,17 +297,19 @@ public class CadastrarCliente extends JPanel {
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					Endereco endereco = enderecoDAO.consultandoEndereco(cliente.getEndereco());
 					boolean ende = false;
+					
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(cliente.getEndereco());
 					}
+					
 
 					boolean ClienteRetornoCadastro = false;
-
+					
 					if (ende != false) {
 
 						ClienteRetornoCadastro = clienteDAO.inserirCliente(cliente.getCliente());
 						System.out.println(cliente.getCliente());
-
+						
 						if (ClienteRetornoCadastro != false) {
 							cliente = clienteDAO.selecionar(cliente.getCliente());
 							System.out.println(cliente);
@@ -475,7 +478,7 @@ public class CadastrarCliente extends JPanel {
 			return cliente;
 		}
 
-		return null;
+		return cliente;
 
 	}
 

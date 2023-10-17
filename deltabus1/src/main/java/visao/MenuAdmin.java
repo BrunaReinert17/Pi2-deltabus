@@ -68,11 +68,11 @@ public class MenuAdmin extends JFrame {
 		ListagemUsuarios listarUsuarios = new ListagemUsuarios();
 		listarUsuarios.setToolTipText("");
 		listarUsuarios.setLocation(579, 97);
-		panelTeste = listarUsuarios;
-		panelTeste.setBounds(568, 104, 1200, 800);
-		panelTeste.setVisible(false);
+		panelTeste1 = listarUsuarios;
+		panelTeste1.setBounds(568, 104, 1200, 800);
+		panelTeste1.setVisible(false);
 		
-		contentPane.add(panelTeste);
+		contentPane.add(panelTeste1);
 
 		contentPane.setLayout(null);
 		// aqui
@@ -127,6 +127,7 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
+				panelTeste1.setVisible(false);
 			}
 		});
 		btnCadastrarUsuarios.setForeground(new Color(0, 0, 0));
@@ -141,9 +142,6 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
 		
-		panelTeste1 = new JPanel();
-		panelTeste1.setBounds(568, 104, 1200, 800);
-		panelTeste1.setVisible(false);
 		
 
 		RoundButton rndbtnListar = new RoundButton("Listagem");
@@ -151,9 +149,11 @@ public class MenuAdmin extends JFrame {
 		rndbtnListar.setText("Listagem de Usuários");
 		rndbtnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("entrou");
 				panelTeste1.setVisible(true);
-				ListagemUsuarios listarveiculos = new ListagemUsuarios();
-				listarUsuarios.atualizarTabela1();
+				panelTeste.setVisible(false);
+				//ListagemUsuarios listarveiculos = new ListagemUsuarios();
+				//listarUsuarios.atualizarTabela1();
 			}
 		});
 

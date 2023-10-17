@@ -15,7 +15,11 @@ public class ClienteDAOTest {
 		c.setNumeroTelefone(479871767);
 		c.setEmail("agatha@gmail.com");
 		c.setPessoaJuridica_ou_Fisica("");
+
 		//c.setEndereco();
+
+	//	c.setEndereco();
+
 		
 		
 		ClienteDAO dao = new ClienteDAO();

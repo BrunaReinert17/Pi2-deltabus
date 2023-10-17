@@ -14,7 +14,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 	
 	@Override
 	public Endereco consultandoEndereco(Endereco endereco) {
-		System.out.println(endereco.toString());
+		
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		try {
