@@ -83,6 +83,7 @@ private void deletarVeiculo() {
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.BLACK);
 		panel_1.setBounds(0, 0, 1200, 40);
+		panel_1.setBounds(0, 7, 1152, 46);
 		add(panel_1);
 		
 		JLabel lblNewLabel = new JLabel("      Listagem de Veículos\r\n");
@@ -97,7 +98,7 @@ private void deletarVeiculo() {
 		rndbtnDeletar.setForeground(Color.BLACK);
 		rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnDeletar.setBackground(Color.WHITE);
-		rndbtnDeletar.setBounds(1050, 3, 115, 33);
+		rndbtnDeletar.setBounds(1023, 3, 115, 33);
 		panel_1.add(rndbtnDeletar);
 		
 		RoundButton rndbtnAlterar = new RoundButton("Alterar");
@@ -107,7 +108,7 @@ private void deletarVeiculo() {
 		rndbtnAlterar.setForeground(Color.WHITE);
 		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnAlterar.setBackground(new Color(0, 128, 128));
-		rndbtnAlterar.setBounds(918, 4, 114, 33);
+		rndbtnAlterar.setBounds(889, 3, 114, 33);
 		panel_1.add(rndbtnAlterar);
 		
 		textRenavam = new JTextField();

@@ -174,4 +174,14 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		}
 		return listFunc;
 	}
+
+	public void excluirFuncionario(Funcionario objfuncionario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<Funcionario> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

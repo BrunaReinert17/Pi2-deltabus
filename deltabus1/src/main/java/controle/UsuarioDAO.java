@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.Funcionario;
 import modelo.Usuario;
 
 public class UsuarioDAO implements InterfaceUsuario {
