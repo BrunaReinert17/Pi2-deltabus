@@ -124,20 +124,38 @@ public class CadastrarVeiculo extends JPanel {
 		panel_3.setBackground(new Color(0, 0, 0));
 		add(panel_3);
 
-		txtRenavam = new JTextField();
-		txtRenavam.setBounds(308, 174, 271, 30);
-		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
+	
+		/**********/
+		MaskFormatter mascaraRenavam = null;
+		try {
+			mascaraRenavam = new MaskFormatter("###########");
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtRenavam = new JFormattedTextField(mascaraRenavam);
+		txtRenavam.setBounds(308, 174, 182, 30);
+		txtRenavam.setText("");
 		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtRenavam);
 		txtRenavam.setColumns(10);
-
-		txtPlaca = new JTextField();
-		txtPlaca.setBounds(308, 439, 194, 30);
-		txtPlaca.setFont(new Font("Dialog", Font.BOLD, 13));
+		
+		/**********/
+		MaskFormatter mascaraPlacaOnibus = null;
+		try {
+		    mascaraPlacaOnibus = new MaskFormatter("UUU#U##");
+		    // "U" representa letras e "#" representa dígitos.
+		} catch (ParseException e1) {
+		    e1.printStackTrace();
+		}
+		txtPlaca = new JFormattedTextField(mascaraPlacaOnibus);
+		txtPlaca.setBounds(308, 439, 182, 30);
+		txtPlaca.setText("");
 		txtPlaca.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtPlaca);
 		txtPlaca.setColumns(10);
-
+		/**********/
+		
+		
 		JLabel lblRenavam = new JLabel("Renavam:");
 		lblRenavam.setBounds(231, 182, 67, 14);
 		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -673,7 +691,7 @@ public class CadastrarVeiculo extends JPanel {
 		if (situacao == null || situacao.trim() == "" || situacao.isEmpty()) {
 			verificarCampo += "Situaçao\n";
 		} else {
-			veiculo.setSituacao(Boolean.valueOf(situacao));
+			veiculo.setSituacao(String.valueOf(situacao));
 
 		}
 		

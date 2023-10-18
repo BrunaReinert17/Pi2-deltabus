@@ -17,7 +17,7 @@ public class Veiculo {
 	private String cor;
 	private String TipoFrota;
     private String TipoCombustivel;
-	private boolean situacao;
+	private String situacao;
 	
 	public Veiculo() {
 		super();
@@ -25,7 +25,7 @@ public class Veiculo {
 	
 	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, int ano, String acessorios,
 			int lotacao, String placa, String renavam, String cor, String TipoFrota,
-			String TipoCombustivel, boolean situacao) {
+			String TipoCombustivel, String situacao) {
 
 		super();
 
@@ -190,13 +190,13 @@ public class Veiculo {
 
 	}
 
-	public boolean isSituacao() {
+	public String getSituacao() {
 
 		return situacao;
 
 	}
 
-	public void setSituacao(boolean situacao) {
+	public void setSituacao(String situacao) {
 
 		this.situacao = situacao;
 

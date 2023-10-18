@@ -16,7 +16,7 @@ public class VeiculoDAOTest {
 	public void testMetodoinserirVeiculo() {
 		Veiculo v = new Veiculo();
 		
-		v.setIdVeiculo((long) 3);
+		v.setIdVeiculo((long) 6);
         v.setMarca("Marca");
         v.setModelo("Modelo");
         v.setPreco(20000.0);
@@ -28,7 +28,7 @@ public class VeiculoDAOTest {
         v.setCor("Azul");
         v.setTipoFrota("Particular");
         v.setTipoCombustivel("Gasolina");
-        v.setSituacao(true);
+        v.setSituacao("Novo");;
 		
 		VeiculoDAO dao = new VeiculoDAO();
 		boolean resultado = dao.inserirVeiculo(v);

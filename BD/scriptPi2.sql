@@ -19,8 +19,9 @@ CREATE TABLE IF NOT EXISTS `Veiculo` (
   `tipoCombustivel` VARCHAR(45) NOT NULL,
    `placa` VARCHAR(45) NOT NULL,
   `renavam` VARCHAR(45) NOT NULL,
-  `situacao` TINYINT NOT NULL,
+  `situacao` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idVeiculo`));
+ALTER TABLE Veiculo MODIFY COLUMN situacao VARCHAR(45) NOT NULL;
 
 -- -----------------------------------------------------
 -- Table `deltaBus`.`endereco`
@@ -121,22 +122,22 @@ SELECT * FROM funcionarios ORDER BY cpf ASC;
 -- INSERT Veiculo --
 -- NAO VAI ID 
 INSERT INTO Veiculo (marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) 
-VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 'ABC123', '123456789', 2);
+VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 'ABC123', '123456789','Disponivel');
 
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-VALUES ('21346564', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+VALUES ('21346569', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468438, 21346564);
+VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468433, 21346569);
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
 INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Veiculo_idVeiculo,Clientes_cnpj) 
-VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468438');
+VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468433');
 
 --  INSERT Usuario --
 INSERT INTO Usuario ( senha, email, cargo)
@@ -147,4 +148,4 @@ VALUES ( '1312', 'bruna@gmail.com', 'funcionario');
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('14058561', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346564);
+VALUES ('14058566', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346569);

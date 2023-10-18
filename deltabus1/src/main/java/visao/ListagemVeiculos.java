@@ -75,7 +75,7 @@ private void deletarVeiculo() {
 		table.setFont(new Font("Dialog", Font.BOLD, 14));
 		
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Renavam", "Marca", "Modelo", "Cor", "Placa", "Lotação", "Frota", "Combustível", "Acessórios", "Ano","Situação", "Preço" }));
+				new String[] { "Combutível", "Marca", "Modelo", "Placa", "Tipo de Frota", "Lotação", "Renavam", "Cor", "Acessórios", "Ano","Preço", "Situação" }));
 		scrollPane.setViewportView(table);
 		
 		
@@ -132,13 +132,13 @@ private void deletarVeiculo() {
 		atualizarTabela();
 	}
 	public void atualizarTabela() {
-		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Renavam", "Marca", "Modelo", "Cor", "Placa", "Lotação", "Frota", "Combustível", "Acessórios", "Ano", "Preço"  });
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] {  "Combutível", "Marca", "Modelo", "Placa", "Tipo de Frota", "Lotação", "Renavam", "Cor", "Acessórios", "Ano","Preço", "Situação"  });
 		VeiculoDAO veiculoDAO = new VeiculoDAO();
 		listVei = veiculoDAO.listar();
 		System.out.println(listVei);
 		for (int i = 0; i < listVei.size(); i++) {
 			Veiculo veiculo = listVei.get(i);
-			tabela.addRow(new Object[] { veiculo.getRenavam(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getCor(),veiculo.getPlaca(),veiculo.getLotacao(),veiculo.getTipoFrota(),veiculo.getTipoCombustivel(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco()});
+			tabela.addRow(new Object[] { veiculo.getRenavam(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getCor(),veiculo.getPlaca(),veiculo.getLotacao(),veiculo.getTipoFrota(),veiculo.getTipoCombustivel(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco(),veiculo.getSituacao() });
 
 		}
 		table.setModel(tabela);

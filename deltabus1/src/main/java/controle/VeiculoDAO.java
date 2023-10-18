@@ -48,6 +48,7 @@ public class VeiculoDAO {
 					v.setAcessorios(rs.getString("acessorios"));
 					v.setAno(rs.getInt("ano"));
 					v.setPreco(rs.getDouble("preco"));
+					v.setSituacao(rs.getString("situacao"));
 					veiculos.add(v);
 					
 				}
@@ -82,7 +83,7 @@ public class VeiculoDAO {
 		            stm.setString(10, veiculo.getCor());
 		            stm.setString(11, veiculo.getTipoFrota());
 		            stm.setString(12, veiculo.getTipoCombustivel());
-		            stm.setBoolean(13, veiculo.isSituacao());
+		            stm.setString(13, veiculo.getSituacao());
 		            
 		            valida = stm.executeUpdate();
 		        } catch (Exception e) {
@@ -140,7 +141,7 @@ public class VeiculoDAO {
 					ps.setString(9, veiculo.getCor());
 					ps.setString(10, veiculo.getTipoFrota());
 					ps.setString(12, veiculo.getTipoCombustivel());
-					ps.setBoolean(13, veiculo.isSituacao());
+					ps.setString(13, veiculo.getSituacao());
 					ps.setLong(14, veiculo.getIdVeiculo());
 					
 					
