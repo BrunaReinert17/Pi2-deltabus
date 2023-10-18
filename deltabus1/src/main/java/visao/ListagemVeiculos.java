@@ -34,7 +34,7 @@ import javax.swing.JButton;
 
 public class ListagemVeiculos extends JPanel {
 	private JTable table;
-	private JTextField textRenavam;
+	private JTextField textrenavam;
 	private ArrayList<Veiculo> listVei;
 
 
@@ -42,12 +42,12 @@ public class ListagemVeiculos extends JPanel {
 
 private void deletarVeiculo() {
 		
-		Long idveiculo;
+		String renavam;
 		
-		idveiculo = Long.valueOf(textRenavam.getText());
+		renavam = String.valueOf(textrenavam.getText());
 		
 		Veiculo objveiculo = new Veiculo();
-		objveiculo.setIdVeiculo(idveiculo);
+		objveiculo.setRenavam(renavam);
 		
 		VeiculoDAO objveiculodao = new VeiculoDAO();
 		
@@ -94,6 +94,28 @@ private void deletarVeiculo() {
 		panel_1.add(lblNewLabel);
 		
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
+		rndbtnDeletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int linhaSelecionada = table.getSelectedRow();
+				if (linhaSelecionada >= 0) {
+				    // Obtém o veículo selecionado da lista
+				    Veiculo veiculo = listVei.get(linhaSelecionada);
+
+				    // Chama o método DAO para excluir o veículo
+				    if (VeiculoDAO.excluirVeiculo(veiculo)) {
+				        // Atualize a lista e a tabela após a exclusão bem-sucedida
+				        DefaultTableModel model = (DefaultTableModel) table.getModel();
+				        model.removeRow(linhaSelecionada);
+				    } else {
+				        JOptionPane.showMessageDialog(null, "Falha ao excluir o veículo do banco de dados.");
+				    }
+				} else {
+				    JOptionPane.showMessageDialog(null, "Selecione um veículo para excluir.");
+				}
+		    }
+		});
+			
 		rndbtnDeletar.setText("Deletar");
 		rndbtnDeletar.setForeground(Color.BLACK);
 		rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -111,10 +133,10 @@ private void deletarVeiculo() {
 		rndbtnAlterar.setBounds(889, 3, 114, 33);
 		panel_1.add(rndbtnAlterar);
 		
-		textRenavam = new JTextField();
-		textRenavam.setColumns(10);
-		textRenavam.setBounds(496, 12, 177, 20);
-		panel_1.add(textRenavam);
+		textrenavam = new JTextField();
+		textrenavam.setColumns(10);
+		textrenavam.setBounds(496, 12, 177, 20);
+		panel_1.add(textrenavam);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setForeground(Color.WHITE);
@@ -122,7 +144,7 @@ private void deletarVeiculo() {
 		btnPesquisar.setBackground(new Color(0, 128, 128));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cpfpesquisa = textRenavam.getText();
+				String cpfpesquisa = textrenavam.getText();
 				atualizarTabela();
 			}
 		});

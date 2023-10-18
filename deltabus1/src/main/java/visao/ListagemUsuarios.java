@@ -39,7 +39,7 @@ public class ListagemUsuarios extends JPanel {
 	private JPanel panel;
 	private JPanel panel_1;
 	private ArrayList<Funcionario> listFuncionario;
-	private JTextField textCPF;
+	private JTextField textcpf;
 	private Funcionario funcionarioClick;
 	private JButton voltar;
 	private AbstractButton btnSalvar;
@@ -48,7 +48,7 @@ public class ListagemUsuarios extends JPanel {
 
 private void deletarFuncionario() {
 		long cpf;
-		cpf = Long.valueOf(textCPF.getText());
+		cpf = Long.valueOf(textcpf.getText());
 		Funcionario objfuncionario = new Funcionario();
 		objfuncionario.setCpf(cpf);
 		FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
@@ -99,6 +99,31 @@ private void deletarFuncionario() {
 		panel_1.add(lblNewLabel);
 		
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
+
+   rndbtnDeletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int linhaSelecionada = table.getSelectedRow();
+				if (linhaSelecionada >= 0) {
+				    // Obtém o usuário selecionado da lista
+				    Funcionario funcionario = listFuncionario.get(linhaSelecionada);
+
+				    
+				   // if (FuncionarioDAO.deletarFuncionario(funcionario)) {
+				        // Atualize a lista e a tabela após a exclusão bem-sucedida
+				        DefaultTableModel model = (DefaultTableModel) table.getModel();
+				        model.removeRow(linhaSelecionada);
+				    } else {
+				        JOptionPane.showMessageDialog(null, "Falha ao excluir o usuário do banco de dados.");
+				    }
+			    else {
+				    JOptionPane.showMessageDialog(null, "Selecione um usuário para excluir.");
+		    }
+			}
+		});
+		
+		
+
 		rndbtnDeletar.setText("Deletar");
 		rndbtnDeletar.setForeground(Color.BLACK);
 		rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -115,28 +140,40 @@ private void deletarFuncionario() {
 		rndbtnAlterar.setBackground(new Color(0, 128, 128));
 		rndbtnAlterar.setBounds(889, 3, 114, 33);
 		panel_1.add(rndbtnAlterar);
+
 		
-		textCPF = new JTextField();
-		textCPF.setColumns(10);
-		textCPF.setBounds(496, 12, 177, 20);
-		panel_1.add(textCPF);
+		textcpf = new JTextField();
+		textcpf.setColumns(10);
+		textcpf.setBounds(496, 12, 177, 20);
+		panel_1.add(textcpf);
 		
+
+		textcpf = new JTextField();
+		textcpf.setBounds(496, 12, 177, 20);
+		panel_1.add(textcpf);
+		textcpf.setColumns(10);
+
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setForeground(Color.WHITE);
 		btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnPesquisar.setBackground(new Color(0, 128, 128));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cpfpesquisa = textCPF.getText();
-				atualizarTabela();
+<
+				String cpfpesquisa = textcpf.getText();
+				atualizarTabela1();
+
+				String cpfpesquisa = textcpf.getText();
+				
+
 			}
 		});
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
 
-		atualizarTabela();
+		atualizarTabela1();
 	}
-	public void atualizarTabela() {
+	public void atualizarTabela1() {
 		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero" });
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		listUsuario = usuarioDAO.listar();
@@ -148,5 +185,23 @@ private void deletarFuncionario() {
 		}
 		table.setModel(tabela);
 	}
+ 
 
 	}
+
+	
+	private void atualizarTabela() {
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		listFuncionario = funcionarioDAO.consultarTodos();
+		System.out.println(listFuncionario);
+		for (int i = 0; i < listFuncionario.size(); i++) {
+			Funcionario funcionario = listFuncionario.get(i);
+			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
+
+		}
+		table.setModel(tabela);
+	}
+	
+}
+

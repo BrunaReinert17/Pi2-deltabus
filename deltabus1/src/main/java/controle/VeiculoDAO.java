@@ -94,16 +94,16 @@ public class VeiculoDAO {
 		        return valida != 0;
 		    }
 		
-		public boolean excluirVeiculo(Veiculo veiculo) {
+		public static boolean excluirVeiculo(Veiculo veiculo) {
 
 			Conexao c = Conexao.getInstancia();
 			Connection con = c.conectar();
 
-			String query = "DELETE FROM Veiculo\r\n  WHERE idVeiculo = ?";
+			String query = "DELETE FROM Veiculo\r\n  WHERE renavam = ?";
 
 			try {
 				PreparedStatement ps = con.prepareStatement(query);
-				ps.setDouble(1, veiculo.getIdVeiculo());
+				ps.setString(1, veiculo.getRenavam());
 				ps.executeUpdate();
 
 				c.fecharConexao();
