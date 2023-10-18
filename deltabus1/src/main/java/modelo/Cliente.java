@@ -2,6 +2,7 @@ package modelo;
 
 public class Cliente  {
 	
+	public static final Cliente CLIENTEEDITADO = null;
 	private String nome;
 	private int numeroTelefone;
 	private String email;
@@ -87,6 +88,11 @@ public class Cliente  {
 	
 	public String toString() {
 		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", PessoaJuridica_ou_Fisica=" + PessoaJuridica_ou_Fisica +",endereco=" + endereco + ", cliente=" + cliente + "]";
+	}
+
+	public Cliente editarCliente(Cliente funcionario) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

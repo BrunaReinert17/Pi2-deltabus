@@ -43,13 +43,8 @@ public class CadastrarCliente extends JPanel {
 	private JTextField txtCep;
 	private JLabel lblCep;
 	private JTextField txtCpf2;
-	private JTextField txtBairro;
-	private JComboBox cbCidade;
-	private JLabel lblCidade;
+	private JLabel iblEndereco;
 	private JLabel lblBairro;
-	private JLabel lblBairro_1;
-	private JComboBox cbUf;
-	private JLabel lblUf;
 	private JLabel lblFuno;
 	private JButton bntDeletar;
 	private JButton btnCadastrar;
@@ -59,6 +54,7 @@ public class CadastrarCliente extends JPanel {
 	private JTextField textField;
 	private JLabel lblLimpar;
 	private String pessoajuridica_ou_fisica;
+	private JTextField txtEndereco;
 
 	public CadastrarCliente() {
 		setLocale("Login");
@@ -182,12 +178,6 @@ public class CadastrarCliente extends JPanel {
 		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCep);
 
-		txtBairro = new JTextField();
-		txtBairro.setBounds(684, 466, 182, 30);
-		txtBairro.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtBairro.setColumns(10);
-		add(txtBairro);
-
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
 		cidade.add("São José");
@@ -195,40 +185,14 @@ public class CadastrarCliente extends JPanel {
 		cidade.add("Gaspar");
 		cidade.add("Blumenau");
 
-		cbCidade = new JComboBox();
-		cbCidade.setBounds(252, 466, 182, 30);
-		cbCidade.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-				for (int i = 0; i < cidade.size(); i++) {
-					cbCidade.addItem(cidade.get(i));
-
-				}
-			}
-
-			public void ancestorMoved(AncestorEvent event) {
-			}
-
-			public void ancestorRemoved(AncestorEvent event) {
-			}
-		});
-		cbCidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbCidade);
-
 		lblBairro = new JLabel("Bairro:");
 		lblBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblBairro.setBounds(768, 428, 155, 14);
-		cbCidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbCidade);
 
-		lblCidade = new JLabel("Cidade:");
-		lblCidade.setBounds(252, 447, 155, 14);
-		lblCidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblCidade);
-
-		lblBairro_1 = new JLabel("Bairro:");
-		lblBairro_1.setBounds(684, 441, 155, 14);
-		lblBairro_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblBairro_1);
+		iblEndereco = new JLabel("Endereço:");
+		iblEndereco.setBounds(684, 365, 155, 14);
+		iblEndereco.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(iblEndereco);
 
 		ArrayList<String> uf = new ArrayList<>();
 		uf.add("");
@@ -236,30 +200,6 @@ public class CadastrarCliente extends JPanel {
 		uf.add("SP");
 		uf.add("RS");
 		uf.add("PR");
-
-		cbUf = new JComboBox();
-		cbUf.setBounds(683, 383, 142, 30);
-		cbUf.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-				for (int i = 0; i < uf.size(); i++) {
-					cbUf.addItem(uf.get(i));
-
-				}
-			}
-
-			public void ancestorMoved(AncestorEvent event) {
-			}
-
-			public void ancestorRemoved(AncestorEvent event) {
-			}
-		});
-		cbUf.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(cbUf);
-
-		lblUf = new JLabel("UF:");
-		lblUf.setBounds(684, 365, 155, 14);
-		lblUf.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblUf);
 
 		btnCadastrar = new RoundButton("Confirmar");
 		btnCadastrar.setBounds(498, 582, 132, 33);
@@ -338,11 +278,8 @@ public class CadastrarCliente extends JPanel {
 
 				txtCep.setText("");
 
-				txtBairro.setText("");
+				txtEndereco.setText("");
 
-				cbUf.setSelectedIndex(-1);
-
-				cbCidade.setSelectedIndex(-1);
 
 			}
 		});
@@ -369,6 +306,12 @@ public class CadastrarCliente extends JPanel {
 		txtCpf2.setForeground(new Color(0, 0, 0));
 		txtCpf2.setColumns(10);
 		add(txtCpf2);
+		
+		txtEndereco = new JTextField();
+		txtEndereco.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtEndereco.setColumns(10);
+		txtEndereco.setBounds(684, 383, 354, 30);
+		add(txtEndereco);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -407,11 +350,7 @@ public class CadastrarCliente extends JPanel {
 
 		String cep = txtCep.getText().replace("-", "");
 
-		String UF = (String) cbUf.getSelectedItem();
-
-		String bairro = txtBairro.getText();
-
-		String cidade = (String) cbCidade.getSelectedItem();
+		String bairro = txtEndereco.getText();
 
 		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
 			verificarCampo += "Nome\n";
@@ -446,27 +385,15 @@ public class CadastrarCliente extends JPanel {
 
 		}
 
-		if (cidade == null || cidade.trim() == "" || cidade.isEmpty()) {
-			verificarCampo += "cidade\n";
+		/*if (endereco == null || endereco.trim() == "" || endereco.isEmpty()) {
+			verificarCampo += "endereco\n";
 		} else {
-			endereco.setCidade(cidade);
+			endereco.setEndereco(endereco);
 
-		}
-
-		if (bairro == null || cep.trim() == "" || cep.isEmpty()) {
-			verificarCampo += "bairro\n";
-		} else {
-			endereco.setBairro(bairro);
-
-		}
+		}*/
 
 
-		if (UF == null || UF.trim() == "" || UF.isEmpty()) {
-			verificarCampo += "UF\n";
-		} else {
-			endereco.setUf(UF);
 
-		}
 		if (verificarCampo.trim() == "") {
 			cliente.setCliente(cliente);
 			return cliente;
@@ -481,6 +408,6 @@ public class CadastrarCliente extends JPanel {
 		txtEmail.setText("");
 		txtnumeroTelefone.setText("");
 		txtCep.setText("");
-		txtBairro.setText("");
+		txtEndereco.setText("");
 	}
 }

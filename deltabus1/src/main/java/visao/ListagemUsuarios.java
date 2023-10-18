@@ -1,5 +1,5 @@
 package visao;
-
+/*
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -118,7 +118,7 @@ private void deletarFuncionario() {
 				    }
 			    else {
 				    JOptionPane.showMessageDialog(null, "Selecione um usuário para excluir.");
-		    }
+		    
 			}
 		});
 		
@@ -159,8 +159,8 @@ private void deletarFuncionario() {
 		btnPesquisar.setBackground(new Color(0, 128, 128));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<
-				String cpfpesquisa = textcpf.getText();
+
+			/*	String cpfpesquisa = textcpf.getText();
 				atualizarTabela1();
 
 				String cpfpesquisa = textcpf.getText();
@@ -203,5 +203,5 @@ private void deletarFuncionario() {
 		table.setModel(tabela);
 	}
 	
-}
+}*/
 
