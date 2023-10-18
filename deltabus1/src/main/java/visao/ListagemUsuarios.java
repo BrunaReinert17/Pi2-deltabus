@@ -60,13 +60,13 @@ private void deletarFuncionario() {
 		panel = new JPanel();
 		panel.setLayout(null);
 		panel.setForeground(new Color(0, 102, 0));
-		panel.setBackground(new Color(245, 245, 245));
+		panel.setBackground(new Color(0, 0, 0));
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
 		panel.setBounds(0, 37, 1184, 689);
 		add(panel);
 		panel.setLayout(null);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 22, 1126, 702);
+		scrollPane.setBounds(10, 11, 1164, 667);
 		panel.add(scrollPane);
 		table = new JTable();
 		table.setBackground(new Color(255, 255, 255));

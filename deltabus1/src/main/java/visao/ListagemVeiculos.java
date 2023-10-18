@@ -61,12 +61,12 @@ private void deletarVeiculo() {
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(27, 64, 1125, 735);
+		panel.setBounds(10, 51, 1179, 748);
 		add(panel);
 		panel.setLayout(new BorderLayout());
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 1136, 28);
+		scrollPane.setBounds(0, 37, 1184, 689);
 		panel.add(scrollPane, BorderLayout.CENTER);
 		
 		
@@ -82,7 +82,7 @@ private void deletarVeiculo() {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(0, 7, 1200, 46);
+		panel_1.setBounds(0, 0, 1200, 40);
 		add(panel_1);
 		
 		JLabel lblNewLabel = new JLabel("      Listagem de Veículos\r\n");

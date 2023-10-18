@@ -284,7 +284,6 @@ public class CadastrarCliente extends JPanel {
 						ende = enderecoDAO.inserirEndereco(cliente.getEndereco());
 					}
 					
-
 					boolean ClienteRetornoCadastro = false;
 					
 					if (ende != false) {
