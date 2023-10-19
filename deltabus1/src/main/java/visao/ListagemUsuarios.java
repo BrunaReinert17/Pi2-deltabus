@@ -54,12 +54,12 @@ private void deletarUsuario() {
 	
 	cpf = Long.valueOf(textcpf.getText());
 	
-	Funcionario objusuario = new Funcionario();
-	objusuario.setCpf(cpf);
+	Funcionario objfuncionario = new Funcionario();
+	objfuncionario.setCpf(cpf);
 	
 	FuncionarioDAO objusuariodao = new 	FuncionarioDAO();
 	
-	objusuariodao.deletarFuncionario(objusuario);
+	objusuariodao.deletarFuncionario(objfuncionario);
 	}
 
 	public ListagemUsuarios() {
@@ -108,6 +108,23 @@ private void deletarUsuario() {
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
+				int linhaSelecionada = table.getSelectedRow();
+				if (linhaSelecionada >= 0) {
+				    
+				    Funcionario funcionario = listFuncionario.get(linhaSelecionada);
+                    
+				    
+				    if (FuncionarioDAO.excluirFuncionario(funcionario)) {
+				        
+				        DefaultTableModel model = (DefaultTableModel) table.getModel();
+				        model.removeRow(linhaSelecionada);
+				    } else {
+				        JOptionPane.showMessageDialog(null, "Falha ao excluir o veículo do banco de dados.");
+				    }
+				} else {
+				    JOptionPane.showMessageDialog(null, "Selecione um veículo para excluir.");
+				}
 			}
 		    });
    
@@ -135,12 +152,6 @@ private void deletarUsuario() {
 		textcpf.setColumns(10);
 		textcpf.setBounds(496, 12, 177, 20);
 		panel_1.add(textcpf);
-		
-
-		textcpf = new JTextField();
-		textcpf.setBounds(496, 12, 177, 20);
-		panel_1.add(textcpf);
-		textcpf.setColumns(10);
 
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setForeground(Color.WHITE);

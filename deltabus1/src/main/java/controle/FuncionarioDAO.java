@@ -174,10 +174,37 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		return listFunc;
 	}
 
-	public void excluirFuncionario(Funcionario objfuncionario) {
+	public static boolean excluirFuncionario(Funcionario funcionario) {
+		
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM funcionarios\r\n  WHERE cpf = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, funcionario.getCpf());
+			ps.executeUpdate();
+
+			c.fecharConexao();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return false;
+	}
+		
+		
+		
+		
+		
+		
+		
 		// TODO Auto-generated method stub
 		
-	}
+	
 
 	public ArrayList<Funcionario> listar() {
 		// TODO Auto-generated method stub
