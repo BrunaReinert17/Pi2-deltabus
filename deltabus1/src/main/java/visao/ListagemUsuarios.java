@@ -23,6 +23,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
@@ -48,6 +49,7 @@ public class ListagemUsuarios extends JPanel {
 	private String validacao = "";
 	private ArrayList<Usuario> listUsuario;
 	private JTextField txtNome;
+	
 
 	
 
@@ -141,16 +143,6 @@ private void deletarUsuario() {
 		rndbtnDeletar.setBackground(Color.WHITE);
 		rndbtnDeletar.setBounds(1023, 3, 115, 33);
 		panel_1.add(rndbtnDeletar);
-		
-		RoundButton rndbtnAlterar = new RoundButton("Alterar");
-		
-
-		rndbtnAlterar.setText("Alterar");
-		rndbtnAlterar.setForeground(Color.WHITE);
-		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnAlterar.setBackground(new Color(0, 128, 128));
-		rndbtnAlterar.setBounds(889, 3, 114, 33);
-		panel_1.add(rndbtnAlterar);
 
 		
 		textcpf = new JTextField();

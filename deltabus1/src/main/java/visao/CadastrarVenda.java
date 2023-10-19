@@ -300,7 +300,7 @@ public class CadastrarVenda extends JPanel {
 		}
 		
 		if (verificarCampo.trim() == "") {
-			funcionario.setUsuario(usuario);
+		//	funcionario.(usuario);
 			funcionario.setEndereco(endereco);
 			return funcionario;
 		}

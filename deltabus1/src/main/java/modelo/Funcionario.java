@@ -122,11 +122,7 @@ public class Funcionario {
 
 	}
 
-	public void setUsuario(Usuario usuario) {
-
-		this.usuario = usuario;
-
-	}
+	
 
 	@Override
 	public String toString() {
@@ -137,6 +133,11 @@ public class Funcionario {
 	public Funcionario  editarFuncionario(Funcionario funcionario) {
 		// TODO Auto-generated method stub
 		return funcionario ;
+	}
+
+	public void setUsuario(Funcionario funcionario) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

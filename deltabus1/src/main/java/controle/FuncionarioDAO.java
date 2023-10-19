@@ -126,7 +126,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				funcionario.setNumeroTelefone(rs.getString("numerotelefone"));
 				funcionario.setDatanasci(rs.getDate("dataNascimento").toLocalDate());
 
-				funcionario.setUsuario(usuario);
+			//	funcionario.setUsuario(usuario);
 				funcionario.setEndereco(endereco);
 				System.out.println(funcionario);
 				listFunc.add(funcionario);
@@ -163,7 +163,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				funcionario.setNumeroTelefone(rs.getString("numerotelefone"));
 				funcionario.setDatanasci(rs.getDate("dataNascimento").toLocalDate());
 
-				funcionario.setUsuario(usuario);
+		//		funcionario.setUsuario(usuario);
 				funcionario.setEndereco(endereco);
 				System.out.println(funcionario);
 				listFunc.add(funcionario);
