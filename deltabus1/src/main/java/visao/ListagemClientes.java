@@ -108,10 +108,10 @@ private void deletarClientes() {
 				        DefaultTableModel model = (DefaultTableModel) table.getModel();
 				        model.removeRow(linhaSelecionada);
 				    } else {
-				        JOptionPane.showMessageDialog(null, "Falha ao excluir o veículo do banco de dados.");
+				        JOptionPane.showMessageDialog(null, "Falha ao excluir do banco de dados.");
 				    }
 				} else {
-				    JOptionPane.showMessageDialog(null, "Selecione um veículo para excluir.");
+				    JOptionPane.showMessageDialog(null, "Selecione para excluir.");
 				}
 		    }
 		});

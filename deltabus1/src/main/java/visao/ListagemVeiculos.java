@@ -104,7 +104,7 @@ private void deletarVeiculo() {
 
 				    // Chama o método DAO para excluir o veículo
 				    if (VeiculoDAO.excluirVeiculo(veiculo)) {
-				        // Atualize a lista e a tabela após a exclusão bem-sucedida
+				        // Atualiza a lista e a tabela após a exclusão bem-sucedida
 				        DefaultTableModel model = (DefaultTableModel) table.getModel();
 				        model.removeRow(linhaSelecionada);
 				    } else {

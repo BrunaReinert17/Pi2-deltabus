@@ -107,10 +107,6 @@ public class Login extends JFrame {
 						telaPrincipal.setLocationRelativeTo(null);
 						telaPrincipal.setVisible(true);
 						dispose();
-					} else if (retorno.getFuncao().equals("funcionario")) {
-			              MenuFuncionario telaFuncionario = new MenuFuncionario();
-			              telaFuncionario.setLocationRelativeTo(null);
-			              telaFuncionario.setVisible(true);
 					} else {
 						LoginErro janelaErro = new LoginErro("Senha ou E-mail Incorretos!");
 						janelaErro.setLocationRelativeTo(null);
