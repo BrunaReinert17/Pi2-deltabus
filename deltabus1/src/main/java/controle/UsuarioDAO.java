@@ -17,7 +17,7 @@ public class UsuarioDAO implements InterfaceUsuario {
         con = Conexao.getInstancia();
     }
 
-    @Override
+    
     public boolean inserirUsuario(Usuario usuario) {
     	
     	Conexao con = Conexao.getInstancia();
@@ -42,31 +42,9 @@ public class UsuarioDAO implements InterfaceUsuario {
         return valida != 0;
     }
 
-    @Override
-    public boolean deletarUsuario(Usuario usuario) {
+    
 
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
-
-		String query = "DELETE FROM Usuario\r\n  WHERE idUsuario = ?";
-
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setFloat(1, usuario.getIdUsuario());
-			ps.executeUpdate();
-
-			c.fecharConexao();
-			return true;
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-
-		return false;
-	}
-
-    @Override
+    
     public Usuario selecionar (Usuario usuarioModelo) {
         Connection c = con.conectar();
         try {
@@ -184,6 +162,38 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 		return null;
 	}
+
+
+	public static  boolean excluirUsuario(Usuario usuario) {
+
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM Usuario\r\n  WHERE idUsuario = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setFloat(1, usuario.getIdUsuario());
+			ps.executeUpdate();
+
+			c.fecharConexao();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+
+	@Override
+	public boolean deletarUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 	
 

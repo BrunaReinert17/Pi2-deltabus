@@ -62,13 +62,13 @@ public class MenuAdmin extends JFrame {
 
 		setContentPane(contentPane);
 		
-		/*ListagemUsuarios listarUsuarios = new ListagemUsuarios();
+		ListagemUsuarios listarUsuarios = new ListagemUsuarios();
 		
 		listarUsuarios.setToolTipText("");
 		listarUsuarios.setLocation(579, 97);
 		panelTeste1 = listarUsuarios;
 		panelTeste1.setBounds(568, 104, 1184,725);
-		panelTeste1.setVisible(false);*/
+		panelTeste1.setVisible(false);
 		
 		contentPane.add(panelTeste1);
 

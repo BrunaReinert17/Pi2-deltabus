@@ -1,28 +1,28 @@
-package modelo;
+ package modelo;
 
 public class Cliente  {
 	
-	public static final Cliente CLIENTEEDITADO = null;
 	private String nome;
 	private int numeroTelefone;
 	private String email;
-	private String PessoaJuridica_ou_Fisica;
-	private Endereco endereco;
+	private Double Cpf;
+	private Integer Cep;
 	private Cliente cliente;
-	private int cnpj;
+	private Double cnpj;
 	
 	public Cliente() {
 		super();
 	}
 	
-	public Cliente(String nome,int numeroTelefone,String email,String PessoaJuridica_ou_Fisica,Endereco endereco, Cliente cliente) {
+	public Cliente(String nome,int numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
 		this.email = email;
-		this.PessoaJuridica_ou_Fisica = PessoaJuridica_ou_Fisica;;
-		this.endereco = endereco;
+		this.Cpf = Cpf;;
+		this.Cep = cep;
 		this.cliente = cliente;
+		this.cnpj = cnpj;
 		
 	}
 	
@@ -51,24 +51,24 @@ public class Cliente  {
 		this.email = email;
 	}
 
-	public String getPessoaJuridica_ou_Fisica() {
+	public Double getCpf() {
 
-		return PessoaJuridica_ou_Fisica;
-
-	}
-
-	public void setPessoaJuridica_ou_Fisica(String PessoaJuridica_ou_Fisica) {
-
-		this.PessoaJuridica_ou_Fisica = PessoaJuridica_ou_Fisica;
+		return Cpf;
 
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public void setCpf(Double Cpf) {
+
+		this.Cpf = Cpf;
+
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public Integer getCep() {
+		return Cep;
+	}
+
+	public void setCep(Integer cep) {
+		this.Cep = cep;
 	}
 	public Cliente getCliente() {
 		return cliente;
@@ -77,17 +77,17 @@ public class Cliente  {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public String getCnpj() {
-		return null;
+	public Double getCnpj() {
+		return cnpj;
 	}
-	public void setCnpj(int cnpj) {
+	public void setCnpj(Double cnpj) {
 
-	//	this.cnpj = cnpj;
+	this.cnpj = cnpj;
 
 	}
 	
 	public String toString() {
-		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", PessoaJuridica_ou_Fisica=" + PessoaJuridica_ou_Fisica +",endereco=" + endereco + ", cliente=" + cliente + "]";
+		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf +",cep=" + Cep + ", cliente=" + cliente + "]";
 	}
 
 	public Cliente editarCliente(Cliente funcionario) {

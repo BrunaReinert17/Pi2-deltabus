@@ -28,6 +28,8 @@ public class MenuFuncionario extends JFrame {
 	private JPanel panelTeste1;
 	private JPanel panelTeste2;
 	private JPanel panelTeste3;
+	private JPanel panelTeste4;
+
 
 
 	/**
@@ -57,7 +59,7 @@ public class MenuFuncionario extends JFrame {
 		setTitle("Menu");
 		setBackground(new Color(51, 102, 102));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1382, 796);
+		setBounds(100, 100, 1382, 923);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,7 +72,7 @@ public class MenuFuncionario extends JFrame {
 		panelCliente.setToolTipText("");
 		panelCliente.setLocation(579, 97);
 		panelTeste = panelCliente;
-		panelTeste.setBounds(568, 104, 1200, 800);
+		panelTeste.setBounds(377, 0, 1200, 800);
 		panelTeste.setVisible(false);
 
 		contentPane.add(panelTeste);
@@ -93,6 +95,15 @@ public class MenuFuncionario extends JFrame {
 		panelTeste1.setVisible(false);
 
 		contentPane.add(panelTeste1);
+		
+		ListagemClientes listarclientes = new ListagemClientes();
+		listarclientes.setToolTipText("");
+		listarclientes.setLocation(579, 97);
+		panelTeste4 = listarclientes;
+		panelTeste4.setBounds(568, 104, 1200, 810);
+		panelTeste4.setVisible(false);
+
+		contentPane.add(panelTeste4);
 		
 		CadastrarVenda cadastrarVendas = new CadastrarVenda();
 		cadastrarVendas.setToolTipText("");
@@ -121,7 +132,7 @@ public class MenuFuncionario extends JFrame {
 
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_5.setBounds(46, 530, 141, 33);
+		lblNewLabel_5.setBounds(50, 391, 141, 33);
 		panel.add(lblNewLabel_5);
 		lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
 
@@ -149,13 +160,14 @@ public class MenuFuncionario extends JFrame {
 				panelTeste3.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
+				panelTeste4.setVisible(false);
 				
 			}
 		});
 		btnCadastrarClientes.setForeground(new Color(0, 0, 0));
 		btnCadastrarClientes.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrarClientes.setBackground(new Color(0, 128, 128));
-		btnCadastrarClientes.setBounds(90, 457, 199, 43);
+		btnCadastrarClientes.setBounds(90, 500, 199, 109);
 		panel.add(btnCadastrarClientes);
 
 		btnCadastrarClientes.setForeground(Color.WHITE);
@@ -172,6 +184,8 @@ public class MenuFuncionario extends JFrame {
 				panelTeste.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
+				panelTeste4.setVisible(false);
+
 
 			}
 		});
@@ -183,7 +197,7 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setForeground(Color.WHITE);
 		rndbtnCadastrarVeiculos.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnCadastrarVeiculos.setBackground(new Color(0, 128, 128));
-		rndbtnCadastrarVeiculos.setBounds(90, 530, 199, 43);
+		rndbtnCadastrarVeiculos.setBounds(94, 391, 199, 43);
 		panel.add(rndbtnCadastrarVeiculos);
 
 		JButton btnLogout = new RoundButton("Logout");
@@ -230,6 +244,8 @@ public class MenuFuncionario extends JFrame {
 				panelTeste.setVisible(false);
 				panelTeste3.setVisible(false);
 				panelTeste2.setVisible(false);
+				panelTeste4.setVisible(false);
+
 				
 			}
 		});
@@ -250,6 +266,8 @@ public class MenuFuncionario extends JFrame {
 				panelTeste.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste3.setVisible(false);
+				panelTeste4.setVisible(false);
+
 			}
 		});
 		btnCadastroDeVendas.setForeground(new Color(255, 255, 255));
@@ -257,6 +275,27 @@ public class MenuFuncionario extends JFrame {
 		btnCadastroDeVendas.setBackground(new Color(0, 128, 128));
 		btnCadastroDeVendas.setBounds(92, 664, 199, 43);
 		panel.add(btnCadastroDeVendas);
+		
+		JLabel lblNewLabel_10_1 = new JLabel("");
+		lblNewLabel_10_1.setBounds(50, 505, 82, 65);
+		panel.add(lblNewLabel_10_1);
+		
+		RoundButton btnlistaCliente = new RoundButton("Listagem de Cliente");
+		btnlistaCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelTeste4.setVisible(true);
+				panelTeste.setVisible(false);
+				panelTeste1.setVisible(false);
+				panelTeste2.setVisible(false);
+				panelTeste3.setVisible(false);
+			}
+		});
+		btnlistaCliente.setText("Listagem de Cliente");
+		btnlistaCliente.setForeground(Color.WHITE);
+		btnlistaCliente.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnlistaCliente.setBackground(new Color(0, 128, 128));
+		btnlistaCliente.setBounds(94, 527, 199, 43);
+		panel.add(btnlistaCliente);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/deltabus.png")));

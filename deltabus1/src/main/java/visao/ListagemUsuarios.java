@@ -1,5 +1,5 @@
 package visao;
-/*
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -45,15 +45,23 @@ public class ListagemUsuarios extends JPanel {
 	private AbstractButton btnSalvar;
 	private String validacao = "";
 	private ArrayList<Usuario> listUsuario;
+	private JTextField txtNome;
 
-private void deletarFuncionario() {
-		long cpf;
-		cpf = Long.valueOf(textcpf.getText());
-		Funcionario objfuncionario = new Funcionario();
-		objfuncionario.setCpf(cpf);
-		FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
-		objfuncionariodao.excluirFuncionario(objfuncionario);
+	
+
+private void deletarUsuario() {
+	String nome;
+	
+	nome = String.valueOf(txtNome.getText());
+	
+	Usuario objusuario = new Usuario();
+	objusuario.setNome(nome);
+	
+	UsuarioDAO objusuariodao = new 	UsuarioDAO();
+	
+	objusuariodao.excluirUsuario(objusuario);
 	}
+
 	public ListagemUsuarios() {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
@@ -97,31 +105,29 @@ private void deletarFuncionario() {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel.setBounds(0, 0, 352, 38);
 		panel_1.add(lblNewLabel);
-		
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
-
-   rndbtnDeletar.addActionListener(new ActionListener() {
+		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				int linhaSelecionada = table.getSelectedRow();
 				if (linhaSelecionada >= 0) {
-				    // Obtém o usuário selecionado da lista
-				    Funcionario funcionario = listFuncionario.get(linhaSelecionada);
+				    // Obtém o veículo selecionado da lista
+				    Usuario usuario = listUsuario.get(linhaSelecionada);
 
-				    
-				   // if (FuncionarioDAO.deletarFuncionario(funcionario)) {
+				    // Chama o método DAO para excluir o veículo
+				    if (UsuarioDAO.excluirUsuario(usuario)) {
 				        // Atualize a lista e a tabela após a exclusão bem-sucedida
 				        DefaultTableModel model = (DefaultTableModel) table.getModel();
 				        model.removeRow(linhaSelecionada);
 				    } else {
-				        JOptionPane.showMessageDialog(null, "Falha ao excluir o usuário do banco de dados.");
+				        JOptionPane.showMessageDialog(null, "Falha ao excluir o veículo do banco de dados.");
 				    }
-			    else {
-				    JOptionPane.showMessageDialog(null, "Selecione um usuário para excluir.");
-		    
-			}
+				} else {
+				    JOptionPane.showMessageDialog(null, "Selecione um veículo para excluir.");
+				}
+		    }
 		});
-		
+   
 		
 
 		rndbtnDeletar.setText("Deletar");
@@ -160,11 +166,8 @@ private void deletarFuncionario() {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-			/*	String cpfpesquisa = textcpf.getText();
-				atualizarTabela1();
-
 				String cpfpesquisa = textcpf.getText();
-				
+				atualizarTabela1();				
 
 			}
 		});
@@ -172,7 +175,7 @@ private void deletarFuncionario() {
 		panel_1.add(btnPesquisar);
 
 		atualizarTabela1();
-	}
+   }
 	public void atualizarTabela1() {
 		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero" });
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -184,9 +187,6 @@ private void deletarFuncionario() {
 
 		}
 		table.setModel(tabela);
-	}
- 
-
 	}
 
 	
@@ -203,5 +203,5 @@ private void deletarFuncionario() {
 		table.setModel(tabela);
 	}
 	
-}*/
+}
 

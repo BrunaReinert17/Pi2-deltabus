@@ -1,6 +1,6 @@
 package visao;
 
-import javax.swing.JPanel;
+import javax.swing.JPanel; 
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -140,7 +140,8 @@ private void deletarVeiculo() {
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setForeground(Color.WHITE);
-		btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnPesquisar.setFont(new Font
+				("Dialog", Font.BOLD, 16));
 		btnPesquisar.setBackground(new Color(0, 128, 128));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -160,7 +161,7 @@ private void deletarVeiculo() {
 		System.out.println(listVei);
 		for (int i = 0; i < listVei.size(); i++) {
 			Veiculo veiculo = listVei.get(i);
-			tabela.addRow(new Object[] { veiculo.getRenavam(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getCor(),veiculo.getPlaca(),veiculo.getLotacao(),veiculo.getTipoFrota(),veiculo.getTipoCombustivel(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco(),veiculo.getSituacao() });
+			tabela.addRow(new Object[] { veiculo.getRenavam(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getCor(),veiculo.getPlaca(),veiculo.getLotacao(),veiculo.getTipoFrota(),veiculo.getTipoCombustivel(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco(),veiculo.getSituacao()});
 
 		}
 		table.setModel(tabela);

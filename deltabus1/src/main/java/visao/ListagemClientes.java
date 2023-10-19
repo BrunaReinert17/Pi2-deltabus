@@ -1,270 +1,171 @@
 package visao;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controle.ClienteDAO;
-import controle.UsuarioDAO;
-import controle.VeiculoDAO;
-import mensagens.ListagemErro;
+import controle.FuncionarioDAO;
 import modelo.Cliente;
-import modelo.Endereco;
-import modelo.Usuario;
-import modelo.Veiculo;
+import modelo.Funcionario;
+
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.SwingConstants;
 import utilidades.RoundButton;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class ListagemClientes extends JPanel {
-	
 	private JTable table;
-	private JPanel panel;
-	private JPanel panel_1;
-	private ArrayList<Cliente> listCliente;
-	private JTextField textNome;
-	private Cliente clienteClick;
-	private JButton voltar;
-	private AbstractButton btnSalvar;
-	private String validacao = "";
-	private ArrayList<Usuario> listUsuario;
+	private JTextField textcnpj;
+	private ArrayList<Cliente> listClientes;
 
-private void deletarFuncionario() {
-		long nome;
-		nome = Long.valueOf(textNome.getText());
+
+	
+
+private void deletarClientes() {
+		
+		Double cnpj;
+		
+		cnpj = Double.valueOf(textcnpj.getText());
+		
 		Cliente objcliente = new Cliente();
-		//objcliente.setNome(nome);
+		objcliente.setCnpj(cnpj);
+		
 		ClienteDAO objclientedao = new ClienteDAO();
-		objclientedao.deletarCliente(objcliente);
-	}
+		
+		objclientedao.excluirCliente(objcliente);
+		}
+
+	
+	
 	public ListagemClientes() {
-		setBackground(new Color(245, 245, 245));
+		setBackground(new Color(0, 0, 0));
 		setLayout(null);
 		
-		panel = new JPanel();
-		panel.setLayout(null);
-		panel.setForeground(new Color(0, 102, 0));
-		panel.setBackground(new Color(0, 0, 0));
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
-		panel.setBounds(0, 37, 1184, 689);
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 51, 1179, 748);
 		add(panel);
-		panel.setLayout(null);
+		panel.setLayout(new BorderLayout());
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 1164, 667);
-		panel.add(scrollPane);
+		scrollPane.setBounds(0, 37, 1184, 689);
+		panel.add(scrollPane, BorderLayout.CENTER);
+		
+		
 		table = new JTable();
 		table.setBackground(new Color(255, 255, 255));
 		table.setFont(new Font("Dialog", Font.BOLD, 14));
+		
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Telefone", "Email", "Cpf", "Cnpj", "Endereço" }));
+				new String[] { "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep" }));
 		scrollPane.setViewportView(table);
 		
-		panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 0, 0));
-		panel_1.setBounds(0, 0, 1200, 46);
-		add(panel_1);
+		
+		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
+		panel_1.setBackground(Color.BLACK);
+		panel_1.setBounds(0, 0, 1200, 40);
+		panel_1.setBounds(0, 7, 1152, 46);
+		add(panel_1);
+		
 		JLabel lblNewLabel = new JLabel("      Listagem de Clientes\r\n");
-		lblNewLabel.setBounds(0, 0, 352, 38);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBounds(0, 0, 352, 38);
 		panel_1.add(lblNewLabel);
+		
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				deletarFuncionario();
 				
-			}
+				int linhaSelecionada = table.getSelectedRow();
+				if (linhaSelecionada >= 0) {
+				    // Obtém o veículo selecionado da lista
+				    Cliente cliente = listClientes.get(linhaSelecionada);
+
+				    // Chama o método DAO para excluir o veículo
+				    if (ClienteDAO.excluirCliente(cliente)) {
+				        // Atualize a lista e a tabela após a exclusão bem-sucedida
+				        DefaultTableModel model = (DefaultTableModel) table.getModel();
+				        model.removeRow(linhaSelecionada);
+				    } else {
+				        JOptionPane.showMessageDialog(null, "Falha ao excluir o veículo do banco de dados.");
+				    }
+				} else {
+				    JOptionPane.showMessageDialog(null, "Selecione um veículo para excluir.");
+				}
+		    }
 		});
+			
 		rndbtnDeletar.setText("Deletar");
-		rndbtnDeletar.setForeground(new Color(0, 0, 0));
+		rndbtnDeletar.setForeground(Color.BLACK);
 		rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnDeletar.setBackground(new Color(255, 255, 255));
-		rndbtnDeletar.setBounds(1050, 3, 115, 33);
-		panel_1.add(rndbtnDeletar);		
+		rndbtnDeletar.setBackground(Color.WHITE);
+		rndbtnDeletar.setBounds(1023, 3, 115, 33);
+		panel_1.add(rndbtnDeletar);
+		
 		RoundButton rndbtnAlterar = new RoundButton("Alterar");
-		rndbtnAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int position = table.getSelectedRow();
-				if(position == -1) {
-					ListagemErro naoSelecionado = new ListagemErro("Nenhum Usuário Selecionado!");
-					naoSelecionado.setLocationRelativeTo(null);
-					naoSelecionado.setVisible(true);
-				if (position == -1) {
-					JOptionPane.showMessageDialog(null, "Nenhum usuario Selecionado");
-					return;
-				}
-				clienteClick = listCliente.get(position);
-				//preencherClienteTabela(clienteClick);
-				clienteClick = new Cliente();
-				rndbtnAlterar.setVisible(false);
-				panel.remove(rndbtnAlterar);
-				rndbtnAlterar.setVisible(false);
-				panel.remove(rndbtnAlterar);
-				rndbtnDeletar.setVisible(false);
-				panel.remove(rndbtnDeletar);
-				voltar = new JButton("Cancelar");
-				voltar.setForeground(new Color(255, 255, 255));
-				voltar.setBackground(new Color(149, 208, 157));
-				voltar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						limparBorda();
-						rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
-						panel.add(rndbtnAlterar, "cell 1 5, grow");
-						rndbtnAlterar.setVisible(true);
-						panel.remove(voltar);
-						btnSalvar.setVisible(false);
-						panel.remove(rndbtnAlterar);
-						limparTela();
-					}
-					private void limparTela() {
-						// TODO Auto-generated method stub
-					}
-					private void limparBorda() {
-						// TODO Auto-generated method stub
-					}
-				});
-				rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
-				panel.add(rndbtnAlterar, "cell 1 5, grow");
-				btnSalvar = new JButton("Salvar");
-				btnSalvar.setForeground(new Color(255, 255, 255));
-				btnSalvar.setBackground(new Color(149, 208, 157));
-				btnSalvar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						validacao = "";
-						Cliente funcionario = new Cliente();
-						var nome = new CadastrarUsuario();
-						var cpf = new CadastrarUsuario();
-						var telefone = new CadastrarUsuario();
-						var dataNasci = new CadastrarUsuario();
-						var genero = new CadastrarUsuario();
-						var endereco = new Endereco();
-						funcionario = setarObjetoCliente();
-						nome = setarObjetoNome();
-						cpf = setarObjetoCpf();
-						telefone = setarObjetoTelefone();
-					    dataNasci = setarObjetoDataNasci();
-						genero = setarObjetoGenero();
-					    endereco = setarObjetoEndereco();
-						if (funcionario != null && endereco != null ) {
-							funcionario.setEndereco(endereco);
-							Cliente cadastroFuncionarioHelper = new Cliente();
-							Cliente retorno = cadastroFuncionarioHelper.editarCliente(funcionario);
-							if (Cliente.CLIENTEEDITADO == retorno) {
-								JOptionPane.showMessageDialog(null, "Funcionario editado");
-								limparTela();
-							} else {
-								JOptionPane.showMessageDialog(null, "Erro ao editar");
-							}
-							panel.add(rndbtnAlterar);
-							rndbtnAlterar.setVisible(true);
-							rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
-							panel.add(rndbtnAlterar, "cell 1 5,growx");
-							rndbtnAlterar.setVisible(true);
-							rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 14));
-							panel.add(rndbtnDeletar, "cell 3 5,grow");
-							rndbtnDeletar.setVisible(true);
-							limparTela();
-							voltar.setVisible(true);
-							panel.remove(voltar);
-							limparTela();
-							btnSalvar.setVisible(true);
-							panel.remove(btnSalvar);
-						} else {
-							JOptionPane.showMessageDialog(null, validacao, "Dados inválidos:",
-									JOptionPane.ERROR_MESSAGE, null);
-						}
-					}
-					private Endereco setarObjetoEndereco() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					private Cliente setarObjetoCliente() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					private CadastrarUsuario setarObjetoNome() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					private CadastrarUsuario setarObjetoGenero() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					private CadastrarUsuario setarObjetoDataNasci() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					private CadastrarUsuario setarObjetoTelefone() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					private CadastrarUsuario setarObjetoCpf() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					private void limparTela() {
-						// TODO Auto-generated method stub
-					}
-				});
-				rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 14));
-				panel_1.add(rndbtnAlterar, "cell 1 5, grow");
-				}
-			}
-			private void preencherFuncionarioTabela(Cliente funcionarioClick) {
-				// TODO Auto-generated method stub	
-			}
-		});
+		
+
 		rndbtnAlterar.setText("Alterar");
 		rndbtnAlterar.setForeground(Color.WHITE);
 		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnAlterar.setBackground(new Color(0, 128, 128));
-		rndbtnAlterar.setBounds(918, 4, 114, 33);
+		rndbtnAlterar.setBounds(889, 3, 114, 33);
 		panel_1.add(rndbtnAlterar);
-		/*textCPF = new JTextField();
-		textCPF.setBounds(496, 12, 177, 20);
-		panel_1.add(textCPF);
-		textCPF.setColumns(10);
+		
+		textcnpj = new JTextField();
+		textcnpj.setColumns(10);
+		textcnpj.setBounds(496, 12, 177, 20);
+		panel_1.add(textcnpj);
+		
 		JButton btnPesquisar = new JButton("Pesquisar");
-		btnPesquisar.setForeground(new Color(255, 255, 255));
-		btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnPesquisar.setForeground(Color.WHITE);
+		btnPesquisar.setFont(new Font
+				("Dialog", Font.BOLD, 16));
 		btnPesquisar.setBackground(new Color(0, 128, 128));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cpfpesquisa = textCPF.getText();
-				
+				String cpfpesquisa = textcnpj.getText();
+				atualizarTabela();
 			}
 		});
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
-		
-		*/
+
+		atualizarTabela();
+	}
+	public void atualizarTabela() {
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] {  "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep"  });
+		ClienteDAO clientedao = new ClienteDAO();
+		listClientes = clientedao.listar();
+		System.out.println(listClientes);
+		for (int i = 0; i < listClientes.size(); i++) {
+			Cliente cliente = listClientes.get(i);
+			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),cliente.getCpf(),cliente.getCnpj(),cliente.getCep()});
+
+		}
+		table.setModel(tabela);
+	}
 
 	}
-	private void setLocale(String string) {
-	}
-	private void setDefaultCloseOperation(int exitOnClose) {
-	}
-	private void setContentPane(JPanel contentPane2) {
-	}
-	
-	
-	
-}
+

@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +27,8 @@ import controle.EnderecoDAO;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.CadastroCliente;
+
 import modelo.Cliente;
 import modelo.Endereco;
 import utilidades.RoundButton;
@@ -40,10 +42,9 @@ public class CadastrarCliente extends JPanel {
 	private JTextField txtNome;
 	private JTextField txtEmail;
 	private JTextField txtnumeroTelefone;
+	private JTextField txtCpf;
 	private JTextField txtCep;
 	private JLabel lblCep;
-	private JTextField txtCpf2;
-	private JLabel iblEndereco;
 	private JLabel lblBairro;
 	private JLabel lblFuno;
 	private JButton bntDeletar;
@@ -53,8 +54,8 @@ public class CadastrarCliente extends JPanel {
 	private String verificarCampo;
 	private JTextField textField;
 	private JLabel lblLimpar;
-	private String pessoajuridica_ou_fisica;
-	private JTextField txtEndereco;
+	private String cpf;
+	private JTextField textCnpj;
 
 	public CadastrarCliente() {
 		setLocale("Login");
@@ -145,16 +146,9 @@ public class CadastrarCliente extends JPanel {
 		txtnumeroTelefone = new JFormattedTextField(mascaranumeroTelefone);
 		txtnumeroTelefone.setBounds(684, 290, 182, 30);
 		txtnumeroTelefone.setText("");
-		/**********/
-
 		txtnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtnumeroTelefone.setColumns(10);
 		add(txtnumeroTelefone);
-
-		ArrayList<String> pessoajuridica_ou_fisica = new ArrayList<String>();
-		pessoajuridica_ou_fisica.add("");
-		pessoajuridica_ou_fisica.add("CPF");
-		pessoajuridica_ou_fisica.add("CNPJ");
 
 		/**********/
 		MaskFormatter mascaraCep = null;
@@ -189,11 +183,6 @@ public class CadastrarCliente extends JPanel {
 		lblBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblBairro.setBounds(768, 428, 155, 14);
 
-		iblEndereco = new JLabel("Endereço:");
-		iblEndereco.setBounds(684, 365, 155, 14);
-		iblEndereco.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(iblEndereco);
-
 		ArrayList<String> uf = new ArrayList<>();
 		uf.add("");
 		uf.add("SC");
@@ -207,54 +196,31 @@ public class CadastrarCliente extends JPanel {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-
 				Cliente cliente = verificarDados();
-				if (cliente == null) {
-					CadastroErro erro = new CadastroErro ("Dados inválidos!");
-					erro.setLocationRelativeTo(null);
-					erro.setVisible(true);
+				
+				boolean verificarRetornoCadastro = false;
+				
+				
+				
+				if (cliente != null) {
 					
-				} else {
 					ClienteDAO clienteDAO = new ClienteDAO();
-					EnderecoDAO enderecoDAO = new EnderecoDAO();
-					Endereco endereco = enderecoDAO.consultandoEndereco(cliente.getEndereco());
-					boolean ende = false;
+					boolean resultado = clienteDAO.inserirCliente(cliente);
 					
-					if (endereco == null) {
-						ende = enderecoDAO.inserirEndereco(cliente.getEndereco());
-					}
-					
-					boolean ClienteRetornoCadastro = false;
-					
-					if (ende != false) {
-
-						ClienteRetornoCadastro = clienteDAO.inserirCliente(cliente.getCliente());
-						System.out.println(cliente.getCliente());
-						
-						if (ClienteRetornoCadastro != false) {
-							cliente = clienteDAO.selecionar(cliente.getCliente());
-							System.out.println(cliente);
-							cliente.setCliente(cliente);
-							boolean resultado = clienteDAO.inserirCliente(cliente);
-							if (resultado = true) {
-								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
-								sucesso.setLocationRelativeTo(null);
-								sucesso.setVisible(true);
-								limparDados();
-							} else {
-								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
-								erro1.setLocationRelativeTo(null);
-								erro1.setVisible(true);
-							}
-						}
-
-					} else {
-						JOptionPane.showMessageDialog(null, "Erro");
-					}
-
+				 if (resultado == true) {
+					 CadastroCliente cadastro = new CadastroCliente("Cliente cadastrado com sucesso!");
+					 cadastro.setLocationRelativeTo(null);
+					 cadastro.setVisible(true);
+					 limparDados();
+				 }
+				 else {
+					 CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+                     erro1.setLocationRelativeTo(null);
+                     erro1.setVisible(true);
+                     }
 				}
-
 			}
+
 		});
 		btnCadastrar.setForeground(Color.WHITE);
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -278,7 +244,6 @@ public class CadastrarCliente extends JPanel {
 
 				txtCep.setText("");
 
-				txtEndereco.setText("");
 
 
 			}
@@ -297,31 +262,40 @@ public class CadastrarCliente extends JPanel {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtCpf2 = new JFormattedTextField(mascaraCpf2);
-		txtCpf2.setBounds(252, 290, 182, 30);
-		txtCpf2.setText("");
-		txtCpf2.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtCpf = new JFormattedTextField(mascaraCpf2);
+		txtCpf.setBounds(252, 290, 182, 30);
+		txtCpf.setText("");
+		txtCpf.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtCpf);
+		txtCpf.setColumns(10);
 		/**********/
-		txtCpf2.setBackground(new Color(255, 255, 255));
-		txtCpf2.setForeground(new Color(0, 0, 0));
-		txtCpf2.setColumns(10);
-		add(txtCpf2);
 		
-		txtEndereco = new JTextField();
-		txtEndereco.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtEndereco.setColumns(10);
-		txtEndereco.setBounds(684, 383, 354, 30);
-		add(txtEndereco);
+		MaskFormatter mascaraCnpj = null;
+		try {
+		    mascaraCnpj = new MaskFormatter("##.###.###/2001-##");
+		} catch (ParseException e1) {
+		    e1.printStackTrace();
+		}
+
+		textCnpj = new JFormattedTextField(mascaraCnpj);
+		textCnpj.setBounds(684, 383, 235, 30);
+		textCnpj.setText("");
+		textCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(textCnpj);
+		textCnpj.setColumns(10);
+		/**********/
+		
+		
+		JLabel lblCnpj = new JLabel("CNPJ:");
+		lblCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblCnpj.setBounds(684, 365, 155, 14);
+		add(lblCnpj);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 	}
 
-	protected void setSelectedItem(Object object) {
-		// TODO Auto-generated method stub
-
-	}
 
 	private void setLocale(String string) {
 
@@ -350,7 +324,6 @@ public class CadastrarCliente extends JPanel {
 
 		String cep = txtCep.getText().replace("-", "");
 
-		String bairro = txtEndereco.getText();
 
 		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
 			verificarCampo += "Nome\n";
@@ -364,33 +337,27 @@ public class CadastrarCliente extends JPanel {
 			cliente.setEmail(email);
 		}
 		
-		 if (numeroTelefone == null || numeroTelefone.trim() == "" || numeroTelefone.isEmpty()) {
+		 if (numeroTelefone == null  || numeroTelefone.isEmpty()) {
 			verificarCampo += "numeroTelefone\n";
 		} else {
 			cliente.setNumeroTelefone(Integer.valueOf(numeroTelefone));
 
 		}
 
-		if (pessoajuridica_ou_fisica == null || pessoajuridica_ou_fisica.trim() == "" || pessoajuridica_ou_fisica.isEmpty()) {
-			verificarCampo += "PessoaJuridica_ou_Fisica\n";
+		if (cpf == null || cpf.toString().trim().isEmpty()) {
+			verificarCampo += "cpf\n";
 		} else {
 			
-			cliente.setPessoaJuridica_ou_Fisica(pessoajuridica_ou_fisica);
+			cliente.setCpf(Double.valueOf(cpf));
 		}
 
-		if (cep == null || cep.trim() == "" || cep.isEmpty()) {
+		if (cep == null || cep.toString().trim().isEmpty()) {
 			verificarCampo += "cep\n";
 		} else {
-			endereco.setCep(Integer.valueOf(cep));
+			cliente.setCep(Integer.valueOf(cep));
 
 		}
 
-		/*if (endereco == null || endereco.trim() == "" || endereco.isEmpty()) {
-			verificarCampo += "endereco\n";
-		} else {
-			endereco.setEndereco(endereco);
-
-		}*/
 
 
 
@@ -408,6 +375,5 @@ public class CadastrarCliente extends JPanel {
 		txtEmail.setText("");
 		txtnumeroTelefone.setText("");
 		txtCep.setText("");
-		txtEndereco.setText("");
 	}
 }

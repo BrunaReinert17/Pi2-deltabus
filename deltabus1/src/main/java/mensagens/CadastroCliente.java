@@ -1,6 +1,6 @@
 package mensagens;
 
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-public class CadastroVeiculo extends JFrame {
+public class CadastroCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblSucesso1;
@@ -25,7 +25,7 @@ public class CadastroVeiculo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroVeiculo(String mensagem) {
+	public CadastroCliente(String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -58,7 +58,7 @@ public class CadastroVeiculo extends JFrame {
 		lblNewLabel.setBounds(122, -21, 129, 82);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Veiculo cadastrado");
+		JLabel lblNewLabel_1 = new JLabel("Cliente cadastrado");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_1.setBounds(122, 81, 137, 14);
