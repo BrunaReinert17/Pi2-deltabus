@@ -10,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.FuncionarioDAO;
 import controle.VeiculoDAO;
+import mensagens.Deletar1;
+import mensagens.Deletar2;
 import modelo.Funcionario;
 import modelo.Veiculo;
 
@@ -108,10 +110,14 @@ private void deletarVeiculo() {
 				        DefaultTableModel model = (DefaultTableModel) table.getModel();
 				        model.removeRow(linhaSelecionada);
 				    } else {
-				        JOptionPane.showMessageDialog(null, "Falha ao excluir o veículo do banco de dados.");
+				    	Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
+				    	falha.setLocationRelativeTo(null);
+				    	falha.setVisible(true);
 				    }
 				} else {
-				    JOptionPane.showMessageDialog(null, "Selecione um veículo para excluir.");
+					Deletar2 falha2 = new Deletar2("Selecione um veiculo para excluir");
+			    	falha2.setLocationRelativeTo(null);
+			    	falha2.setVisible(true);
 				}
 		    }
 		});

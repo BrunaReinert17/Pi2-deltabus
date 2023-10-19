@@ -40,14 +40,8 @@ public class ListagemUsuarios extends JPanel {
 	
 	private JTable table;
 	private JPanel panel;
-	private JPanel panel_1;
 	private ArrayList<Funcionario> listFuncionario;
 	private JTextField textcpf;
-	private Funcionario funcionarioClick;
-	private JButton voltar;
-	private AbstractButton btnSalvar;
-	private String validacao = "";
-	private ArrayList<Usuario> listUsuario;
 	private JTextField txtNome;
 	
 
@@ -69,22 +63,13 @@ private void deletarUsuario() {
 	public ListagemUsuarios() {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
-		
-		panel = new JPanel();
-		panel.setLayout(null);
-		panel.setForeground(new Color(0, 102, 0));
-		panel.setBackground(new Color(0, 0, 0));
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
-		panel.setBounds(0, 37, 1184, 689);
 		JPanel panel = new JPanel();
-		panel.setBounds(27, 64, 1125, 735);
+		panel.setBounds(10, 51, 1179, 748);
 		add(panel);
 		panel.setLayout(new BorderLayout());
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 1164, 667);
-		panel.add(scrollPane);
-		scrollPane.setBounds(0, 0, 1136, 28);
+		scrollPane.setBounds(0, 37, 1184, 689);
 		panel.add(scrollPane, BorderLayout.CENTER);
 		
 		
@@ -143,8 +128,16 @@ private void deletarUsuario() {
 		rndbtnDeletar.setBackground(Color.WHITE);
 		rndbtnDeletar.setBounds(1023, 3, 115, 33);
 		panel_1.add(rndbtnDeletar);
-
 		
+		RoundButton rndbtnAlterar = new RoundButton("Alterar");
+		
+		rndbtnAlterar.setText("Alterar");
+		rndbtnAlterar.setForeground(Color.WHITE);
+		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+		rndbtnAlterar.setBackground(new Color(0, 128, 128));
+		rndbtnAlterar.setBounds(889, 3, 114, 33);
+		panel_1.add(rndbtnAlterar);
+
 		textcpf = new JTextField();
 		textcpf.setColumns(10);
 		textcpf.setBounds(496, 12, 177, 20);
