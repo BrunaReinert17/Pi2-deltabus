@@ -48,7 +48,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		}
 
 	}
-
+	
 	public boolean deletarFuncionario(Funcionario funcionario) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();

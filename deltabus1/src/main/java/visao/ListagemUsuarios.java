@@ -50,16 +50,16 @@ public class ListagemUsuarios extends JPanel {
 	
 
 private void deletarUsuario() {
-	String nome;
+	Long cpf;
 	
-	nome = String.valueOf(txtNome.getText());
+	cpf = Long.valueOf(textcpf.getText());
 	
-	Usuario objusuario = new Usuario();
-	objusuario.setNome(nome);
+	Funcionario objusuario = new Funcionario();
+	objusuario.setCpf(cpf);
 	
-	UsuarioDAO objusuariodao = new 	UsuarioDAO();
+	FuncionarioDAO objusuariodao = new 	FuncionarioDAO();
 	
-	objusuariodao.excluirUsuario(objusuario);
+	objusuariodao.deletarFuncionario(objusuario);
 	}
 
 	public ListagemUsuarios() {
@@ -108,25 +108,8 @@ private void deletarUsuario() {
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				int linhaSelecionada = table.getSelectedRow();
-				if (linhaSelecionada >= 0) {
-				    // Obtém o veículo selecionado da lista
-				    Usuario usuario = listUsuario.get(linhaSelecionada);
-
-				    // Chama o método DAO para excluir o veículo
-				    if (UsuarioDAO.excluirUsuario(usuario)) {
-				        // Atualize a lista e a tabela após a exclusão bem-sucedida
-				        DefaultTableModel model = (DefaultTableModel) table.getModel();
-				        model.removeRow(linhaSelecionada);
-				    } else {
-				        JOptionPane.showMessageDialog(null, "Falha ao excluir o veículo do banco de dados.");
-				    }
-				} else {
-				    JOptionPane.showMessageDialog(null, "Selecione um veículo para excluir.");
-				}
-		    }
-		});
+			}
+		    });
    
 		
 
@@ -167,28 +150,16 @@ private void deletarUsuario() {
 			public void actionPerformed(ActionEvent e) {
 
 				String cpfpesquisa = textcpf.getText();
-				atualizarTabela1();				
+				atualizarTabela();				
 
 			}
 		});
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
 
-		atualizarTabela1();
+		atualizarTabela();
    }
-	public void atualizarTabela1() {
-		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero" });
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		listUsuario = usuarioDAO.listar();
-		System.out.println(listUsuario);
-		for (int i = 0; i < listUsuario.size(); i++) {
-			Usuario usuarios = listUsuario.get(i);
-			tabela.addRow(new Object[] { Usuario.getNome(), Usuario.Email(), Usuario.getCpf(),Usuario.getTelefone(),Usuario.getDataNasci(),Usuario.getGenero()});
-
-		}
-		table.setModel(tabela);
-	}
-
+	
 	
 	private void atualizarTabela() {
 		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
