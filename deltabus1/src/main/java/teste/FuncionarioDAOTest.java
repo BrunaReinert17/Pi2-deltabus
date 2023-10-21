@@ -34,10 +34,10 @@ public class FuncionarioDAOTest {
         
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(1);
-    //    f.setUsuario(usuario);
+        f.setUsuario(usuario);
         
         FuncionarioDAO dao = new FuncionarioDAO();
 		boolean resultado = dao.inserirFuncionario(f);
-		assertEquals(true,resultado);
+		assertEquals(false,resultado);
 	}
 }

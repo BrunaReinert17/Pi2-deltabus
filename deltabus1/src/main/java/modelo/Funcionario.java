@@ -9,7 +9,7 @@ public class Funcionario {
 	private LocalDate datanasci;
 	private String genero;
 	private String numeroTelefone;
-	private long cpf;
+	private String cpf;
 	private Endereco endereco;
 	private Usuario usuario;
 
@@ -19,7 +19,7 @@ public class Funcionario {
 		super();
 	}
 
-	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, long cpf,
+	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, String cpf,
 			Endereco endereco, Usuario usuario) {
 
 		super();
@@ -92,17 +92,13 @@ public class Funcionario {
 		this.numeroTelefone = numeroTelefone;
 
 	}
-	public long getCpf() {
+	public String getCpf() {
 
 		return cpf;
 
 	}
 
-	public void setCpf(long cpf) {
-
-		this.cpf = cpf;
-
-	}
+	
 
 	public Endereco getEndereco() {
 
@@ -135,10 +131,27 @@ public class Funcionario {
 		return funcionario ;
 	}
 
+	public void setUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void setUsuario(Funcionario funcionario) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void setCpf(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCpf(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 	
 }

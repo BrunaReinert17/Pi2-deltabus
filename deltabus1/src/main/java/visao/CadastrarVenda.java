@@ -295,12 +295,12 @@ public class CadastrarVenda extends JPanel {
 		if (cpfTxt == null || cpfTxt.trim() == "" || cpfTxt.isEmpty()) {
 			verificarCampo += "CPF\n";
 		} else {
-			long cpf = Long.parseLong(cpfTxt);
+			String cpf = String.valueOf(cpfTxt);
 			funcionario.setCpf(cpf);
 		}
 		
 		if (verificarCampo.trim() == "") {
-		//	funcionario.(usuario);
+			funcionario.setUsuario(usuario);
 			funcionario.setEndereco(endereco);
 			return funcionario;
 		}
