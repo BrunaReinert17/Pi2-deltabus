@@ -89,6 +89,9 @@ public class CadastrarUsuario extends JPanel {
 	private Funcionario funcionarioClick;
 	private ArrayList<Funcionario> listFuncionario;
 	private RoundButton rndbtnSalvar;
+	private Usuario UsuarioSelecionado = null;
+	private Funcionario funcionarioSelecionado = null;
+	private Boolean editar;
 
 
 	public CadastrarUsuario() {
@@ -419,7 +422,7 @@ public class CadastrarUsuario extends JPanel {
 		add(lblFuncao);
 		
 		btnCadastrar = new RoundButton("Cadastrar");
-		btnCadastrar.setBounds(571, 627, 132, 33);
+		btnCadastrar.setBounds(714, 627, 132, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -520,15 +523,34 @@ public class CadastrarUsuario extends JPanel {
 		RoundButton rndbtnAlterar_1 = new RoundButton("Alterar");
 		rndbtnAlterar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//if (UsuarioSelecionado == null && funcionarioSelecionado == null) {
+				//	new DialogMensagemErro("Usuario não selecionado").setVisible(true);
+					return;
+			//	}
+
+			//	editar = true;
+			//	dispose();
+			//	CadastrarUsuario telaAlterar = new CadastrarUsuario(, UsuarioSelecionado,
+			//			editar, funcionarioSelecionado);
+			///	telaAlterar.setLocationRelativeTo(null);
+			///	telaAlterar.setVisible(true);
+			//	telaAlterar.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			//}
+
+			//private void dispose() {
+				// TODO Auto-generated method stub
 				
-			}	
+			}
+				
+				
+				
 		});
 		
 		rndbtnAlterar_1.setText("Alterar");
 		rndbtnAlterar_1.setForeground(Color.WHITE);
 		rndbtnAlterar_1.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnAlterar_1.setBackground(new Color(0, 128, 128));
-		rndbtnAlterar_1.setBounds(428, 627, 120, 33);
+		rndbtnAlterar_1.setBounds(556, 627, 120, 33);
 		add(rndbtnAlterar_1);
 		
 		RoundButton rndbtnSalvar = new RoundButton("Salvar");
@@ -536,12 +558,24 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnSalvar.setForeground(new Color(255, 255, 255));
 		rndbtnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnSalvar.setBackground(new Color(0, 128, 128));
-		rndbtnSalvar.setBounds(280, 627, 110, 31);
+		rndbtnSalvar.setBounds(405, 628, 110, 31);
 		add(rndbtnSalvar);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	}
 	
+
+	protected void setExtendedState(int maximizedBoth) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	protected void setLocationRelativeTo(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	protected void verificarDados(Funcionario verificarDados) {
 		// TODO Auto-generated method stub
