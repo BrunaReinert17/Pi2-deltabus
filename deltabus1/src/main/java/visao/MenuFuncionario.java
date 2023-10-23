@@ -120,9 +120,19 @@ public class MenuFuncionario extends JFrame {
 		panel.setBounds(0, 0, 376, 1061);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		JLabel lblNewLabel_9 = new JLabel("");
+		lblNewLabel_9.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone cadastro.png")));
+		lblNewLabel_9.setBounds(81, 650, 50, 54);
+		panel.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone cadastro.png")));
+		lblNewLabel_4.setBounds(81, 724, 50, 43);
+		panel.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_10 = new JLabel("");
-		lblNewLabel_10.setBounds(46, 574, 82, 65);
+		lblNewLabel_10.setBounds(45, 574, 86, 54);
 		panel.add(lblNewLabel_10);
 		lblNewLabel_10.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
 
@@ -133,7 +143,7 @@ public class MenuFuncionario extends JFrame {
 
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_5.setBounds(50, 391, 141, 33);
+		lblNewLabel_5.setBounds(45, 520, 145, 33);
 		panel.add(lblNewLabel_5);
 		lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
 
@@ -168,7 +178,7 @@ public class MenuFuncionario extends JFrame {
 		btnCadastrarClientes.setForeground(new Color(0, 0, 0));
 		btnCadastrarClientes.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrarClientes.setBackground(new Color(0, 128, 128));
-		btnCadastrarClientes.setBounds(90, 500, 199, 109);
+		btnCadastrarClientes.setBounds(92, 444, 199, 109);
 		panel.add(btnCadastrarClientes);
 
 		btnCadastrarClientes.setForeground(Color.WHITE);
@@ -178,7 +188,8 @@ public class MenuFuncionario extends JFrame {
 		panel.add(btnCadastrarClientes);
 
 		RoundButton rndbtnCadastrarVeiculos = new RoundButton("Cadastrar");
-		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculo");
+		rndbtnCadastrarVeiculos.setHorizontalAlignment(SwingConstants.RIGHT);
+		rndbtnCadastrarVeiculos.setText("Cadastrar Veiculos");
 		rndbtnCadastrarVeiculos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste3.setVisible(true);
@@ -198,7 +209,7 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setForeground(Color.WHITE);
 		rndbtnCadastrarVeiculos.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnCadastrarVeiculos.setBackground(new Color(0, 128, 128));
-		rndbtnCadastrarVeiculos.setBounds(94, 391, 199, 43);
+		rndbtnCadastrarVeiculos.setBounds(92, 650, 199, 43);
 		panel.add(rndbtnCadastrarVeiculos);
 
 		JButton btnLogout = new RoundButton("Logout");
@@ -238,6 +249,7 @@ public class MenuFuncionario extends JFrame {
 		panel.add(btnHome);
 
 		RoundButton btnlistaVeiculo = new RoundButton("Listagem de Veiculos");
+		btnlistaVeiculo.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnlistaVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste1.setVisible(true);
@@ -249,17 +261,15 @@ public class MenuFuncionario extends JFrame {
 				
 			}
 		});
-
-		btnlistaVeiculo.setText("Listagem de Veiculos");
 		btnlistaVeiculo.setBackground(new Color(0, 128, 128));
 		btnlistaVeiculo.setForeground(new Color(255, 255, 255));
-		btnlistaVeiculo.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnlistaVeiculo.setBounds(90, 596, 199, 43);
+		btnlistaVeiculo.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnlistaVeiculo.setBounds(92, 584, 199, 43);
 		panel.add(btnlistaVeiculo);
 		
 		RoundButton btnCadastroDeVendas = new RoundButton("Cadastro de Vendas");
-		btnCadastroDeVendas.setText("Cadastrar Vendas");
 		btnCadastroDeVendas.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnCadastroDeVendas.setText("Cadastrar Pedidos");
 		btnCadastroDeVendas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste2.setVisible(true);
@@ -273,14 +283,11 @@ public class MenuFuncionario extends JFrame {
 		btnCadastroDeVendas.setForeground(new Color(255, 255, 255));
 		btnCadastroDeVendas.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastroDeVendas.setBackground(new Color(0, 128, 128));
-		btnCadastroDeVendas.setBounds(92, 664, 199, 43);
+		btnCadastroDeVendas.setBounds(92, 715, 199, 43);
 		panel.add(btnCadastroDeVendas);
 		
-		JLabel lblNewLabel_10_1 = new JLabel("");
-		lblNewLabel_10_1.setBounds(50, 505, 82, 65);
-		panel.add(lblNewLabel_10_1);
-		
 		RoundButton btnlistaCliente = new RoundButton("Listagem de Cliente");
+		btnlistaCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnlistaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste4.setVisible(true);
@@ -290,11 +297,11 @@ public class MenuFuncionario extends JFrame {
 				panelTeste3.setVisible(false);
 			}
 		});
-		btnlistaCliente.setText("Listagem de Cliente");
+		btnlistaCliente.setText("Listagem de Clientes");
 		btnlistaCliente.setForeground(Color.WHITE);
-		btnlistaCliente.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnlistaCliente.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnlistaCliente.setBackground(new Color(0, 128, 128));
-		btnlistaCliente.setBounds(94, 527, 199, 43);
+		btnlistaCliente.setBounds(92, 520, 199, 43);
 		panel.add(btnlistaCliente);
 
 		JLabel lblNewLabel1 = new JLabel("New label");

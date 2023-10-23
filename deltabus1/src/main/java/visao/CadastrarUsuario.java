@@ -34,6 +34,7 @@ import mensagens.AlterarErroUsuario;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.Limpar;
 import mensagens.ListagemErro;
 import mensagens.LoginErro;
 import modelo.Endereco;
@@ -467,7 +468,7 @@ public class CadastrarUsuario extends JPanel {
 							}
 						}
 					} else {
-						CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+						CadastroErro1 erro1 = new CadastroErro1("Tente novamente!");
 						erro1.setLocationRelativeTo(null);
 						erro1.setVisible(true);
 					}
@@ -490,19 +491,9 @@ public class CadastrarUsuario extends JPanel {
 		btnLimparCampo.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtNome.setText("");
-				txtCpf.setText("");
-				txtEmail.setText("");
-				txtTelefone.setText("");
-				txtDataNasci.setText("");
-				txtCep.setText("");
-				txtSenha.setText("");
-				txtBairro.setText("");
-				textRua.setText("");
-				cbUf.setSelectedIndex(-1);
-				cbCidade.setSelectedIndex(-1);
-				cbFuncao.setSelectedIndex(-1);
-				cbGenero.setSelectedIndex(-1);
+				Limpar limparDados = new Limpar("Tem certeza de que deseja limpar os dados?");
+				limparDados.setLocationRelativeTo(null);
+				limparDados.setVisible(true);
 			}
 		});
 		add(btnLimparCampo);
