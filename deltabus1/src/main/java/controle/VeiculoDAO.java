@@ -152,4 +152,9 @@ public class VeiculoDAO {
 		return false;
 	}
 
+	public void deletarVeiculo(Veiculo objveiculo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

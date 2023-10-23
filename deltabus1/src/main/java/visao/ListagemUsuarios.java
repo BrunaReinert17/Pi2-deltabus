@@ -39,15 +39,11 @@ import utilidades.RoundButton;
 public class ListagemUsuarios extends JPanel {
 	
 	private JTable table;
-	private JPanel panel;
 	private ArrayList<Funcionario> listFuncionario;
-	private JTextField textcpf;
-	private JTextField txtNome;
-	
-
-	
+	private JTextField textcpf;	
 
 private void deletarUsuario() {
+	
 	String cpf;
 	
 	cpf = String.valueOf(textcpf.getText());
@@ -63,6 +59,7 @@ private void deletarUsuario() {
 	public ListagemUsuarios() {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 51, 1179, 748);
 		add(panel);
@@ -81,10 +78,11 @@ private void deletarUsuario() {
 				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero" }));
 		scrollPane.setViewportView(table);
 		
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.BLACK);
+		panel_1.setBounds(37, 11, 1200, 46);
 		panel_1.setBounds(0, 7, 1152, 46);
 		add(panel_1);
 		
@@ -94,6 +92,7 @@ private void deletarUsuario() {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel.setBounds(0, 0, 352, 38);
 		panel_1.add(lblNewLabel);
+		
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -109,12 +108,12 @@ private void deletarUsuario() {
 				        DefaultTableModel model = (DefaultTableModel) table.getModel();
 				        model.removeRow(linhaSelecionada);
 				    } else {
-				    	Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
+				    	Deletar1 falha = new Deletar1("Falha ao excluir Usuário");
 				    	falha.setLocationRelativeTo(null);
 				    	falha.setVisible(true);
 				    }
 				} else {
-					Deletar2 falha2 = new Deletar2("Selecione um veiculo para excluir");
+					Deletar2 falha2 = new Deletar2("Selecione um Usuário para excluir");
 			    	falha2.setLocationRelativeTo(null);
 			    	falha2.setVisible(true);				}
 			}

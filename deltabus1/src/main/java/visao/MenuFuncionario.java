@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import mensagens.Logout;
 import utilidades.RoundButton;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
@@ -204,10 +205,9 @@ public class MenuFuncionario extends JFrame {
 		btnLogout.setText("");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login telaLogin = new Login();
-				telaLogin.setLocationRelativeTo(null);
-				telaLogin.setVisible(true);
-				dispose();
+				Logout logout = new Logout("Tem certeza de que deseja sair?");
+				logout.setLocationRelativeTo(null);
+				logout.setVisible(true);
 			}
 		});
 		btnLogout.setForeground(new Color(255, 255, 255));
