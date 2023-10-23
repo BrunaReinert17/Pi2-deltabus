@@ -338,9 +338,9 @@ public class CadastrarVeiculo extends JPanel {
 		ArrayList<String> modelo = new ArrayList<String>();
 		modelo.add("");
 		modelo.add("Scania");
-		modelo.add("mpolo");
-		modelo.add("volvo");
-		modelo.add("comil");
+		modelo.add("marcopolo");
+		modelo.add("Volvo");
+		modelo.add("Comil");
 		
 		 cbModelo_1 = new JComboBox();
 		 cbModelo_1.addAncestorListener(new AncestorListener() {

@@ -55,6 +55,20 @@ public class Limpar extends JFrame {
 		RoundButton btnSim = new RoundButton("Sim");
 		btnSim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				txtNome.setText("");
+				txtCpf.setText("");
+				txtEmail.setText("");
+				txtTelefone.setText("");
+				txtDataNasci.setText("");
+				txtCep.setText("");
+				txtSenha.setText("");
+				txtBairro.setText("");
+				textRua.setText("");
+				cbUf.setSelectedIndex(-1);
+				cbCidade.setSelectedIndex(-1);
+				cbFuncao.setSelectedIndex(-1);
+				cbGenero.setSelectedIndex(-1);
+				dispose();
 			}
 		});
 		btnSim.setBounds(100, 118, 61, 29);
@@ -87,11 +101,6 @@ public class Limpar extends JFrame {
 		lblNewLabel.setBounds(131, 11, 96, 96);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblLimpar = new JLabel("");
-		lblLimpar.setIcon(new ImageIcon(Logout.class.getResource("/imagem/mensage7.png")));
-		lblLimpar.setBounds(67, 81, 240, 29);
-		contentPane.add(lblLimpar);
-		
 		RoundButton btnNao = new RoundButton("Não");
 		btnNao.setText("NÃO");
 		btnNao.setForeground(new Color(255, 255, 255));
@@ -104,5 +113,21 @@ public class Limpar extends JFrame {
             }
         });
 		contentPane.add(btnNao);
+		
+		JLabel lblNewLabel_1 = new JLabel("Tem certeza de que deseja limpar os dados?");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(44, 79, 286, 14);
+		contentPane.add(lblNewLabel_1);
 	}
+public void limparDados() {
+	txtNome.setText("");
+	txtCpf.setText("");
+	txtEmail.setText("");
+	txtTelefone.setText("");
+	txtDataNasci.setText("");
+	txtCep.setText("");
+	txtSenha.setText("");
+	txtBairro.setText("");
+}
 }

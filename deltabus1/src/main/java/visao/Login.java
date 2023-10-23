@@ -96,17 +96,25 @@ public class Login extends JFrame {
 				String senha = txtSenha.getText();
 				usuario.setEmail(email);
 				usuario.setSenha(senha);
-
+								
 				UsuarioDAO usuarioDAO = new UsuarioDAO();
 				Usuario retorno = usuarioDAO.consultarLogin(usuario);
 
 				if (!email.isEmpty() && !senha.isEmpty()) {
 
 					if (retorno != null && retorno.getEmail().equals(email) && retorno.getSenha().equals(senha)) {
+						if (retorno.getCargo().equals("administrador")) {
 						MenuAdmin telaPrincipal = new MenuAdmin();
 						telaPrincipal.setLocationRelativeTo(null);
 						telaPrincipal.setVisible(true);
 						dispose();
+					} else {
+						MenuFuncionario telaFuncionario = new MenuFuncionario();
+						telaFuncionario.setLocationRelativeTo(null);
+						telaFuncionario.setVisible(true);
+						dispose();
+					} 
+						
 					} else {
 						LoginErro janelaErro = new LoginErro("Senha ou E-mail Incorretos!");
 						janelaErro.setLocationRelativeTo(null);
