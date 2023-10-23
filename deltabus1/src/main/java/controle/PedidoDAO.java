@@ -56,24 +56,27 @@ public class PedidoDAO implements InterfacePedido{
 			return pedidos;
 		}
 
-	@Override
-	public boolean inserirPedido(Pedido pedido) {
+	public  boolean inserirPedido(Pedido pedido) {
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
+		int valida = 0;
+
 
 		String query = "INSERT INTO Pedido " 
-		+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,veiculo_idVeiculo,Cliente_cnpj) " 
-		+ "VALUES (?, ?, ?, ?, ?, ?)";
+		+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
+		+ "VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, pedido.getVeiculo());
-			ps.setLong(2, pedido.getDataCompra());
+			ps.setInt(1, pedido.getId_pedidos());
+			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
 			ps.setDouble(3, pedido.getValorPago());
 			ps.setString(4, pedido.getTipoPagamento());
-			ps.setInt(5, pedido.getVeiculo());
-			ps.setString(6, pedido.getCliente());
+		    ps.setString(5,pedido.getRenavam());
+		    ps.setString(6,pedido.getCliente());
+		    ps.setString(7,pedido.getNomeCliente());
+		    ps.setInt(8,pedido.getQuantidade());
 
 			ps.executeUpdate();
 
@@ -91,11 +94,11 @@ public class PedidoDAO implements InterfacePedido{
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM Cliente\r\n  WHERE Cpf = ?";
+		String query = "DELETE FROM Pedido\r\n  WHERE Cliente = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, pedido.getVeiculo());
+			ps.setString(1, pedido.getCliente());
 			ps.executeUpdate();
 
 			c.fecharConexao();
@@ -114,17 +117,20 @@ public class PedidoDAO implements InterfacePedido{
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE Pedido\r\n   SET" + "nome = ?\r\n" + "dataNascimento = ?" + "genero = ?"
-				+ " numerotelefone = ?" + "email = ?" + "Usuario_idUsuario = ?" + "endereco_cep = ? ,  WHERE cpf = ?";
+		String query = "UPDATE Pedido\r\n   SET" + "ValorPago = ?\r\n" + "dataCompra = ?" + "tipoPagamento = ?"
+				+ " quantidade = ?" + " nomeCliente = ?" + " Renavam = ?" + "cliente = ?  ,  WHERE id_pedidos = ?";
 		try {
 			PreparedStatement p = con.prepareStatement(query);
 
 			
 			p.setDouble(1, pedido.getValorPago());
-		//	p.setDate(2, java.sql.Date.valueOf(pedido.getDataCompra()));
+			p.setDate(2,java.sql.Date.valueOf(pedido.getDataCompra()));
 			p.setString(3, pedido.getTipoPagamento());
-			p.setInt(4, pedido.getVeiculo());
-			p.setString(5, pedido.getCliente());
+			p.setString(4, pedido.getCliente());
+			p.setString(5, pedido.getRenavam());
+			p.setString(6,pedido.getNomeCliente());
+			p.setInt(7,pedido.getQuantidade());
+			p.setInt(8, pedido.getId_pedidos());
 			p.executeUpdate();
 
 			c.fecharConexao();
@@ -139,6 +145,37 @@ public class PedidoDAO implements InterfacePedido{
 		return false;
 	}
 	 
-	 
+	 public static boolean inserirPedido1(Pedido pedido) {
+			Conexao c = Conexao.getInstancia();
+
+			Connection con = c.conectar();
+			int valida = 0;
+
+
+			String query = "INSERT INTO Pedido " 
+			+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
+			+ "VALUES (?, ?, ?, ?, ?)";
+
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pedido.getId_pedidos());
+				ps.setDate(2, java.sql.Date.valueOf(pedido.getDataCompra()));
+				ps.setDouble(3, pedido.getValorPago());
+				ps.setString(4, pedido.getTipoPagamento());
+			    ps.setString(5,pedido.getRenavam());
+			    ps.setString(6,pedido.getCliente());
+			    ps.setString(7,pedido.getNomeCliente());
+			    ps.setInt(8,pedido.getQuantidade());
+
+				ps.executeUpdate();
+
+				c.fecharConexao();
+
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return false;
+	 }
 	
 }
