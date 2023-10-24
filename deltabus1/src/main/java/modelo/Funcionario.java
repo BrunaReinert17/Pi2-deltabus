@@ -17,7 +17,7 @@ public class Funcionario {
 	private Endereco endereco;
 	private Usuario usuario;
 
-	
+	//seguir como ordem
 	
 	public Funcionario() {
 		super();

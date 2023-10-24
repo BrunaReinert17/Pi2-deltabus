@@ -14,6 +14,7 @@ import modelo.Usuario;
 import static org.junit.Assert.assertEquals;
 public class FuncionarioDAOTest {
 
+		//seguir como ordem
 	
 	@Test
 	public void testMetodoinserirFuncionario() {

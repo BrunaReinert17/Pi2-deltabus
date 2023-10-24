@@ -442,15 +442,13 @@ public class CadastrarUsuario extends JPanel {
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
-				} else {//erro da qui pra baixo
+				} else {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
-					System.out.println("Erro1");
 					Endereco endereco = enderecoDAO.consultandoEndereco(funcionario.getEndereco());
 					System.out.println(endereco);
 					boolean ende = true;
-					System.out.println("Erro2");
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
