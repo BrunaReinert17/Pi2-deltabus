@@ -311,6 +311,7 @@ public class CadastrarUsuario extends JPanel {
 		txtCep.setBounds(521, 364, 149, 30);
 		txtCep.setText("");
 		/**********/
+		
 		txtCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtCep.setColumns(10);
 		add(txtCep);
@@ -324,6 +325,7 @@ public class CadastrarUsuario extends JPanel {
 		txtBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtBairro.setColumns(10);
 		add(txtBairro);
+		
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
 		cidade.add("São José");
@@ -399,6 +401,7 @@ public class CadastrarUsuario extends JPanel {
 		ArrayList<String> funcao = new ArrayList<>();
 		funcao.add("Administrador");
 		funcao.add("Funcionario");
+		
 		cbFuncao = new JComboBox();
 		cbFuncao.setBounds(362, 541, 155, 30);
 		cbFuncao.addAncestorListener(new AncestorListener() {
@@ -414,6 +417,7 @@ public class CadastrarUsuario extends JPanel {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
+		
 		cbFuncao.setModel(new DefaultComboBoxModel(new String[] { "" }));
 		cbFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(cbFuncao);
@@ -422,25 +426,30 @@ public class CadastrarUsuario extends JPanel {
 		lblFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblFuncao);
 		
+		
 		btnCadastrar = new RoundButton("Cadastrar");
 		btnCadastrar.setBounds(714, 627, 132, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+          
+            
 				Funcionario funcionario = verificarDados();
+				
 				Usuario usuario = new Usuario();
-				if (funcionario == null) {
+				if (funcionario == funcionario) {
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
-				} else {
+					System.out.println("Erro");
+				} else {//erro da qui pra baixo
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
-					
+					System.out.println("Erro1");
 					Endereco endereco = enderecoDAO.consultandoEndereco(funcionario.getEndereco());
 					boolean ende = false;
+					System.out.println("Erro2");
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
@@ -448,7 +457,7 @@ public class CadastrarUsuario extends JPanel {
 					if (ende != false) {
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
 						System.out.println(funcionario.getUsuario());
-						
+					
 						if (usuarioRetornoCadastro != false) {
 							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
 							System.out.println(usuario);

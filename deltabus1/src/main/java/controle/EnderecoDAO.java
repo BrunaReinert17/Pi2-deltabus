@@ -43,11 +43,11 @@ public class EnderecoDAO implements InterfaceEndereco {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return endereco;
 		} finally {
 			con.fecharConexao();
 		}
-		return null;
+		return endereco;
 
 	}
 	
