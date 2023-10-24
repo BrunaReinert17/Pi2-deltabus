@@ -35,12 +35,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class ListagemVeiculos extends JPanel {
+	
 	private JTable table;
 	private JTextField textrenavam;
 	private ArrayList<Veiculo> listVei;
-
-
-	
 
 private void deletarVeiculo() {
 		
@@ -53,10 +51,8 @@ private void deletarVeiculo() {
 		
 		VeiculoDAO objveiculodao = new VeiculoDAO();
 		
-		objveiculodao.excluirVeiculo(objveiculo);
+		objveiculodao.deletarVeiculo(objveiculo);
 		}
-
-	
 	
 	public ListagemVeiculos() {
 		setBackground(new Color(0, 0, 0));

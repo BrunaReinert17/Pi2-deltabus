@@ -6,10 +6,14 @@ public class Funcionario {
 
 	public static final Funcionario FUNCIONARIEDITADO = null;
 	private String nome;
+	private String email;
+	
+
+
 	private LocalDate datanasci;
 	private String genero;
 	private String numeroTelefone;
-	private long cpf;
+	private String cpf;
 	private Endereco endereco;
 	private Usuario usuario;
 
@@ -19,30 +23,17 @@ public class Funcionario {
 		super();
 	}
 
-	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, long cpf,
+	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, String cpf,
 			Endereco endereco, Usuario usuario) {
-
 		super();
-
 		this.nome = nome;
-
 		this.datanasci = datanasci;
-
 		this.genero = genero;
-
 		this.numeroTelefone = numeroTelefone;
-
-		
 		this.cpf = cpf;
-
 		this.endereco = endereco;
-
 		this.usuario = usuario;
 
-	}
-
-	public Funcionario(String string, long l, String string2, String string3, String string4) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getNome() {
@@ -92,17 +83,13 @@ public class Funcionario {
 		this.numeroTelefone = numeroTelefone;
 
 	}
-	public long getCpf() {
+	public String getCpf() {
 
 		return cpf;
 
 	}
 
-	public void setCpf(long cpf) {
-
-		this.cpf = cpf;
-
-	}
+	
 
 	public Endereco getEndereco() {
 
@@ -130,15 +117,23 @@ public class Funcionario {
 				+ numeroTelefone + ", cpf=" + cpf + ", endereco=" + endereco + ", usuario=" + usuario + "]";
 	}
 
-	public Funcionario  editarFuncionario(Funcionario funcionario) {
-		// TODO Auto-generated method stub
-		return funcionario ;
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public void setUsuario(Funcionario funcionario) {
-		// TODO Auto-generated method stub
-		
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 
 	
 }

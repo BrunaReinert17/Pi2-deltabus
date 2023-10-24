@@ -37,7 +37,7 @@ public class VeiculoDAOTest {
 		
 		
 		//testes unitarios
-		
+		//cenario que retorne como erro e sucesso
 		
 	}
 }

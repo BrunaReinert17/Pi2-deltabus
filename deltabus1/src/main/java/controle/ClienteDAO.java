@@ -44,7 +44,9 @@ public class ClienteDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			c.fecharConexao();
+		}
 		c.fecharConexao();
 		return cliente;
 	}
@@ -86,9 +88,10 @@ public class ClienteDAO {
 			c.fecharConexao();
 			return true;
 
-		} catch (SQLException e) {
-
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;

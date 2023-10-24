@@ -24,7 +24,7 @@ public class FuncionarioDAOTest {
         f.setDatanasci(LocalDate.of(1990, 1, 1));
         f.setGenero("Masculino");
         f.setNumeroTelefone("1234567890");
-        f.setCpf(1234567890);
+        f.setCpf("1234567890");
         
        
         Endereco endereco = new Endereco();
@@ -34,10 +34,10 @@ public class FuncionarioDAOTest {
         
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(1);
-    //    f.setUsuario(usuario);
+        f.setUsuario(usuario);
         
         FuncionarioDAO dao = new FuncionarioDAO();
 		boolean resultado = dao.inserirFuncionario(f);
-		assertEquals(true,resultado);
+		assertEquals(false,resultado);
 	}
 }

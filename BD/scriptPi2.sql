@@ -53,19 +53,19 @@ CREATE TABLE IF NOT EXISTS `Clientes` (
 -- Table `deltaBus`.`Pedido`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Pedido` (
-`id_pedidos` int not null auto_increment,
-  `dataCompra` DATE NOT NULL ,
+  `id_pedidos` int not null auto_increment,
+  `dataCompra` DATE NOT NULL,
+   `quantidade` int not null,
   `valorPago` DOUBLE NOT NULL,
   `tipoPagamento` VARCHAR(45) NOT NULL,
-  `Veiculo_idVeiculo` BIGINT(45) NOT NULL,
-  `Clientes_cnpj` BIGINT NOT NULL,
-  PRIMARY KEY (`id_pedidos`),
-    FOREIGN KEY (`Veiculo_idVeiculo`)
-    REFERENCES `Veiculo` (`idVeiculo`),
-    FOREIGN KEY (`Clientes_cnpj`)
-    REFERENCES `Clientes` (`cnpj`));
-
-
+  `Cliente` DOUBLE NOT NULL,
+  `renavam` VARCHAR(45) NOT NULL,
+  `nomeCliente` VARCHAR(45) NOT NULL,
+  
+  
+  PRIMARY KEY (`id_pedidos`));
+ 
+  
 -- -----------------------------------------------------
 -- Table `deltaBus`.`Usuario`
 -- -----------------------------------------------------
@@ -122,30 +122,36 @@ SELECT * FROM funcionarios ORDER BY cpf ASC;
 -- INSERT Veiculo --
 -- NAO VAI ID 
 INSERT INTO Veiculo (marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) 
-VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 'ABC123', '123456789','Disponivel');
+VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 'ABC123', '123456784','Disponivel');
 
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-VALUES ('21346569', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+VALUES ('21346566', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567890', 'gisele@gmail.com', 4545545448,464646546468433, 21346569);
+VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468433, 21346566);
+
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
-INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Veiculo_idVeiculo,Clientes_cnpj) 
-VALUES ('2023-08-16', 15000.00, 'Cartao',1,'464646546468433');
+INSERT INTO Pedido (dataCompra, quantidade, valorPago, tipoPagamento, renavam, Cliente, nomeCliente) 
+VALUES ('2023-08-16', 5, 15000.00, 'Cartao',123456784,45455454481, "Laura" );
 
 --  INSERT Usuario --
 INSERT INTO Usuario ( senha, email, cargo)
-VALUES ( '1312', 'bruna@gmail.com', 'funcionario');
+VALUES ( '1312', 'bruna@gmail.com', 'administrador');
+
+INSERT INTO Usuario ( senha, email, cargo)
+VALUES ( '1234', 'maria@gmail.com', 'funcionario');
 
 -- INSERT administrador--
 -- INSERT INTO adiministrador ( idEmail, senha) VALUES ('agatha.c2009@gmail.com','Agatha')--
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('14058566', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654321,'agatha@gmail.com','1',21346569);
+VALUES ('14058564', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346566);
+
