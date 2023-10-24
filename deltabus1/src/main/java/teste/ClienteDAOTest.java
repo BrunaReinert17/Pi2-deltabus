@@ -11,18 +11,16 @@ public class ClienteDAOTest {
 	@Test
 	public void testMetodoInserirCliente() {
 		Cliente c = new Cliente();
-		c.setNome("Livia");
-		c.setNumeroTelefone(479871767);
-		c.setEmail("agatha@gmail.com");
-		//c.setCpf(04774867940);
-		
-		
+		c.setNome("Gisele");
+		c.setNumeroTelefone("(12)34567-8921");
+		c.setEmail("gisele@gmail.com");
+		c.setCpf(null);
+		c.setCep(null);
+		c.setCnpj(null);
+
 		ClienteDAO dao = new ClienteDAO();
 		boolean IdClienteInserido = dao.inserirCliente(c);
-		assertEquals(true,IdClienteInserido);
-		//testes unitarios
-		
-		
+		assertEquals(true, IdClienteInserido);
 	}
 
 }

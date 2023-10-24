@@ -13,6 +13,7 @@ public class ClienteDAO {
 	private Conexao con;
 
 	public ClienteDAO() {
+	
 		con = Conexao.getInstancia();
 	}
 
@@ -29,49 +30,46 @@ public class ClienteDAO {
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-
 				Cliente cl = new Cliente();
-
 				cl.setNome(rs.getString("nome"));
-				cl.setNumeroTelefone(rs.getInt("numeroTelefone"));
+				cl.setNumeroTelefone(rs.getString("numeroTelefone"));
 				cl.setEmail(rs.getString("email"));
-				cl.setCpf(rs.getDouble("Cpf"));
-				cl.setCep(rs.getInt("endereco_cep"));
-				cl.setCnpj(rs.getDouble("Cnpj"));
+				cl.setCnpj(rs.getLong("Cnpj"));
+				cl.setCpf(rs.getString("Cpf"));
+				cl.setCep(rs.getLong("endereco_cep"));
+			
 				cliente.add(cl);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
-		c.fecharConexao();
+
 		return cliente;
 	}
 
 	public boolean inserirCliente(Cliente cliente) {
-		Connection c = con.conectar();
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
 		int valida = 0;
 
 		try {
-			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, Cpf, endereco_cep) VALUES (?,?,?,?,?,?)";
-			PreparedStatement stm = c.prepareStatement(query);
+			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, cpf, endereco_cep) VALUES (?,?,?,?,?,?)";
+			PreparedStatement stm = con.prepareStatement(query);
 			stm.setString(1, cliente.getNome());
-			if (cliente.getNumeroTelefone() != null) {
-	            stm.setInt(2, cliente.getNumeroTelefone());
-	        } else {
-	            stm.setInt(2, 0);
-	        }			stm.setString(3, cliente.getEmail());
-			stm.setDouble(4, cliente.getCpf());
-			stm.setInt(5, cliente.getCep());
-			if (cliente.getCnpj() != null) {
-	            stm.setDouble(6, cliente.getCnpj());
-	        } else {
-	            stm.setDouble(6, 0.0);
-	        }
+			stm.setString(2, cliente.getNumeroTelefone());
+			stm.setString(3, cliente.getEmail());
+			stm.setLong(4, cliente.getCnpj());
+			stm.setString(5, cliente.getCpf());
+			stm.setLong(6, cliente.getCep());
+			
+			System.out.println(stm);
 			valida = stm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			con.fecharConexao();
+			c.fecharConexao();
 		}
 		return valida != 0;
 	}
@@ -85,17 +83,14 @@ public class ClienteDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setDouble(1, cliente.getCnpj());
+			ps.setLong(1, cliente.getCnpj());
 			ps.executeUpdate();
 
-			c.fecharConexao();
-			return true;
-
 		} catch (SQLException e) {
-
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
-
 		return false;
 	}
 
@@ -109,15 +104,13 @@ public class ClienteDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, cliente.getNome());
-			ps.setInt(2, cliente.getNumeroTelefone());
+			ps.setString(2, cliente.getNumeroTelefone());
 			ps.setString(3, cliente.getEmail());
-			ps.setDouble(4, cliente.getCpf());
-			ps.setLong(5, cliente.getCep());
-			ps.setDouble(6, cliente.getCnpj());
+			ps.setString(4, cliente.getCpf());
+			ps.setDouble(5, cliente.getCep());
+			ps.setLong(6, cliente.getCnpj());
 
 			ps.executeUpdate();
-
-			c.fecharConexao();
 			return true;
 
 		} catch (SQLException e) {

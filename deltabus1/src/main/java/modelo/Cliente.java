@@ -3,28 +3,23 @@ package modelo;
 public class Cliente {
 
 	private String nome;
-	private Integer numeroTelefone;
+	private String numeroTelefone;
 	private String email;
-	private Double Cpf;
-	private Integer Cep;
-	private Cliente cliente;
-	private Double cnpj;
+	private String Cpf;
+	private Long Cep;
+	private Long cnpj;
+	private Endereco endereco;
+	
 
-	public Cliente() {
-		super();
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public Cliente(String nome, Integer numeroTelefone, String email, Double Cpf, Integer cep, Cliente cliente,
-			Double cnpj) {
-		super();
-		this.nome = nome;
-		this.numeroTelefone = numeroTelefone;
-		this.email = email;
-		this.Cpf = Cpf;
-		this.Cep = cep;
-		this.cliente = cliente;
-		this.cnpj = cnpj;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
+	public Cliente() {
 	}
 
 	public String getNome() {
@@ -35,11 +30,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public Integer getNumeroTelefone() {
+	public String getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(Integer numeroTelefone) {
+	public void setNumeroTelefone(String numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 
@@ -51,43 +46,44 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public Double getCpf() {
+	public String getCpf() {
 		return Cpf;
 	}
 
-	public void setCpf(Double Cpf) {
-		this.Cpf = Cpf;
+	public void setCpf(String cpf) {
+		Cpf = cpf;
 	}
 
-	public Integer getCep() {
+	public Long getCep() {
 		return Cep;
 	}
 
-	public void setCep(Integer cep) {
-		this.Cep = cep;
+	public void setCep(Long cep) {
+		Cep = cep;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Double getCnpj() {
+	public Long getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(Double cnpj) {
+	public void setCnpj(Long cnpj) {
+		this.cnpj = cnpj;
+	}
 
+	public Cliente(String nome, String numeroTelefone, String email, String Cpf, Long cep, Long cnpj) {
+		super();
+		this.nome = nome;
+		this.numeroTelefone = numeroTelefone;
+		this.email = email;
+		this.Cpf = Cpf;
+		this.Cep = cep;
 		this.cnpj = cnpj;
 
 	}
 
 	public String toString() {
 		return "Cliente [nome=" + nome + ", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf
-				+ ",cep=" + Cep + ", cliente=" + cliente + "]";
+				+ ",cep=" + Cep + "]";
 	}
 
 }

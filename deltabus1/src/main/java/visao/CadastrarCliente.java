@@ -48,16 +48,24 @@ public class CadastrarCliente extends JPanel {
 	private JLabel lblBairro;
 	private JLabel lblFuno;
 	private JButton bntDeletar;
-	private JButton btnCadastrar;
+	private JButton btnCadastrar;	
+	private JComboBox cbUf;
+	private JComboBox cbCidade;
+
+
 
 	// Variaveis atribuidas
+	
 	private String verificarCampo;
 	private JTextField textField;
 	private JLabel lblLimpar;
 	private String cpf;
 	private JTextField textCnpj;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	public CadastrarCliente() {
+		
 		setLocale("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 300, 1200, 800);
@@ -191,12 +199,16 @@ public class CadastrarCliente extends JPanel {
 		uf.add("PR");
 
 		btnCadastrar = new RoundButton("Confirmar");
-		btnCadastrar.setBounds(498, 582, 132, 33);
+		btnCadastrar.setBounds(495, 641, 132, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				Cliente cliente = verificarDados();
+				
+				EnderecoDAO enderecoDAO = new EnderecoDAO();
+				Endereco endereco = enderecoDAO.consultandoEndereco(cliente.getEndereco());
+
 				
 				boolean verificarRetornoCadastro = false;
 				if (cliente != null) {
@@ -289,6 +301,49 @@ public class CadastrarCliente extends JPanel {
 		lblCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblCnpj.setBounds(684, 365, 155, 14);
 		add(lblCnpj);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Dialog", Font.BOLD, 13));
+		textField_1.setColumns(10);
+		textField_1.setBounds(684, 476, 182, 30);
+		add(textField_1);
+		
+		cbCidade = new JComboBox();
+		cbCidade.setFont(new Font("Dialog", Font.BOLD, 13));
+		cbCidade.setBounds(252, 477, 182, 30);
+		add(cbCidade);
+		
+		JLabel lblCidade = new JLabel("Cidade:");
+		lblCidade.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblCidade.setBounds(252, 458, 155, 14);
+		add(lblCidade);
+		
+		JLabel lblBairro_1 = new JLabel("Bairro:");
+		lblBairro_1.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblBairro_1.setBounds(684, 457, 155, 14);
+		add(lblBairro_1);
+		
+		JLabel txtRua = new JLabel("Rua:");
+		txtRua.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtRua.setBounds(252, 532, 155, 14);
+		add(txtRua);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Dialog", Font.BOLD, 13));
+		textField_2.setColumns(10);
+		textField_2.setBounds(252, 551, 182, 31);
+		add(textField_2);
+		
+		
+		
+		JLabel lblUf = new JLabel("UF:");
+		lblUf.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblUf.setBounds(684, 532, 155, 14);
+		add(lblUf);
+		
+		cbUf = new JComboBox();
+		cbUf.setBounds(684, 551, 84, 31);
+		add(cbUf);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -317,7 +372,7 @@ public class CadastrarCliente extends JPanel {
 	    String email = txtEmail.getText();
 	    String cpf = txtCpf.getText().replaceAll("[^0-9]", ""); // Remove caracteres não numéricos
 	    String cnpj = textCnpj.getText().replaceAll("[^0-9]", "");
-	    String numeroTelefone = txtnumeroTelefone.getText().replaceAll("[^0-9]", "");
+	    String numeroTelefone = txtnumeroTelefone.getText();
 	    String cep = txtCep.getText().replaceAll("[^0-9]", "");
 
 	    if (nome == null || nome.trim().isEmpty()) {
@@ -331,45 +386,30 @@ public class CadastrarCliente extends JPanel {
 	    } else {
 	        cliente.setEmail(email);
 	    }
-
-	    try {
-	        if (!cpf.isEmpty()) {
-	        	cliente.setCpf(Double.parseDouble(cpf));
-	        }
-	    } catch (NumberFormatException e) {
-	        verificarCampo += "CPF inválido\n";
+	    if (cpf == null || cpf.trim().isEmpty()) {
+	        verificarCampo += "Email\n";
+	    } else {
+	        cliente.setCpf(cpf);
+	    }
+	    if (nome == null || nome.trim().isEmpty()) {
+	        verificarCampo += "Nome\n";
+	    } else {
+	        cliente.setCnpj(Long.parseLong(cnpj));
+	    }
+	    
+	    if (numeroTelefone == null || numeroTelefone.trim().isEmpty()) {
+	        verificarCampo += "numeroTelefone\n";
+	    } else {
+	        cliente.setNumeroTelefone(numeroTelefone);
 	    }
 
-	    try {
-	        if (!cnpj.isEmpty()) {
-	            cliente.setCnpj(Double.parseDouble(cnpj));
-	        }
-	    } catch (NumberFormatException e) {
-	        verificarCampo += "CNPJ inválido\n";
+	    if (cep == null || cep.trim().isEmpty()) {
+	        verificarCampo += "numeroTelefone\n";
+	    } else {
+	        cliente.setCep(Long.parseLong(cep));
 	    }
-
-	    try {
-	        if (!numeroTelefone.isEmpty()) {
-	            cliente.setNumeroTelefone(Integer.parseInt(numeroTelefone));
-	        }
-	    } catch (NumberFormatException e) {
-	        verificarCampo += "Número de Telefone inválido\n";
-	    }
-
-	    try {
-	        if (!cep.isEmpty()) {
-	            cliente.setCep(Integer.parseInt(cep));
-	        }
-	    } catch (NumberFormatException e) {
-	        verificarCampo += "CEP inválido\n";
-	    }
-
-	    if (verificarCampo.trim().isEmpty()) {
-	        cliente.setCliente(cliente);
-	        return cliente;
-	    }
-
-	    return cliente;
+	    
+        return cliente;
 	}
 
 

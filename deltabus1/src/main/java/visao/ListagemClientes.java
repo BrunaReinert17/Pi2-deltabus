@@ -42,9 +42,9 @@ public class ListagemClientes extends JPanel {
 
 private void deletarClientes() {
 	
-	Double cnpj;
+		Long cnpj;
 		
-		cnpj = Double.valueOf(textcnpj.getText());
+		cnpj = Long.valueOf(textcnpj.getText());
 		
 		Cliente objcliente = new Cliente();
 		objcliente.setCnpj(cnpj);
