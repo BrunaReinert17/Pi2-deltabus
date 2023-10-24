@@ -16,21 +16,30 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 
 	public boolean inserirFuncionario(Funcionario funcionario) {
 		System.out.println(funcionario.toString());
+		System.out.println(1);
 		con = Conexao.getInstancia();
+		System.out.println(2);
+
 		Connection c = con.conectar();
 		int valida = 0;
-		try {
-			String query = "INSERT INTO Funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,Usuario_idUsuario,endereco_cep)values(?,?,?,?,?,?,?);";
-			PreparedStatement stm = c.prepareStatement(query);
+		System.out.println(3);
 
+		try {
+			String query = "INSERT INTO Funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,Usuario_idUsuario,endereco_cep, email)values(?,?,?,?,?,?,?, ?);";
+			PreparedStatement stm = c.prepareStatement(query);
+			System.out.println(stm);
 			stm.setString(1, funcionario.getCpf());
 			stm.setString(2, funcionario.getNome());
+			System.out.println(stm);
 			stm.setDate(3, java.sql.Date.valueOf(funcionario.getDatanasci()));
 			stm.setString(4, funcionario.getGenero());
 			stm.setString(5, funcionario.getNumeroTelefone());
+			System.out.println(stm);
 			stm.setLong(6, funcionario.getUsuario().getIdUsuario());
 			stm.setLong(7, funcionario.getEndereco().getCep());
+			stm.setString(8, funcionario.getEmail());
 
+			System.out.println(stm);
 			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 

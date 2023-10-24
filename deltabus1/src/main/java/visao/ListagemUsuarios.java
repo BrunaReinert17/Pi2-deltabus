@@ -161,7 +161,7 @@ private void deletarUsuario() {
    }
 	
 	
-	private void atualizarTabela() {
+	public void atualizarTabela() {
 		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		listFuncionario = funcionarioDAO.consultarTodos();

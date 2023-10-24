@@ -24,7 +24,7 @@ public class FuncionarioDAOTest {
         f.setDatanasci(LocalDate.of(1990, 1, 1));
         f.setGenero("Masculino");
         f.setNumeroTelefone("1234567890");
-        f.setCpf(1234567890);
+        f.setCpf("1234567890");
         
        
         Endereco endereco = new Endereco();

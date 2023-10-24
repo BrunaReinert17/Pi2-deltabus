@@ -435,7 +435,8 @@ public class CadastrarUsuario extends JPanel {
           
             
 				Funcionario funcionario = verificarDados();
-				
+				System.out.println("aaaa");
+				System.out.println(funcionario);
 				Usuario usuario = new Usuario();
 				if (funcionario == null) {
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
@@ -447,20 +448,23 @@ public class CadastrarUsuario extends JPanel {
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
 					System.out.println("Erro1");
 					Endereco endereco = enderecoDAO.consultandoEndereco(funcionario.getEndereco());
-					boolean ende = false;
+					System.out.println(endereco);
+					boolean ende = true;
 					System.out.println("Erro2");
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
+					System.out.println(ende);
 					
 					boolean usuarioRetornoCadastro = false;
-					
+					System.out.println("ddddd1");
 					if (ende != false) {
-						
+						System.out.println("ddddd12");
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
 						System.out.println(funcionario.getUsuario());
-					
+						System.out.println("ddddd13");
 						if (usuarioRetornoCadastro != false) {
+							System.out.println("ddddd14");
 							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
 							System.out.println(usuario);
 							funcionario.setUsuario(usuario);
@@ -651,6 +655,7 @@ public class CadastrarUsuario extends JPanel {
 			verificarCampo += "Email\n";
 		} else {
 			usuario.setEmail(email);
+			funcionario.setEmail(email);
 		}
 		// telefone
 		if (telefone == null || telefone.trim() == "" || telefone.isEmpty()) {
@@ -719,8 +724,11 @@ public class CadastrarUsuario extends JPanel {
 			endereco.setUf(UF);
 		}
 		if (verificarCampo.trim() == "") {
+			System.out.println("definindo usuario");
+			System.err.println(usuario);
 			funcionario.setUsuario(usuario);
 			funcionario.setEndereco(endereco);
+			System.out.println(funcionario);
 			return funcionario;
 		}
 		return funcionario;

@@ -43,21 +43,24 @@ public class EnderecoDAO implements InterfaceEndereco {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return endereco;
+			return null;
 		} finally {
 			con.fecharConexao();
 		}
-		return endereco;
+		return null;
 
 	}
 	
 
 	@Override
 	public boolean inserirEndereco(Endereco endereco) {
+		System.out.println("end1");
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
+		System.out.println("end12");
 		PreparedStatement st = null;
 		int valida = 0;
+		System.out.println("end13");
 		try {
 			String query = "INSERT INTO endereco (cep, cidade, bairro, rua, UF)values(?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -67,7 +70,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 			stm.setString(3, endereco.getBairro());
 			stm.setString(4, endereco.getRua());
 			stm.setString(5,endereco.getUf());
-
+			System.out.println(stm);
 			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			
