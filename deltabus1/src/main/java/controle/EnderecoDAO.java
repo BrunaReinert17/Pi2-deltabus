@@ -56,11 +56,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 		System.out.println("end1");
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
-<<<<<<< Updated upstream
-		System.out.println("end12");
-=======
-		
->>>>>>> Stashed changes
+
 		PreparedStatement st = null;
 		int valida = 0;
 		System.out.println("end13");

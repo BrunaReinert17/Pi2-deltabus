@@ -6,40 +6,26 @@ public class Funcionario {
 
 	private String nome;
 	private String email;
-	
-
-
 	private LocalDate datanasci;
 	private String genero;
 	private String numeroTelefone;
-	private Double cpf;
+	private String cpf;
 	private Endereco endereco;
 	private Usuario usuario;
-	private String email;
+	
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	
 	public Funcionario() {
 		super();
 	}
 
-	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, Double cpf,
+	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, String cpf,
 			Endereco endereco, Usuario usuario) {
 		super();
 		this.nome = nome;
 		this.datanasci = datanasci;
 		this.genero = genero;
 		this.numeroTelefone = numeroTelefone;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.usuario = usuario;
@@ -78,11 +64,20 @@ public class Funcionario {
 		this.numeroTelefone = numeroTelefone;
 	}
 
-	public Double getCpf() {
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Double cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -108,26 +103,7 @@ public class Funcionario {
 				+ numeroTelefone + ", cpf=" + cpf + ", endereco=" + endereco + ", usuario=" + usuario + "]";
 	}
 
-<<<<<<< Updated upstream
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	
 
 	
-=======
->>>>>>> Stashed changes
 }

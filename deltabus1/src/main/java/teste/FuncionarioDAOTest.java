@@ -16,30 +16,12 @@ public class FuncionarioDAOTest {
 	@Test
 	public void testMetodoinserirFuncionarioSucesso() {
 		Funcionario f = new Funcionario();
-		f.setNome("João");
-<<<<<<< Updated upstream
-        f.setDatanasci(LocalDate.of(1990, 1, 1));
-        f.setGenero("Masculino");
-        f.setNumeroTelefone("1234567890");
-        f.setCpf("1234567890");
         
-       
-        Endereco endereco = new Endereco();
-        
-        endereco.setCep(12345-678);
-        f.setEndereco(endereco);
-        
-        Usuario usuario = new Usuario();
-        usuario.setIdUsuario(1);
-        f.setUsuario(usuario);
-        
-        FuncionarioDAO dao = new FuncionarioDAO();
-=======
 		f.setDatanasci(LocalDate.of(1990, 1, 1));
 		f.setGenero("Masculino");
 		f.setEmail("bruna@gmail.com");
 		f.setNumeroTelefone("1234567890");
-		//f.setCpf(1234567890l);
+		f.setCpf("1234567890l");
 
 		Endereco endereco = new Endereco();
 
@@ -60,7 +42,7 @@ public class FuncionarioDAOTest {
 		Funcionario f = null;
 
 		FuncionarioDAO dao = new FuncionarioDAO();
->>>>>>> Stashed changes
+
 		boolean resultado = dao.inserirFuncionario(f);
 		assertEquals(false, resultado);
 	}
