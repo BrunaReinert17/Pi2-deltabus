@@ -103,7 +103,8 @@ private void deletarVeiculo() {
 
 			       
                    ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
-			        	
+                	   
+                	   
 
 						@Override
 						
@@ -111,6 +112,7 @@ private void deletarVeiculo() {
 							if (VeiculoDAO.excluirVeiculo(veiculo)) {
 			                DefaultTableModel model = (DefaultTableModel) table.getModel();
 			                model.removeRow(linhaSelecionada);
+			                
 			            } else {
 			                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
 			                falha.setLocationRelativeTo(null);
