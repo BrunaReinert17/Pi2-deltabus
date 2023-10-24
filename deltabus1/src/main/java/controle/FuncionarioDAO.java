@@ -13,6 +13,8 @@ import modelo.Usuario;
 public class FuncionarioDAO implements InterfaceFuncionario {
 
 	private static Conexao con;
+	
+	//seguir como orden
 
 	public boolean inserirFuncionario(Funcionario funcionario) {
 		System.out.println(funcionario.toString());
