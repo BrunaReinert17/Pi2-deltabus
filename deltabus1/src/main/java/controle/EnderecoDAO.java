@@ -70,12 +70,13 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 			valida = stm.executeUpdate();
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
+			return (valida == 0 ? false : true);
 		}
 
-		return (valida == 0 ? false : true);
 	}
 
 	@Override

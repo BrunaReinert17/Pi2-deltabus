@@ -437,11 +437,10 @@ public class CadastrarUsuario extends JPanel {
 				Funcionario funcionario = verificarDados();
 				
 				Usuario usuario = new Usuario();
-				if (funcionario == funcionario) {
+				if (funcionario == null) {
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
-					System.out.println("Erro");
 				} else {//erro da qui pra baixo
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
@@ -453,8 +452,11 @@ public class CadastrarUsuario extends JPanel {
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
+					
 					boolean usuarioRetornoCadastro = false;
+					
 					if (ende != false) {
+						
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
 						System.out.println(funcionario.getUsuario());
 					
@@ -500,9 +502,20 @@ public class CadastrarUsuario extends JPanel {
 		btnLimparCampo.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Limpar limparDados = new Limpar("Tem certeza de que deseja limpar os dados?");
-				limparDados.setLocationRelativeTo(null);
-				limparDados.setVisible(true);
+				txtNome.setText("");
+				txtCpf.setText("");
+				txtEmail.setText("");
+				txtTelefone.setText("");
+				txtDataNasci.setText("");
+				txtCep.setText("");
+				txtSenha.setText("");
+				txtBairro.setText("");
+				textRua.setText("");
+				cbUf.setSelectedIndex(-1);
+				cbCidade.setSelectedIndex(-1);
+				cbFuncao.setSelectedIndex(-1);
+				cbGenero.setSelectedIndex(-1);
+				dispose();
 			}
 		});
 		add(btnLimparCampo);
@@ -564,6 +577,12 @@ public class CadastrarUsuario extends JPanel {
 		contentPane.setLayout(null);
 	}
 	
+
+	protected void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	protected void setExtendedState(int maximizedBoth) {
 		// TODO Auto-generated method stub
