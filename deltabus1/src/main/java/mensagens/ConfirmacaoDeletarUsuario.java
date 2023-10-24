@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 import utilidades.RoundButton;
 import javax.swing.JButton;
 
-public class ConfirmacaoDeletarCliente extends JFrame {
+public class ConfirmacaoDeletarUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblDadoInvalido;
@@ -22,7 +22,7 @@ public class ConfirmacaoDeletarCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ConfirmacaoDeletarCliente (String mensagem, InterfaceMensagemConfirmacao janela) {
+	public ConfirmacaoDeletarUsuario (String mensagem, InterfaceMensagemConfirmacao janela) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -74,7 +74,7 @@ public class ConfirmacaoDeletarCliente extends JFrame {
 		btnCancelar.setBounds(198, 111, 94, 29);
 		contentPane.add(btnCancelar);
 		
-		JLabel lblNewLabel_1 = new JLabel("Tem certeza que quer excluir Cliente?");
+		JLabel lblNewLabel_1 = new JLabel("Tem certeza que quer excluir Usuario?");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setBackground(Color.WHITE);

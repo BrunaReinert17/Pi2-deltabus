@@ -131,7 +131,7 @@ private void deletarVeiculo() {
 			        confirmacao.setVisible(true);
 			     
 			    } else {
-			        Deletar2 falha2 = new Deletar2("Selecione um veiculo para excluir");
+			        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
 			        falha2.setLocationRelativeTo(null);
 			        falha2.setVisible(true);
 			    }

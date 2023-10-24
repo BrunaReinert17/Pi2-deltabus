@@ -27,8 +27,13 @@ import javax.swing.table.DefaultTableModel;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
+import mensagens.ConfirmacaoDeletarCliente;
+import mensagens.ConfirmacaoDeletarUsuario;
 import mensagens.Deletar1;
 import mensagens.Deletar2;
+import mensagens.DeletarUsuario1;
+import mensagens.DeletarUsuario2;
+import mensagens.InterfaceMensagemConfirmacao;
 import mensagens.ListagemErro;
 import modelo.Endereco;
 import modelo.Funcionario;
@@ -102,23 +107,39 @@ private void deletarUsuario() {
 				    
 				    Funcionario funcionario = listFuncionario.get(linhaSelecionada);
                     
+				    ConfirmacaoDeletarUsuario confirmar = new ConfirmacaoDeletarUsuario("Tem certeza que quer excluir", new InterfaceMensagemConfirmacao() { 
 				    
-				    if (FuncionarioDAO.excluirFuncionario(funcionario)) {
-				        
-				        DefaultTableModel model = (DefaultTableModel) table.getModel();
-				        model.removeRow(linhaSelecionada);
-				    } else {
-				    	Deletar1 falha = new Deletar1("Falha ao excluir Usuário");
-				    	falha.setLocationRelativeTo(null);
-				    	falha.setVisible(true);
-				    }
-				} else {
-					Deletar2 falha2 = new Deletar2("Selecione um Usuário para excluir");
-			    	falha2.setLocationRelativeTo(null);
-			    	falha2.setVisible(true);				}
+                          @Override
+						
+						public void mensagemConfirmada() {
+							if (FuncionarioDAO.excluirFuncionario(funcionario)) {
+			                DefaultTableModel model = (DefaultTableModel) table.getModel();
+			                model.removeRow(linhaSelecionada);
+			                
+			            } else {
+			                DeletarUsuario1 falha = new DeletarUsuario1("Falha ao excluir veiculo");
+			                falha.setLocationRelativeTo(null);
+			                falha.setVisible(true);
+			            }
+							
+						}
+
+						@Override
+						public void mensagemCancelada() {
+							
+							
+						}
+			        	
+			        });
+			        confirmar.setVisible(true);
+			     
+			    } else {
+			        DeletarUsuario2 falha2 = new DeletarUsuario2("Selecione um veiculo para excluir");
+			        falha2.setLocationRelativeTo(null);
+			        falha2.setVisible(true);
+			    }
 			}
-		    });
-   
+		});
 		
 
 		rndbtnDeletar.setText("Deletar");
