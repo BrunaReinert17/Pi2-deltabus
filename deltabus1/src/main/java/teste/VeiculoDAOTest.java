@@ -13,7 +13,7 @@ import modelo.Veiculo;
 public class VeiculoDAOTest {
 	
 	@Test
-	public void testMetodoinserirVeiculo() {
+	public void testMetodoinserirVeiculoSucesso() {
 		Veiculo v = new Veiculo();
 		
 		v.setIdVeiculo((long) 6);
@@ -36,8 +36,24 @@ public class VeiculoDAOTest {
 		
 		
 		
+		
+		
 		//testes unitarios
 		//cenario que retorne como erro e sucesso
+		
+	}
+	
+	@Test
+	
+	public void testMetodoinserirVeiculoFalso() {
+		
+			Veiculo v = null;
+			VeiculoDAO dao = new VeiculoDAO();
+			boolean resultado = dao.inserirVeiculo(v);
+			assertEquals(false,resultado);
+	}
+	
+	public void testMetododeletarVeiculo() {
 		
 	}
 }

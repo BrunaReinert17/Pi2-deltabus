@@ -51,7 +51,7 @@ private void deletarVeiculo() {
 		
 		VeiculoDAO objveiculodao = new VeiculoDAO();
 		
-		objveiculodao.deletarVeiculo(objveiculo);
+		objveiculodao.excluirVeiculo(objveiculo);
 		}
 	
 	public ListagemVeiculos() {
@@ -97,25 +97,26 @@ private void deletarVeiculo() {
 				
 				int linhaSelecionada = table.getSelectedRow();
 				if (linhaSelecionada >= 0) {
-				    // Obtém o veículo selecionado da lista
-				    Veiculo veiculo = listVei.get(linhaSelecionada);
+			        Veiculo veiculo = listVei.get(linhaSelecionada);
 
-				    // Chama o método DAO para excluir o veículo
-				    if (VeiculoDAO.excluirVeiculo(veiculo)) {
-				        // Atualiza a lista e a tabela após a exclusão bem-sucedida
-				        DefaultTableModel model = (DefaultTableModel) table.getModel();
-				        model.removeRow(linhaSelecionada);
-				    } else {
-				    	Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
-				    	falha.setLocationRelativeTo(null);
-				    	falha.setVisible(true);
-				    }
-				} else {
-					Deletar2 falha2 = new Deletar2("Selecione um veiculo para excluir");
-			    	falha2.setLocationRelativeTo(null);
-			    	falha2.setVisible(true);
-				}
-		    }
+			        int n = JOptionPane.showConfirmDialog(null, "Tem certeza que quer excluir o veículo?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+			        if (n == JOptionPane.YES_OPTION) {
+			            if (VeiculoDAO.excluirVeiculo(veiculo)) {
+			                DefaultTableModel model = (DefaultTableModel) table.getModel();
+			                model.removeRow(linhaSelecionada);
+			            } else {
+			                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
+			                falha.setLocationRelativeTo(null);
+			                falha.setVisible(true);
+			            }
+			        }
+			    } else {
+			        Deletar2 falha2 = new Deletar2("Selecione um veiculo para excluir");
+			        falha2.setLocationRelativeTo(null);
+			        falha2.setVisible(true);
+			    }
+			}
 		});
 			
 		rndbtnDeletar.setText("Deletar");

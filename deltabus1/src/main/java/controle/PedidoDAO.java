@@ -57,18 +57,18 @@ public class PedidoDAO implements InterfacePedido{
 		}
 
 	public  boolean inserirPedido(Pedido pedido) {
-		Conexao c = Conexao.getInstancia();
-
-		Connection con = c.conectar();
-		int valida = 0;
-
-
-		String query = "INSERT INTO Pedido " 
-		+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
-		+ "VALUES (?, ?, ?, ?, ?)";
-
+		
+        Connection c = con.conectar();
+		boolean valida = false;
+       
+		if(pedido != null) {
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			
+			String query = "INSERT INTO Pedido " 
+					+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
+					+ "VALUES (?, ?, ?, ?, ?)";
+			
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setInt(1, pedido.getId_pedidos());
 			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
 			ps.setDouble(3, pedido.getValorPago());
@@ -80,13 +80,15 @@ public class PedidoDAO implements InterfacePedido{
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
-			return true;
+			
+         valida = ps.executeUpdate() == 0 ? false : true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
 		}
-		return false;
+		}
+		return valida;
 	}
 
 	@Override

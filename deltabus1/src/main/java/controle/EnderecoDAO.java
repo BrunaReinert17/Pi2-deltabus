@@ -41,6 +41,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 				
 				return enderecoConfirmado;
 			}
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
