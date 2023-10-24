@@ -72,13 +72,15 @@ public class EnderecoDAO implements InterfaceEndereco {
 			stm.setString(5,endereco.getUf());
 			System.out.println(stm);
 			valida = stm.executeUpdate();
-		} catch (SQLException e) {
 			
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
-			return (valida == 0 ? false : true);
 		}
+
+		return (valida == 0 ? false : true);
 
 	}
 

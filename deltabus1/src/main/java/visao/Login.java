@@ -103,7 +103,7 @@ public class Login extends JFrame {
 				if (!email.isEmpty() && !senha.isEmpty()) {
 
 					if (retorno != null && retorno.getEmail().equals(email) && retorno.getSenha().equals(senha)) {
-						if (retorno.getCargo().equals("administrador")) {
+						if (retorno.getCargo().equalsIgnoreCase("administrador")) {
 						MenuAdmin telaPrincipal = new MenuAdmin();
 						telaPrincipal.setLocationRelativeTo(null);
 						telaPrincipal.setVisible(true);

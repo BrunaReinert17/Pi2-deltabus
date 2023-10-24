@@ -53,6 +53,8 @@ public class VeiculoDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		c.fecharConexao();
@@ -108,6 +110,8 @@ public class VeiculoDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;
