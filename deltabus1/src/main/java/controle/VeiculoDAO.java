@@ -1,13 +1,11 @@
 package controle;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.Cliente;
-import modelo.Endereco;
 import modelo.Veiculo;
 
 public class VeiculoDAO {
@@ -54,9 +52,7 @@ public class VeiculoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		c.fecharConexao();
-
 		return veiculos;
 	}
 
@@ -65,7 +61,7 @@ public class VeiculoDAO {
 		int valida = 0;
 
 		try {
-			String query = "INSERT INTO Veiculo(IdVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO Veiculo(IdVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement stm = c.prepareStatement(query);
 			stm.setLong(1, veiculo.getIdVeiculo());
 			stm.setString(2, veiculo.getMarca());
@@ -150,11 +146,6 @@ public class VeiculoDAO {
 		}
 
 		return false;
-	}
-
-	public void deletarVeiculo(Veiculo objveiculo) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

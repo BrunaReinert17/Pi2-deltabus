@@ -154,4 +154,3 @@ VALUES ( '1234', 'maria@gmail.com', 'funcionario');
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
 VALUES ('14058564', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346566);
-

@@ -1,31 +1,31 @@
- package modelo;
+package modelo;
 
-public class Cliente  {
-	
+public class Cliente {
+
 	private String nome;
-	private int numeroTelefone;
+	private Integer numeroTelefone;
 	private String email;
 	private Double Cpf;
 	private Integer Cep;
 	private Cliente cliente;
 	private Double cnpj;
-	
+
 	public Cliente() {
 		super();
 	}
-	
-	public Cliente(String nome,int numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
+
+	public Cliente(String nome, Integer numeroTelefone, String email, Double Cpf, Integer cep, Cliente cliente,
+			Double cnpj) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
 		this.email = email;
-		this.Cpf = Cpf;;
+		this.Cpf = Cpf;
 		this.Cep = cep;
 		this.cliente = cliente;
 		this.cnpj = cnpj;
-		
+
 	}
-	
 
 	public String getNome() {
 		return nome;
@@ -35,11 +35,11 @@ public class Cliente  {
 		this.nome = nome;
 	}
 
-	public int getNumeroTelefone() {
+	public Integer getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(int numeroTelefone) {
+	public void setNumeroTelefone(Integer numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 
@@ -52,15 +52,11 @@ public class Cliente  {
 	}
 
 	public Double getCpf() {
-
 		return Cpf;
-
 	}
 
 	public void setCpf(Double Cpf) {
-
 		this.Cpf = Cpf;
-
 	}
 
 	public Integer getCep() {
@@ -70,6 +66,7 @@ public class Cliente  {
 	public void setCep(Integer cep) {
 		this.Cep = cep;
 	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -77,26 +74,20 @@ public class Cliente  {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
 	public Double getCnpj() {
 		return cnpj;
 	}
+
 	public void setCnpj(Double cnpj) {
 
-	this.cnpj = cnpj;
+		this.cnpj = cnpj;
 
 	}
-	
+
 	public String toString() {
-		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf +",cep=" + Cep + ", cliente=" + cliente + "]";
+		return "Cliente [nome=" + nome + ", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf
+				+ ",cep=" + Cep + ", cliente=" + cliente + "]";
 	}
 
-	public Cliente editarCliente(Cliente funcionario) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-
-	
 }

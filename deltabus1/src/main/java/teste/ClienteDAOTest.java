@@ -14,13 +14,7 @@ public class ClienteDAOTest {
 		c.setNome("Livia");
 		c.setNumeroTelefone(479871767);
 		c.setEmail("agatha@gmail.com");
-		//c.setCpf();
-
-		//c.setEndereco();
-
-	//	c.setEndereco();
-
-		//c.setEndereco();
+		//c.setCpf(04774867940);
 		
 		
 		ClienteDAO dao = new ClienteDAO();

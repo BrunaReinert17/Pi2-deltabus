@@ -41,8 +41,8 @@ public class ListagemClientes extends JPanel {
 	
 
 private void deletarClientes() {
-		
-		Double cnpj;
+	
+	Double cnpj;
 		
 		cnpj = Double.valueOf(textcnpj.getText());
 		

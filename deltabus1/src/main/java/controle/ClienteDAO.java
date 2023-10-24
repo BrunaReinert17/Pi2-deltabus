@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Cliente;
-import modelo.Endereco;
-import modelo.Veiculo;
 
 public class ClienteDAO {
 
@@ -44,7 +42,7 @@ public class ClienteDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
 		c.fecharConexao();
 		return cliente;
 	}
@@ -54,15 +52,21 @@ public class ClienteDAO {
 		int valida = 0;
 
 		try {
-			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, Cpf, endereco_cep) VALUES (?, ?, ?, ?,?)";
+			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, Cpf, endereco_cep) VALUES (?,?,?,?,?,?)";
 			PreparedStatement stm = c.prepareStatement(query);
 			stm.setString(1, cliente.getNome());
-			stm.setInt(2, cliente.getNumeroTelefone());
-			stm.setString(3, cliente.getEmail());
+			if (cliente.getNumeroTelefone() != null) {
+	            stm.setInt(2, cliente.getNumeroTelefone());
+	        } else {
+	            stm.setInt(2, 0);
+	        }			stm.setString(3, cliente.getEmail());
 			stm.setDouble(4, cliente.getCpf());
 			stm.setInt(5, cliente.getCep());
-			stm.setDouble(6, cliente.getCnpj());
-			;
+			if (cliente.getCnpj() != null) {
+	            stm.setDouble(6, cliente.getCnpj());
+	        } else {
+	            stm.setDouble(6, 0.0);
+	        }
 			valida = stm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,6 +75,7 @@ public class ClienteDAO {
 		}
 		return valida != 0;
 	}
+
 	public static boolean excluirCliente(Cliente cliente) {
 
 		Conexao c = Conexao.getInstancia();
@@ -93,6 +98,7 @@ public class ClienteDAO {
 
 		return false;
 	}
+
 	public boolean alterarCliente(Cliente cliente) {
 
 		Conexao c = Conexao.getInstancia();
@@ -122,5 +128,4 @@ public class ClienteDAO {
 
 		return false;
 	}
-
 }

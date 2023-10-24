@@ -13,8 +13,6 @@ public class Funcionario {
 	private Endereco endereco;
 	private Usuario usuario;
 
-	
-	
 	public Funcionario() {
 		super();
 	}
@@ -32,17 +30,12 @@ public class Funcionario {
 
 		this.numeroTelefone = numeroTelefone;
 
-		
 		this.cpf = cpf;
 
 		this.endereco = endereco;
 
 		this.usuario = usuario;
 
-	}
-
-	public Funcionario(String string, long l, String string2, String string3, String string4) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getNome() {
@@ -92,13 +85,12 @@ public class Funcionario {
 		this.numeroTelefone = numeroTelefone;
 
 	}
+
 	public String getCpf() {
 
 		return cpf;
 
 	}
-
-	
 
 	public Endereco getEndereco() {
 
@@ -118,40 +110,35 @@ public class Funcionario {
 
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "Funcionario [nome=" + nome + ", datanasci=" + datanasci + ", genero=" + genero + ", numeroTelefone="
 				+ numeroTelefone + ", cpf=" + cpf + ", endereco=" + endereco + ", usuario=" + usuario + "]";
 	}
 
-	public Funcionario  editarFuncionario(Funcionario funcionario) {
+	public Funcionario editarFuncionario(Funcionario funcionario) {
 		// TODO Auto-generated method stub
-		return funcionario ;
+		return funcionario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void setUsuario(Funcionario funcionario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void setCpf(String cpf) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void setCpf(int i) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
-
-	
 }

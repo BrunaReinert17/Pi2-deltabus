@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -199,9 +199,6 @@ public class CadastrarCliente extends JPanel {
 				Cliente cliente = verificarDados();
 				
 				boolean verificarRetornoCadastro = false;
-				
-				
-				
 				if (cliente != null) {
 					
 					ClienteDAO clienteDAO = new ClienteDAO();
@@ -243,8 +240,10 @@ public class CadastrarCliente extends JPanel {
 				txtnumeroTelefone.setText("");
 
 				txtCep.setText("");
-
-
+				
+				txtCpf.setText("");
+				
+				textCnpj.setText("");
 
 			}
 		});
@@ -310,70 +309,76 @@ public class CadastrarCliente extends JPanel {
 	}
 
 	public Cliente verificarDados() {
+	    Cliente cliente = new Cliente();
 
-		Cliente cliente = new Cliente();
-		Endereco endereco = new Endereco();
+	    verificarCampo = "";
 
-		verificarCampo = "";
+	    String nome = txtNome.getText();
+	    String email = txtEmail.getText();
+	    String cpf = txtCpf.getText().replaceAll("[^0-9]", ""); // Remove caracteres não numéricos
+	    String cnpj = textCnpj.getText().replaceAll("[^0-9]", "");
+	    String numeroTelefone = txtnumeroTelefone.getText().replaceAll("[^0-9]", "");
+	    String cep = txtCep.getText().replaceAll("[^0-9]", "");
 
-		String nome = txtNome.getText();
+	    if (nome == null || nome.trim().isEmpty()) {
+	        verificarCampo += "Nome\n";
+	    } else {
+	        cliente.setNome(nome);
+	    }
 
-		String email = txtEmail.getText();
+	    if (email == null || email.trim().isEmpty()) {
+	        verificarCampo += "Email\n";
+	    } else {
+	        cliente.setEmail(email);
+	    }
 
-		String numeroTelefone = txtnumeroTelefone.getText().replace("-", "").replace("(", "").replace(")", "");
+	    try {
+	        if (!cpf.isEmpty()) {
+	        	cliente.setCpf(Double.parseDouble(cpf));
+	        }
+	    } catch (NumberFormatException e) {
+	        verificarCampo += "CPF inválido\n";
+	    }
 
-		String cep = txtCep.getText().replace("-", "");
+	    try {
+	        if (!cnpj.isEmpty()) {
+	            cliente.setCnpj(Double.parseDouble(cnpj));
+	        }
+	    } catch (NumberFormatException e) {
+	        verificarCampo += "CNPJ inválido\n";
+	    }
 
+	    try {
+	        if (!numeroTelefone.isEmpty()) {
+	            cliente.setNumeroTelefone(Integer.parseInt(numeroTelefone));
+	        }
+	    } catch (NumberFormatException e) {
+	        verificarCampo += "Número de Telefone inválido\n";
+	    }
 
-		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
-			verificarCampo += "Nome\n";
-		} else {
-			cliente.setNome(nome);
-		}
+	    try {
+	        if (!cep.isEmpty()) {
+	            cliente.setCep(Integer.parseInt(cep));
+	        }
+	    } catch (NumberFormatException e) {
+	        verificarCampo += "CEP inválido\n";
+	    }
 
-		if (email == null || email.trim() == "" || email.isEmpty()) {
-			verificarCampo += "Email\n";
-		} else {
-			cliente.setEmail(email);
-		}
-		
-		 if (numeroTelefone == null  || numeroTelefone.isEmpty()) {
-			verificarCampo += "numeroTelefone\n";
-		} else {
-			cliente.setNumeroTelefone(Integer.valueOf(numeroTelefone));
+	    if (verificarCampo.trim().isEmpty()) {
+	        cliente.setCliente(cliente);
+	        return cliente;
+	    }
 
-		}
-
-		if (cpf == null || cpf.toString().trim().isEmpty()) {
-			verificarCampo += "cpf\n";
-		} else {
-			
-			cliente.setCpf(Double.valueOf(cpf));
-		}
-
-		if (cep == null || cep.toString().trim().isEmpty()) {
-			verificarCampo += "cep\n";
-		} else {
-			cliente.setCep(Integer.valueOf(cep));
-
-		}
-
-
-
-
-		if (verificarCampo.trim() == "") {
-			cliente.setCliente(cliente);
-			return cliente;
-		}
-
-		return cliente;
-
+	    return cliente;
 	}
 
-	public void limparDados() {
-		txtNome.setText("");
-		txtEmail.setText("");
-		txtnumeroTelefone.setText("");
-		txtCep.setText("");
+
+		public void limparDados() {
+			txtNome.setText("");
+			txtEmail.setText("");
+			txtnumeroTelefone.setText("");
+			txtCep.setText("");
+			txtCpf.setText("");
+			textCnpj.setText("");
+		}
 	}
-}
