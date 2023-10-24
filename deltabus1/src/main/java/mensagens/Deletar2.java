@@ -57,7 +57,7 @@ public class Deletar2 extends JFrame {
 		lblAviso.setBounds(123, -20, 110, 84);
 		contentPane.add(lblAviso);
 		
-		JLabel lblFalha2 = new JLabel("Selecionado um veiculo para excluir");
+		JLabel lblFalha2 = new JLabel("Selecione um veiculo para excluir");
 		lblFalha2.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblFalha2.setForeground(new Color(255, 255, 255));
 		lblFalha2.setBounds(76, 83, 209, 14);

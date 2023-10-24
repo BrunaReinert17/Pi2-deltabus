@@ -252,6 +252,7 @@ public class MenuFuncionario extends JFrame {
 		btnlistaVeiculo.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnlistaVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				listarveiculos.atualizarTabela();
 				panelTeste1.setVisible(true);
 				panelTeste.setVisible(false);
 				panelTeste3.setVisible(false);

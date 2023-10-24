@@ -12,8 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
+import javax.swing.JButton;
 
-public class CadastroErro extends JFrame {
+public class ConfirmacaoDeletar extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblDadoInvalido;
@@ -21,7 +22,7 @@ public class CadastroErro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroErro (String mensagem) {
+	public ConfirmacaoDeletar (String mensagem, InterfaceMensagemConfirmacao janela) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -35,31 +36,49 @@ public class CadastroErro extends JFrame {
 		lblDadoInvalido.setText(mensagem);
 		contentPane.setLayout(null);
 
-		RoundButton btnOk = new RoundButton("Ok");
-		btnOk.addActionListener(new ActionListener() {
+		RoundButton btnConfirmar = new RoundButton("Confirmar");
+		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnOk.setBounds(146, 123, 55, 29);
-		btnOk.setText("OK");
-		btnOk.setForeground(new Color(255, 255, 255));
-		btnOk.setFont(new Font("Dialog", Font.BOLD, 11));
-		btnOk.setBackground(new Color(0, 0, 0));
-		btnOk.addActionListener(new ActionListener() {
+		btnConfirmar.setBounds(47, 111, 94, 29);
+		btnConfirmar.setText("Confirmar");
+		btnConfirmar.setForeground(new Color(255, 255, 255));
+		btnConfirmar.setFont(new Font("Dialog", Font.BOLD, 11));
+		btnConfirmar.setBackground(new Color(0, 0, 0));
+		btnConfirmar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	janela.mensagemConfirmada();
                 dispose(); 
+                
             }
         });
-		contentPane.add(btnOk);
-		
-		JLabel lblDadoInvalido = new JLabel("");
-		lblDadoInvalido.setIcon(new ImageIcon(CadastroErro.class.getResource("/imagem/mensage4.png")));
-		lblDadoInvalido.setBounds(55, 75, 198, 39);
-		contentPane.add(lblDadoInvalido);
+		contentPane.add(btnConfirmar);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(CadastroErro.class.getResource("/imagem/MensageAviso.png")));
-		lblNewLabel.setBounds(124, -15, 107, 76);
+		lblNewLabel.setBounds(116, -15, 107, 76);
 		contentPane.add(lblNewLabel);
+		
+		RoundButton btnCancelar = new RoundButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				janela.mensagemCancelada();
+                dispose(); 
+			}
+		});
+		btnCancelar.setText("Cancelar");
+		btnCancelar.setForeground(Color.WHITE);
+		btnCancelar.setFont(new Font("Dialog", Font.BOLD, 11));
+		btnCancelar.setBackground(Color.BLACK);
+		btnCancelar.setBounds(198, 111, 94, 29);
+		contentPane.add(btnCancelar);
+		
+		JLabel lblNewLabel_1 = new JLabel("Tem certeza que quer excluir o veículo?");
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBackground(Color.WHITE);
+		lblNewLabel_1.setBounds(60, 72, 232, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 }
