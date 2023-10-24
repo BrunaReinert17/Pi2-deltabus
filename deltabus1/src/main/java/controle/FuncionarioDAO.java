@@ -16,11 +16,16 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 
 	public boolean inserirFuncionario(Funcionario funcionario) {
 		System.out.println(funcionario.toString());
+<<<<<<< Updated upstream
 		System.out.println(1);
+=======
+		
+>>>>>>> Stashed changes
 		con = Conexao.getInstancia();
 		System.out.println(2);
 
 		Connection c = con.conectar();
+<<<<<<< Updated upstream
 		int valida = 0;
 		System.out.println(3);
 
@@ -49,19 +54,48 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		}
 
 		return (valida == 0 ? false : true);
+=======
+		
+		boolean valida = false;
+		if (funcionario != null) {
+			try {
+				String query = "INSERT INTO Funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep)values(?,?,?,?,?,?,?,?);";
+				PreparedStatement stm = c.prepareStatement(query);
+
+				stm.setDouble(1, funcionario.getCpf());
+				stm.setString(2, funcionario.getNome());
+				stm.setDate(3, java.sql.Date.valueOf(funcionario.getDatanasci()));
+				stm.setString(4, funcionario.getGenero());
+				stm.setString(5, funcionario.getNumeroTelefone());
+				stm.setString(6, funcionario.getEmail());
+				stm.setLong(7, funcionario.getUsuario().getIdUsuario());
+				stm.setLong(8, funcionario.getEndereco().getCep());
+				
+
+				valida = stm.executeUpdate() == 0 ? false : true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				con.fecharConexao();
+			}
+		}
+
+		return valida;
+>>>>>>> Stashed changes
 
 	}
 
 	public boolean deletarFuncionario(Funcionario funcionario) {
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "DELETE FROM funcionarios\r\n  WHERE cpf = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, funcionario.getCpf());
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setDouble(1, funcionario.getCpf());
 			ps.executeUpdate();
+<<<<<<< Updated upstream
 			return true;
 
 		} catch (SQLException e) {
@@ -69,6 +103,15 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 			e.printStackTrace();
 		} finally {
 			c.fecharConexao();
+=======
+
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+>>>>>>> Stashed changes
 		}
 		return false;
 	}
@@ -76,15 +119,15 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 	@Override
 	public boolean alterarFuncionario(Funcionario funcionario) {
 
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "UPDATE Funcionario\r\n   SET" + "nome = ?\r\n" + "dataNascimento = ?" + "genero = ?"
 				+ " numerotelefone = ?" + "email = ?" + "Usuario_idUsuario = ?" + "endereco_cep = ? ,  WHERE cpf = ?";
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 
-			ps.setString(1, funcionario.getCpf());
+			ps.setDouble(1, funcionario.getCpf());
 			ps.setString(2, funcionario.getNome());
 			ps.setDate(3, java.sql.Date.valueOf(funcionario.getDatanasci()));
 			ps.setString(4, funcionario.getGenero());
@@ -92,12 +135,18 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 			ps.setLong(6, funcionario.getUsuario().getIdUsuario());
 			ps.setLong(7, funcionario.getEndereco().getCep());
 			ps.executeUpdate();
+<<<<<<< Updated upstream
 			return true;
 
+=======
+
+			
+			
+>>>>>>> Stashed changes
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			c.fecharConexao();
+			con.fecharConexao();
 		}
 
 		return false;
@@ -106,6 +155,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 	public ArrayList<Funcionario> consultarTodos() {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
+		
 		ArrayList<Funcionario> listFunc = new ArrayList<Funcionario>();
 		try {
 			PreparedStatement ps = c.prepareStatement("select * from funcionarios");
@@ -117,11 +167,11 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				Endereco endereco = new Endereco();
 				Usuario usuario = new Usuario();
 
-				System.out.println("e");
+				
 
 				endereco.setCep(rs.getInt("endereco_cep"));
 				usuario.setIdUsuario(rs.getLong("Usuario_idUsuario"));
-				funcionario.setCpf(rs.getString("cpf"));
+				funcionario.setCpf(rs.getDouble("cpf"));
 				funcionario.setNome(rs.getString("nome"));
 				funcionario.setGenero(rs.getString("genero"));
 				funcionario.setNumeroTelefone(rs.getString("numerotelefone"));
@@ -132,7 +182,11 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				System.out.println(funcionario);
 				listFunc.add(funcionario);
 			}
+<<<<<<< Updated upstream
 		} catch (SQLException e) {
+=======
+		}  catch (SQLException e) {
+>>>>>>> Stashed changes
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
@@ -143,6 +197,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 	public static ArrayList<Funcionario> Pesquisar(Long cpf) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
+		
 		ArrayList<Funcionario> listFunc = new ArrayList<Funcionario>();
 		try {
 			PreparedStatement ps = c.prepareStatement("select * from funcionarios  WHERE cpf = ?");
@@ -156,11 +211,11 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				Endereco endereco = new Endereco();
 				Usuario usuario = new Usuario();
 
-				System.out.println("e");
+			
 
 				endereco.setCep(rs.getInt("endereco_cep"));
 				usuario.setIdUsuario(rs.getLong("Usuario_idUsuario"));
-				funcionario.setCpf(rs.getString("cpf"));
+				funcionario.setCpf(rs.getDouble("cpf"));
 				funcionario.setNome(rs.getString("nome"));
 				funcionario.setGenero(rs.getString("genero"));
 				funcionario.setNumeroTelefone(rs.getString("numerotelefone"));
@@ -171,8 +226,12 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				System.out.println(funcionario);
 				listFunc.add(funcionario);
 			}
+<<<<<<< Updated upstream
 		} catch (SQLException e) {
 			
+=======
+		}  catch (SQLException e) {
+>>>>>>> Stashed changes
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
@@ -182,15 +241,21 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 
 	public static boolean excluirFuncionario(Funcionario funcionario) {
 
+<<<<<<< Updated upstream
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
+=======
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
+>>>>>>> Stashed changes
 
 		String query = "DELETE FROM funcionarios\r\n  WHERE cpf = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, funcionario.getCpf());
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setDouble(1, funcionario.getCpf());
 			ps.executeUpdate();
+<<<<<<< Updated upstream
 			return true;
 
 		} catch (SQLException e) {			
@@ -204,5 +269,17 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 	public ArrayList<Funcionario> listar() {
 		// TODO Auto-generated method stub
 		return null;
+=======
+
+			
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		return false;
+	}
+>>>>>>> Stashed changes
 	}
 }

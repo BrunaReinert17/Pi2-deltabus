@@ -44,9 +44,9 @@ public class ListagemUsuarios extends JPanel {
 
 private void deletarUsuario() {
 	
-	String cpf;
+	Double cpf;
 	
-	cpf = String.valueOf(textcpf.getText());
+	cpf = Double.valueOf(textcpf.getText());
 	
 	Funcionario objfuncionario = new Funcionario();
 	objfuncionario.setCpf(cpf);

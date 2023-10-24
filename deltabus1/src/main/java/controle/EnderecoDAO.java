@@ -11,7 +11,6 @@ public class EnderecoDAO implements InterfaceEndereco {
 	
 	private Conexao con;
 	
-	
 	@Override
 	public Endereco consultandoEndereco(Endereco endereco) {
 		
@@ -57,7 +56,11 @@ public class EnderecoDAO implements InterfaceEndereco {
 		System.out.println("end1");
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
+<<<<<<< Updated upstream
 		System.out.println("end12");
+=======
+		
+>>>>>>> Stashed changes
 		PreparedStatement st = null;
 		int valida = 0;
 		System.out.println("end13");
@@ -85,22 +88,21 @@ public class EnderecoDAO implements InterfaceEndereco {
 	@Override
 	public boolean excluirEndereco(Endereco endereco) {
 
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "DELETE FROM Endereco\r\n  WHERE Cep = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setFloat(1, endereco.getCep());
 			ps.executeUpdate();
 
-			c.fecharConexao();
-			return true;
 
-		} catch (SQLException e) {
-
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
 		}
 
 		return false;
@@ -108,13 +110,13 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 	public boolean alterarEndereco(Endereco endereco) {
 
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "UPDATE Endereco\r\n   SET" + "cidade = ?\r\n" + "bairro = ?" + "rua = ?" + " estado = ?"
 				+ "Uf = ? ,  WHERE cep = ?";
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, endereco.getCidade());
 			ps.setString(2, endereco.getBairro());
 			ps.setString(3, endereco.getRua());
@@ -124,13 +126,12 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-			return true;
+			
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			c.fecharConexao();
+			con.fecharConexao();
 		}
 
 		return false;

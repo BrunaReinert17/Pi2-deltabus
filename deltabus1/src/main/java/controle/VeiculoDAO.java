@@ -19,15 +19,15 @@ public class VeiculoDAO {
 	}
 
 	public ArrayList<Veiculo> listar() {
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
 
 		String query = "SELECT * FROM Veiculo";
 		try {
 
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -51,16 +51,17 @@ public class VeiculoDAO {
 
 			}
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+			return veiculos;
+		} finally {
+			con.fecharConexao();
 		}
-
-		c.fecharConexao();
-
 		return veiculos;
 	}
 
 	public boolean inserirVeiculo(Veiculo veiculo) {
+		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		int valida = 0;
 
@@ -101,13 +102,12 @@ public class VeiculoDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, veiculo.getRenavam());
 			ps.executeUpdate();
-
-			c.fecharConexao();
-			return true;
-
-		} catch (SQLException e) {
-
+           
+	
+		}  catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;
@@ -115,14 +115,14 @@ public class VeiculoDAO {
 
 	public boolean alterarVeiculo(Veiculo veiculo) {
 
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "UPDATE Endereco\r\n   SET" + "Marca = ?\r\n" + "Modelo = ?" + "Preco = ?" + " Ano = ?"
 				+ " Acessorios= ?" + "Lotacao = ?" + "Placa = ?" + "Renavam = ?" + "Cor = ?" + "TipoFrota = ?"
 				+ "Tipocombustivel = ?" + "situacao = ?,  WHERE idveiculo = ?";
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 
 			ps.setString(1, veiculo.getMarca());
 			ps.setString(2, veiculo.getModelo());
@@ -140,21 +140,13 @@ public class VeiculoDAO {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-			return true;
+			
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			c.fecharConexao();
+			con.fecharConexao();
 		}
-
 		return false;
 	}
-
-	public void deletarVeiculo(Veiculo objveiculo) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

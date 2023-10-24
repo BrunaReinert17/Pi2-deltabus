@@ -58,12 +58,5 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", email=" + email + ", senha=" + senha + ", cargo=" + cargo + "]";
 	}
-
-	public Object getFuncao() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 	
 }

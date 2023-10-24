@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -30,10 +31,12 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
+import mensagens.AlteraSucesso;
 import mensagens.AlterarErroUsuario;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.ErroAlterar;
 import mensagens.Limpar;
 import mensagens.ListagemErro;
 import mensagens.LoginErro;
@@ -94,7 +97,6 @@ public class CadastrarUsuario extends JPanel {
 	private Funcionario funcionarioSelecionado = null;
 	private Boolean editar;
 
-
 	public CadastrarUsuario() {
 		setLocale("Login");
 
@@ -110,7 +112,8 @@ public class CadastrarUsuario extends JPanel {
 		panel = new JPanel();
 		panel.setForeground(new Color(0, 102, 0));
 		panel.setBackground(new Color(245, 245, 245));
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),
+				"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
 		panel.setBounds(0, 37, 1184, 724);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -123,7 +126,7 @@ public class CadastrarUsuario extends JPanel {
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" }));
 		scrollPane.setViewportView(table);
-		
+
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
 		panel_1.setBounds(0, 0, 1200, 46);
@@ -139,7 +142,7 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deletarFuncionario();
-				
+
 			}
 		});
 		rndbtnDeletar.setText("Deletar");
@@ -147,9 +150,8 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnDeletar.setBackground(new Color(255, 255, 255));
 		rndbtnDeletar.setBounds(1050, 3, 115, 33);
-		panel_1.add(rndbtnDeletar);	
-		
-		
+		panel_1.add(rndbtnDeletar);
+
 		textCPF = new JTextField();
 		textCPF.setBounds(496, 12, 177, 20);
 		panel_1.add(textCPF);
@@ -161,16 +163,14 @@ public class CadastrarUsuario extends JPanel {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = textCPF.getText();
-				
+
 			}
-			
-			
+
 		});
-		
-		
+
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
-		
+
 		lblLimpar = new JLabel("");
 		lblLimpar.setBounds(1035, 92, 110, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
@@ -311,7 +311,7 @@ public class CadastrarUsuario extends JPanel {
 		txtCep.setBounds(521, 364, 149, 30);
 		txtCep.setText("");
 		/**********/
-		
+
 		txtCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtCep.setColumns(10);
 		add(txtCep);
@@ -325,7 +325,7 @@ public class CadastrarUsuario extends JPanel {
 		txtBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtBairro.setColumns(10);
 		add(txtBairro);
-		
+
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
 		cidade.add("São José");
@@ -401,7 +401,7 @@ public class CadastrarUsuario extends JPanel {
 		ArrayList<String> funcao = new ArrayList<>();
 		funcao.add("Administrador");
 		funcao.add("Funcionario");
-		
+
 		cbFuncao = new JComboBox();
 		cbFuncao.setBounds(362, 541, 155, 30);
 		cbFuncao.addAncestorListener(new AncestorListener() {
@@ -417,7 +417,7 @@ public class CadastrarUsuario extends JPanel {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		
+
 		cbFuncao.setModel(new DefaultComboBoxModel(new String[] { "" }));
 		cbFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(cbFuncao);
@@ -425,32 +425,44 @@ public class CadastrarUsuario extends JPanel {
 		lblFuncao.setBounds(362, 520, 155, 23);
 		lblFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblFuncao);
-		
-		
+
 		btnCadastrar = new RoundButton("Cadastrar");
 		btnCadastrar.setBounds(714, 627, 132, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-          
-            
+
 				Funcionario funcionario = verificarDados();
+<<<<<<< Updated upstream
 				System.out.println("aaaa");
 				System.out.println(funcionario);
+=======
+
+>>>>>>> Stashed changes
 				Usuario usuario = new Usuario();
 				if (funcionario == null) {
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
+<<<<<<< Updated upstream
 				} else {//erro da qui pra baixo
+=======
+					System.out.println("Erro");
+				} else {// erro da qui pra baixo
+>>>>>>> Stashed changes
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
-					System.out.println("Erro1");
+
 					Endereco endereco = enderecoDAO.consultandoEndereco(funcionario.getEndereco());
+<<<<<<< Updated upstream
 					System.out.println(endereco);
 					boolean ende = true;
 					System.out.println("Erro2");
+=======
+					boolean ende = false;
+
+>>>>>>> Stashed changes
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
@@ -462,20 +474,24 @@ public class CadastrarUsuario extends JPanel {
 						System.out.println("ddddd12");
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
 						System.out.println(funcionario.getUsuario());
+<<<<<<< Updated upstream
 						System.out.println("ddddd13");
+=======
+
+>>>>>>> Stashed changes
 						if (usuarioRetornoCadastro != false) {
 							System.out.println("ddddd14");
 							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
 							System.out.println(usuario);
 							funcionario.setUsuario(usuario);
 							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
-							
+
 							if (resultado = true) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								limparDados();
-								
+
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
 								erro1.setLocationRelativeTo(null);
@@ -496,8 +512,7 @@ public class CadastrarUsuario extends JPanel {
 		add(btnCadastrar);
 		add(txtDataNasci);
 		txtDataNasci.setColumns(10);
-		
-		
+
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
 		btnLimparCampo.setBounds(1061, 92, 84, 33);
 		btnLimparCampo.setText("");
@@ -536,42 +551,100 @@ public class CadastrarUsuario extends JPanel {
 		textRua.setFont(new Font("Dialog", Font.BOLD, 13));
 		textRua.setColumns(10);
 		add(textRua);
-		
-		RoundButton rndbtnAlterar_1 = new RoundButton("Alterar");
-		rndbtnAlterar_1.addActionListener(new ActionListener() {
+
+		RoundButton rndbtnAlterar = new RoundButton("Alterar");
+		rndbtnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//if (UsuarioSelecionado == null && funcionarioSelecionado == null) {
-				//	new DialogMensagemErro("Usuario não selecionado").setVisible(true);
+				
+				String nome = txtNome.getText();
+				String cpf = txtCpf.getText().replace("-", "").replace(".", "");
+				String email = txtEmail.getText();
+				LocalDate dataNascimento = txtDataNasci.getText();
+				String telefone = txtTelefone.getText().replace("(", "").replace(")", "")
+						.replace("-", "").replace(" ", "");
+				String enderecoCep = txtCep.getText().replace("-", "");
+
+				String erros = "";
+
+				Usuario usu = new Usuario();
+				Endereco endereco = new Endereco();
+				Funcionario funcio = new Funcionario();
+
+				if (nome == null || nome.trim() == "" || nome.isEmpty()) {
+					erros += "nome\n";
+				} else {
+					funcio.setNome(nome);
+				}
+				if (cpf == null || cpf.trim() == "" || cpf.isEmpty()) {
+					erros += "cpf\n";
+				} else {
+					Double cpfLong = Double.valueOf(cpf);
+					funcio.setCpf(cpfLong);
+				}
+				if (email == null || email.trim() == "" || email.isEmpty()) {
+					erros += "email\n";
+				} else {
+					usu.setEmail(email);
+				}
+				if (dataNascimento == null || dataNascimento.toString() == "" || dataNascimento.isLeapYear()) {
+					erros += "dataNasci\n";
+				} else {
+					funcio.setDatanasci(dataNascimento);
+				}
+				if (telefone == null || telefone.trim() == "" || telefone.isEmpty()) {
+					erros += "telefone\n";
+				} else {
+					String telefoneLong = String.valueOf(telefone);
+					funcio.setNumeroTelefone(telefoneLong);
+				}
+				if (enderecoCep == null || enderecoCep.trim() == "" || enderecoCep.isEmpty()) {
+					erros += "cep\n";
+				} else {
+					int enderecoint = Integer.getInteger(endereco);
+					funcio.setEndereco(endereco);
+				}
+				if (erros.trim() != "") {
+					JOptionPane.showMessageDialog(null, "Dados inválidos\n" + erros);
 					return;
-			//	}
 
-			//	editar = true;
-			//	dispose();
-			//	CadastrarUsuario telaAlterar = new CadastrarUsuario(, UsuarioSelecionado,
-			//			editar, funcionarioSelecionado);
-			///	telaAlterar.setLocationRelativeTo(null);
-			///	telaAlterar.setVisible(true);
-			//	telaAlterar.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			//}
+				}
+				UsuarioDAO usuDao = new UsuarioDAO();
+				usuDao.getIntancia();
+				Usuario retorno = usuDao.alterarUsuario(usu);
+				
+				if (retorno == true) {
+					AlteraSucesso altCerto = new AlteraSucesso("Usuario alterado com sucesso!");
+					altCerto.setLocationRelativeTo(null);
+					altCerto.setVisible(true);
+				} else {
+					ErroAlterar altErro = new ErroAlterar("Usuario não alterado!");
+					altErro.setLocationRelativeTo(null);
+					altErro.setVisible(true);
+				}
+				rndbtnSalvar.setVisible(false);
+				contentPane.remove(rndbtnSalvar);
 
-			//private void dispose() {
-				// TODO Auto-generated method stub
+				
+				contentPane.add(rndbtnSalvar);
+				rndbtnSalvar.setVisible(true);
+
+				txtCpf.setEditable(true);
+			
+				
 				
 			}
-				
-				
-				
+			
 		});
-		
-		rndbtnAlterar_1.setText("Alterar");
-		rndbtnAlterar_1.setForeground(Color.WHITE);
-		rndbtnAlterar_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnAlterar_1.setBackground(new Color(0, 128, 128));
-		rndbtnAlterar_1.setBounds(556, 627, 120, 33);
-		add(rndbtnAlterar_1);
-		
+
+		rndbtnAlterar.setText("Alterar");
+		rndbtnAlterar.setForeground(Color.WHITE);
+		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+		rndbtnAlterar.setBackground(new Color(0, 128, 128));
+		rndbtnAlterar.setBounds(556, 627, 120, 33);
+		add(rndbtnAlterar);
+
 		RoundButton rndbtnSalvar = new RoundButton("Salvar");
-		
+
 		rndbtnSalvar.setForeground(new Color(255, 255, 255));
 		rndbtnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnSalvar.setBackground(new Color(0, 128, 128));
@@ -580,7 +653,6 @@ public class CadastrarUsuario extends JPanel {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	}
-	
 
 	protected void dispose() {
 		// TODO Auto-generated method stub
@@ -590,24 +662,22 @@ public class CadastrarUsuario extends JPanel {
 
 	protected void setExtendedState(int maximizedBoth) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	protected void setLocationRelativeTo(Object object) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	protected void verificarDados(Funcionario verificarDados) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	protected void deletarFuncionario() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	protected void setSelectedItem(Object object) {
