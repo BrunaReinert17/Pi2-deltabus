@@ -1,26 +1,29 @@
-package modelo;
+ package modelo;
 
 public class Cliente  {
 	
 	private String nome;
 	private int numeroTelefone;
 	private String email;
-	private double cpf;
-	private long cnpj;
-	private Endereco endereco;
+	private Double Cpf;
+	private Integer Cep;
+	private Cliente cliente;
+	private Double cnpj;
 	
 	public Cliente() {
 		super();
 	}
 	
-	public Cliente(String nome,int numeroTelefone,String email,double cpf,long cnpj,Endereco endereco) {
+	public Cliente(String nome,int numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
 		this.email = email;
-		this.cpf = cpf;
+		this.Cpf = Cpf;;
+		this.Cep = cep;
+		this.cliente = cliente;
 		this.cnpj = cnpj;
-		this.endereco = endereco;
+		
 	}
 	
 
@@ -48,29 +51,52 @@ public class Cliente  {
 		this.email = email;
 	}
 
-	public double getCpf() {
-		return cpf;
+	public Double getCpf() {
+
+		return Cpf;
+
 	}
 
-	public void setCpf(double cpf) {
-		this.cpf = cpf;
+	public void setCpf(Double Cpf) {
+
+		this.Cpf = Cpf;
+
 	}
 
-	public long getCnpj() {
+	public Integer getCep() {
+		return Cep;
+	}
+
+	public void setCep(Integer cep) {
+		this.Cep = cep;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Double getCnpj() {
 		return cnpj;
 	}
+	public void setCnpj(Double cnpj) {
 
-	public void setCnpj(long cnpj) {
-		this.cnpj = cnpj;
+	this.cnpj = cnpj;
+
+	}
+	
+	public String toString() {
+		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf +",cep=" + Cep + ", cliente=" + cliente + "]";
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public Cliente editarCliente(Cliente funcionario) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+	
+
 
 	
 }

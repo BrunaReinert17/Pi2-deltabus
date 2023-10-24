@@ -7,6 +7,7 @@ public class Endereco {
 	private String bairro;
 	private String rua;
 	private String Uf;
+	private Endereco endereco;
 	
 	
 	public Endereco() {
@@ -74,5 +75,6 @@ public class Endereco {
 	public String toString() {
 		return "Endereco [cep=" + cep + ", cidade=" + cidade + ", bairro=" + bairro + ", rua=" + rua + ", Uf=" + Uf + "]";
 	}
+	
 	
 }

@@ -58,5 +58,55 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", email=" + email + ", senha=" + senha + ", cargo=" + cargo + "]";
 	}
+
+	public void setNome(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setIdade(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object getFuncao() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static Object getNome() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Object getCpf() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Object getTelefone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Object getDataNasci() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Object getGenero() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Object Email() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

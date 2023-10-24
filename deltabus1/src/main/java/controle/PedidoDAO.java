@@ -88,13 +88,54 @@ public class PedidoDAO implements InterfacePedido{
 
 	@Override
 	public boolean excluirPedido(Pedido pedido) {
-		// TODO Auto-generated method stub
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM Cliente\r\n  WHERE Cpf = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, pedido.getVeiculo());
+			ps.executeUpdate();
+
+			c.fecharConexao();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
 		return false;
 	}
 
 	@Override
 	public boolean alterarPedido(Pedido pedido) {
-		// TODO Auto-generated method stub
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "UPDATE Pedido\r\n   SET" + "nome = ?\r\n" + "dataNascimento = ?" + "genero = ?"
+				+ " numerotelefone = ?" + "email = ?" + "Usuario_idUsuario = ?" + "endereco_cep = ? ,  WHERE cpf = ?";
+		try {
+			PreparedStatement p = con.prepareStatement(query);
+
+			
+			p.setDouble(1, pedido.getValorPago());
+		//	p.setDate(2, java.sql.Date.valueOf(pedido.getDataCompra()));
+			p.setString(3, pedido.getTipoPagamento());
+			p.setInt(4, pedido.getVeiculo());
+			p.setString(5, pedido.getCliente());
+			p.executeUpdate();
+
+			c.fecharConexao();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 	 

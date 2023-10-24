@@ -9,24 +9,23 @@ public class Veiculo {
 	private String marca;
 	private String modelo;
 	private Double preco;
-	private Date ano;
+	private int ano;
 	private String acessorios;
 	private int lotacao;
 	private String placa;
 	private String renavam;
 	private String cor;
 	private String TipoFrota;
-	private int Kmveiculo;
-	private String TipoCombustivel;
-	private boolean situacao;
+    private String TipoCombustivel;
+	private String situacao;
 	
 	public Veiculo() {
 		super();
 	}
 	
-	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, Date ano, String acessorios,
-			int lotacao, String placa, String renavam, String cor, String TipoFrota, int Kmveiculo,
-			String TipoCombustivel, boolean situacao) {
+	public Veiculo(Long idVeiculo, String marca, String modelo, Double preco, int ano, String acessorios,
+			int lotacao, String placa, String renavam, String cor, String TipoFrota,
+			String TipoCombustivel, String situacao) {
 
 		super();
 
@@ -41,7 +40,6 @@ public class Veiculo {
 		this.renavam = renavam;
 		this.cor = cor;
 		this.TipoFrota = TipoFrota;
-		this.Kmveiculo = Kmveiculo;
 		this.TipoCombustivel = TipoCombustivel;
 		this.situacao = situacao;
 
@@ -95,15 +93,15 @@ public class Veiculo {
 
 	}
 
-	public Date getAno() {
+	public int getAno() {
 
 		return ano;
 
 	}
 
-	public void setAno(Date date) {
+	public void setAno(int ano) {
 
-		this.ano = date;
+		this.ano = ano;
 
 	}
 
@@ -125,7 +123,7 @@ public class Veiculo {
 
 	}
 
-	public void setLotacao(int lotacao) {
+    public void setLotacao(int lotacao) {
 
 		this.lotacao = lotacao;
 
@@ -179,17 +177,6 @@ public class Veiculo {
 
 	}
 
-	public int getKmveiculo() {
-
-		return Kmveiculo;
-
-	}
-
-	public void setKmveiculo(int kmveiculo) {
-
-		Kmveiculo = kmveiculo;
-
-	}
 
 	public String getTipoCombustivel() {
 
@@ -203,13 +190,13 @@ public class Veiculo {
 
 	}
 
-	public boolean isSituacao() {
+	public String getSituacao() {
 
 		return situacao;
 
 	}
 
-	public void setSituacao(boolean situacao) {
+	public void setSituacao(String situacao) {
 
 		this.situacao = situacao;
 

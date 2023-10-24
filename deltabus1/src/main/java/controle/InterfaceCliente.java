@@ -9,4 +9,6 @@ public interface InterfaceCliente {
 	public boolean deletarCliente(Cliente cliente);
 
 	public Cliente alterarCliente(Cliente cliente);
+
+	public Cliente selecionar(Cliente clienteModelo);
 }
