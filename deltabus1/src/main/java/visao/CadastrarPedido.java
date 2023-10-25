@@ -71,7 +71,7 @@ public class CadastrarPedido extends JPanel {
 	private JTextField txtDataCompra;
 	private JTextField txtQtdes;
 	private JComboBox cbPagamento;
-	private JTextField txtValorPagar;
+	private JTextField txtValorPago;
 
 	public CadastrarPedido() {
 		setLocale("Login");
@@ -101,7 +101,7 @@ public class CadastrarPedido extends JPanel {
 		table1.setFont(new Font("Dialog", Font.BOLD, 14));
 		
 		table1.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "CPF", "CNPJ", "Cliente", "Renavam", "Id Veiculo", "Valor R$", "Qtde" }));
+				new String[] {"CNPJ", "Cliente", "Renavam", "Pagamento","Valor", "Qtde", "Data Compra"}));
 		scrollPane.setViewportView(table1);
 		
 		
@@ -131,12 +131,9 @@ public class CadastrarPedido extends JPanel {
 		panel_3.setBounds(1190, 34, 10, 766);
 		panel_3.setBackground(new Color(0, 0, 0));
 		add(panel_3);
-		txtNomeCliente = new JTextField();
-		txtNomeCliente.setBounds(639, 137, 249, 30);
-		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtNomeCliente);
-		txtNomeCliente.setColumns(10);
+		
+		
+		
 		JLabel lblNome = new JLabel("Cliente:");
 		lblNome.setBounds(639, 115, 67, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -146,6 +143,14 @@ public class CadastrarPedido extends JPanel {
 		lblCpf.setBounds(271, 245, 46, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblNome);
+	
+		txtNomeCliente = new JFormattedTextField();
+		txtNomeCliente.setBounds(639, 137, 249, 30);
+		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtNomeCliente.setColumns(10);
+		add(txtNomeCliente);
+		
 
 		JLabel lblCnpj = new JLabel("CNPJ:");
 		lblCnpj.setBounds(278, 115, 98, 14);
@@ -180,7 +185,7 @@ public class CadastrarPedido extends JPanel {
 				txtNomeCliente.setText("");
 				txtCliente.setText("");
 				txtRenavam.setText("");
-				txtValorPagar.setText("");
+				txtValorPago.setText("");
 				txtQtdes.setText("");
 				txtDataCompra.setText("");
 				cbPagamento.setSelectedIndex(-1);
@@ -198,21 +203,13 @@ public class CadastrarPedido extends JPanel {
 		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblRenavam.setBounds(278, 209, 155, 14);
 		add(lblRenavam);
-		/**********/
-		MaskFormatter mascaraRenavam = null;
-		try {
-			mascaraRenavam = new MaskFormatter("###########");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		txtRenavam = new JFormattedTextField(mascaraRenavam);
-		txtRenavam.setBounds(278, 228, 116, 30);
+
+		txtRenavam = new JFormattedTextField();
+		txtRenavam.setBounds(278, 228, 132, 30);
 		txtRenavam.setText("");
 		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtRenavam);
 		txtRenavam.setColumns(10);
-		
-		/**********/
 		
 		JLabel lblValor = new JLabel("Valor R$:");
 		lblValor.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -239,26 +236,31 @@ public class CadastrarPedido extends JPanel {
 		RoundButton btnCadastrar_1 = new RoundButton("Cadastrar");
 		btnCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
               Pedido pedido = verificarDados();
-				
+          	  System.out.println("erro1");
+
 				boolean pedidoRetornoCadastro = false;
-				
-				
+            	System.out.println("erro2");
 
                 if (pedido != null) {
+                	System.out.println("erro3");
                 	
                 	PedidoDAO pedidoDAO = new PedidoDAO();
                     boolean resultado = PedidoDAO.inserirPedido1(pedido);
-                   
+                    
+                	System.out.println("erro1");
+
 
                     if (resultado == true) {
-                        // O veículo foi cadastrado com sucesso
-                        CadastroVeiculo cadastro = new CadastroVeiculo("Venda Cadastrada com Sucesso!");
+                    	System.out.println("erro4");
+
+                        CadastroVeiculo cadastro = new CadastroVeiculo("Cadastrado com Sucesso!");
                         cadastro.setLocationRelativeTo(null);
                         cadastro.setVisible(true);
                        limparDados(); // Limpa os campos após o cadastro
                     } else {
-                        // Ocorreu um erro durante o cadastro
+                    	System.out.println("erro5");
                         CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
                         erro1.setLocationRelativeTo(null);
                         erro1.setVisible(true);
@@ -311,9 +313,9 @@ public class CadastrarPedido extends JPanel {
 		txtDataCompra.setBounds(278, 310, 116, 30);
 		add(txtDataCompra);
 		/**********/
-		JLabel lblTipopagamento = new JLabel("TipoPagamento:");
+		JLabel lblTipopagamento = new JLabel("Pagamento:");
 		lblTipopagamento.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblTipopagamento.setBounds(528, 209, 155, 14);
+		lblTipopagamento.setBounds(538, 209, 155, 14);
 		add(lblTipopagamento);
 		
 		/**********/
@@ -334,10 +336,10 @@ public class CadastrarPedido extends JPanel {
 		
 		ArrayList<String> fpagamento = new ArrayList<String>();
 		fpagamento.add("");
-		fpagamento.add("catao");
-		fpagamento.add("dinheiro");
-		fpagamento.add("pix");
-		fpagamento.add("outro");
+		fpagamento.add("Cartão");
+		fpagamento.add("Dinheiro");
+		fpagamento.add("Pix");
+		fpagamento.add("Outro");
 		 cbPagamento = new JComboBox();
 		cbPagamento.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
@@ -351,24 +353,17 @@ public class CadastrarPedido extends JPanel {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		cbPagamento.setBounds(528, 229, 103, 30);
+		cbPagamento.setBounds(538, 229, 89, 30);
 		add(cbPagamento);
 		
-		/**********/
-		MaskFormatter mascaraValorPagar = null;
-		try {
-			mascaraValorPagar = new MaskFormatter("###########");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		txtValorPagar = new JFormattedTextField(mascaraValorPagar);
-		txtValorPagar.setBounds(665, 228, 126, 30);
-		txtValorPagar.setText("");
-		txtValorPagar.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtValorPagar);
-		txtValorPagar.setColumns(10);
 		
-		/**********/
+		txtValorPago = new JFormattedTextField();
+		txtValorPago.setBounds(665, 228, 126, 30);
+		txtValorPago.setText("");
+		txtValorPago.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtValorPago);
+		txtValorPago.setColumns(10);
+		
 		
 	}
 
@@ -393,7 +388,7 @@ public class CadastrarPedido extends JPanel {
 		
 		
 		String nome = txtNomeCliente.getText();
-		String valorpagar = txtValorPagar.getText();
+		String valorpagar = txtValorPago.getText();
 		String cliente = txtCliente.getText().replace(".", "").replace("-", "");
 		String renavam = txtRenavam.getText();
 		String quantidade = txtQtdes.getText();
@@ -467,7 +462,10 @@ public class CadastrarPedido extends JPanel {
 	public void limparDados() {
 		txtNomeCliente.setText("");
 		txtCliente.setText("");
-
-		txtBairro.setText("");
+		txtRenavam.setText("");
+		txtValorPago.setText("");
+		txtQtdes.setText("");
+		txtDataCompra.setText("");
+		cbPagamento.setSelectedIndex(-1);
 	}
 }

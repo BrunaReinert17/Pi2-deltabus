@@ -58,10 +58,10 @@ public class CadastroVeiculo extends JFrame {
 		lblNewLabel.setBounds(122, -21, 129, 82);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Veiculo cadastrado");
+		JLabel lblNewLabel_1 = new JLabel("Cadastrado com Sucesso!");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_1.setBounds(122, 81, 137, 14);
+		lblNewLabel_1.setBounds(91, 82, 171, 14);
 		contentPane.add(lblNewLabel_1);
 	}
 }
