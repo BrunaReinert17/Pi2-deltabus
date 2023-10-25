@@ -18,12 +18,12 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		System.out.println(funcionario.toString());
 
 		con = Conexao.getInstancia();
-		System.out.println(2);
+		
 
 		Connection c = con.conectar();
 
 		int valida = 0;
-		System.out.println(3);
+		
 
 		try {
 			String query = "INSERT INTO Funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,Usuario_idUsuario,endereco_cep, email)values(?,?,?,?,?,?,?, ?);";
@@ -187,18 +187,15 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		return listFunc;
 	}
 
-	public static boolean excluirFuncionario(Funcionario funcionario) {
+	public static  boolean excluirFuncionario(Funcionario funcionario) {
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
-
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
-
-		
-
+	
 		String query = "DELETE FROM funcionarios\r\n  WHERE cpf = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, funcionario.getCpf());
 			ps.executeUpdate();
 
@@ -207,17 +204,10 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		} catch (SQLException e) {			
 			e.printStackTrace();
 		} finally {
-			c.fecharConexao();
+			con.fecharConexao();
 		}
 		return false;
 	}
 
-	public ArrayList<Funcionario> listar() {
-		// TODO Auto-generated method stub
-		return null;
-
-
-		
-
-	}
+	
 }

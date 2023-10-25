@@ -30,10 +30,12 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
-import mensagens.AlterarErroUsuario;
+import mensagens.ErroVeiculo;
+import mensagens.AlteraSucesso;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.ErroAlterar;
 import mensagens.Limpar;
 import mensagens.ListagemErro;
 import mensagens.LoginErro;
@@ -88,11 +90,13 @@ public class CadastrarUsuario extends JPanel {
 	private AbstractButton btnSalvar;
 	private String validacao = "";
 	private Funcionario funcionarioClick;
-	private ArrayList<Funcionario> listFuncionario;
+	private ArrayList<Funcionario> listFunc;
 	private RoundButton rndbtnSalvar;
 	private ArrayList<Usuario> listUsuario;
-	private Usuario UsuarioSelecionado = null;
-	private Funcionario funcionarioSelecionado = null;
+	private Usuario UsuarioSelecionado;
+	private Funcionario funcionarioSelecionado;
+	private UsuarioDAO usuarioDao;
+	private FuncionarioDAO funcionarioDao;
 
 	public CadastrarUsuario() {
 		setLocale("Login");
@@ -542,20 +546,10 @@ public class CadastrarUsuario extends JPanel {
 				int position = table.getSelectedRow();
 				String erros = "";
 
-				if (position == -1) {
-					// JOptionPane.showMessageDialog(null, "Nenhum paciente selecionado"); Mensagem
-					// de aviso (Nenhum usuario elecionado)
-					rndbtnAlterar.setForeground(Color.WHITE);
-					rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
-					rndbtnAlterar.setBackground(new Color(0, 128, 128));
-					rndbtnAlterar.setBounds(556, 627, 120, 33);
-					add(rndbtnAlterar);
-					return;
-				}
-				funcionarioSelecionado = listFuncionario.get(position);
-				verificarDados(funcionarioSelecionado);
+				funcionarioSelecionado = listFunc.get(position);
+				verificarDados(funcionarioSelecionado);              
 				UsuarioSelecionado = listUsuario.get(position);
-
+             
 				JButton salvar = new JButton("salva");
 				salvar.addActionListener(new ActionListener() {
 
@@ -577,6 +571,7 @@ public class CadastrarUsuario extends JPanel {
 						String bairro = txtBairro.getText();
 						String rua = txtRua.getText();
 
+						Endereco endereco = new Endereco();
 						Funcionario funcionario = new Funcionario();
 						funcionario.setCpf(funcionarioSelecionado.getCpf());
 						Usuario usuario = new Usuario();
@@ -610,7 +605,71 @@ public class CadastrarUsuario extends JPanel {
 						}else {
 							funcionario.setNumeroTelefone(numeroTelefone);
 						}
-
+                        
+						if(cpf ==  null || cpf.trim() == "" || cpf.isEmpty()) {
+							erros += "cpf\n";
+						}else {
+							funcionario.setCpf(cpf);
+						}
+					
+						if(cep ==  null || cep.trim() == "" || cep.isEmpty()) {
+							erros += "cep\n";
+						}else {
+							endereco.setCep(Integer.valueOf(cep));
+						}
+						
+						if(senha ==  null || senha.trim() == "" || senha.isEmpty()) {
+							erros += "senha\n";
+						}else {
+							usuario.setSenha(senha);
+						}
+						
+						if(cargo ==  null || cargo.trim() == "" || cargo.isEmpty()) {
+							erros += "cargo\n";
+						}else {
+							usuario.setCargo(cargo);
+						}
+						
+						if(uf ==  null || uf.trim() == "" || uf.isEmpty()) {
+							erros += "uf\n";
+						}else {
+							endereco.setUf(uf);
+						}
+					
+						if(cidade ==  null || cidade.trim() == "" || cidade.isEmpty()) {
+							erros += "cidade\n";
+						}else {
+							endereco.setCidade(cidade);
+						}
+						
+						if(bairro ==  null || bairro.trim() == "" || bairro.isEmpty()) {
+							erros += "bairro\n";
+						}else {
+							endereco.setBairro(bairro);
+						}
+						
+						if(rua ==  null || rua.trim() == "" || rua.isEmpty()) {
+							erros += "rua\n";
+						}else {
+							endereco.setRua(rua);
+						}
+						
+						usuarioDao = new UsuarioDAO();
+						UsuarioDAO.getIntancia(usuario);
+						boolean retorno = funcionarioDao.alterarFuncionario(funcionario);
+						if (retorno == true) {
+							AlteraSucesso erroALt = new AlteraSucesso("Usuário Alterado!");
+							erroALt.setLocationRelativeTo(null);
+							erroALt.setVisible(true);
+						} 
+						else {
+							ErroAlterar erroALt = new ErroAlterar("Erro, Usuario Não Alterado!");
+							erroALt.setLocationRelativeTo(null);
+							erroALt.setVisible(true);
+						}
+						
+						
+						
 					}
 
 				});

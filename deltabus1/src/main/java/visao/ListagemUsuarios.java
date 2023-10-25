@@ -164,6 +164,5 @@ private void deletarUsuario() {
 		}
 		table.setModel(tabela);
 	}
-	
 }
 

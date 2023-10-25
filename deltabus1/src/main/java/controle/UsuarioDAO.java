@@ -11,6 +11,8 @@ import modelo.Usuario;
 public class UsuarioDAO implements InterfaceUsuario {
 
 
+	private static UsuarioDAO usuarioDao;
+	
 	private Conexao con;
 
 	public UsuarioDAO() {
@@ -69,7 +71,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 		} finally {
 			con.fecharConexao();
 		}
-		return null;
+		return usuarioModelo;
 	}
 
  
@@ -188,9 +190,45 @@ public class UsuarioDAO implements InterfaceUsuario {
         } finally {
             con.fecharConexao();
         }
+return false;
+	}
+	
+	public static UsuarioDAO getIntancia(Usuario usuario) {
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+		
 
+		try {
 
-		return false;
+			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
+			//metodo duplicado com selecionar usuario
+			ps.setString(1, usuario.getEmail());
+			ps.setString(2, usuario.getSenha());
+
+			ResultSet rs = ps.executeQuery();
+			Usuario usuarioConectado = new Usuario();
+
+			while (rs.next()) {
+				long idUsuario = rs.getLong("idusuario");
+				String email = rs.getString("email");
+				String senha = rs.getString("senha");
+				String cargo = rs.getString("cargo");
+
+				usuarioConectado.setIdUsuario(idUsuario);
+				usuarioConectado.setEmail(email);
+				usuarioConectado.setSenha(senha);
+				usuarioConectado.setCargo(cargo);
+
+				
+			}
+
+		} catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+		return usuarioDao;
+		
 	}
 
 }

@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 
-public class AlterarErroUsuario extends JFrame {
+public class ErroVeiculo extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblMensagemVeiculo;
@@ -23,7 +23,7 @@ public class AlterarErroUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AlterarErroUsuario (String mensagem) {
+	public ErroVeiculo (String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
