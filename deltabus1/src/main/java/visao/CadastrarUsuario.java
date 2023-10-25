@@ -90,6 +90,7 @@ public class CadastrarUsuario extends JPanel {
 	private Funcionario funcionarioClick;
 	private ArrayList<Funcionario> listFuncionario;
 	private RoundButton rndbtnSalvar;
+	private ArrayList<Usuario> listUsuario;
 	private Usuario UsuarioSelecionado = null;
 	private Funcionario funcionarioSelecionado = null;
 
@@ -544,15 +545,16 @@ public class CadastrarUsuario extends JPanel {
 				if (position == -1) {
 					// JOptionPane.showMessageDialog(null, "Nenhum paciente selecionado"); Mensagem
 					// de aviso (Nenhum usuario elecionado)
-					rndbtnAlterar.setForeground(new Color(255, 255, 255));
-					rndbtnAlterar.setBackground(new Color(0, 0, 128));
-					rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
-					rndbtnAlterar.setBounds(731, 694, 184, 53);
-					contentPane.add(rndbtnAlterar);
+					rndbtnAlterar.setForeground(Color.WHITE);
+					rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+					rndbtnAlterar.setBackground(new Color(0, 128, 128));
+					rndbtnAlterar.setBounds(556, 627, 120, 33);
+					add(rndbtnAlterar);
 					return;
 				}
 				funcionarioSelecionado = listFuncionario.get(position);
 				verificarDados(funcionarioSelecionado);
+				UsuarioSelecionado = listUsuario.get(position);
 
 				JButton salvar = new JButton("salva");
 				salvar.addActionListener(new ActionListener() {
@@ -562,16 +564,52 @@ public class CadastrarUsuario extends JPanel {
 						String erros = "";
 
 						String nome = txtNome.getText();
-						String cpf = txtCpf.getText().replace(".", "").replace("-", "");
-						
-						
 						String email = txtEmail.getText();
+						String dataNasci = (String) txtDataNasci.getText();
+						String genero = (String) cbGenero.getSelectedItem();
+						String numeroTelefone = txtTelefone.getText();
+						String cpf = txtCpf.getText().replace(".", "").replace("-", "");
+						String cep = (String) txtCep.getText();
+						String senha = txtSenha.getText();
 						String cargo = (String) cbFuncao.getSelectedItem();
-						
-						
+						String uf = (String) cbUf.getSelectedItem();
+						String cidade = (String) cbCidade.getSelectedItem();
+						String bairro = txtBairro.getText();
+						String rua = txtRua.getText();
 
 						Funcionario funcionario = new Funcionario();
 						funcionario.setCpf(funcionarioSelecionado.getCpf());
+						Usuario usuario = new Usuario();
+						usuario.setIdUsuario(UsuarioSelecionado.getIdUsuario());
+
+						if (nome == null || nome.trim() == "" || nome.isEmpty()) {
+							erros += "nome\n";
+						} else {
+							funcionario.setNome(nome);
+						}
+						
+						if (email == null || email.trim() == "" || email.isEmpty()) {
+							erros += "email\n";
+						} else {
+							funcionario.setEmail(email);
+						}
+						
+						if(dataNasci == null || dataNasci.toString() == "" || dataNasci.isBlank()) {
+							erros += "dataNasci\n";
+						}else {
+							funcionario.setDatanasci(null);// nao é pra ser null
+						}
+						if(genero == null || genero.trim() == "" || genero.isEmpty()) {
+							erros += "genero\n";
+						}else {
+							funcionario.setGenero(genero);
+						}
+						
+						if(numeroTelefone ==  null || numeroTelefone.trim() == "" || numeroTelefone.isEmpty()) {
+							erros += "numeroTelefone\n";
+						}else {
+							funcionario.setNumeroTelefone(numeroTelefone);
+						}
 
 					}
 
@@ -597,28 +635,20 @@ public class CadastrarUsuario extends JPanel {
 	}
 
 	protected void dispose() {
-		// TODO Auto-generated method stub
 
 	}
 
 	protected void setExtendedState(int maximizedBoth) {
-		// TODO Auto-generated method stub
 
 	}
 
 	protected void setLocationRelativeTo(Object object) {
-		// TODO Auto-generated method stub
-
 	}
 
 	protected void verificarDados(Funcionario verificarDados) {
-		// TODO Auto-generated method stub
-
 	}
 
 	protected void deletarFuncionario() {
-		// TODO Auto-generated method stub
-
 	}
 
 	protected void setSelectedItem(Object object) {
@@ -651,7 +681,7 @@ public class CadastrarUsuario extends JPanel {
 		String bairro = txtBairro.getText();
 		String cidade = (String) cbCidade.getSelectedItem();
 		String rua = txtRua.getText();
-		
+
 		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
 			verificarCampo += "Nome\n";
 		} else {
