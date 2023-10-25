@@ -80,6 +80,9 @@ public class CadastrarVeiculo extends JPanel {
 	private JComboBox cbModelo;
 	private JComboBox cbModelo_1;
 	
+	private void AterarVeiculo() {
+		
+	}
 	
 	public CadastrarVeiculo() {
 		setLocale("Login");
