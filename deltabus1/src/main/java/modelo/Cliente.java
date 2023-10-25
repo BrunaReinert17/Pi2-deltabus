@@ -10,6 +10,17 @@ public class Cliente {
 	private Long cnpj;
 	private Endereco endereco;
 	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	private Cliente cliente;
+
+	
 
 	public Endereco getEndereco() {
 		return endereco;
