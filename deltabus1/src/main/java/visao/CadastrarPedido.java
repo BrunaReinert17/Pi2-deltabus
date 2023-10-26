@@ -74,6 +74,7 @@ public class CadastrarPedido extends JPanel {
 	private JComboBox cbPagamento;
 	private JTextField txtValorPago;
 	private ArrayList<Pedido> listPedido;
+	private Pedido pedidoSelecionado;
 
 	public CadastrarPedido() {
 		setLocale("Login");
@@ -278,7 +279,7 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.setForeground(Color.WHITE);
 		btnCadastrar_1.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrar_1.setBackground(new Color(0, 128, 128));
-		btnCadastrar_1.setBounds(440, 661, 116, 33);
+		btnCadastrar_1.setBounds(364, 661, 116, 33);
 		add(btnCadastrar_1);
 		
 		RoundButton btnDeletar2 = new RoundButton("Confirmar");
@@ -290,7 +291,7 @@ public class CadastrarPedido extends JPanel {
 		btnDeletar2.setForeground(Color.WHITE);
 		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnDeletar2.setBackground(new Color(0, 0, 0));
-		btnDeletar2.setBounds(617, 661, 116, 33);
+		btnDeletar2.setBounds(538, 661, 116, 33);
 		add(btnDeletar2);
 		
 		RoundButton rndbtnBuscar_1 = new RoundButton("Limpar Campo");
@@ -381,6 +382,83 @@ public class CadastrarPedido extends JPanel {
 		});
 		btnPesquisar_1.setBounds(773, 315, 115, 23);
 		add(btnPesquisar_1);
+
+		RoundButton btnSalvar = new RoundButton("Cadastrar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				/*
+				 * Pegar dado do componente da tela 
+				 * **/
+				
+				Pedido p = verificarDados();
+				p.setId_pedido(pedidoSelecionado.getId_pedido());
+				
+            	
+
+				/*
+				 * salvar alteracao no banco
+				 * **/
+				PedidoDAO pedidoDAO = new PedidoDAO();
+                boolean resultado = pedidoDAO.alterarPedido(p);
+				/*
+				 * Atualizar tabela
+				 * **/
+				atualizarTabela();
+				/*
+				 * Ocular salvar e motrar cadastrar
+				 * **/
+				btnSalvar.setVisible(false);
+				btnCadastrar_1.setVisible(true);
+
+
+				
+			}
+		});
+		btnSalvar.setText("Salvar");
+		btnSalvar.setForeground(Color.WHITE);
+		btnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnSalvar.setBackground(new Color(0, 128, 128));
+		btnSalvar.setBounds(364, 661, 116, 33);
+		btnSalvar.setVisible(false);
+		add(btnSalvar);
+		
+		RoundButton btnAlterarP = new RoundButton("Alterar");
+		btnAlterarP.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				/***
+				 * selecionar registro
+				 * */
+				int pos = table1.getSelectedRow();
+				System.out.println(pos);
+				pedidoSelecionado =listPedido.get(pos);
+
+				
+
+				/*
+				 * preencher os campo
+				 * 
+				 * */
+				txtNomeCliente.setText(pedidoSelecionado.getNomeCliente());
+				/*
+				 * ocutar botaocadastro
+				 * aparecer botao salvar
+				 * 
+				 * 
+				 */
+				btnSalvar.setVisible(true);
+				btnCadastrar_1.setVisible(false);
+				
+				
+			}
+		});
+		btnAlterarP.setForeground(Color.WHITE);
+		btnAlterarP.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnAlterarP.setBackground(new Color(0, 128, 128));
+		btnAlterarP.setBounds(705, 661, 116, 33);
+		add(btnAlterarP);
+		
 		atualizarTabela();
 		
 	}
