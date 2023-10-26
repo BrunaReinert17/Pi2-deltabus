@@ -61,9 +61,7 @@ CREATE TABLE IF NOT EXISTS `Pedido` (
   `Cliente` DOUBLE NOT NULL,
   `renavam` VARCHAR(45) NOT NULL,
   `nomeCliente` VARCHAR(45) NOT NULL,
-  
-  
-  PRIMARY KEY (`id_pedidos`));
+ PRIMARY KEY (`id_pedidos`));
  
   
 -- -----------------------------------------------------
@@ -110,6 +108,9 @@ SELECT * FROM endereco ORDER BY cep ASC;
 SELECT COUNT(*) FROM Clientes; 
 SELECT * FROM Clientes ORDER BY cnpj ASC;
 
+-- Select pedido --
+SELECT count(*) FROM Pedido;
+SELECT * FROM Pedido ORDER BY id_pedidos ASC;
 
 -- Selects Usuario -- 
 SELECT COUNT(*) FROM Usuario;
@@ -127,13 +128,13 @@ VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado,
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-VALUES ('21346566', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
 
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468433, 21346566);
+VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468437, 21346560);
 
 
 -- INSERT Pedido --
@@ -153,5 +154,4 @@ VALUES ( '1234', 'maria@gmail.com', 'funcionario');
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('14058564', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346566);
-
+VALUES ('14058566', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346560);

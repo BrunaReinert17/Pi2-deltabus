@@ -51,7 +51,7 @@ private void deletarVeiculo() {
 		
 		VeiculoDAO objveiculodao = new VeiculoDAO();
 		
-		objveiculodao.deletarVeiculo(objveiculo);
+		objveiculodao.excluirVeiculo(objveiculo);
 		}
 	
 	public ListagemVeiculos() {

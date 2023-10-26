@@ -1,9 +1,7 @@
 package mensagens;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,15 +13,15 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 
-public class AlterarErroUsuario extends JFrame {
+public class ErroAlterar extends JFrame {
 
 	private JPanel contentPane;
-	private JLabel lblMensagemVeiculo;
+	private JLabel lblDadoInvalido;
 
 	/**
 	 * Create the frame.
 	 */
-	public AlterarErroUsuario (String mensagem) {
+	public ErroAlterar (String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -33,8 +31,8 @@ public class AlterarErroUsuario extends JFrame {
 
 		setContentPane(contentPane);
 
-		lblMensagemVeiculo = new JLabel("");
-		lblMensagemVeiculo.setText(mensagem);
+		lblDadoInvalido = new JLabel("");
+		lblDadoInvalido.setText(mensagem);
 		contentPane.setLayout(null);
 
 		RoundButton btnOk = new RoundButton("Ok");
@@ -59,11 +57,10 @@ public class AlterarErroUsuario extends JFrame {
 		lblNewLabel.setBounds(124, -15, 107, 76);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblMensagemVeiculo = new JLabel("Nenhum Veículo Selecionado!");
-		lblMensagemVeiculo.setForeground(new Color(255, 255, 255));
-		lblMensagemVeiculo.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblMensagemVeiculo.setBounds(68, 85, 209, 27);
-		contentPane.add(lblMensagemVeiculo);
+		JLabel lblErroAlterar = new JLabel("Nenhum Usuario Selecionado!");
+		lblErroAlterar.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblErroAlterar.setForeground(Color.WHITE);
+		lblErroAlterar.setBounds(79, 88, 198, 24);
+		contentPane.add(lblErroAlterar);
 	}
 }
-

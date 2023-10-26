@@ -10,6 +10,9 @@ import modelo.Usuario;
 
 public class UsuarioDAO implements InterfaceUsuario {
 
+
+	private static UsuarioDAO usuarioDao;
+	
 	private Conexao con;
 
 	public UsuarioDAO() {
@@ -68,68 +71,75 @@ public class UsuarioDAO implements InterfaceUsuario {
 		} finally {
 			con.fecharConexao();
 		}
-		return null;
+		return usuarioModelo;
 	}
 
-	@Override
-	public Usuario alterarUsuario(Usuario usuario) {
+ 
 
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+    @Override
+    public Usuario alterarUsuario(Usuario usuario) {
 
+    	con = Conexao.getInstancia();
+		Connection c = con.conectar();
+		
 		String query = "UPDATE Endereco\r\n   SET" + "Email = ?\r\n" + "Senha = ?" + "Cargo = ? ,  WHERE idUsuario = ?";
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, usuario.getEmail());
 			ps.setString(2, usuario.getSenha());
 			ps.setString(3, usuario.getCargo());
 			ps.setLong(4, usuario.getIdUsuario());
 
 			ps.executeUpdate();
-			return usuario;
+
+			
+
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			c.fecharConexao();
-		}
-
-		return usuario;
-	}
-
-	public ArrayList<Usuario> listar() {
-		Connection c = con.conectar();
-		ArrayList<Usuario> usuarios = new ArrayList<>();
-
-		try {
-			String query = "SELECT * FROM usuario";
-			PreparedStatement stm = c.prepareStatement(query);
-			ResultSet rs = stm.executeQuery();
-
-			while (rs.next()) {
-				Long id = rs.getLong("idUsuario");
-				String senha = rs.getString("senha");
-				String email = rs.getString("email");
-				String cargo = rs.getString("cargo");
-
-				Usuario u = new Usuario(id, senha, email, cargo);
-				usuarios.add(u);
-			}
-		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
 
-		return usuarios;
+		return usuario;
 	}
 
-	public Usuario consultarLogin(Usuario usuario) {
+    public ArrayList<Usuario> listar() {
+    	con = Conexao.getInstancia();
+		Connection c = con.conectar();
+		
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        try {
+            String query = "SELECT * FROM usuario";
+            PreparedStatement stm = c.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                Long id = rs.getLong("idUsuario");
+                String senha = rs.getString("senha");
+                String email = rs.getString("email");
+                String cargo = rs.getString("cargo");
+
+                Usuario u = new Usuario(id, senha, email, cargo);
+                usuarios.add(u);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+
+        return usuarios;
+    }
+    
+    public Usuario consultarLogin(Usuario usuario) {
+    	con = Conexao.getInstancia();
+		Connection c = con.conectar();
+		
 
 		try {
 
-			con = Conexao.getInstancia();
-			Connection c = con.conectar();
 			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
 			//metodo duplicado com selecionar usuario
 			ps.setString(1, usuario.getEmail());
@@ -149,41 +159,76 @@ public class UsuarioDAO implements InterfaceUsuario {
 				usuarioConectado.setSenha(senha);
 				usuarioConectado.setCargo(cargo);
 
-				return usuarioConectado;
+				
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
 
-		} finally {
-
-			con.fecharConexao();
-		}
-
-		return null;
+		return usuario;
 	}
 
-	public boolean excluirUsuario(Usuario usuario) {
 
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+	public  boolean excluirUsuario(Usuario usuario) {
+	Conexao	con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "DELETE FROM Usuario\r\n  WHERE idUsuario = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setFloat(1, usuario.getIdUsuario());
 			ps.executeUpdate();
 
-			return true;
 
-		} catch (SQLException e) {
 
-			e.printStackTrace();
-		} finally {
-			c.fecharConexao();
-		}
-		return false;
+		} catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+return false;
+	}
+	
+	public static UsuarioDAO getIntancia(Usuario usuario) {
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+		
+
+		try {
+
+			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
+			//metodo duplicado com selecionar usuario
+			ps.setString(1, usuario.getEmail());
+			ps.setString(2, usuario.getSenha());
+
+			ResultSet rs = ps.executeQuery();
+			Usuario usuarioConectado = new Usuario();
+
+			while (rs.next()) {
+				long idUsuario = rs.getLong("idusuario");
+				String email = rs.getString("email");
+				String senha = rs.getString("senha");
+				String cargo = rs.getString("cargo");
+
+				usuarioConectado.setIdUsuario(idUsuario);
+				usuarioConectado.setEmail(email);
+				usuarioConectado.setSenha(senha);
+				usuarioConectado.setCargo(cargo);
+
+				
+			}
+
+		} catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+		return usuarioDao;
+		
 	}
 
 }

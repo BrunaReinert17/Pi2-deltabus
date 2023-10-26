@@ -90,13 +90,4 @@ public class Cliente  {
 		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf +",cep=" + Cep + ", cliente=" + cliente + "]";
 	}
 
-	public Cliente editarCliente(Cliente funcionario) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-
-	
 }

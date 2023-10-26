@@ -48,10 +48,11 @@ import javax.swing.JScrollPane;
 import java.awt.Panel;
 import java.awt.Label;
 import java.awt.TextField;
+import java.awt.BorderLayout;
 import java.awt.Choice;
 import java.awt.List;
 
-public class CadastrarVenda extends JPanel {
+public class CadastrarPedido extends JPanel {
 	private JTextField txtNomeCliente;
 	private JTextField txtCliente;
 	private JTextField txtDataDeNascimento;
@@ -67,13 +68,14 @@ public class CadastrarVenda extends JPanel {
 	private JTextField textField;
 	private JLabel lblLimpar;
 	private JTable table1;
-	private JTextField textRenavam;
-	private JTextField textDataCompra;
-	private JTextField textQuantidades;
+	private JTextField txtRenavam;
+	private JTextField txtDataCompra;
+	private JTextField txtQtdes;
 	private JComboBox cbPagamento;
-	private JTextField textValorpagar;
+	private JTextField txtValorPago;
+	private ArrayList<Pedido> listPedido;
 
-	public CadastrarVenda() {
+	public CadastrarPedido() {
 		setLocale("Login");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,18 +84,21 @@ public class CadastrarVenda extends JPanel {
 		contentPane.setBackground(new Color(0, 102, 102));
 		contentPane.setForeground(new Color(0, 102, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(220, 220, 220));
-		panel_5.setLayout(null);
+		panel_5.setLayout(new BorderLayout());
 		panel_5.setBounds(284, 363, 604, 234);
 		add(panel_5);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 604, 28);
-		panel_5.add(scrollPane);
+		panel_5.add(scrollPane, BorderLayout.CENTER);
+		
+		
 		
 
 		table1 = new JTable();
@@ -101,16 +106,16 @@ public class CadastrarVenda extends JPanel {
 		table1.setFont(new Font("Dialog", Font.BOLD, 14));
 		
 		table1.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "CPF", "CNPJ", "Cliente", "Renavam", "Id Veiculo", "Valor R$", "Qtde" }));
+				new String[] {"CNPJ", "Cliente", "Renavam", "Pagamento","Valor", "Qtde", "Data Compra"}));
 		scrollPane.setViewportView(table1);
 		
 		
 		lblLimpar = new JLabel("");
-		lblLimpar.setBounds(1035, 92, 110, 33);
+		lblLimpar.setBounds(1023, 92, 110, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
-		lblLimpar.setIcon(new ImageIcon(CadastrarVenda.class.getResource("/imagem/Icone4.png")));
+		lblLimpar.setIcon(new ImageIcon(CadastrarPedido.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
-		JLabel lblNewLabel = new JLabel("Cadastrar Vendas");
+		JLabel lblNewLabel = new JLabel("Cadastrar Pedido");
 		lblNewLabel.setBounds(25, 11, 182, 14);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
@@ -131,14 +136,11 @@ public class CadastrarVenda extends JPanel {
 		panel_3.setBounds(1190, 34, 10, 766);
 		panel_3.setBackground(new Color(0, 0, 0));
 		add(panel_3);
-		txtNomeCliente = new JTextField();
-		txtNomeCliente.setBounds(617, 140, 249, 30);
-		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtNomeCliente);
-		txtNomeCliente.setColumns(10);
+		
+		
+		
 		JLabel lblNome = new JLabel("Cliente:");
-		lblNome.setBounds(617, 115, 67, 14);
+		lblNome.setBounds(639, 115, 67, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
 		add(lblNome);
 		JLabel lblCpf = new JLabel("CPF:");
@@ -146,11 +148,19 @@ public class CadastrarVenda extends JPanel {
 		lblCpf.setBounds(271, 245, 46, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblNome);
+	
+		txtNomeCliente = new JFormattedTextField();
+		txtNomeCliente.setBounds(639, 137, 249, 30);
+		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtNomeCliente.setColumns(10);
+		add(txtNomeCliente);
+		
 
-		JLabel lblCpf1 = new JLabel("CPF ou CNPJ:");
-		lblCpf1.setBounds(278, 115, 98, 14);
-		lblCpf1.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblCpf1);
+		JLabel lblCnpj = new JLabel("CNPJ:");
+		lblCnpj.setBounds(278, 115, 98, 14);
+		lblCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblCnpj);
 		/**********/
 		MaskFormatter mascaraCpf = null;
 		try {
@@ -179,32 +189,37 @@ public class CadastrarVenda extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				txtNomeCliente.setText("");
 				txtCliente.setText("");
-				txtBairro.setText("");
+				txtRenavam.setText("");
+				txtValorPago.setText("");
+				txtQtdes.setText("");
+				txtDataCompra.setText("");
+				cbPagamento.setSelectedIndex(-1);
 			}
 		});
 		add(btnLimparCampo);
 		
 		
-		JLabel lblQuantidade = new JLabel("Qtde:");
-		lblQuantidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblQuantidade.setBounds(845, 199, 155, 14);
-		add(lblQuantidade);
+		JLabel lblQtde = new JLabel("Qtde:");
+		lblQtde.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblQtde.setBounds(821, 209, 155, 14);
+		add(lblQtde);
 		
-		JLabel lblBairro_1_1_1 = new JLabel("Renavam:");
-		lblBairro_1_1_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblBairro_1_1_1.setBounds(284, 199, 155, 14);
-		add(lblBairro_1_1_1);
+		JLabel lblRenavam = new JLabel("Renavam:");
+		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblRenavam.setBounds(278, 209, 155, 14);
+		add(lblRenavam);
+
+		txtRenavam = new JFormattedTextField();
+		txtRenavam.setBounds(278, 228, 132, 30);
+		txtRenavam.setText("");
+		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtRenavam);
+		txtRenavam.setColumns(10);
 		
-		textRenavam = new JTextField();
-		textRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
-		textRenavam.setColumns(10);
-		textRenavam.setBounds(284, 228, 116, 30);
-		add(textRenavam);
-		
-		JLabel lblValorR = new JLabel("Valor R$:");
-		lblValorR.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblValorR.setBounds(711, 199, 155, 14);
-		add(lblValorR);
+		JLabel lblValor = new JLabel("Valor R$:");
+		lblValor.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblValor.setBounds(665, 209, 155, 14);
+		add(lblValor);
 		
 		RoundButton rndbtnBuscar = new RoundButton("Limpar Campo");
 		rndbtnBuscar.addActionListener(new ActionListener() {
@@ -215,7 +230,7 @@ public class CadastrarVenda extends JPanel {
 		rndbtnBuscar.setForeground(Color.WHITE);
 		rndbtnBuscar.setFont(new Font("Dialog", Font.BOLD, 14));
 		rndbtnBuscar.setBackground(new Color(0, 128, 128));
-		rndbtnBuscar.setBounds(470, 135, 98, 33);
+		rndbtnBuscar.setBounds(516, 135, 75, 33);
 		add(rndbtnBuscar);
 		
 		JPanel panel_4 = new JPanel();
@@ -223,29 +238,34 @@ public class CadastrarVenda extends JPanel {
 		panel_4.setBounds(278, 351, 616, 253);
 		add(panel_4);
 		
-		RoundButton btnCadastrar_1 = new RoundButton("Confirmar");
+		RoundButton btnCadastrar_1 = new RoundButton("Cadastrar");
 		btnCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
               Pedido pedido = verificarDados();
-				
+          	  System.out.println("erro1");
+
 				boolean pedidoRetornoCadastro = false;
-				
-				
+            	System.out.println("erro2");
 
                 if (pedido != null) {
+                	System.out.println("erro3");
                 	
                 	PedidoDAO pedidoDAO = new PedidoDAO();
                     boolean resultado = PedidoDAO.inserirPedido1(pedido);
-                   
+                    
+                	System.out.println("erro1");
+
 
                     if (resultado == true) {
-                        // O veículo foi cadastrado com sucesso
-                        CadastroVeiculo cadastro = new CadastroVeiculo("Veículo Cadastrado com Sucesso!");
+                    	System.out.println("erro4");
+
+                        CadastroVeiculo cadastro = new CadastroVeiculo("Cadastrado com Sucesso!");
                         cadastro.setLocationRelativeTo(null);
                         cadastro.setVisible(true);
                        limparDados(); // Limpa os campos após o cadastro
                     } else {
-                        // Ocorreu um erro durante o cadastro
+                    	System.out.println("erro5");
                         CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
                         erro1.setLocationRelativeTo(null);
                         erro1.setVisible(true);
@@ -278,13 +298,13 @@ public class CadastrarVenda extends JPanel {
 		rndbtnBuscar_1.setForeground(Color.WHITE);
 		rndbtnBuscar_1.setFont(new Font("Dialog", Font.BOLD, 14));
 		rndbtnBuscar_1.setBackground(new Color(0, 128, 128));
-		rndbtnBuscar_1.setBounds(420, 226, 117, 33);
+		rndbtnBuscar_1.setBounds(420, 226, 84, 33);
 		add(rndbtnBuscar_1);
 		
-		JLabel lbldatacompra = new JLabel("Data de Compra :");
-		lbldatacompra.setFont(new Font("Dialog", Font.BOLD, 13));
-		lbldatacompra.setBounds(284, 285, 155, 14);
-		add(lbldatacompra);
+		JLabel lblDataCompra = new JLabel("Data de Compra :");
+		lblDataCompra.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblDataCompra.setBounds(278, 292, 155, 14);
+		add(lblDataCompra);
 		/**********/
 		MaskFormatter mascaraDatacompra = null;
 		try {
@@ -292,28 +312,39 @@ public class CadastrarVenda extends JPanel {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		textDataCompra = new JFormattedTextField(mascaraDatacompra);
-		textDataCompra.setFont(new Font("Dialog", Font.BOLD, 13));
-		textDataCompra.setColumns(10);
-		textDataCompra.setBounds(284, 310, 116, 30);
-		add(textDataCompra);
+		txtDataCompra = new JFormattedTextField(mascaraDatacompra);
+		txtDataCompra.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtDataCompra.setColumns(10);
+		txtDataCompra.setBounds(278, 310, 116, 30);
+		add(txtDataCompra);
 		/**********/
-		JLabel lblTipopagamento = new JLabel("TipoPagamento :");
+		JLabel lblTipopagamento = new JLabel("Pagamento:");
 		lblTipopagamento.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblTipopagamento.setBounds(548, 199, 155, 14);
+		lblTipopagamento.setBounds(538, 209, 155, 14);
 		add(lblTipopagamento);
 		
-		textQuantidades = new JTextField();
-		textQuantidades.setBounds(845, 228, 88, 26);
-		add(textQuantidades);
-		textQuantidades.setColumns(10);
+		/**********/
+		MaskFormatter mascaraQtde = null;
+		try {
+			mascaraQtde = new MaskFormatter("###########");
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtQtdes = new JFormattedTextField(mascaraQtde);
+		txtQtdes.setBounds(821, 228, 67, 30);
+		txtQtdes.setText("");
+		txtQtdes.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtQtdes);
+		txtQtdes.setColumns(10);
+		
+		/**********/
 		
 		ArrayList<String> fpagamento = new ArrayList<String>();
 		fpagamento.add("");
-		fpagamento.add("catao");
-		fpagamento.add("dinheiro");
-		fpagamento.add("pix");
-		fpagamento.add("outro");
+		fpagamento.add("Cartão");
+		fpagamento.add("Dinheiro");
+		fpagamento.add("Pix");
+		fpagamento.add("Outro");
 		 cbPagamento = new JComboBox();
 		cbPagamento.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
@@ -327,16 +358,33 @@ public class CadastrarVenda extends JPanel {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		cbPagamento.setBounds(558, 233, 94, 22);
+		cbPagamento.setBounds(538, 229, 89, 30);
 		add(cbPagamento);
 		
-		textValorpagar = new JTextField();
-		textValorpagar.setBounds(693, 228, 98, 30);
-		add(textValorpagar);
-		textValorpagar.setColumns(10);
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		
+		txtValorPago = new JFormattedTextField();
+		txtValorPago.setBounds(665, 228, 126, 30);
+		txtValorPago.setText("");
+		txtValorPago.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtValorPago);
+		txtValorPago.setColumns(10);
+		
+		JButton btnPesquisar_1 = new JButton("Pesquisar");
+		btnPesquisar_1.setForeground(Color.WHITE);
+		btnPesquisar_1.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnPesquisar_1.setBackground(new Color(0, 128, 128));
+		btnPesquisar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cpfpesquisa = txtRenavam.getText();
+				atualizarTabela();
+			}
+		});
+		btnPesquisar_1.setBounds(773, 315, 115, 23);
+		add(btnPesquisar_1);
+		atualizarTabela();
+		
 	}
+	
 
 	protected void setSelectedItem(Object object) {
 	}
@@ -358,19 +406,19 @@ public class CadastrarVenda extends JPanel {
 		verificarCampo = "";
 		
 		
-		String nome = txtNomeCliente.getText();
-		String valorpagar = textValorpagar.getText();
+		String nomeCliente = txtNomeCliente.getText();
+		String valorpagar = txtValorPago.getText();
 		String cliente = txtCliente.getText().replace(".", "").replace("-", "");
-		String renavam = textRenavam.getText();
-		String quantidade = textQuantidades.getText();
-		String datacompra = textDataCompra.getText();
+		String renavam = txtRenavam.getText();
+		String quantidade = txtQtdes.getText();
+		String datacompra = txtDataCompra.getText();
 		String formapagamento = (String) cbPagamento.getSelectedItem();
 		
 		
-		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
+		if (nomeCliente == null || nomeCliente.trim() == "" || nomeCliente.isEmpty()) {
 			verificarCampo += "Nome\n";
 		} else {
-			pedido.setNomeCliente(nome);
+			pedido.setNomeCliente(nomeCliente);
 		}
 		
 		if (valorpagar == null || valorpagar.trim() == "" || valorpagar.isEmpty()) {
@@ -426,14 +474,29 @@ public class CadastrarVenda extends JPanel {
 			pedido.setTipoPagamento(formapagamento);
 		}
 		
-		
 		return pedido;
+}
+public void atualizarTabela() {
+	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "CNPJ", "Cliente", "Renavam", "Pagamento", "Valor", "Qtde", "Data Compra" });
+	PedidoDAO pedidoDAO = new PedidoDAO();
+	listPedido = pedidoDAO.listar();
+	System.out.println(listPedido);
+	for (int i = 0; i < listPedido.size(); i++) {
+		Pedido pedido = listPedido.get(i);
+		tabela.addRow(new Object[] { pedido.getCliente(), pedido.getNomeCliente(), pedido.getRenavam(),pedido.getTipoPagamento(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
+
 	}
+	table1.setModel(tabela);
+}
+
 
 	public void limparDados() {
 		txtNomeCliente.setText("");
 		txtCliente.setText("");
-
-		txtBairro.setText("");
+		txtRenavam.setText("");
+		txtValorPago.setText("");
+		txtQtdes.setText("");
+		txtDataCompra.setText("");
+		cbPagamento.setSelectedIndex(-1);
 	}
 }

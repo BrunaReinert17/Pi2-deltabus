@@ -1,6 +1,6 @@
 package mensagens;
 
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-public class CadastroVeiculo extends JFrame {
+public class AlteraSucesso extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblSucesso1;
@@ -25,7 +25,7 @@ public class CadastroVeiculo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroVeiculo(String mensagem) {
+	public AlteraSucesso(String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -46,7 +46,7 @@ public class CadastroVeiculo extends JFrame {
                 dispose(); 
             }
         });
-		btnOk.setBounds(146, 123, 55, 29);
+		btnOk.setBounds(132, 114, 55, 29);
 		btnOk.setText("OK");
 		btnOk.setForeground(new Color(255, 255, 255));
 		btnOk.setFont(new Font("Dialog", Font.BOLD, 11));
@@ -55,13 +55,13 @@ public class CadastroVeiculo extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(CadastroSucesso.class.getResource("/imagem/MensageCerto.png")));
-		lblNewLabel.setBounds(122, -21, 129, 82);
+		lblNewLabel.setBounds(107, -20, 129, 82);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Cadastrado com Sucesso!");
+		JLabel lblNewLabel_1 = new JLabel("Usuário Alterado!");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_1.setBounds(91, 82, 171, 14);
+		lblNewLabel_1.setBounds(107, 72, 137, 31);
 		contentPane.add(lblNewLabel_1);
 	}
 }

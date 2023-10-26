@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
@@ -30,15 +31,18 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
-import mensagens.AlterarErroUsuario;
+import mensagens.ErroVeiculo;
+import mensagens.AlteraSucesso;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.ErroAlterar;
 import mensagens.Limpar;
 import mensagens.ListagemErro;
 import mensagens.LoginErro;
 import modelo.Endereco;
 import modelo.Funcionario;
+import modelo.StatusTelaUsuario;
 import modelo.Usuario;
 import utilidades.RoundButton;
 
@@ -48,6 +52,7 @@ import javax.swing.event.AncestorListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.ImageIcon;
+
 
 public class CadastrarUsuario extends JPanel {
 	private JTextField txtNome;
@@ -88,12 +93,14 @@ public class CadastrarUsuario extends JPanel {
 	private AbstractButton btnSalvar;
 	private String validacao = "";
 	private Funcionario funcionarioClick;
-	private ArrayList<Funcionario> listFuncionario;
+	private ArrayList<Funcionario> listFunc;
 	private RoundButton rndbtnSalvar;
-	private Usuario UsuarioSelecionado = null;
-	private Funcionario funcionarioSelecionado = null;
-	private Boolean editar;
-
+	private ArrayList<Usuario> listUsuario;
+	private Usuario UsuarioSelecionado;
+	private Funcionario funcionarioSelecionado;
+	private UsuarioDAO usuarioDao;
+	private FuncionarioDAO funcionarioDao;
+	private EnderecoDAO enderecoDao;
 
 	public CadastrarUsuario() {
 		setLocale("Login");
@@ -110,7 +117,8 @@ public class CadastrarUsuario extends JPanel {
 		panel = new JPanel();
 		panel.setForeground(new Color(0, 102, 0));
 		panel.setBackground(new Color(245, 245, 245));
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 0, 0), new Color(0, 0, 0)),
+				"", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 128)));
 		panel.setBounds(0, 37, 1184, 724);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -123,7 +131,7 @@ public class CadastrarUsuario extends JPanel {
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" }));
 		scrollPane.setViewportView(table);
-		
+
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
 		panel_1.setBounds(0, 0, 1200, 46);
@@ -135,11 +143,12 @@ public class CadastrarUsuario extends JPanel {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
+		
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deletarFuncionario();
-				
+
 			}
 		});
 		rndbtnDeletar.setText("Deletar");
@@ -147,13 +156,13 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnDeletar.setBackground(new Color(255, 255, 255));
 		rndbtnDeletar.setBounds(1050, 3, 115, 33);
-		panel_1.add(rndbtnDeletar);	
-		
-		
+		panel_1.add(rndbtnDeletar);
+
 		textCPF = new JTextField();
 		textCPF.setBounds(496, 12, 177, 20);
 		panel_1.add(textCPF);
 		textCPF.setColumns(10);
+		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setForeground(new Color(255, 255, 255));
 		btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -161,16 +170,14 @@ public class CadastrarUsuario extends JPanel {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = textCPF.getText();
-				
+
 			}
-			
-			
+
 		});
-		
-		
+
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
-		
+
 		lblLimpar = new JLabel("");
 		lblLimpar.setBounds(1035, 92, 110, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
@@ -283,6 +290,7 @@ public class CadastrarUsuario extends JPanel {
 		genero.add("Masculino");
 		genero.add("Feminino");
 		genero.add("Outro");
+		
 		cbGenero = new JComboBox();
 		cbGenero.setBounds(792, 270, 182, 31);
 		cbGenero.addAncestorListener(new AncestorListener() {
@@ -311,7 +319,7 @@ public class CadastrarUsuario extends JPanel {
 		txtCep.setBounds(521, 364, 149, 30);
 		txtCep.setText("");
 		/**********/
-		
+
 		txtCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtCep.setColumns(10);
 		add(txtCep);
@@ -325,7 +333,7 @@ public class CadastrarUsuario extends JPanel {
 		txtBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtBairro.setColumns(10);
 		add(txtBairro);
-		
+
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
 		cidade.add("São José");
@@ -401,7 +409,7 @@ public class CadastrarUsuario extends JPanel {
 		ArrayList<String> funcao = new ArrayList<>();
 		funcao.add("Administrador");
 		funcao.add("Funcionario");
-		
+
 		cbFuncao = new JComboBox();
 		cbFuncao.setBounds(362, 541, 155, 30);
 		cbFuncao.addAncestorListener(new AncestorListener() {
@@ -417,7 +425,7 @@ public class CadastrarUsuario extends JPanel {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		
+
 		cbFuncao.setModel(new DefaultComboBoxModel(new String[] { "" }));
 		cbFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(cbFuncao);
@@ -425,15 +433,13 @@ public class CadastrarUsuario extends JPanel {
 		lblFuncao.setBounds(362, 520, 155, 23);
 		lblFuncao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblFuncao);
-		
-		
+
 		btnCadastrar = new RoundButton("Cadastrar");
 		btnCadastrar.setBounds(714, 627, 132, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-          
-            
+
 				Funcionario funcionario = verificarDados();
 				System.out.println("aaaa");
 				System.out.println(funcionario);
@@ -442,20 +448,18 @@ public class CadastrarUsuario extends JPanel {
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
-				} else {//erro da qui pra baixo
+				} else {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
-					System.out.println("Erro1");
 					Endereco endereco = enderecoDAO.consultandoEndereco(funcionario.getEndereco());
 					System.out.println(endereco);
 					boolean ende = true;
-					System.out.println("Erro2");
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
 					System.out.println(ende);
-					
+
 					boolean usuarioRetornoCadastro = false;
 					System.out.println("ddddd1");
 					if (ende != false) {
@@ -469,13 +473,13 @@ public class CadastrarUsuario extends JPanel {
 							System.out.println(usuario);
 							funcionario.setUsuario(usuario);
 							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
-							
+
 							if (resultado = true) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								limparDados();
-								
+
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
 								erro1.setLocationRelativeTo(null);
@@ -496,8 +500,7 @@ public class CadastrarUsuario extends JPanel {
 		add(btnCadastrar);
 		add(txtDataNasci);
 		txtDataNasci.setColumns(10);
-		
-		
+
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
 		btnLimparCampo.setBounds(1061, 92, 84, 33);
 		btnLimparCampo.setText("");
@@ -536,42 +539,318 @@ public class CadastrarUsuario extends JPanel {
 		textRua.setFont(new Font("Dialog", Font.BOLD, 13));
 		textRua.setColumns(10);
 		add(textRua);
-		
-		RoundButton rndbtnAlterar_1 = new RoundButton("Alterar");
-		rndbtnAlterar_1.addActionListener(new ActionListener() {
+
+		RoundButton rndbtnAlterar = new RoundButton("Alterar");
+		rndbtnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//if (UsuarioSelecionado == null && funcionarioSelecionado == null) {
-				//	new DialogMensagemErro("Usuario não selecionado").setVisible(true);
-					return;
-			//	}
+				int position = contentPane.getBaseline(WIDTH, HEIGHT);
 
-			//	editar = true;
-			//	dispose();
-			//	CadastrarUsuario telaAlterar = new CadastrarUsuario(, UsuarioSelecionado,
-			//			editar, funcionarioSelecionado);
-			///	telaAlterar.setLocationRelativeTo(null);
-			///	telaAlterar.setVisible(true);
-			//	telaAlterar.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			//}
 
-			//private void dispose() {
-				// TODO Auto-generated method stub
+				funcionarioClick = listFunc.get(getComponentCount());
+				verificarDados(funcionarioClick);
+
+				funcionarioClick = new Funcionario();
+
+				btnCadastrar.setVisible(false);
+				panel.remove(btnCadastrar);
+
+				rndbtnAlterar.setVisible(false);
+				panel.remove(rndbtnAlterar);
+
+				bntDeletar.setVisible(false);
+				panel.remove(bntDeletar);
+
+				voltar = new JButton("Cancelar");
+				voltar.setForeground(new Color(255, 255, 255));
+				voltar.setBackground(new Color(149, 208, 157));
+
+				voltar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						limparDados();
+						panel.add(btnCadastrar);
+						btnCadastrar.setVisible(true);
+
+						rndbtnAlterar.setFont(new Font("Tahoma", Font.BOLD, 16));
+						panel.add(rndbtnAlterar, "cell 1 5,growx");
+						rndbtnAlterar.setVisible(true);
+
+						bntDeletar.setFont(new Font("Tahoma", Font.BOLD, 16));
+						panel.add(bntDeletar, "cell 3 5,grow");
+						bntDeletar.setVisible(true);
+
+						panel.remove(voltar);
+
+						btnSalvar.setVisible(false);
+						panel.remove(btnSalvar);
+
+						limparDados();
+					}
+				});
+				voltar.setFont(new Font("Tahoma", Font.BOLD, 16));
+				panel.add(voltar, "cell 1 5,growx");
+
+				btnSalvar = new JButton("Salvar");
+				btnSalvar.setForeground(new Color(255, 255, 255));
+				btnSalvar.setBackground(new Color(149, 208, 157));
+				btnSalvar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+
+						validacao = "";
+
+						Funcionario funcionario = new Funcionario();
+						var endereco = new Endereco();
+						var usuario = new Usuario();
+						funcionario = verificarDados();
+						endereco = setarObjetoEndereco();
+						
+						
+
+						if (funcionario != null && usuario != null && endereco != null) {
+
+							funcionario.setEndereco(endereco);
+							funcionario.setUsuario(usuario);
+
+							
+							usuarioDao = new UsuarioDAO();
+							UsuarioDAO.getIntancia(usuario);
+							boolean retorno = funcionarioDao.alterarFuncionario(funcionario);
+							if (retorno == true) {
+								AlteraSucesso erroALt = new AlteraSucesso("Usuário Alterado!");
+								erroALt.setLocationRelativeTo(null);
+								erroALt.setVisible(true);
+							} 
+							else {
+								ErroAlterar erroALt = new ErroAlterar("Erro, Usuario Não Alterado!");
+								erroALt.setLocationRelativeTo(null);
+								erroALt.setVisible(true);
+							}
+
+							panel.add(btnCadastrar);
+							btnCadastrar.setVisible(true);
+
+							rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+							rndbtnAlterar.setBackground(new Color(0, 128, 128));
+							rndbtnAlterar.setBounds(556, 627, 120, 33);
+							rndbtnAlterar.setVisible(true);
+
+							bntDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
+							bntDeletar.setBackground(new Color(0, 128, 128));
+							bntDeletar.setBounds(556, 627, 120, 33);
+							bntDeletar.setVisible(true);
+							limparDados();
+							voltar.setVisible(false);
+							panel.remove(voltar);
+							limparDados();
+
+							btnSalvar.setVisible(false);
+							panel.remove(btnSalvar);
+
+						} else {
+							CadastroErro erro1 = new CadastroErro("Dados Inválidos!");
+							erro1.setLocationRelativeTo(null);
+							erro1.setVisible(true);
+						}
+
+					}
+
+					private Endereco setarObjetoEndereco() {
+						Endereco endereco = new Endereco();
+						enderecoDao = new EnderecoDAO();
+						new EnderecoDAO();
+						
+						String cep = (String) txtCep.getText();
+						String uf = (String) cbUf.getSelectedItem();
+						String cidade = (String) cbCidade.getSelectedItem();
+						String bairro = txtBairro.getText();
+						String rua = txtRua.getText();
+
+						if (cep == null || cep.trim() == "" || cep.isEmpty()) {
+							validacao += " Cep\n";
+						} else {
+							Integer cep1 = Integer.valueOf(cep);
+							endereco.setCep(cep1);
+						}
+
+						if (bairro == null || bairro.trim() == "" || bairro.isEmpty()) {
+							validacao += " Bairro\n";
+						} else {
+							endereco.setBairro(bairro);
+						}
+						
+						if (cidade == null || cidade.trim() == "" || cidade.isEmpty()) {
+							validacao += " Cidade\n";
+						} else {
+							endereco.setCidade(cidade);
+						}
+						
+						if (rua == null || rua.trim() == "" || rua.isEmpty()) {
+							validacao += " Rua\n";
+						} else {
+							endereco.setRua(rua);
+						}
+
+						
+						endereco.setUf(uf);
+						if (validacao.trim() == "") {
+							return endereco;
+						} else {
+							return endereco;
+						}
+
+					}
+
+				});
+				btnSalvar.setFont(new Font("Tahoma", Font.BOLD, 16));
+				panel.add(btnSalvar, "cell 7 1,grow");
+
+			
 				
+/*
+				rndbtnAlterar.setVisible(false);
+				contentPane.remove(rndbtnAlterar);
+
+				txtCpf.setEditable(false);
+				int position = table.getSelectedRow();
+				String erros = "";
+
+				funcionarioSelecionado = listFunc.get(position);
+				verificarDados(funcionarioSelecionado);              
+				UsuarioSelecionado = listUsuario.get(position);
+             
+				JButton salvar = new JButton("salva");
+				salvar.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent e) {
+
+						String erros = "";
+
+						String nome = txtNome.getText();
+						String email = txtEmail.getText();
+						String dataNasci = (String) txtDataNasci.getText();
+						String genero = (String) cbGenero.getSelectedItem();
+						String numeroTelefone = txtTelefone.getText();
+						String cpf = txtCpf.getText().replace(".", "").replace("-", "");
+						String cep = (String) txtCep.getText();
+						String senha = txtSenha.getText();
+						String cargo = (String) cbFuncao.getSelectedItem();
+						String uf = (String) cbUf.getSelectedItem();
+						String cidade = (String) cbCidade.getSelectedItem();
+						String bairro = txtBairro.getText();
+						String rua = txtRua.getText();
+
+						Endereco endereco = new Endereco();
+						Funcionario funcionario = new Funcionario();
+						funcionario.setCpf(funcionarioSelecionado.getCpf());
+						Usuario usuario = new Usuario();
+						usuario.setIdUsuario(UsuarioSelecionado.getIdUsuario());
+
+						if (nome == null || nome.trim() == "" || nome.isEmpty()) {
+							erros += "nome\n";
+						} else {
+							funcionario.setNome(nome);
+						}
+						
+						if (email == null || email.trim() == "" || email.isEmpty()) {
+							erros += "email\n";
+						} else {
+							funcionario.setEmail(email);
+						}
+						
+						if(dataNasci == null || dataNasci.toString() == "" || dataNasci.isBlank()) {
+							erros += "dataNasci\n";
+						}else {
+							funcionario.setDatanasci(null);// nao é pra ser null
+						}
+						if(genero == null || genero.trim() == "" || genero.isEmpty()) {
+							erros += "genero\n";
+						}else {
+							funcionario.setGenero(genero);
+						}
+						
+						if(numeroTelefone ==  null || numeroTelefone.trim() == "" || numeroTelefone.isEmpty()) {
+							erros += "numeroTelefone\n";
+						}else {
+							funcionario.setNumeroTelefone(numeroTelefone);
+						}
+                        
+						if(cpf ==  null || cpf.trim() == "" || cpf.isEmpty()) {
+							erros += "cpf\n";
+						}else {
+							funcionario.setCpf(cpf);
+						}
+					
+						if(cep ==  null || cep.trim() == "" || cep.isEmpty()) {
+							erros += "cep\n";
+						}else {
+							endereco.setCep(Integer.valueOf(cep));
+						}
+						
+						if(senha ==  null || senha.trim() == "" || senha.isEmpty()) {
+							erros += "senha\n";
+						}else {
+							usuario.setSenha(senha);
+						}
+						
+						if(cargo ==  null || cargo.trim() == "" || cargo.isEmpty()) {
+							erros += "cargo\n";
+						}else {
+							usuario.setCargo(cargo);
+						}
+						
+						if(uf ==  null || uf.trim() == "" || uf.isEmpty()) {
+							erros += "uf\n";
+						}else {
+							endereco.setUf(uf);
+						}
+					
+						if(cidade ==  null || cidade.trim() == "" || cidade.isEmpty()) {
+							erros += "cidade\n";
+						}else {
+							endereco.setCidade(cidade);
+						}
+						
+						if(bairro ==  null || bairro.trim() == "" || bairro.isEmpty()) {
+							erros += "bairro\n";
+						}else {
+							endereco.setBairro(bairro);
+						}
+						
+						if(rua ==  null || rua.trim() == "" || rua.isEmpty()) {
+							erros += "rua\n";
+						}else {
+							endereco.setRua(rua);
+						}
+						
+						usuarioDao = new UsuarioDAO();
+						UsuarioDAO.getIntancia(usuario);
+						boolean retorno = funcionarioDao.alterarFuncionario(funcionario);
+						if (retorno == true) {
+							AlteraSucesso erroALt = new AlteraSucesso("Usuário Alterado!");
+							erroALt.setLocationRelativeTo(null);
+							erroALt.setVisible(true);
+						} 
+						else {
+							ErroAlterar erroALt = new ErroAlterar("Erro, Usuario Não Alterado!");
+							erroALt.setLocationRelativeTo(null);
+							erroALt.setVisible(true);
+						}
+						
+						
+						
+					}
+
+			});*/	
 			}
-				
-				
-				
 		});
-		
-		rndbtnAlterar_1.setText("Alterar");
-		rndbtnAlterar_1.setForeground(Color.WHITE);
-		rndbtnAlterar_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnAlterar_1.setBackground(new Color(0, 128, 128));
-		rndbtnAlterar_1.setBounds(556, 627, 120, 33);
-		add(rndbtnAlterar_1);
-		
+		rndbtnAlterar.setText("Alterar");
+		rndbtnAlterar.setForeground(Color.WHITE);
+		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+		rndbtnAlterar.setBackground(new Color(0, 128, 128));
+		rndbtnAlterar.setBounds(556, 627, 120, 33);
+		add(rndbtnAlterar);
+
 		RoundButton rndbtnSalvar = new RoundButton("Salvar");
-		
+
 		rndbtnSalvar.setForeground(new Color(255, 255, 255));
 		rndbtnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnSalvar.setBackground(new Color(0, 128, 128));
@@ -580,34 +859,22 @@ public class CadastrarUsuario extends JPanel {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	}
-	
 
 	protected void dispose() {
-		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	protected void setExtendedState(int maximizedBoth) {
-		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	protected void setLocationRelativeTo(Object object) {
-		// TODO Auto-generated method stub
-		
 	}
 
-
 	protected void verificarDados(Funcionario verificarDados) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	protected void deletarFuncionario() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	protected void setSelectedItem(Object object) {
@@ -640,6 +907,7 @@ public class CadastrarUsuario extends JPanel {
 		String bairro = txtBairro.getText();
 		String cidade = (String) cbCidade.getSelectedItem();
 		String rua = txtRua.getText();
+
 		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
 			verificarCampo += "Nome\n";
 		} else {
@@ -744,4 +1012,5 @@ public class CadastrarUsuario extends JPanel {
 		txtSenha.setText("");
 		txtBairro.setText("");
 	}
+
 }

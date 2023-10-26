@@ -495,7 +495,7 @@ public class CadastrarVeiculo extends JPanel {
 		lblPreco.setBounds(681, 510, 67, 14);
 		add(lblPreco);
 		
-		RoundButton btnCadastrar = new RoundButton("Confirmar");
+		RoundButton btnCadastrar = new RoundButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
