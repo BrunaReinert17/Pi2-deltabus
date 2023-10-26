@@ -26,7 +26,7 @@ public class PedidoDAO implements InterfacePedido{
 			Conexao c = Conexao.getInstancia();
 			Connection con = c.conectar();
 
-			ArrayList<Pedido> pedidos = new ArrayList<>();
+			ArrayList<Pedido> listPedido = new ArrayList<>();
 
 			String query = "SELECT * FROM pedido";
 			
@@ -47,7 +47,7 @@ public class PedidoDAO implements InterfacePedido{
 					 p.setCliente(rs.getString("cliente"));
 					 p.setRenavam(rs.getString("renavam"));
 					 p.setNomeCliente(rs.getString("nomeCliente"));
-					 p.add(pedidos);
+					 listPedido.add(p);
 					 
 				}
 			} catch (SQLException e) {
@@ -58,7 +58,7 @@ public class PedidoDAO implements InterfacePedido{
 
 			c.fecharConexao();
 
-			return pedidos;
+			return listPedido;
 		}
 
 	public  boolean inserirPedido(Pedido pedido) {

@@ -381,7 +381,7 @@ public class CadastrarPedido extends JPanel {
 		});
 		btnPesquisar_1.setBounds(773, 315, 115, 23);
 		add(btnPesquisar_1);
-		
+		atualizarTabela();
 		
 	}
 	
@@ -406,7 +406,7 @@ public class CadastrarPedido extends JPanel {
 		verificarCampo = "";
 		
 		
-		String nome = txtNomeCliente.getText();
+		String nomeCliente = txtNomeCliente.getText();
 		String valorpagar = txtValorPago.getText();
 		String cliente = txtCliente.getText().replace(".", "").replace("-", "");
 		String renavam = txtRenavam.getText();
@@ -415,10 +415,10 @@ public class CadastrarPedido extends JPanel {
 		String formapagamento = (String) cbPagamento.getSelectedItem();
 		
 		
-		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
+		if (nomeCliente == null || nomeCliente.trim() == "" || nomeCliente.isEmpty()) {
 			verificarCampo += "Nome\n";
 		} else {
-			pedido.setNomeCliente(nome);
+			pedido.setNomeCliente(nomeCliente);
 		}
 		
 		if (valorpagar == null || valorpagar.trim() == "" || valorpagar.isEmpty()) {
