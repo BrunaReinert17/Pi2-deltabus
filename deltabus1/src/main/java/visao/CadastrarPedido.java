@@ -48,6 +48,7 @@ import javax.swing.JScrollPane;
 import java.awt.Panel;
 import java.awt.Label;
 import java.awt.TextField;
+import java.awt.BorderLayout;
 import java.awt.Choice;
 import java.awt.List;
 
@@ -82,18 +83,19 @@ public class CadastrarPedido extends JPanel {
 		contentPane.setBackground(new Color(0, 102, 102));
 		contentPane.setForeground(new Color(0, 102, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(220, 220, 220));
-		panel_5.setLayout(null);
+		panel_5.setLayout(new BorderLayout());
 		panel_5.setBounds(284, 363, 604, 234);
 		add(panel_5);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 604, 28);
-		panel_5.add(scrollPane);
+		panel_5.add(scrollPane, BorderLayout.CENTER);
 		
 
 		table1 = new JTable();
