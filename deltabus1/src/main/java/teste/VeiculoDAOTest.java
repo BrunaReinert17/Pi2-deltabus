@@ -3,8 +3,12 @@ package teste;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import org.junit.Test;
 
+import controle.Conexao;
 import controle.VeiculoDAO;
 import modelo.Veiculo;
 
@@ -13,10 +17,10 @@ import modelo.Veiculo;
 public class VeiculoDAOTest {
 	
 	@Test
-	public void testMetodoinserirVeiculo() {
+	public void testMetodoinserirVeiculoSucesso() {
 		Veiculo v = new Veiculo();
 		
-		v.setIdVeiculo((long) 6);
+		v.setIdVeiculo((long) 9);
         v.setMarca("Marca");
         v.setModelo("Modelo");
         v.setPreco(20000.0);
@@ -36,10 +40,44 @@ public class VeiculoDAOTest {
 		
 		
 		
+		
+		
 		//testes unitarios
 		//cenario que retorne como erro e sucesso
 		
 	}
-}
+	
+	@Test
+	
+	public void testMetodoinserirVeiculoErro() {
+		
+			Veiculo v = null;
+			VeiculoDAO dao = new VeiculoDAO();
+			boolean resultado = dao.inserirVeiculo(v);
+			assertEquals(false,resultado);
+	}
+	
+	   @Test
+	
+	public void testMetodoExcluirVeiculoSucesso() {
+		
+	   Veiculo veiculo = new Veiculo();
+	   veiculo.setRenavam("123456784"); 
+		 
+	    VeiculoDAO dao1 = new VeiculoDAO();
+		boolean result = dao1.excluirVeiculo(veiculo);
+		assertEquals(true,result);
+		
+		
+
+		       
+      }
+	   
+	
+	  
+		    }
+		
+	
+
 
 

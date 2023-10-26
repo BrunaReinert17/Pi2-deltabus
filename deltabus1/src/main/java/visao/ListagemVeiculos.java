@@ -10,8 +10,10 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.FuncionarioDAO;
 import controle.VeiculoDAO;
+import mensagens.ConfirmacaoDeletar;
 import mensagens.Deletar1;
 import mensagens.Deletar2;
+import mensagens.InterfaceMensagemConfirmacao;
 import modelo.Funcionario;
 import modelo.Veiculo;
 
@@ -97,25 +99,43 @@ private void deletarVeiculo() {
 				
 				int linhaSelecionada = table.getSelectedRow();
 				if (linhaSelecionada >= 0) {
-				    // Obtém o veículo selecionado da lista
-				    Veiculo veiculo = listVei.get(linhaSelecionada);
+			        Veiculo veiculo = listVei.get(linhaSelecionada);
 
-				    // Chama o método DAO para excluir o veículo
-				    if (VeiculoDAO.excluirVeiculo(veiculo)) {
-				        // Atualiza a lista e a tabela após a exclusão bem-sucedida
-				        DefaultTableModel model = (DefaultTableModel) table.getModel();
-				        model.removeRow(linhaSelecionada);
-				    } else {
-				    	Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
-				    	falha.setLocationRelativeTo(null);
-				    	falha.setVisible(true);
-				    }
-				} else {
-					Deletar2 falha2 = new Deletar2("Selecione um veiculo para excluir");
-			    	falha2.setLocationRelativeTo(null);
-			    	falha2.setVisible(true);
-				}
-		    }
+			       
+                   ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
+                	   
+                	   
+
+						@Override
+						
+						public void mensagemConfirmada() {
+							if (VeiculoDAO.excluirVeiculo(veiculo)) {
+			                DefaultTableModel model = (DefaultTableModel) table.getModel();
+			                model.removeRow(linhaSelecionada);
+			                
+			            } else {
+			                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
+			                falha.setLocationRelativeTo(null);
+			                falha.setVisible(true);
+			            }
+							
+						}
+
+						@Override
+						public void mensagemCancelada() {
+							
+							
+						}
+			        	
+			        });
+			        confirmacao.setVisible(true);
+			     
+			    } else {
+			        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
+			        falha2.setLocationRelativeTo(null);
+			        falha2.setVisible(true);
+			    }
+			}
 		});
 			
 		rndbtnDeletar.setText("Deletar");

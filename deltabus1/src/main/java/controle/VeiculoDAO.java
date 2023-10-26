@@ -19,16 +19,13 @@ public class VeiculoDAO {
 	}
 
 	public ArrayList<Veiculo> listar() {
-		
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
-
+		Connection c = con.conectar();
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
 
 		String query = "SELECT * FROM Veiculo";
 		try {
 
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -54,8 +51,9 @@ public class VeiculoDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			c.fecharConexao();
+		}finally {
+
+		con.fecharConexao();
 		}
 		return veiculos;
 	}
@@ -63,7 +61,9 @@ public class VeiculoDAO {
 	public boolean inserirVeiculo(Veiculo veiculo) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
-		int valida = 0;
+		boolean valida = false;
+		
+		if(veiculo != null) {
 
 		try {
 			String query = "INSERT INTO Veiculo(IdVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?,?)";
@@ -82,14 +82,16 @@ public class VeiculoDAO {
 			stm.setString(12, veiculo.getTipoCombustivel());
 			stm.setString(13, veiculo.getSituacao());
 
-			valida = stm.executeUpdate();
+			valida = stm.executeUpdate() == 0 ? false : true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
-		return valida != 0;
 	}
+		return valida;
+	}
+	
 
 	public static boolean excluirVeiculo(Veiculo veiculo) {
 
@@ -102,25 +104,28 @@ public class VeiculoDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, veiculo.getRenavam());
 			ps.executeUpdate();
-           
-	
-		}  catch (Exception e) {
+
+			
+			return true;
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
-		} finally {
+		}finally {
 			c.fecharConexao();
 		}
 
 		return false;
 	}
 
-	public boolean alterarVeiculo(Veiculo veiculo) {
+	public Veiculo alterarVeiculo(Veiculo veiculo) {
 
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
 		String query = "UPDATE Endereco\r\n   SET" + "Marca = ?\r\n" + "Modelo = ?" + "Preco = ?" + " Ano = ?"
 				+ " Acessorios= ?" + "Lotacao = ?" + "Placa = ?" + "Renavam = ?" + "Cor = ?" + "TipoFrota = ?"
-				+ "Tipocombustivel = ?" + "situacao = ?,  WHERE idveiculo = ?";
+				+ "Tipocombustivel = ?" + "situacao = ?,  WHERE renavam = ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
 
@@ -141,12 +146,15 @@ public class VeiculoDAO {
 			ps.executeUpdate();
 
 			
+			return veiculo;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
-		return false;
+
+		return veiculo;
 	}
+
 }

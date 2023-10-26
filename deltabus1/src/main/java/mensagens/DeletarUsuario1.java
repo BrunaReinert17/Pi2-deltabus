@@ -13,15 +13,15 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 
-public class Deletar2 extends JFrame {
+public class DeletarUsuario1 extends JFrame {
 
 	private JPanel contentPane;
-	private JLabel lblFalha2;
+	private JLabel lblFalha;
 
 	/**
 	 * Create the frame.
 	 */
-	public Deletar2(String mensagem) {
+	public DeletarUsuario1(String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -31,8 +31,8 @@ public class Deletar2 extends JFrame {
 
 		setContentPane(contentPane);
 
-		lblFalha2 = new JLabel("");
-		lblFalha2.setText(mensagem);
+		lblFalha = new JLabel("");
+		lblFalha.setText(mensagem);
 		contentPane.setLayout(null);
 
 		RoundButton btnOk = new RoundButton("Ok");
@@ -57,10 +57,10 @@ public class Deletar2 extends JFrame {
 		lblAviso.setBounds(123, -20, 110, 84);
 		contentPane.add(lblAviso);
 		
-		JLabel lblFalha2 = new JLabel("Selecione um veiculo para excluir");
-		lblFalha2.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblFalha2.setForeground(new Color(255, 255, 255));
-		lblFalha2.setBounds(76, 83, 209, 14);
-		contentPane.add(lblFalha2);
+		JLabel lblFalha = new JLabel("Falha ao excluir Usuario");
+		lblFalha.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblFalha.setForeground(new Color(255, 255, 255));
+		lblFalha.setBounds(111, 85, 137, 14);
+		contentPane.add(lblFalha);
 	}
 }

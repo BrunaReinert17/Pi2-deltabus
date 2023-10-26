@@ -91,7 +91,8 @@ public class PedidoDAO implements InterfacePedido{
 		} finally {
 			con.fecharConexao();
 		}
-		return false;
+		}
+		return valida;
 	}
 
 	@Override
