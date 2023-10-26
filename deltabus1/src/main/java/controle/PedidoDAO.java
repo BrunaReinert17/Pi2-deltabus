@@ -97,7 +97,7 @@ public class PedidoDAO implements InterfacePedido{
 	}
 
 	@Override
-	public boolean excluirPedido(Pedido pedido) {
+	public  boolean excluirPedido(Pedido pedido) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
@@ -171,4 +171,12 @@ public class PedidoDAO implements InterfacePedido{
 			}
 			return valida != 0;
 		}
+	 
+	 public static boolean excluirPedido1(Pedido pedido) {
+	   
+		 
+		 
+		 return false;
+	 }
+	 
 }

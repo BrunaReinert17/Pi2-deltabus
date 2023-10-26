@@ -98,7 +98,7 @@ public class VeiculoDAO {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM Veiculo\r\n  WHERE renavam = ?";
+		String query = "DELETE FROM Veiculo WHERE renavam = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
