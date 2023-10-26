@@ -28,7 +28,7 @@ public class VeiculoDAO {
 		String query = "SELECT * FROM Veiculo";
 		try {
 
-			PreparedStatement ps = c.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {

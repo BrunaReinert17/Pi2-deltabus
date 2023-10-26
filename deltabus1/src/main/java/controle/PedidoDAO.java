@@ -56,13 +56,10 @@ public class PedidoDAO implements InterfacePedido{
 				c.fecharConexao();
 			}
 
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				String id_pedido = rs.getString("id_pedido");
+			
 
-			return listPedido;
-		}
-		return pedidos;
+		return listPedido;
+		
 	}
 
 	public boolean inserirPedido(Pedido pedido) {
@@ -71,16 +68,13 @@ public class PedidoDAO implements InterfacePedido{
 
 		int valida = 0;
 
-		String query = "INSERT INTO Pedido "
-				+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) "
-				+ "VALUES (?, ?, ?, ?, ?)";
 
 		String query = "INSERT INTO Pedido " 
 		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
 		+ "VALUES (?, ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setInt(1, pedido.getId_pedido());
 			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
 			ps.setDouble(3, pedido.getValorPago());
@@ -154,7 +148,6 @@ public class PedidoDAO implements InterfacePedido{
 		    Connection c = con.conectar();
 			int valida = 0;
 
-		int valida = 0;
 
 			try {
 				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, renavam, Cliente, nomeCliente, quantidade) VALUES (?,?, ?, ?, ?,?,?)";
