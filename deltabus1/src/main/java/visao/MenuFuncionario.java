@@ -283,7 +283,7 @@ public class MenuFuncionario extends JFrame {
 		btnCadastroDeVendas.setForeground(new Color(255, 255, 255));
 		btnCadastroDeVendas.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastroDeVendas.setBackground(new Color(0, 128, 128));
-		btnCadastroDeVendas.setBounds(92, 715, 199, 43);
+		btnCadastroDeVendas.setBounds(92, 391, 199, 43);
 		panel.add(btnCadastroDeVendas);
 		
 		RoundButton btnlistaCliente = new RoundButton("Listagem de Cliente");

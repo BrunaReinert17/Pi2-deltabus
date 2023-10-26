@@ -6,7 +6,6 @@ public class Cliente {
 	private String numeroTelefone;
 	private String email;
 	private String Cpf;
-	private Long Cep;
 	private Long cnpj;
 	private Endereco endereco;
 	
@@ -65,13 +64,6 @@ public class Cliente {
 		Cpf = cpf;
 	}
 
-	public Long getCep() {
-		return Cep;
-	}
-
-	public void setCep(Long cep) {
-		Cep = cep;
-	}
 
 	public Long getCnpj() {
 		return cnpj;
@@ -81,20 +73,18 @@ public class Cliente {
 		this.cnpj = cnpj;
 	}
 
-	public Cliente(String nome, String numeroTelefone, String email, String Cpf, Long cep, Long cnpj) {
+	public Cliente(String nome, String numeroTelefone, String email, String Cpf, Long cnpj) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
 		this.email = email;
 		this.Cpf = Cpf;
-		this.Cep = cep;
 		this.cnpj = cnpj;
 
 	}
 
 	public String toString() {
-		return "Cliente [nome=" + nome + ", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf
-				+ ",cep=" + Cep + "]";
+		return "Cliente [nome=" + nome + ", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf + "]";
 	}
 
 }

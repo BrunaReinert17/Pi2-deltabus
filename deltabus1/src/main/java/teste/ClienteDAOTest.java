@@ -15,7 +15,6 @@ public class ClienteDAOTest {
 		c.setNumeroTelefone("(12)34567-8921");
 		c.setEmail("gisele@gmail.com");
 		c.setCpf(null);
-		c.setCep(null);
 		c.setCnpj(null);
 
 		ClienteDAO dao = new ClienteDAO();

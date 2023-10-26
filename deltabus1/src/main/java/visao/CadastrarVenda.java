@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +22,7 @@ import javax.swing.text.MaskFormatter;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
+import controle.ClienteDAO;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.PedidoDAO;
@@ -32,6 +33,7 @@ import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
 import mensagens.CadastroVeiculo;
 import mensagens.LoginErro;
+import modelo.Cliente;
 import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.Pedido;
@@ -72,6 +74,8 @@ public class CadastrarVenda extends JPanel {
 	private JTextField textQuantidades;
 	private JComboBox cbPagamento;
 	private JTextField textValorpagar;
+	private ArrayList<Pedido> listVenda;
+
 
 	public CadastrarVenda() {
 		setLocale("Login");
@@ -101,7 +105,7 @@ public class CadastrarVenda extends JPanel {
 		table1.setFont(new Font("Dialog", Font.BOLD, 14));
 		
 		table1.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "CPF", "CNPJ", "Cliente", "Renavam", "Id Veiculo", "Valor R$", "Qtde" }));
+				new String[] { "CPF", "CNPJ", "Cliente", "Renavam", "Valor R$", "Qtde" }));
 		scrollPane.setViewportView(table1);
 		
 		
@@ -353,14 +357,14 @@ public class CadastrarVenda extends JPanel {
 	public Pedido verificarDados() {
 		
 		Pedido pedido = new Pedido();
-		
+		Cliente cliente = new Cliente();
 		
 		verificarCampo = "";
 		
 		
 		String nome = txtNomeCliente.getText();
 		String valorpagar = textValorpagar.getText();
-		String cliente = txtCliente.getText().replace(".", "").replace("-", "");
+		String cnpj = txtCliente.getText().replace(".", "").replace("-", "");
 		String renavam = textRenavam.getText();
 		String quantidade = textQuantidades.getText();
 		String datacompra = textDataCompra.getText();
@@ -380,11 +384,10 @@ public class CadastrarVenda extends JPanel {
 		}
 		
 		
-		if (cliente == null || cliente.trim() == "" || cliente.isEmpty()) {
+		if (cnpj == null || cnpj.trim() == "" || cnpj.isEmpty()) {
 			verificarCampo += "CPF\n";
 		} else {
-			String cpf = String.valueOf(cliente);
-			pedido.setCliente(cpf);
+			cliente.setCnpj(Long.parseLong(cnpj));
 		}
 		
 		if (renavam == null || renavam.trim() == "" || renavam.isEmpty()) {
@@ -435,5 +438,19 @@ public class CadastrarVenda extends JPanel {
 		txtCliente.setText("");
 
 		txtBairro.setText("");
+	}
+	public void atualizarTabela() {
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {},
+				new String[] { "CPF", "CNPJ", "Cliente", "Renavam", "Valor R$", "Qtde"  });
+		PedidoDAO Pedidodao = new PedidoDAO();
+		listVenda = Pedidodao.listar();
+		System.out.println(listVenda);
+		for (int i = 0; i < listVenda.size(); i++) {
+			Pedido pedido = listVenda.get(i);
+			tabela.addRow(new Object[] { pedido.getNomeCliente(), pedido.getCliente().getCnpj(),pedido.getRenavam(),pedido.getValorPago(),pedido.getQuantidade()
+					});
+
+		}
+		table1.setModel(tabela);
 	}
 }

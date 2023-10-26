@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Cliente;
+import modelo.Endereco;
+import modelo.Usuario;
 
 public class ClienteDAO {
 
@@ -31,12 +33,13 @@ public class ClienteDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Cliente cl = new Cliente();
+				Endereco endereco = new Endereco();
 				cl.setNome(rs.getString("nome"));
 				cl.setNumeroTelefone(rs.getString("numeroTelefone"));
 				cl.setEmail(rs.getString("email"));
 				cl.setCnpj(rs.getLong("Cnpj"));
 				cl.setCpf(rs.getString("Cpf"));
-				cl.setCep(rs.getLong("endereco_cep"));
+				endereco.setCep(rs.getInt("endereco_cep"));
 			
 				cliente.add(cl);
 			}
@@ -48,7 +51,32 @@ public class ClienteDAO {
 
 		return cliente;
 	}
+	public Cliente selecionarCliente (Cliente clienteModelo) {
+        Connection c = con.conectar();
+        try {
+            PreparedStatement ps = c.prepareStatement("SELECT * FROM clientes where cnpj = ?");
+            ps.setLong(1, clienteModelo.getCnpj());
 
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String numeroTelefone = rs.getString("numeroTelefone");
+                String email = rs.getString("email");
+                Long cnpj = rs.getLong("cnpj");
+                String cpf = rs.getString("cpf");
+
+                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf,cnpj);
+                return cli;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+        return null;
+    }
+	
 	public boolean inserirCliente(Cliente cliente) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
@@ -62,7 +90,7 @@ public class ClienteDAO {
 			stm.setString(3, cliente.getEmail());
 			stm.setLong(4, cliente.getCnpj());
 			stm.setString(5, cliente.getCpf());
-			stm.setLong(6, cliente.getCep());
+			stm.setLong(6, cliente.getEndereco().getCep());
 			
 			System.out.println(stm);
 			valida = stm.executeUpdate();
@@ -99,15 +127,13 @@ public class ClienteDAO {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE Clientes SET" + " nome = ?\r\n" + "numeroTelefone = ?" + " email = ?" + " cpf = ?"
-				+ " endereco_cep = ?, WHERE cnpj = ?";
+		String query = "UPDATE Clientes SET" + " nome = ?\r\n" + "numeroTelefone = ?" + " email = ?" + " cpf = ?, WHERE cnpj = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, cliente.getNome());
 			ps.setString(2, cliente.getNumeroTelefone());
 			ps.setString(3, cliente.getEmail());
 			ps.setString(4, cliente.getCpf());
-			ps.setDouble(5, cliente.getCep());
 			ps.setLong(6, cliente.getCnpj());
 
 			ps.executeUpdate();

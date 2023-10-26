@@ -38,9 +38,10 @@ public class PedidoDAO implements InterfacePedido{
 					 String id_pedido = rs.getString("id_pedido");
 
 					 Pedido pedido = new Pedido();
+					 Cliente cliente = new Cliente();
 						
 					 pedido.setVeiculo(rs.getInt("veiculo"));
-					 pedido.setCliente(rs.getString("cliente"));
+					 cliente.setCnpj(rs.getLong("cliente"));
 					 //pedido.setDataCompra(rs.getString("datacompra"));
 					 pedido.setValorPago(rs.getDouble("valorpago"));
 					 pedido.setTipoPagamento(rs.getString("cnpj"));
@@ -74,7 +75,7 @@ public class PedidoDAO implements InterfacePedido{
 			ps.setDouble(3, pedido.getValorPago());
 			ps.setString(4, pedido.getTipoPagamento());
 		    ps.setString(5,pedido.getRenavam());
-		    ps.setString(6,pedido.getCliente());
+		    ps.setLong(6,pedido.getCliente().getCnpj());
 		    ps.setString(7,pedido.getNomeCliente());
 		    ps.setInt(8,pedido.getQuantidade());
 
@@ -98,7 +99,7 @@ public class PedidoDAO implements InterfacePedido{
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, pedido.getCliente());
+			ps.setLong(1, pedido.getCliente().getCnpj());
 			ps.executeUpdate();
 
 			c.fecharConexao();
@@ -126,7 +127,7 @@ public class PedidoDAO implements InterfacePedido{
 			p.setDouble(1, pedido.getValorPago());
 			p.setDate(2,java.sql.Date.valueOf(pedido.getDataCompra()));
 			p.setString(3, pedido.getTipoPagamento());
-			p.setString(4, pedido.getCliente());
+			p.setLong(4, pedido.getCliente().getCnpj());
 			p.setString(5, pedido.getRenavam());
 			p.setString(6,pedido.getNomeCliente());
 			p.setInt(7,pedido.getQuantidade());
@@ -163,7 +164,7 @@ public class PedidoDAO implements InterfacePedido{
 				ps.setDouble(3, pedido.getValorPago());
 				ps.setString(4, pedido.getTipoPagamento());
 			    ps.setString(5,pedido.getRenavam());
-			    ps.setString(6,pedido.getCliente());
+			    ps.setLong(6,pedido.getCliente().getCnpj());
 			    ps.setString(7,pedido.getNomeCliente());
 			    ps.setInt(8,pedido.getQuantidade());
 

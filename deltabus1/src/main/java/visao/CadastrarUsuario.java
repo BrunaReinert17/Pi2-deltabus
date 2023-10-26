@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.Color;
+import java.awt.Color;  
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -117,12 +117,6 @@ public class CadastrarUsuario extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 22, 1164, 702);
 		panel.add(scrollPane);
-		table = new JTable();
-		table.setBackground(new Color(255, 255, 255));
-		table.setFont(new Font("Dialog", Font.BOLD, 14));
-		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" }));
-		scrollPane.setViewportView(table);
 
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
@@ -135,19 +129,6 @@ public class CadastrarUsuario extends JPanel {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
-		RoundButton rndbtnDeletar = new RoundButton("Deletar");
-		rndbtnDeletar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				deletarFuncionario();
-
-			}
-		});
-		rndbtnDeletar.setText("Deletar");
-		rndbtnDeletar.setForeground(new Color(0, 0, 0));
-		rndbtnDeletar.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnDeletar.setBackground(new Color(255, 255, 255));
-		rndbtnDeletar.setBounds(1050, 3, 115, 33);
-		panel_1.add(rndbtnDeletar);
 
 		textCPF = new JTextField();
 		textCPF.setBounds(496, 12, 177, 20);
