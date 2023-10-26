@@ -12,13 +12,13 @@ import modelo.Veiculo;
 
 public class VeiculoDAO {
 
-	private Conexao con;
+	private static Conexao con;
 
 	public VeiculoDAO() {
 		con = Conexao.getInstancia();
 	}
 
-	public ArrayList<Veiculo> listar() {
+	public static ArrayList<Veiculo> listar() {
 		Connection c = con.conectar();
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
 

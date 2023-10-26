@@ -73,7 +73,7 @@ public class MenuFuncionario extends JFrame {
 		panelCliente.setToolTipText("");
 		panelCliente.setLocation(579, 97);
 		panelTeste = panelCliente;
-		panelTeste.setBounds(377, 0, 1200, 800);
+		panelTeste.setBounds(568, 104, 1200, 800);
 		panelTeste.setVisible(false);
 
 		contentPane.add(panelTeste);

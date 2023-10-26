@@ -40,6 +40,7 @@ import modelo.Funcionario;
 import modelo.Usuario;
 import modelo.Veiculo;
 import utilidades.RoundButton;
+import utilidades.RoundedPanel;
 
 import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
