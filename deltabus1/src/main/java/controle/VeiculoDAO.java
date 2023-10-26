@@ -19,6 +19,7 @@ public class VeiculoDAO {
 	}
 
 	public ArrayList<Veiculo> listar() {
+		
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 

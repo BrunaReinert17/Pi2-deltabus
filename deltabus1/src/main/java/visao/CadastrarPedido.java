@@ -73,6 +73,7 @@ public class CadastrarPedido extends JPanel {
 	private JTextField txtQtdes;
 	private JComboBox cbPagamento;
 	private JTextField txtValorPago;
+	private ArrayList<Pedido> listPedido;
 
 	public CadastrarPedido() {
 		setLocale("Login");
@@ -96,6 +97,8 @@ public class CadastrarPedido extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 604, 28);
 		panel_5.add(scrollPane, BorderLayout.CENTER);
+		
+		
 		
 
 		table1 = new JTable();
@@ -366,8 +369,22 @@ public class CadastrarPedido extends JPanel {
 		add(txtValorPago);
 		txtValorPago.setColumns(10);
 		
+		JButton btnPesquisar_1 = new JButton("Pesquisar");
+		btnPesquisar_1.setForeground(Color.WHITE);
+		btnPesquisar_1.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnPesquisar_1.setBackground(new Color(0, 128, 128));
+		btnPesquisar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cpfpesquisa = txtRenavam.getText();
+				atualizarTabela();
+			}
+		});
+		btnPesquisar_1.setBounds(773, 315, 115, 23);
+		add(btnPesquisar_1);
+		
 		
 	}
+	
 
 	protected void setSelectedItem(Object object) {
 	}
@@ -457,9 +474,21 @@ public class CadastrarPedido extends JPanel {
 			pedido.setTipoPagamento(formapagamento);
 		}
 		
-		
 		return pedido;
+}
+public void atualizarTabela() {
+	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "CNPJ", "Cliente", "Renavam", "Pagamento", "Valor", "Qtde", "Data Compra" });
+	PedidoDAO pedidoDAO = new PedidoDAO();
+	listPedido = pedidoDAO.listar();
+	System.out.println(listPedido);
+	for (int i = 0; i < listPedido.size(); i++) {
+		Pedido pedido = listPedido.get(i);
+		tabela.addRow(new Object[] { pedido.getCliente(), pedido.getNomeCliente(), pedido.getRenavam(),pedido.getTipoPagamento(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
+
 	}
+	table1.setModel(tabela);
+}
+
 
 	public void limparDados() {
 		txtNomeCliente.setText("");

@@ -22,33 +22,38 @@ public class PedidoDAO implements InterfacePedido{
 	    }
 	 
 	 public ArrayList<Pedido> listar() {
+		 
 			Conexao c = Conexao.getInstancia();
 			Connection con = c.conectar();
 
 			ArrayList<Pedido> pedidos = new ArrayList<>();
 
 			String query = "SELECT * FROM pedido";
+			
 			try {
 				
 				PreparedStatement ps = con.prepareStatement(query);
-
-				
 				ResultSet rs = ps.executeQuery();
+				
 				while (rs.next()) {
-					 String id_pedido = rs.getString("id_pedido");
+					
+					 Pedido p = new Pedido();
 
-					 Pedido pedido = new Pedido();
-						
-					 pedido.setVeiculo(rs.getInt("veiculo"));
-					 pedido.setCliente(rs.getString("cliente"));
-					 //pedido.setDataCompra(rs.getString("datacompra"));
-					 pedido.setValorPago(rs.getDouble("valorpago"));
-					 pedido.setTipoPagamento(rs.getString("cnpj"));
-
-
+					 p.setId_pedidos(rs.getInt("id_pedidos"));
+					 p.setDataCompra(rs.getDate("dataCompra").toLocalDate());
+					 p.setQuantidade(rs.getInt("quantidade"));
+					 p.setValorPago(rs.getDouble("valorPago"));
+					 p.setTipoPagamento(rs.getString("tipoPagamento"));
+					 p.setCliente(rs.getString("cliente"));
+					 p.setRenavam(rs.getString("renavam"));
+					 p.setNomeCliente(rs.getString("nomeCliente"));
+					 p.add(pedidos);
+					 
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				c.fecharConexao();
 			}
 
 			c.fecharConexao();
@@ -64,12 +69,12 @@ public class PedidoDAO implements InterfacePedido{
 
 
 		String query = "INSERT INTO Pedido " 
-		+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
+		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
 		+ "VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, pedido.getId_pedidos());
+			ps.setInt(1, pedido.getId_pedido());
 			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
 			ps.setDouble(3, pedido.getValorPago());
 			ps.setString(4, pedido.getTipoPagamento());
@@ -118,7 +123,7 @@ public class PedidoDAO implements InterfacePedido{
 		Connection con = c.conectar();
 
 		String query = "UPDATE Pedido\r\n   SET" + "ValorPago = ?\r\n" + "dataCompra = ?" + "tipoPagamento = ?"
-				+ " quantidade = ?" + " nomeCliente = ?" + " Renavam = ?" + "cliente = ?  ,  WHERE id_pedidos = ?";
+				+ " quantidade = ?" + " nomeCliente = ?" + " Renavam = ?" + "cliente = ?  ,  WHERE id_pedido = ?";
 		try {
 			PreparedStatement p = con.prepareStatement(query);
 
@@ -130,7 +135,7 @@ public class PedidoDAO implements InterfacePedido{
 			p.setString(5, pedido.getRenavam());
 			p.setString(6,pedido.getNomeCliente());
 			p.setInt(7,pedido.getQuantidade());
-			p.setInt(8, pedido.getId_pedidos());
+			p.setInt(8, pedido.getId_pedido());
 			p.executeUpdate();
 
 			c.fecharConexao();

@@ -1,6 +1,8 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.sql.Date;
+import java.util.ArrayList;
 
 public class Pedido extends Veiculo {
 
@@ -42,11 +44,11 @@ public class Pedido extends Veiculo {
 
 	}
 
-	public int getId_pedidos() {
+	public int getId_pedido() {
 		return id_pedidos;
 	}
 
-	public void setId_pedidos(int id_pedidos) {
+	public void setId_pedido(int id_pedidos) {
 		this.id_pedidos = id_pedidos;
 	}
 
@@ -54,7 +56,7 @@ public class Pedido extends Veiculo {
 		return quantidade;
 	}
 
-	public void setVeiculo(int veiculo) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -106,6 +108,17 @@ public class Pedido extends Veiculo {
 		this.nomeCliente = nomeCliente;
 	}
 
+	public void add(ArrayList<Pedido> pedidos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setId_pedidos(int int1) {
+		
+	}
+
 	
+
+
 }
 	
