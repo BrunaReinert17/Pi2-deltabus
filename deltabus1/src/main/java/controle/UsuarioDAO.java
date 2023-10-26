@@ -158,6 +158,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 				usuarioConectado.setEmail(email);
 				usuarioConectado.setSenha(senha);
 				usuarioConectado.setCargo(cargo);
+				return usuarioConectado;
 
 				
 			}
@@ -168,7 +169,7 @@ public class UsuarioDAO implements InterfaceUsuario {
             con.fecharConexao();
         }
 
-		return usuario;
+		return null;
 	}
 
 
