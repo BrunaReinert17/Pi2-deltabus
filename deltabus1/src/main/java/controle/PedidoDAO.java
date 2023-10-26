@@ -85,14 +85,15 @@ public class PedidoDAO implements InterfacePedido{
 			ps.setInt(8, pedido.getQuantidade());
 
 			ps.executeUpdate();
+			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
-		}
-		return valida;
+		
+		return false;
 	}
 
 	@Override
