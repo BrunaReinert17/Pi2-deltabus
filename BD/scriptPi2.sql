@@ -61,9 +61,7 @@ CREATE TABLE IF NOT EXISTS `Pedido` (
   `Cliente` DOUBLE NOT NULL,
   `renavam` VARCHAR(45) NOT NULL,
   `nomeCliente` VARCHAR(45) NOT NULL,
-  
-  
-  PRIMARY KEY (`id_pedidos`));
+ PRIMARY KEY (`id_pedidos`));
  
   
 -- -----------------------------------------------------
@@ -110,6 +108,9 @@ SELECT * FROM endereco ORDER BY cep ASC;
 SELECT COUNT(*) FROM Clientes; 
 SELECT * FROM Clientes ORDER BY cnpj ASC;
 
+-- Select pedido --
+SELECT count(*) FROM Pedido;
+SELECT * FROM Pedido ORDER BY id_pedidos ASC;
 
 -- Selects Usuario -- 
 SELECT COUNT(*) FROM Usuario;

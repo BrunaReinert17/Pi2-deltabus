@@ -106,7 +106,7 @@ public class MenuFuncionario extends JFrame {
 
 		contentPane.add(panelTeste4);
 		
-		CadastrarVenda cadastrarVendas = new CadastrarVenda();
+		CadastrarPedido cadastrarVendas = new CadastrarPedido();
 		cadastrarVendas.setToolTipText("");
 		cadastrarVendas.setLocation(579, 97);
 		panelTeste2 = cadastrarVendas;
