@@ -89,8 +89,6 @@ CREATE TABLE IF NOT EXISTS funcionarios (
   `Usuario_idUsuario` int NOT NULL,
   `endereco_cep` INT NOT NULL,
   PRIMARY KEY (`cpf`),
-  FOREIGN KEY (`Usuario_email`)
-    REFERENCES `Usuario` (`email`),
 
     FOREIGN KEY (`Usuario_idUsuario`)
     REFERENCES `Usuario` (`idUsuario`),
