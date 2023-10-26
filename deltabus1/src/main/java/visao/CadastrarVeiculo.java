@@ -574,6 +574,15 @@ public class CadastrarVeiculo extends JPanel {
 		textalterar.setBounds(258, 78, 138, 20);
 		add(textalterar);
 		textalterar.setColumns(10);
+		
+		JButton btnalterar = new JButton("Alterar");
+		btnalterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AterarVeiculo();
+			}
+		});
+		btnalterar.setBounds(106, 77, 89, 23);
+		add(btnalterar);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
