@@ -124,7 +124,7 @@ public class VeiculoDAO {
 
 		String query = "UPDATE Endereco\r\n   SET" + "Marca = ?\r\n" + "Modelo = ?" + "Preco = ?" + " Ano = ?"
 				+ " Acessorios= ?" + "Lotacao = ?" + "Placa = ?" + "Renavam = ?" + "Cor = ?" + "TipoFrota = ?"
-				+ "Tipocombustivel = ?" + "situacao = ?,  WHERE idveiculo = ?";
+				+ "Tipocombustivel = ?" + "situacao = ?,  WHERE renavam = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 

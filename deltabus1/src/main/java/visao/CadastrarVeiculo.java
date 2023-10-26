@@ -38,8 +38,11 @@ import modelo.Funcionario;
 import modelo.Usuario;
 import modelo.Veiculo;
 import utilidades.RoundButton;
+
+import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.AncestorListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
@@ -79,8 +82,30 @@ public class CadastrarVeiculo extends JPanel {
 	private JComboBox cbSituacao;
 	private JComboBox cbModelo;
 	private JComboBox cbModelo_1;
+	private JTextField textalterar;
+	private ArrayList<Veiculo> listVei;
 	
 	private void AterarVeiculo() {
+       
+		String renavamDesejado = textalterar.getText(); // Renavam desejado
+
+		Veiculo veiculoSelecionado = null;
+
+		for (Veiculo veiculo : listVei) {
+		    if (veiculo.getRenavam().equals(renavamDesejado)) {
+		        veiculoSelecionado = veiculo;
+		        break; // Encontrou o veículo, pode sair do loop
+		    }
+		}
+
+		if (veiculoSelecionado != null) {
+		    preencherDados(veiculoSelecionado);
+		} else {
+		   
+		}
+
+	
+		
 		
 	}
 	
@@ -544,6 +569,11 @@ public class CadastrarVeiculo extends JPanel {
 		btnCadastrar.setBackground(new Color(0, 128, 128));
 		btnCadastrar.setBounds(548, 663, 132, 33);
 		add(btnCadastrar);
+		
+		textalterar = new JTextField();
+		textalterar.setBounds(258, 78, 138, 20);
+		add(textalterar);
+		textalterar.setColumns(10);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -722,5 +752,24 @@ public class CadastrarVeiculo extends JPanel {
 
 		 textPreco.setText("");
 	
+	}
+	
+	
+	
+	private void preencherDados(Veiculo veiculoSelecionado) {
+		txtRenavam.setText(veiculoSelecionado.getRenavam());
+		txtPlaca.setText(String.valueOf(veiculoSelecionado.getPlaca()));
+		textLotacao.setText(String.valueOf(veiculoSelecionado.getLotacao()));
+		textidVeiculo.setText(String.valueOf(veiculoSelecionado.getIdVeiculo()));
+		textAno.setText(String.valueOf(veiculoSelecionado.getAno()));
+		textPreco.setText(String.valueOf(veiculoSelecionado.getPreco()));
+		cbMarca.setToolTipText((veiculoSelecionado.getMarca()));
+		cbModelo_1.setToolTipText(veiculoSelecionado.getModelo());
+		cbCor.setToolTipText(veiculoSelecionado.getCor());
+		cbFrota.setToolTipText(veiculoSelecionado.getTipoFrota());
+		cbCombustivel.setToolTipText(veiculoSelecionado.getTipoCombustivel());
+		cbAcessorio.setToolTipText(String.valueOf(veiculoSelecionado.getAcessorios()));
+		cbSituacao.setToolTipText(veiculoSelecionado.getSituacao());
+		
 	}
 }
