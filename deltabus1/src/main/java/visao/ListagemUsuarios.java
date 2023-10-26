@@ -127,15 +127,6 @@ private void deletarUsuario() {
 		rndbtnDeletar.setBackground(Color.WHITE);
 		rndbtnDeletar.setBounds(1023, 3, 115, 33);
 		panel_1.add(rndbtnDeletar);
-		
-		RoundButton rndbtnAlterar = new RoundButton("Alterar");
-		
-		rndbtnAlterar.setText("Alterar");
-		rndbtnAlterar.setForeground(Color.WHITE);
-		rndbtnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnAlterar.setBackground(new Color(0, 128, 128));
-		rndbtnAlterar.setBounds(889, 3, 114, 33);
-		panel_1.add(rndbtnAlterar);
 
 		textcpf = new JTextField();
 		textcpf.setColumns(10);
@@ -173,6 +164,5 @@ private void deletarUsuario() {
 		}
 		table.setModel(tabela);
 	}
-	
 }
 

@@ -56,17 +56,24 @@ public class PedidoDAO implements InterfacePedido{
 				c.fecharConexao();
 			}
 
-			c.fecharConexao();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String id_pedido = rs.getString("id_pedido");
 
 			return listPedido;
 		}
+		return pedidos;
+	}
 
-	public  boolean inserirPedido(Pedido pedido) {
-		Conexao c = Conexao.getInstancia();
+	public boolean inserirPedido(Pedido pedido) {
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
-		Connection con = c.conectar();
 		int valida = 0;
 
+		String query = "INSERT INTO Pedido "
+				+ "(id_pedidos, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) "
+				+ "VALUES (?, ?, ?, ?, ?)";
 
 		String query = "INSERT INTO Pedido " 
 		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
@@ -78,40 +85,37 @@ public class PedidoDAO implements InterfacePedido{
 			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
 			ps.setDouble(3, pedido.getValorPago());
 			ps.setString(4, pedido.getTipoPagamento());
-		    ps.setString(5,pedido.getRenavam());
-		    ps.setString(6,pedido.getCliente());
-		    ps.setString(7,pedido.getNomeCliente());
-		    ps.setInt(8,pedido.getQuantidade());
+			ps.setString(5, pedido.getRenavam());
+			ps.setString(6, pedido.getCliente());
+			ps.setString(7, pedido.getNomeCliente());
+			ps.setInt(8, pedido.getQuantidade());
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
-			return true;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
 		}
 		return false;
 	}
 
 	@Override
 	public boolean excluirPedido(Pedido pedido) {
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "DELETE FROM Pedido\r\n  WHERE Cliente = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, pedido.getCliente());
 			ps.executeUpdate();
 
-			c.fecharConexao();
-			return true;
-
-		} catch (SQLException e) {
-
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
 		}
 
 		return false;
@@ -119,17 +123,16 @@ public class PedidoDAO implements InterfacePedido{
 
 	@Override
 	public boolean alterarPedido(Pedido pedido) {
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		String query = "UPDATE Pedido\r\n   SET" + "ValorPago = ?\r\n" + "dataCompra = ?" + "tipoPagamento = ?"
 				+ " quantidade = ?" + " nomeCliente = ?" + " Renavam = ?" + "cliente = ?  ,  WHERE id_pedido = ?";
 		try {
-			PreparedStatement p = con.prepareStatement(query);
+			PreparedStatement p = c.prepareStatement(query);
 
-			
 			p.setDouble(1, pedido.getValorPago());
-			p.setDate(2,java.sql.Date.valueOf(pedido.getDataCompra()));
+			p.setDate(2, java.sql.Date.valueOf(pedido.getDataCompra()));
 			p.setString(3, pedido.getTipoPagamento());
 			p.setString(4, pedido.getCliente());
 			p.setString(5, pedido.getRenavam());
@@ -138,13 +141,10 @@ public class PedidoDAO implements InterfacePedido{
 			p.setInt(8, pedido.getId_pedido());
 			p.executeUpdate();
 
-			c.fecharConexao();
-			return true;
-
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			c.fecharConexao();
+			con.fecharConexao();
 		}
 
 		return false;
@@ -154,6 +154,7 @@ public class PedidoDAO implements InterfacePedido{
 		    Connection c = con.conectar();
 			int valida = 0;
 
+		int valida = 0;
 
 			try {
 				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, renavam, Cliente, nomeCliente, quantidade) VALUES (?,?, ?, ?, ?,?,?)";
