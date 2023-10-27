@@ -3,16 +3,16 @@
 ![DELTABUS](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/be02f278-ee73-431b-9d7c-ab1eb1ec22d3)
 
 
-Software gerenciamento para vendas de ônibus.
+Software de Gerenciamento para Vendas de Õnibus.
 
 
 # <p align="center" >Projeto Integrador</p><p align="center" > Pi</p> 
 
 # 📈 Projeto 
-Este projeto acadêmico faz parte da disciplina de Projeto Integrador I e II. O objetivo central é criar um software de fácil utilização destinado a gerenciar a venda de transportes coletivos, como ônibus e micro-ônibus. O software possibilitará o registro de informações de clientes, controle de estoques, pagamentos e relatórios essenciais para a gestão eficiente das vendas. O foco está em melhorar a organização das empresas de transporte coletivo, proporcionando maior controle e acompanhamento de suas atividades comerciais.
+Este projeto acadêmico faz parte da disciplina de Projeto Integrador I e II. O objetivo central é criar um software de fácil utilização destinado a gerenciar a venda de transportes coletivos, como ônibus e micro-ônibus. O software possibilitará o registro de informações de clientes, pagamentos e relatórios essenciais para a gestão eficiente das vendas. O foco está em melhorar a organização das empresas de transporte coletivo, proporcionando maior controle e acompanhamento de suas atividades comerciais.
 
 # 📃 Descrição do Software:
-O software abrange dois tipos de usuários: o administrador e o funcionário, cada um com funções específicas. O administrador possui acesso completo ao sistema, gerenciando veículos, funcionários, clientes e pagamentos. Além disso, tem visão geral das operações e pode monitorar os estoques. O funcionário tem a capacidade de cadastrar clientes, atualizar informações de veículos, registrar saídas, acompanhar pagamentos e gerenciar estoques. A colaboração entre esses dois perfis é fundamental para garantir o funcionamento abrangente do sistema de gestão de vendas de transportes coletivos.
+O software abrange dois tipos de usuários: o administrador e o funcionário, cada um com funções específicas. O administrador possui acesso ao cadastro dos usuários, sendo para cadastrar outro administrador ou adicionar funcionários. Desse modo, o funcionário tem a capacidade de cadastrar clientes, atualizar informações de veículos, registrar vendas, acompanhar pagamentos e gerenciar registros/históricos. A colaboração entre esses dois perfis é fundamental para garantir o funcionamento abrangente do sistema de gestão de vendas de transportes coletivos.
 
 
 # 📉 Diagrama de Casos de Uso:
