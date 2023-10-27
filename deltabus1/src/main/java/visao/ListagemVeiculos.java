@@ -168,26 +168,26 @@ private void deletarVeiculo() {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = textrenavam.getText();
-				atualizarTabela();
+				//atualizarTabela();
 			}
 		});
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
 
-		atualizarTabela();
+		//atualizarTabela();
 	}
-	public void atualizarTabela() {
-		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] {  "Combutível", "Marca", "Modelo", "Placa", "Tipo de Frota", "Lotação", "Renavam", "Cor", "Acessórios", "Ano","Preço", "Situação"  });
-		VeiculoDAO veiculoDAO = new VeiculoDAO();
-		listVei = veiculoDAO.listar();
-		System.out.println(listVei);
-		for (int i = 0; i < listVei.size(); i++) {
-			Veiculo veiculo = listVei.get(i);
-			tabela.addRow(new Object[] { veiculo.getRenavam(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getCor(),veiculo.getPlaca(),veiculo.getLotacao(),veiculo.getTipoFrota(),veiculo.getTipoCombustivel(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco(),veiculo.getSituacao()});
+	//public void atualizarTabela() {
+		//DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] {  "Combutível", "Marca", "Modelo", "Placa", "Tipo de Frota", "Lotação", "Renavam", "Cor", "Acessórios", "Ano","Preço", "Situação"  });
+		//VeiculoDAO veiculoDAO = new VeiculoDAO();
+		//listVei = veiculoDAO.listar();
+		//System.out.println(listVei);
+		//for (int i = 0; i < listVei.size(); i++) {
+			//Veiculo veiculo = listVei.get(i);
+			//tabela.addRow(new Object[] { veiculo.getRenavam(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getCor(),veiculo.getPlaca(),veiculo.getLotacao(),veiculo.getTipoFrota(),veiculo.getTipoCombustivel(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco(),veiculo.getSituacao()});
 
-		}
-		table.setModel(tabela);
-	}
+		//}
+		//table.setModel(tabela);
+	//}
 
 	}
 

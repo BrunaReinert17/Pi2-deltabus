@@ -1,5 +1,6 @@
 package visao;
 
+import java.awt.BorderLayout;
 import java.awt.Color; 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -24,19 +25,31 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import controle.ClienteDAO;
 import controle.EnderecoDAO;
+import controle.FuncionarioDAO;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.ConfirmacaoDeletarCliente;
+import mensagens.ConfirmacaoDeletarUsuario;
+import mensagens.DeletarCliente1;
+import mensagens.DeletarCliente2;
+import mensagens.DeletarUsuario1;
+import mensagens.DeletarUsuario2;
+import mensagens.InterfaceMensagemConfirmacao;
 import mensagens.CadastroCliente;
 
 import modelo.Cliente;
 import modelo.Endereco;
+import modelo.Funcionario;
 import utilidades.RoundButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.AncestorListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField.AbstractFormatter;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class CadastrarCliente extends JPanel {
 	private JTextField txtNome;
@@ -56,6 +69,9 @@ public class CadastrarCliente extends JPanel {
 	private JLabel lblLimpar;
 	private String cpf;
 	private JTextField textCnpj;
+	private JTable table;
+	private ArrayList<Cliente> listClientes;
+
 
 	public CadastrarCliente() {
 		setLocale("Login");
@@ -67,9 +83,24 @@ public class CadastrarCliente extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
+		
+		JScrollPane scrollPane3 = new JScrollPane();
+		scrollPane3.setBounds(220, 369, 751, 252);
+		add(scrollPane3, BorderLayout.CENTER);
+		
+		table = new JTable();
+		table.setFont(new Font("Dialog", Font.BOLD, 14));
+		table.setBackground(Color.WHITE);
+		scrollPane3.setViewportView(table);
+		
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep" }));
+		scrollPane3.setViewportView(table);
+		
+		
 
 		lblLimpar = new JLabel("");
-		lblLimpar.setBounds(1035, 92, 110, 33);
+		lblLimpar.setBounds(930, 92, 110, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
 		lblLimpar.setIcon(new ImageIcon(CadastrarCliente.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
@@ -101,21 +132,21 @@ public class CadastrarCliente extends JPanel {
 		add(panel_3);
 
 		txtNome = new JTextField();
-		txtNome.setBounds(252, 195, 276, 30);
+		txtNome.setBounds(214, 185, 241, 30);
 		txtNome.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtNome.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtNome);
 		txtNome.setColumns(10);
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(684, 195, 276, 30);
+		txtEmail.setBounds(527, 185, 241, 30);
 		txtEmail.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtEmail.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtEmail);
 		txtEmail.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(252, 176, 67, 14);
+		lblNome.setBounds(214, 166, 67, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
 		add(lblNome);
 
@@ -126,12 +157,12 @@ public class CadastrarCliente extends JPanel {
 		add(lblNome);
 
 		JLabel lblEmail1 = new JLabel("Email:");
-		lblEmail1.setBounds(684, 176, 67, 14);
+		lblEmail1.setBounds(527, 166, 67, 14);
 		lblEmail1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblEmail1);
 
 		JLabel lblnumeroTelefone = new JLabel("Telefone:");
-		lblnumeroTelefone.setBounds(683, 267, 98, 14);
+		lblnumeroTelefone.setBounds(459, 245, 98, 14);
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblnumeroTelefone);
@@ -144,7 +175,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtnumeroTelefone = new JFormattedTextField(mascaranumeroTelefone);
-		txtnumeroTelefone.setBounds(684, 290, 182, 30);
+		txtnumeroTelefone.setBounds(459, 264, 182, 30);
 		txtnumeroTelefone.setText("");
 		txtnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtnumeroTelefone.setColumns(10);
@@ -158,7 +189,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtCep = new JFormattedTextField(mascaraCep);
-		txtCep.setBounds(252, 383, 142, 30);
+		txtCep.setBounds(214, 264, 142, 30);
 		txtCep.setText("");
 		/**********/
 
@@ -167,7 +198,7 @@ public class CadastrarCliente extends JPanel {
 		add(txtCep);
 
 		lblCep = new JLabel("CEP:");
-		lblCep.setBounds(252, 365, 155, 14);
+		lblCep.setBounds(214, 245, 155, 14);
 		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCep);
@@ -191,7 +222,7 @@ public class CadastrarCliente extends JPanel {
 		uf.add("PR");
 
 		btnCadastrar = new RoundButton("Confirmar");
-		btnCadastrar.setBounds(498, 582, 132, 33);
+		btnCadastrar.setBounds(527, 661, 116, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -211,6 +242,7 @@ public class CadastrarCliente extends JPanel {
 					 CadastroCliente cadastro = new CadastroCliente("Cliente cadastrado com sucesso!");
 					 cadastro.setLocationRelativeTo(null);
 					 cadastro.setVisible(true);
+     				atualizarTabela();
 					 limparDados();
 				 }
 				 else {
@@ -226,9 +258,11 @@ public class CadastrarCliente extends JPanel {
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrar.setBackground(new Color(0, 128, 128));
 		add(btnCadastrar);
+		atualizarTabela();
+
 
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
-		btnLimparCampo.setBounds(1061, 92, 84, 33);
+		btnLimparCampo.setBounds(968, 92, 84, 33);
 		btnLimparCampo.setText("");
 		btnLimparCampo.setBackground(new Color(245, 245, 245));
 		btnLimparCampo.setForeground(Color.WHITE);
@@ -253,7 +287,7 @@ public class CadastrarCliente extends JPanel {
 		
 		JLabel lblCpf2 = new JLabel("CPF");
 		lblCpf2.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblCpf2.setBounds(252, 267, 155, 14);
+		lblCpf2.setBounds(837, 166, 155, 14);
 		add(lblCpf2);
 		/**********/
 		MaskFormatter mascaraCpf2 = null;
@@ -263,7 +297,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtCpf = new JFormattedTextField(mascaraCpf2);
-		txtCpf.setBounds(252, 290, 182, 30);
+		txtCpf.setBounds(837, 185, 142, 30);
 		txtCpf.setText("");
 		txtCpf.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtCpf);
@@ -278,7 +312,7 @@ public class CadastrarCliente extends JPanel {
 		}
 
 		textCnpj = new JFormattedTextField(mascaraCnpj);
-		textCnpj.setBounds(684, 383, 235, 30);
+		textCnpj.setBounds(744, 264, 235, 30);
 		textCnpj.setText("");
 		textCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(textCnpj);
@@ -288,14 +322,97 @@ public class CadastrarCliente extends JPanel {
 		
 		JLabel lblCnpj = new JLabel("CNPJ:");
 		lblCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblCnpj.setBounds(684, 365, 155, 14);
+		lblCnpj.setBounds(744, 245, 155, 14);
 		add(lblCnpj);
+		
+		RoundButton btnDeletar2 = new RoundButton("Confirmar");
+		btnDeletar2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int linhaSelecionada = table.getSelectedRow();
+				if (linhaSelecionada >= 0) {
+				    Cliente cliente = listClientes.get(linhaSelecionada);
+
+				   ConfirmacaoDeletarCliente confirmar = new ConfirmacaoDeletarCliente("Tem certeza que quer excluir", new InterfaceMensagemConfirmacao() { 
+				    
+					   
+					   @Override
+						
+						public void mensagemConfirmada() {
+							if (ClienteDAO.excluirCliente(cliente)) {
+			                DefaultTableModel model = (DefaultTableModel) table.getModel();
+			                model.removeRow(linhaSelecionada);
+			                
+			            } else {
+			                DeletarCliente1 falha = new DeletarCliente1("Falha ao excluir Cliente");
+			                falha.setLocationRelativeTo(null);
+			                falha.setVisible(true);
+			            }
+							
+						}
+
+						@Override
+						public void mensagemCancelada() {
+							
+							
+						}
+			        	
+			        });
+			        confirmar.setVisible(true);
+			     
+			    } else {
+			    	DeletarCliente2 falha2 = new DeletarCliente2("Selecione um veiculo para excluir");
+			        falha2.setLocationRelativeTo(null);
+			        falha2.setVisible(true);
+			    }
+			}
+		});
+			
+		btnDeletar2.setText("Deletar");
+		btnDeletar2.setForeground(Color.BLACK);
+		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnDeletar2.setBackground(new Color(245, 245, 245));
+		btnDeletar2.setBounds(1084, 92, 84, 33);
+		add(btnDeletar2);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(0, 0, 0));
+		panel_4.setBounds(214, 361, 763, 267);
+		add(panel_4);
+		
+		JButton btnPesquisar_1 = new JButton("Pesquisar");
+		btnPesquisar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cpfpesquisa = textCnpj.getText();
+				atualizarTabela();
+				}
+			});
+			btnPesquisar_1.setBounds(291, 371, 115, 23);
+			add(btnPesquisar_1);
+			atualizarTabela();
+			
+		btnPesquisar_1.setForeground(Color.WHITE);
+		btnPesquisar_1.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnPesquisar_1.setBackground(new Color(0, 128, 128));
+		btnPesquisar_1.setBounds(214, 331, 115, 23);
+		add(btnPesquisar_1);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 	}
 
+	public void atualizarTabela() {
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] {  "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep"  });
+		ClienteDAO clientedao = new ClienteDAO();
+		listClientes = clientedao.listar();
+		System.out.println(listClientes);
+		for (int i = 0; i < listClientes.size(); i++) {
+			Cliente cliente = listClientes.get(i);
+			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),cliente.getCpf(),cliente.getCnpj(),cliente.getCep()});
+
+		}
+		table.setModel(tabela);
+	}
 
 	private void setLocale(String string) {
 
@@ -337,7 +454,7 @@ public class CadastrarCliente extends JPanel {
 			cliente.setEmail(email);
 		}
 		
-		 if (numeroTelefone == null  || numeroTelefone.isEmpty()) {
+		 if (numeroTelefone == null  || numeroTelefone.trim().isEmpty()) {
 			verificarCampo += "numeroTelefone\n";
 		} else {
 			cliente.setNumeroTelefone(Integer.valueOf(numeroTelefone));
@@ -357,9 +474,6 @@ public class CadastrarCliente extends JPanel {
 			cliente.setCep(Integer.valueOf(cep));
 
 		}
-
-
-
 
 		if (verificarCampo.trim() == "") {
 			cliente.setCliente(cliente);

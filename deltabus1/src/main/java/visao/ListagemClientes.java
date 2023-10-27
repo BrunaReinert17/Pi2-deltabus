@@ -172,26 +172,26 @@ private void deletarClientes() {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = textcnpj.getText();
-				atualizarTabela();
+			//	atualizarTabela();
 			}
 		});
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
 
-		atualizarTabela();
+		//atualizarTabela();
 	}
-	public void atualizarTabela() {
-		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] {  "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep"  });
-		ClienteDAO clientedao = new ClienteDAO();
-		listClientes = clientedao.listar();
-		System.out.println(listClientes);
-		for (int i = 0; i < listClientes.size(); i++) {
-			Cliente cliente = listClientes.get(i);
-			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),cliente.getCpf(),cliente.getCnpj(),cliente.getCep()});
+	//public void atualizarTabela() {
+		//DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] {  "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep"  });
+		//ClienteDAO clientedao = new ClienteDAO();
+		//listClientes = clientedao.listar();
+		//System.out.println(listClientes);
+		//for (int i = 0; i < listClientes.size(); i++) {
+			//Cliente cliente = listClientes.get(i);
+			//tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),cliente.getCpf(),cliente.getCnpj(),cliente.getCep()});
 
-		}
-		table.setModel(tabela);
-	}
+		//}
+		//table.setModel(tabela);
+	//}
 
 	}
 

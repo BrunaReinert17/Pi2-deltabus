@@ -500,6 +500,7 @@ public class CadastrarUsuario extends JPanel {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
+		        				atualizarTabela();
 								limparDados();
 
 							} else {
@@ -522,6 +523,8 @@ public class CadastrarUsuario extends JPanel {
 		add(btnCadastrar);
 		add(txtDataNasci);
 		txtDataNasci.setColumns(10);
+		atualizarTabela();
+
 
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
 		btnLimparCampo.setBounds(1061, 92, 84, 33);
@@ -881,7 +884,7 @@ public class CadastrarUsuario extends JPanel {
 		
 		panel_5 = new JPanel();
 		panel_5.setBackground(new Color(0, 0, 0));
-		panel_5.setBounds(144, 411, 900, 252);
+		panel_5.setBounds(148, 411, 893, 249);
 		add(panel_5);
 		
 		JButton btnPesquisar_1 = new JButton("Pesquisar");
@@ -894,7 +897,7 @@ public class CadastrarUsuario extends JPanel {
 				atualizarTabela();
 			}
 		});
-		btnPesquisar_1.setBounds(920, 385, 115, 23);
+		btnPesquisar_1.setBounds(148, 385, 115, 23);
 		add(btnPesquisar_1);
 		
 		RoundButton rndbtnDeletar_1 = new RoundButton("Deletar");

@@ -188,10 +188,8 @@ public class MenuAdmin extends JFrame {
 		RoundButton btnHome = new RoundButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuAdmin telaPrincipal = new MenuAdmin();
-				telaPrincipal.setLocationRelativeTo(null);
-				telaPrincipal.setVisible(true);
-				dispose();
+				panelTeste1.setVisible(false);
+				panelTeste.setVisible(false);
 			}
 		});
 

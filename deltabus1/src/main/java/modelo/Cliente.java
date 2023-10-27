@@ -3,7 +3,7 @@
 public class Cliente  {
 	
 	private String nome;
-	private int numeroTelefone;
+	private Integer numeroTelefone;
 	private String email;
 	private Double Cpf;
 	private Integer Cep;
@@ -14,7 +14,7 @@ public class Cliente  {
 		super();
 	}
 	
-	public Cliente(String nome,int numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
+	public Cliente(String nome,Integer numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
@@ -35,11 +35,11 @@ public class Cliente  {
 		this.nome = nome;
 	}
 
-	public int getNumeroTelefone() {
+	public Integer getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(int numeroTelefone) {
+	public void setNumeroTelefone(Integer numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 

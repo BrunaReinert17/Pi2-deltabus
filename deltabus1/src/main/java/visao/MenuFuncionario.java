@@ -232,13 +232,14 @@ public class MenuFuncionario extends JFrame {
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Icone.png")));
 
-		RoundButton btnHome = new RoundButton("Logout");
+		RoundButton btnHome = new RoundButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuFuncionario telaPrincipal = new MenuFuncionario();
-				telaPrincipal.setLocationRelativeTo(null);
-				telaPrincipal.setVisible(true);
-				dispose();
+				panelTeste1.setVisible(false);
+				panelTeste.setVisible(false);
+				panelTeste3.setVisible(false);
+				panelTeste2.setVisible(false);
+				panelTeste4.setVisible(false);
 			}
 		});
 		btnHome.setText("");
@@ -252,7 +253,7 @@ public class MenuFuncionario extends JFrame {
 		btnlistaVeiculo.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnlistaVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listarveiculos.atualizarTabela();
+				//listarveiculos.atualizarTabela();
 				panelTeste1.setVisible(true);
 				panelTeste.setVisible(false);
 				panelTeste3.setVisible(false);
