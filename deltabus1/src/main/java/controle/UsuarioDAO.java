@@ -76,7 +76,6 @@ public class UsuarioDAO implements InterfaceUsuario {
 
  
 
-    @Override
     public Usuario alterarUsuario(Usuario usuario) {
 
     	con = Conexao.getInstancia();

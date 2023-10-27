@@ -12,13 +12,13 @@ import modelo.Veiculo;
 
 public class VeiculoDAO {
 
-	private Conexao con;
+	private static Conexao con;
 
 	public VeiculoDAO() {
 		con = Conexao.getInstancia();
 	}
 
-	public ArrayList<Veiculo> listar() {
+	public static ArrayList<Veiculo> listar() {
 		Connection c = con.conectar();
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
 
@@ -98,7 +98,7 @@ public class VeiculoDAO {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM Veiculo\r\n  WHERE renavam = ?";
+		String query = "DELETE FROM Veiculo WHERE renavam = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

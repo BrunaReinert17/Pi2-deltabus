@@ -530,9 +530,6 @@ public class CadastrarVeiculo extends JPanel {
 				Veiculo veiculo = verificarDados();
 				
 				boolean veiculoRetornoCadastro = false;
-				
-				
-
                 if (veiculo != null) {
                 	
                 	VeiculoDAO veiculoDAO = new VeiculoDAO();
@@ -556,10 +553,6 @@ public class CadastrarVeiculo extends JPanel {
 				
 			}
 			});
-
-				 
-	          
-
 
 		btnCadastrar.setText("Cadastrar");
 		
