@@ -488,8 +488,6 @@ public void atualizarTabela() {
 	}
 	table1.setModel(tabela);
 }
-
-
 	public void limparDados() {
 		txtNomeCliente.setText("");
 		txtCliente.setText("");

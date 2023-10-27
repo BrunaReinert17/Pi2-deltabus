@@ -50,7 +50,7 @@ public class CadastrarCliente extends JPanel {
 	private JButton bntDeletar;
 	private JButton btnCadastrar;
 
-	// Variaveis atribuidas
+	// Variaveis atribuidasa
 	private String verificarCampo;
 	private JTextField textField;
 	private JLabel lblLimpar;

@@ -149,7 +149,7 @@ public class MenuAdmin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				panelTeste1.setVisible(true);
-				listarUsuarios.atualizarTabela();
+				//listarUsuarios.atualizarTabela();
 				panelTeste.setVisible(false);
 				
 			}

@@ -154,36 +154,36 @@ private void deletarUsuario() {
 		textcpf.setBounds(496, 12, 177, 20);
 		panel_1.add(textcpf);
 
-		JButton btnPesquisar = new JButton("Pesquisar");
-		btnPesquisar.setForeground(Color.WHITE);
-		btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnPesquisar.setBackground(new Color(0, 128, 128));
-		btnPesquisar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		//JButton btnPesquisar = new JButton("Pesquisar");
+		//btnPesquisar.setForeground(Color.WHITE);
+		//btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
+		//btnPesquisar.setBackground(new Color(0, 128, 128));
+		//btnPesquisar.addActionListener(new ActionListener() {
+			//public void actionPerformed(ActionEvent e) {
 
-				String cpfpesquisa = textcpf.getText();
-				atualizarTabela();				
+			//	String cpfpesquisa = textcpf.getText();
+			//	atualizarTabela();				
 
-			}
-		});
-		btnPesquisar.setBounds(362, 10, 115, 23);
-		panel_1.add(btnPesquisar);
+		//	}
+		//});
+		//btnPesquisar.setBounds(362, 10, 115, 23);
+		//panel_1.add(btnPesquisar);
 
-		atualizarTabela();
-   }
+	//	atualizarTabela();
+  // }
 	
 	
-	public void atualizarTabela() {
-		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
-		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		listFuncionario = funcionarioDAO.consultarTodos();
-		System.out.println(listFuncionario);
-		for (int i = 0; i < listFuncionario.size(); i++) {
-			Funcionario funcionario = listFuncionario.get(i);
-			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
+	//public void atualizarTabela() {
+	//	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
+	//	FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+	//	listFuncionario = funcionarioDAO.consultarTodos();
+	//	System.out.println(listFuncionario);
+	//	for (int i = 0; i < listFuncionario.size(); i++) {
+	//		Funcionario funcionario = listFuncionario.get(i);
+	//		tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
 
-		}
-		table.setModel(tabela);
+	//	}
+	//	table.setModel(tabela);
 	}
 }
 
