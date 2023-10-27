@@ -27,6 +27,23 @@ O software abrange dois tipos de usuários: o administrador e o funcionário, ca
 # ⚙️ Tecnologias e Ferramentas 
 <img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white"><img align="center" alt="Eli-java" height="40" width="100" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" ><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white">
 
+
+# Tela Login
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/c7c4ddbd-e697-498d-83be-763e549afc0f)
+
+# Tela Menu Administrador
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/d5f31d76-d5e4-4293-b9ce-488aeb609e61)
+
+# Tela Cadastro de Usuário
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/33847841-5d2e-4f40-aab3-6059cb4c0a97)
+
+# Tela Menu Funcionario
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/8521ac17-f44c-41a5-a29e-cfa8a9c0e6b7)
+
+# Tela Cadastrar Pedido
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/98daddc1-3905-4309-8b95-a31d658e9110)
+
+
 #  👨‍💻  Contribuintes
 
 <p align="left" >Docente 💗:  Andrey de Souza Inacio </p>
