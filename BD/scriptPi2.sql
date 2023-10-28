@@ -129,21 +129,14 @@ VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado,
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-<<<<<<< HEAD
 VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
-=======
-VALUES (21346566, 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
->>>>>>> Atualização-Incompleta-de-CC
+
 
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-<<<<<<< HEAD
 VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468437, 21346560);
-=======
-VALUES ("Gisele" , '(12)34567-8921', 'gisele@gmail.com', "452.455.454-41",46646546200133, 21346566);
->>>>>>> Atualização-Incompleta-de-CC
 
 
 -- INSERT Pedido --
