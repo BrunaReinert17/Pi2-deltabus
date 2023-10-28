@@ -65,8 +65,11 @@ public class ClienteDAO {
                 String email = rs.getString("email");
                 Long cnpj = rs.getLong("cnpj");
                 String cpf = rs.getString("cpf");
+                Long cep = rs.getLong("endereco_cep");
+                
+                Endereco endereco = getEndereco(cep);
 
-                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf,cnpj);
+                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
                 return cli;
             }
         } catch (Exception e) {
@@ -77,6 +80,15 @@ public class ClienteDAO {
         return null;
     }
 	
+
+	public Endereco getEndereco(Long cep) {
+	    EnderecoDAO enderecoDAO = new EnderecoDAO(); 
+	    Endereco endereco = enderecoDAO.getEnderecoByCep(cep);
+
+	    return endereco;
+	}
+	
+
 	public boolean inserirCliente(Cliente cliente) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();

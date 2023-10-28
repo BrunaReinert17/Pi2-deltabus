@@ -2,7 +2,7 @@ package modelo;
 
 public class Endereco {
 
-	private int cep;
+	private long cep;
 	private String cidade;
 	private String bairro;
 	private String rua;
@@ -24,12 +24,12 @@ public class Endereco {
 	}
 
 
-	public int getCep() {
+	public long getCep() {
 		return cep;
 	}
 
 
-	public void setCep(int cep) {
+	public void setCep(long cep) {
 		this.cep = cep;
 	}
 
