@@ -54,7 +54,7 @@ import java.awt.List;
 
 public class CadastrarPedido extends JPanel {
 	private JTextField txtNomeCliente;
-	private JTextField txtCliente;
+	private JTextField txtCnpj;
 	private JTextField txtDataDeNascimento;
 	private JLabel lblCep;
 	private JTextField txtBairro;
@@ -165,19 +165,19 @@ public class CadastrarPedido extends JPanel {
 		/**********/
 		MaskFormatter mascaraCpf = null;
 		try {
-			mascaraCpf = new MaskFormatter("###.###.###-##");
+			mascaraCpf = new MaskFormatter("##.###.###/####-##");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtCliente = new JFormattedTextField(mascaraCpf);
-		txtCliente.setBounds(278, 137, 182, 30);
-		txtCliente.setText("");
-		txtCliente.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtCnpj = new JFormattedTextField(mascaraCpf);
+		txtCnpj.setBounds(278, 137, 182, 30);
+		txtCnpj.setText("");
+		txtCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
 		/**********/
-		txtCliente.setBackground(new Color(255, 255, 255));
-		txtCliente.setForeground(new Color(0, 0, 0));
-		txtCliente.setColumns(10);
-		add(txtCliente);
+		txtCnpj.setBackground(new Color(255, 255, 255));
+		txtCnpj.setForeground(new Color(0, 0, 0));
+		txtCnpj.setColumns(10);
+		add(txtCnpj);
 		
 		
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
@@ -189,7 +189,7 @@ public class CadastrarPedido extends JPanel {
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtNomeCliente.setText("");
-				txtCliente.setText("");
+				txtCnpj.setText("");
 				txtRenavam.setText("");
 				txtValorPago.setText("");
 				txtQtdes.setText("");
@@ -441,6 +441,7 @@ public class CadastrarPedido extends JPanel {
 				 * 
 				 * */
 				txtNomeCliente.setText(pedidoSelecionado.getNomeCliente());
+				
 				/*
 				 * ocutar botaocadastro
 				 * aparecer botao salvar
@@ -486,7 +487,7 @@ public class CadastrarPedido extends JPanel {
 		
 		String nomeCliente = txtNomeCliente.getText();
 		String valorpagar = txtValorPago.getText();
-		String cliente = txtCliente.getText().replace(".", "").replace("-", "");
+		Long cnpj = Long.parseUnsignedLong(txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", "")); 
 		String renavam = txtRenavam.getText();
 		String quantidade = txtQtdes.getText();
 		String datacompra = txtDataCompra.getText();
@@ -506,11 +507,10 @@ public class CadastrarPedido extends JPanel {
 		}
 		
 		
-		if (cliente == null || cliente.trim() == "" || cliente.isEmpty()) {
-			verificarCampo += "CPF\n";
+		if (cnpj == 0 ) {
+			verificarCampo += "Cnpj\n";
 		} else {
-			String cpf = String.valueOf(cliente);
-			pedido.setCliente(cpf);
+			pedido.setCnpj(Long.valueOf(cnpj));
 		}
 		
 		if (renavam == null || renavam.trim() == "" || renavam.isEmpty()) {
@@ -555,13 +555,13 @@ public class CadastrarPedido extends JPanel {
 		return pedido;
 }
 public void atualizarTabela() {
-	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "CNPJ", "Cliente", "Renavam", "Pagamento", "Valor", "Qtde", "Data Compra" });
+	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "CNPJ", "Cnpj", "Renavam", "Pagamento", "Valor", "Qtde", "Data Compra" });
 	PedidoDAO pedidoDAO = new PedidoDAO();
 	listPedido = pedidoDAO.listar();
 	System.out.println(listPedido);
 	for (int i = 0; i < listPedido.size(); i++) {
 		Pedido pedido = listPedido.get(i);
-		tabela.addRow(new Object[] { pedido.getCliente(), pedido.getNomeCliente(), pedido.getRenavam(),pedido.getTipoPagamento(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
+		tabela.addRow(new Object[] { pedido.getCnpj(), pedido.getNomeCliente(), pedido.getRenavam(),pedido.getTipoPagamento(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
 
 	}
 	table1.setModel(tabela);
@@ -570,7 +570,7 @@ public void atualizarTabela() {
 
 	public void limparDados() {
 		txtNomeCliente.setText("");
-		txtCliente.setText("");
+		txtCnpj.setText("");
 		txtRenavam.setText("");
 		txtValorPago.setText("");
 		txtQtdes.setText("");

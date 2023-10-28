@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `Pedido` (
    `quantidade` int not null,
   `valorPago` DOUBLE NOT NULL,
   `tipoPagamento` VARCHAR(45) NOT NULL,
-  `Cliente` DOUBLE NOT NULL,
+  `Cnpj` DOUBLE NOT NULL,
   `renavam` VARCHAR(45) NOT NULL,
   `nomeCliente` VARCHAR(45) NOT NULL,
  PRIMARY KEY (`id_pedidos`));
@@ -139,7 +139,7 @@ VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468437,
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
-INSERT INTO Pedido (dataCompra, quantidade, valorPago, tipoPagamento, renavam, Cliente, nomeCliente) 
+INSERT INTO Pedido (dataCompra, quantidade, valorPago, tipoPagamento, renavam, Cnpj, nomeCliente) 
 VALUES ('2023-08-16', 5, 15000.00, 'Cartao',123456784,45455454481, "Laura" );
 
 --  INSERT Usuario --

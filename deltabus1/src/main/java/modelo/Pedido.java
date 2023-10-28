@@ -8,9 +8,9 @@ public class Pedido extends Veiculo {
 
 	private int id_pedidos;
 	private int quantidade;
-	private String cliente;
+	private double cnpj;
 	private LocalDate dataCompra;
-	private Double valorPago;
+	private double valorPago;
 	private String tipoPagamento;
 	private String renavam;
 	private String nomeCliente;
@@ -20,7 +20,7 @@ public class Pedido extends Veiculo {
 		super();
 	}
 	
-	public Pedido(int id_pedidos,int quantidade, String cliente,LocalDate dataCompra, Double valorPago, String tipoPagamento, String renavam, String nomeCliente) {
+	public Pedido(int id_pedidos,int quantidade, double cnpj,LocalDate dataCompra, Double valorPago, String tipoPagamento, String renavam, String nomeCliente) {
 
 		super();
          
@@ -28,7 +28,7 @@ public class Pedido extends Veiculo {
 		
 		this.quantidade = quantidade;
 
-		this.cliente = cliente;
+		this.cnpj = cnpj;
 
 		this.dataCompra = dataCompra;
 
@@ -60,12 +60,12 @@ public class Pedido extends Veiculo {
 		this.quantidade = quantidade;
 	}
 
-	public String getCliente() {
-		return cliente;
+	public double getCnpj() {
+		return cnpj;
 	}
 
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
+	public void setCnpj(double cnpj) {
+		this.cnpj = cnpj;
 	}
 
 	public LocalDate getDataCompra() {
