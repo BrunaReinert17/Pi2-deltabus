@@ -24,6 +24,8 @@ public class Endereco {
 	}
 
 
+	public Endereco(Long cep) {
+	}
 	public long getCep() {
 		return cep;
 	}

@@ -136,43 +136,4 @@ public class EnderecoDAO implements InterfaceEndereco {
 		return false;
 	}
 
-
-	public Endereco getEnderecoByCep(Long cep) {
-	    Connection connection = null;
-	    PreparedStatement preparedStatement = null;
-	    ResultSet resultSet = null;
-	    Endereco endereco = null;
-
-	    try {
-	        connection = Conexao.getInstancia().conectar();
-	        String query = "SELECT * FROM Endereco WHERE cep = ?";
-	        preparedStatement = connection.prepareStatement(query);
-	        preparedStatement.setLong(1, cep);
-
-	        resultSet = preparedStatement.executeQuery();
-
-	        if (resultSet.next()) {
-	            endereco = new Endereco();
-	            endereco.setCep(resultSet.getLong("cep"));
-	            endereco.setRua(resultSet.getString("rua"));
-	            endereco.setCidade(resultSet.getString("cidade"));
-	            // Defina outros atributos do endereço aqui, conforme necessário
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            if (resultSet != null) resultSet.close();
-	            if (preparedStatement != null) preparedStatement.close();
-	            if (connection != null) connection.close();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-
-	    return endereco;
-	}
-	
-
-
 }

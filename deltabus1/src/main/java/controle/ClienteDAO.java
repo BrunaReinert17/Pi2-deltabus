@@ -67,7 +67,7 @@ public class ClienteDAO {
                 String cpf = rs.getString("cpf");
                 Long cep = rs.getLong("endereco_cep");
                 
-                Endereco endereco = getEndereco(cep);
+                Endereco endereco = new  Endereco(cep);
 
                 Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
                 return cli;
@@ -79,14 +79,6 @@ public class ClienteDAO {
         }
         return null;
     }
-	
-
-	public Endereco getEndereco(Long cep) {
-	    EnderecoDAO enderecoDAO = new EnderecoDAO(); 
-	    Endereco endereco = enderecoDAO.getEnderecoByCep(cep);
-
-	    return endereco;
-	}
 	
 
 	public boolean inserirCliente(Cliente cliente) {
