@@ -25,10 +25,10 @@ public class UsuarioDAO implements InterfaceUsuario {
 	 */
 	public boolean inserirUsuario(Usuario usuario) {
 
-		Conexao con = Conexao.getInstancia();
+		con = Conexao.getInstancia();
 		Connection c = con.conectar();
-
 		boolean valida = false;
+
 		if (usuario != null) {
 
 			try {
@@ -105,9 +105,8 @@ public class UsuarioDAO implements InterfaceUsuario {
 	}
 
     public ArrayList<Usuario> listar() {
-    	con = Conexao.getInstancia();
+    	
 		Connection c = con.conectar();
-		
         ArrayList<Usuario> usuarios = new ArrayList<>();
 
         try {
@@ -116,12 +115,16 @@ public class UsuarioDAO implements InterfaceUsuario {
             ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
-                Long id = rs.getLong("idUsuario");
-                String senha = rs.getString("senha");
-                String email = rs.getString("email");
-                String cargo = rs.getString("cargo");
-
-                Usuario u = new Usuario(id, senha, email, cargo);
+                Usuario u = new Usuario();
+                
+				u.setIdUsuario(rs.getLong("idUsuario"));
+				u.setSenha(rs.getString("idUsuario"));
+				u.setEmail(rs.getString("email"));
+				u.setCargo(rs.getString("cargo"));
+                //Long id = rs.getLong("idUsuario");
+                //String senha = rs.getString("senha");
+                //String email = rs.getString("email");
+                //String cargo = rs.getString("cargo");
                 usuarios.add(u);
             }
         } catch (Exception e) {
@@ -169,7 +172,7 @@ public class UsuarioDAO implements InterfaceUsuario {
             con.fecharConexao();
         }
 
-		return null;
+		return usuario;
 	}
 
 
@@ -231,5 +234,13 @@ return false;
 		return usuarioDao;
 		
 	}
+
+	public boolean listarUsuario(Usuario u) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
 
 }
