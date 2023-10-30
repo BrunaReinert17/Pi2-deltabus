@@ -23,7 +23,7 @@ public class VeiculoDAOTest {
 	public void testMetodoinserirVeiculoSucesso() {
 		Veiculo v = new Veiculo();
 		
-		v.setIdVeiculo((long) 3);
+		
         v.setMarca("Marca");
         v.setModelo("Modelo");
         v.setPreco(20000.0);
@@ -105,7 +105,33 @@ public class VeiculoDAOTest {
 	        
 	        
 	   }
-	
+	  
+	   
+	   @ Test
+	   public void testMetodoAlterarVeiculoSucesso(){
+		   Veiculo v = new Veiculo();
+		   
+		    v.setMarca("Marca");
+	        v.setModelo("Modelo");
+	        v.setPreco(20000.0);
+	        v.setAno(2008);
+	        v.setAcessorios("Ar Condicionado");
+	        v.setLotacao(10);
+	        v.setPlaca("ABC123");
+	        v.setRenavam("12345678901");
+	        v.setCor("Vermelho");
+	        v.setTipoFrota("Particular");
+	        v.setTipoCombustivel("Gasolina");
+	        v.setSituacao("SemiNovo");;
+		   
+	        VeiculoDAO DAO = new VeiculoDAO();
+			boolean resultado = DAO.alterarVeiculo(v);
+			assertTrue(resultado);
+	       
+	        
+	        
+	      
+	     }
 	  
 		    }
 

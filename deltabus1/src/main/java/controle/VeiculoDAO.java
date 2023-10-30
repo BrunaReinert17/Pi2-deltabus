@@ -66,21 +66,20 @@ public class VeiculoDAO {
 		if(veiculo != null) {
 
 		try {
-			String query = "INSERT INTO Veiculo(IdVeiculo,marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO Veiculo(marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?)";
 			PreparedStatement stm = c.prepareStatement(query);
-			stm.setLong(1, veiculo.getIdVeiculo());
-			stm.setString(2, veiculo.getMarca());
-			stm.setString(3, veiculo.getModelo());
-			stm.setDouble(4, veiculo.getPreco());
-			stm.setInt(5, veiculo.getAno());
-			stm.setString(6, veiculo.getAcessorios());
-			stm.setInt(7, veiculo.getLotacao());
-			stm.setString(8, veiculo.getPlaca());
-			stm.setString(9, veiculo.getRenavam());
-			stm.setString(10, veiculo.getCor());
-			stm.setString(11, veiculo.getTipoFrota());
-			stm.setString(12, veiculo.getTipoCombustivel());
-			stm.setString(13, veiculo.getSituacao());
+			stm.setString(1, veiculo.getMarca());
+			stm.setString(2, veiculo.getModelo());
+			stm.setDouble(3, veiculo.getPreco());
+			stm.setInt(4, veiculo.getAno());
+			stm.setString(5, veiculo.getAcessorios());
+			stm.setInt(6, veiculo.getLotacao());
+			stm.setString(7, veiculo.getPlaca());
+			stm.setString(8, veiculo.getRenavam());
+			stm.setString(9, veiculo.getCor());
+			stm.setString(10, veiculo.getTipoFrota());
+			stm.setString(11, veiculo.getTipoCombustivel());
+			stm.setString(12, veiculo.getSituacao());
 
 			valida = stm.executeUpdate() == 0 ? false : true;
 		} catch (Exception e) {
@@ -118,14 +117,13 @@ public class VeiculoDAO {
 		return false;
 	}
 
-	public Veiculo alterarVeiculo(Veiculo veiculo) {
+	public boolean alterarVeiculo(Veiculo veiculo) {
 
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "UPDATE Endereco\r\n   SET" + "Marca = ?\r\n" + "Modelo = ?" + "Preco = ?" + " Ano = ?"
-				+ " Acessorios= ?" + "Lotacao = ?" + "Placa = ?" + "Renavam = ?" + "Cor = ?" + "TipoFrota = ?"
-				+ "Tipocombustivel = ?" + "situacao = ?,  WHERE renavam = ?";
+		String query = "UPDATE Veiculo " + "SET Marca = ?, " + "Modelo = ?, " + "Preco = ?, " + "Ano = ?, " + "Acessorios = ?, " +  "Lotacao = ?, " + "Placa = ?, " +  "Renavam = ?, " +  "Cor = ?, " +  "TipoFrota = ?, " 
+		+ "TipoCombustivel = ?, " + "Situacao = ? " + "WHERE renavam = ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
 
@@ -139,14 +137,21 @@ public class VeiculoDAO {
 			ps.setString(8, veiculo.getRenavam());
 			ps.setString(9, veiculo.getCor());
 			ps.setString(10, veiculo.getTipoFrota());
-			ps.setString(12, veiculo.getTipoCombustivel());
-			ps.setString(13, veiculo.getSituacao());
-			ps.setLong(14, veiculo.getIdVeiculo());
+			ps.setString(11, veiculo.getTipoCombustivel());
+			ps.setString(12, veiculo.getSituacao());
+			ps.setString(13, veiculo.getRenavam());
+		
 
-			ps.executeUpdate();
-
+			int sucesso = ps.executeUpdate();
 			
-			return veiculo;
+			if(sucesso > 0) {
+				return true;
+			}
+			else { 
+				return false;
+			}
+			
+		
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -154,7 +159,7 @@ public class VeiculoDAO {
 			con.fecharConexao();
 		}
 
-		return veiculo;
+		return false;
 	}
 
 }

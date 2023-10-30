@@ -72,7 +72,6 @@ public class CadastrarVeiculo extends JPanel {
 	private JTextField textField;
 	private JLabel lblLimpar;
 	private JTextField textLotacao;
-	private JTextField textidVeiculo;
 	private JTextField textAno;
 	private JTextField textPreco;
 	private JComboBox cbCor;
@@ -192,11 +191,6 @@ public class CadastrarVeiculo extends JPanel {
 		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblRenavam);
 
-		JLabel lblidVeiculo = new JLabel("idVeiculo :");
-		lblidVeiculo.setBounds(681, 294, 74, 14);
-		lblidVeiculo.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblidVeiculo);
-
 		JLabel lblModelo = new JLabel("Modelo : ");
 		lblModelo.setBounds(231, 288, 84, 14);
 		lblModelo.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -209,7 +203,7 @@ public class CadastrarVeiculo extends JPanel {
 		add(lblLotacao);
 
 		lblSituacao = new JLabel("Situação:");
-		lblSituacao.setBounds(672, 447, 67, 14);
+		lblSituacao.setBounds(681, 413, 67, 14);
 		lblSituacao.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblSituacao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblSituacao);
@@ -316,7 +310,7 @@ public class CadastrarVeiculo extends JPanel {
 		add(lblMarca);
 
 		txtAno = new JLabel("Ano :");
-		txtAno.setBounds(681, 388, 42, 14);
+		txtAno.setBounds(681, 327, 42, 14);
 		txtAno.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtAno);
 
@@ -433,16 +427,10 @@ public class CadastrarVeiculo extends JPanel {
 		cbAcessorio.setBounds(781, 233, 194, 33);
 		add(cbAcessorio);
 
-		textidVeiculo = new JTextField();
-		textidVeiculo.setFont(new Font("Dialog", Font.BOLD, 13));
-		textidVeiculo.setColumns(10);
-		textidVeiculo.setBounds(781, 290, 110, 30);
-		add(textidVeiculo);
-
 		textAno = new JTextField();
 		textAno.setFont(new Font("Dialog", Font.BOLD, 13));
 		textAno.setColumns(10);
-		textAno.setBounds(749, 380, 194, 30);
+		textAno.setBounds(781, 319, 194, 30);
 		add(textAno);
 
 		ArrayList<String> situacao = new ArrayList<String>();
@@ -468,18 +456,18 @@ public class CadastrarVeiculo extends JPanel {
 			}
 		});
 		cbSituacao.setFont(new Font("Dialog", Font.BOLD, 13));
-		cbSituacao.setBounds(749, 438, 194, 33);
+		cbSituacao.setBounds(781, 404, 194, 33);
 		add(cbSituacao);
 
 		textPreco = new JTextField();
 		textPreco.setFont(new Font("Dialog", Font.BOLD, 13));
 		textPreco.setColumns(10);
-		textPreco.setBounds(749, 502, 110, 30);
+		textPreco.setBounds(781, 481, 110, 30);
 		add(textPreco);
 
 		JLabel lblPreco = new JLabel("Preço  :");
 		lblPreco.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblPreco.setBounds(681, 510, 67, 14);
+		lblPreco.setBounds(681, 489, 67, 14);
 		add(lblPreco);
 
 		RoundButton btnCadastrar = new RoundButton("Cadastrar");
@@ -563,9 +551,8 @@ public class CadastrarVeiculo extends JPanel {
 
 		String lotacao = textLotacao.getText();
 
-		String idveiculo = textidVeiculo.getText();
-
-		String ano = textAno.getText();
+	
+        String ano = textAno.getText();
 
 		String preco = textPreco.getText();
 
@@ -644,12 +631,6 @@ public class CadastrarVeiculo extends JPanel {
 
 		}
 
-		if (idveiculo == null || idveiculo.trim() == "" || idveiculo.isEmpty()) {
-			verificarCampo += "idVeiculo\n";
-		} else {
-			veiculo.setIdVeiculo(Long.valueOf(idveiculo));
-
-		}
 
 		if (ano == null || ano.trim() == "" || ano.isEmpty()) {
 			verificarCampo += "Ano\n";
@@ -682,7 +663,7 @@ public class CadastrarVeiculo extends JPanel {
 
 		textLotacao.setText("");
 
-		textidVeiculo.setText("");
+		
 
 		textAno.setText("");
 
@@ -709,8 +690,7 @@ public class CadastrarVeiculo extends JPanel {
 		txtRenavam.setText(String.valueOf(veiculoSelecionado.getRenavam()));
 		txtPlaca.setText(String.valueOf(veiculoSelecionado.getPlaca()));
 		textLotacao.setText(String.valueOf(veiculoSelecionado.getLotacao()));
-		textidVeiculo.setText(String.valueOf(veiculoSelecionado.getIdVeiculo()));
-		textAno.setText(String.valueOf(veiculoSelecionado.getAno()));
+	     textAno.setText(String.valueOf(veiculoSelecionado.getAno()));
 		textPreco.setText(String.valueOf(veiculoSelecionado.getPreco()));
 		cbMarca.setToolTipText((veiculoSelecionado.getMarca()));
 		cbModelo_1.setToolTipText(veiculoSelecionado.getModelo());
