@@ -1,32 +1,30 @@
- package modelo;
+package modelo;
 
-public class Cliente  {
-	
+public class Cliente {
+
 	private String nome;
-	private int numeroTelefone;
+	private String numeroTelefone;
 	private String email;
-	private Double Cpf;
-	private Integer Cep;
+	private String Cpf;
+	private Long cnpj;
+	private Endereco endereco;
 	private Cliente cliente;
-	private Double cnpj;
 	
 	public Cliente() {
 		super();
 	}
-	
-	public Cliente(String nome,int numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
+
+	public Cliente(String nome, String numeroTelefone, String email, String Cpf, Long cnpj,Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
 		this.email = email;
-		this.Cpf = Cpf;;
-		this.Cep = cep;
-		this.cliente = cliente;
+		this.Cpf = Cpf;
 		this.cnpj = cnpj;
-		
+		this.endereco = endereco;
+
 	}
 	
-
 	public String getNome() {
 		return nome;
 	}
@@ -35,11 +33,11 @@ public class Cliente  {
 		this.nome = nome;
 	}
 
-	public int getNumeroTelefone() {
+	public String getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(int numeroTelefone) {
+	public void setNumeroTelefone(String numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 
@@ -51,24 +49,28 @@ public class Cliente  {
 		this.email = email;
 	}
 
-	public Double getCpf() {
-
+	public String getCpf() {
 		return Cpf;
-
 	}
 
-	public void setCpf(Double Cpf) {
-
-		this.Cpf = Cpf;
-
+	public void setCpf(String cpf) {
+		Cpf = cpf;
 	}
 
-	public Integer getCep() {
-		return Cep;
+	public Long getCnpj() {
+		return cnpj;
 	}
 
-	public void setCep(Integer cep) {
-		this.Cep = cep;
+	public void setCnpj(Long cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	public Cliente getCliente() {
 		return cliente;
@@ -77,17 +79,10 @@ public class Cliente  {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public Double getCnpj() {
-		return cnpj;
-	}
-	public void setCnpj(Double cnpj) {
-
-	this.cnpj = cnpj;
-
-	}
 	
+	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome +", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf +",cep=" + Cep + ", cliente=" + cliente + "]";
+		return "Cliente [nome=" + nome + ", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf + "]";
 	}
 
 }

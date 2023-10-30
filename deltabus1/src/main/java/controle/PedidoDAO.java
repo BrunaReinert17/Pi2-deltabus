@@ -39,7 +39,7 @@ public class PedidoDAO implements InterfacePedido{
 					
 					 Pedido p = new Pedido();
 
-					 p.setId_pedidos(rs.getInt("id_pedidos"));
+					 p.setId_pedido(rs.getInt("id_pedidos"));
 					 p.setDataCompra(rs.getDate("dataCompra").toLocalDate());
 					 p.setQuantidade(rs.getInt("quantidade"));
 					 p.setValorPago(rs.getDouble("valorPago"));

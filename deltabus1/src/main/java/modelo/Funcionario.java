@@ -14,8 +14,6 @@ public class Funcionario {
 	private Usuario usuario;
 	
 
-	//seguir como ordem
-	
 	public Funcionario() {
 		super();
 	}
@@ -27,6 +25,8 @@ public class Funcionario {
 		this.datanasci = datanasci;
 		this.genero = genero;
 		this.numeroTelefone = numeroTelefone;
+
+		
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.usuario = usuario;
@@ -69,7 +69,6 @@ public class Funcionario {
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}

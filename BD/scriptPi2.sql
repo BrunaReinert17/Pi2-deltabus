@@ -27,7 +27,7 @@ ALTER TABLE Veiculo MODIFY COLUMN situacao VARCHAR(45) NOT NULL;
 -- Table `deltaBus`.`endereco`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endereco` (
-  `cep` INT NOT NULL,
+  `cep` BIGINT NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `bairro` VARCHAR(45) NOT NULL,
   `rua` VARCHAR(45) NOT NULL,
@@ -39,11 +39,11 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clientes` (
   `Nome`  VARCHAR(255) NOT NULL,
-  `numeroTelefone` BIGINT NOT NULL,
+  `numeroTelefone` VARCHAR(14) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `cpf` DOUBLE NOT NULL,
+  `cpf` VARCHAR(14) NOT NULL,
   `cnpj` BIGINT NOT NULL,
-  `endereco_cep` INT NOT NULL,
+  `endereco_cep` BIGINT NOT NULL,
   PRIMARY KEY (`cnpj`),
     FOREIGN KEY (`endereco_cep`)
     REFERENCES `endereco` (`cep`));
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS funcionarios (
   `numerotelefone` BIGINT NOT NULL,
   `email` VARCHAR(35) NOT NULL,
   `Usuario_idUsuario` int NOT NULL,
-  `endereco_cep` INT NOT NULL,
+  `endereco_cep` BIGINT NOT NULL,
   PRIMARY KEY (`cpf`),
 
     FOREIGN KEY (`Usuario_idUsuario`)
