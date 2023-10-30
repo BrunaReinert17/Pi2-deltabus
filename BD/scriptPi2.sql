@@ -128,19 +128,19 @@ VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado,
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+VALUES ('21346561', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
 
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468437, 21346560);
+VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468436, 21346561);
 
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
 INSERT INTO Pedido (dataCompra, quantidade, valorPago, tipoPagamento, renavam, Cnpj, nomeCliente) 
-VALUES ('2023-08-16', 5, 15000.00, 'Cartao',123456784,45455454481, "Laura" );
+VALUES ('2023-08-16', 5, 15000.00, 'Cartao',123456784,464646546468436, "Laura" );
 
 --  INSERT Usuario --
 INSERT INTO Usuario ( senha, email, cargo)
@@ -154,4 +154,4 @@ VALUES ( '1234', 'maria@gmail.com', 'funcionario');
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('14058566', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346560);
+VALUES ('14058567', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346561);

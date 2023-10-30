@@ -70,7 +70,7 @@ public class PedidoDAO implements InterfacePedido{
 
 
 		String query = "INSERT INTO Pedido " 
-		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
+		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Cnpj, nomeCliente, quantidade) " 
 		+ "VALUES (?, ?, ?, ?, ?)";
 
 		try {
@@ -144,7 +144,7 @@ public class PedidoDAO implements InterfacePedido{
 			con.fecharConexao();
 		}
 
-		return false;
+		return true;
 	}
 	 
 	 public static  boolean inserirPedido1(Pedido pedido) {
