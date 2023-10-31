@@ -217,7 +217,7 @@ public class CadastrarPedido extends JPanel {
 		} catch (ParseException e2) {
 		    e2.printStackTrace();
 		}
-		JFormattedTextField txtRenavam = new JFormattedTextField(mascaraRenavam);
+		txtRenavam = new JFormattedTextField(mascaraRenavam);
 		txtRenavam.setBounds(278, 228, 132, 30);
 		txtRenavam.setText("");
 		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -251,17 +251,17 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-              Pedido pedido = verificarDados();
-          	  System.out.println("erro1");
+				Pedido p = new Pedido();
+          	
 
 				boolean pedidoRetornoCadastro = false;
             	
 
-                if (pedido != null) {
+                if (p != null) {
                 	
                 	
                 	PedidoDAO pedidoDAO = new PedidoDAO();
-                    boolean resultado = PedidoDAO.inserirPedido1(pedido);
+                    boolean resultado = PedidoDAO.inserirPedido1(p);
                     
                 	
 
@@ -412,7 +412,8 @@ public class CadastrarPedido extends JPanel {
 				 * Pegar dado do componente da tela 
 				 * **/
 				
-				Pedido p = verificarDados();
+				Pedido p = new Pedido();
+				
 				
 				p.setId_pedido(pedidoSelecionado.getId_pedido());
 				p.setCnpj(pedidoSelecionado.getCnpj());
