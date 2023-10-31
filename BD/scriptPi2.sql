@@ -1,4 +1,4 @@
--- DROP DATABASES deltaBus IF EXISTS 
+ DROP DATABASE  IF EXISTS deltabus2;
 
 CREATE SCHEMA IF NOT EXISTS `deltaBus2` ;
 USE deltabus2;
