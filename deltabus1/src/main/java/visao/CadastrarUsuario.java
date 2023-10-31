@@ -42,7 +42,7 @@ import mensagens.ListagemErro;
 import mensagens.LoginErro;
 import modelo.Endereco;
 import modelo.Funcionario;
-import modelo.StatusTelaUsuario;
+
 import modelo.Usuario;
 import utilidades.RoundButton;
 

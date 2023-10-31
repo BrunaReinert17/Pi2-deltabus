@@ -87,24 +87,6 @@ public class MenuFuncionario extends JFrame {
 		
 		contentPane.add(panelTeste3);
 
-
-		ListagemVeiculos listarveiculos = new ListagemVeiculos();
-		listarveiculos.setToolTipText("");
-		listarveiculos.setLocation(579, 97);
-		panelTeste1 = listarveiculos;
-		panelTeste1.setBounds(568, 104, 1200, 810);
-		panelTeste1.setVisible(false);
-
-		contentPane.add(panelTeste1);
-		
-		ListagemClientes listarclientes = new ListagemClientes();
-		listarclientes.setToolTipText("");
-		listarclientes.setLocation(579, 97);
-		panelTeste4 = listarclientes;
-		panelTeste4.setBounds(568, 104, 1200, 810);
-		panelTeste4.setVisible(false);
-
-		contentPane.add(panelTeste4);
 		
 		CadastrarPedido cadastrarVendas = new CadastrarPedido();
 		cadastrarVendas.setToolTipText("");
@@ -250,18 +232,7 @@ public class MenuFuncionario extends JFrame {
 
 		RoundButton btnlistaVeiculo = new RoundButton("Listagem de Veiculos");
 		btnlistaVeiculo.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnlistaVeiculo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				listarveiculos.atualizarTabela();
-				panelTeste1.setVisible(true);
-				panelTeste.setVisible(false);
-				panelTeste3.setVisible(false);
-				panelTeste2.setVisible(false);
-				panelTeste4.setVisible(false);
-
-				
-			}
-		});
+		
 		btnlistaVeiculo.setBackground(new Color(0, 128, 128));
 		btnlistaVeiculo.setForeground(new Color(255, 255, 255));
 		btnlistaVeiculo.setFont(new Font("Dialog", Font.BOLD, 16));

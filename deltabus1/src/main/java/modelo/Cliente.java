@@ -8,13 +8,13 @@ public class Cliente  {
 	private Double Cpf;
 	private Integer Cep;
 	private Cliente cliente;
-	private Double cnpj;
+	private String cnpj;
 	
 	public Cliente() {
 		super();
 	}
 	
-	public Cliente(String nome,int numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
+	public Cliente(String nome,int numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, String cnpj) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
@@ -77,10 +77,10 @@ public class Cliente  {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public Double getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
-	public void setCnpj(Double cnpj) {
+	public void setCnpj(String cnpj) {
 
 	this.cnpj = cnpj;
 

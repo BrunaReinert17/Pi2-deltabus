@@ -39,7 +39,7 @@ public class ClienteDAO {
 				cl.setEmail(rs.getString("email"));
 				cl.setCpf(rs.getDouble("Cpf"));
 				cl.setCep(rs.getInt("endereco_cep"));
-				cl.setCnpj(rs.getDouble("Cnpj"));
+				cl.setCnpj(rs.getString("Cnpj"));
 				cliente.add(cl);
 			}
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class ClienteDAO {
 			stm.setString(3, cliente.getEmail());
 			stm.setDouble(4, cliente.getCpf());
 			stm.setInt(5, cliente.getCep());
-			stm.setDouble(6, cliente.getCnpj());
+			stm.setString(6, cliente.getCnpj());
 			;
 			valida = stm.executeUpdate();
 		} catch (Exception e) {
@@ -82,7 +82,7 @@ public class ClienteDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setDouble(1, cliente.getCnpj());
+			ps.setString(1, cliente.getCnpj());
 			ps.executeUpdate();
 
 			c.fecharConexao();
@@ -110,7 +110,7 @@ public class ClienteDAO {
 			ps.setString(3, cliente.getEmail());
 			ps.setDouble(4, cliente.getCpf());
 			ps.setLong(5, cliente.getCep());
-			ps.setDouble(6, cliente.getCnpj());
+			ps.setString(6, cliente.getCnpj());
 
 			ps.executeUpdate();
 

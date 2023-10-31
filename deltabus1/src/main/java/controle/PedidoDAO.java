@@ -44,7 +44,7 @@ public class PedidoDAO implements InterfacePedido{
 					 p.setQuantidade(rs.getInt("quantidade"));
 					 p.setValorPago(rs.getDouble("valorPago"));
 					 p.setTipoPagamento(rs.getString("tipoPagamento"));
-					 p.setCnpj(rs.getDouble("cnpj"));
+					 p.setCnpj(rs.getString("cnpj"));
 					 p.setRenavam(rs.getString("renavam"));
 					 p.setNomeCliente(rs.getString("nomeCliente"));
 					 listPedido.add(p);
@@ -80,7 +80,7 @@ public class PedidoDAO implements InterfacePedido{
 			ps.setDouble(3, pedido.getValorPago());
 			ps.setString(4, pedido.getTipoPagamento());
 			ps.setString(5, pedido.getRenavam());
-			ps.setDouble(6, pedido.getCnpj());
+			ps.setString(6, pedido.getCnpj());
 			ps.setString(7, pedido.getNomeCliente());
 			ps.setInt(8, pedido.getQuantidade());
 
@@ -105,7 +105,7 @@ public class PedidoDAO implements InterfacePedido{
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setDouble(1, pedido.getCnpj());
+			ps.setString(1, pedido.getCnpj());
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -132,7 +132,7 @@ public class PedidoDAO implements InterfacePedido{
 			p.setInt(4,pedido.getQuantidade());
 			p.setString(5,pedido.getNomeCliente());
 			p.setString(6, pedido.getRenavam());
-			p.setDouble(7, pedido.getCnpj());
+			p.setString(7, pedido.getCnpj());
 			p.setInt(8, pedido.getId_pedido());
 			
 			System.out.print(p);
@@ -159,7 +159,7 @@ public class PedidoDAO implements InterfacePedido{
 				stm.setDouble(2, pedido.getValorPago());
 				stm.setString(3, pedido.getTipoPagamento());
 				stm.setString(4, pedido.getRenavam());
-				stm.setDouble(5, pedido.getCnpj());
+				stm.setString(5, pedido.getCnpj());
 				stm.setString(6, pedido.getNomeCliente());
 				stm.setInt(7, pedido.getQuantidade());
 

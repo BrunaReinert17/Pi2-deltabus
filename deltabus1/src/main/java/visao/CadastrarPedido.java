@@ -27,10 +27,12 @@ import controle.FuncionarioDAO;
 import controle.PedidoDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
+import mensagens.AlteraSucesso;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
 import mensagens.CadastroVeiculo;
+import mensagens.ErroAlterar;
 import mensagens.LoginErro;
 import modelo.Endereco;
 import modelo.Funcionario;
@@ -329,7 +331,7 @@ public class CadastrarPedido extends JPanel {
 		/**********/
 		JLabel lblTipopagamento = new JLabel("Pagamento:");
 		lblTipopagamento.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblTipopagamento.setBounds(538, 209, 155, 14);
+		lblTipopagamento.setBounds(540, 205, 155, 23);
 		add(lblTipopagamento);
 		
 		/**********/
@@ -412,8 +414,8 @@ public class CadastrarPedido extends JPanel {
 				 * Pegar dado do componente da tela 
 				 * **/
 				
-				Pedido p = new Pedido();
-				
+				Pedido p = verificarDados();//
+			
 				
 				p.setId_pedido(pedidoSelecionado.getId_pedido());
 				p.setCnpj(pedidoSelecionado.getCnpj());
@@ -424,6 +426,26 @@ public class CadastrarPedido extends JPanel {
                 p.setQuantidade(pedidoSelecionado.getQuantidade());
                 p.setDataCompra(pedidoSelecionado.getDataCompra());
 
+                /*  if (p != null) {
+                	
+                	
+                    boolean resultado = PedidoDAO.inserirPedido1(p);
+                    
+                      if (resultado == true) {
+           
+                        AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+                        alterar.setLocationRelativeTo(null);
+                        alterar.setVisible(true);
+                       limparDados(); // Limpa os campos após o cadastro
+                    } else {
+                        ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+                        erro1.setLocationRelativeTo(null);
+                        erro1.setVisible(true);
+                    }
+                }*/
+                
+                
+                
 				/*
 				 * salvar alteracao no banco
 				 * **/
@@ -468,13 +490,15 @@ public class CadastrarPedido extends JPanel {
 				 * preencher os campo
 				 * 
 				 * */
-				txtCnpj.setText(Double.toString(pedidoSelecionado.getCnpj()));
+				System.out.println(pedidoSelecionado.getDataCompra().toString());
+				txtCnpj.setText(pedidoSelecionado.getCnpj());
 				txtNomeCliente.setText(pedidoSelecionado.getNomeCliente());
 				txtRenavam.setText(pedidoSelecionado.getRenavam());
 				cbPagamento.setSelectedItem(pedidoSelecionado.getTipoPagamento());
 				txtValorPago.setText(Double.toString(pedidoSelecionado.getValorPago()));
 				txtQtdes.setText(Integer.toString(pedidoSelecionado.getQuantidade()));
-				txtDataCompra.setText(pedidoSelecionado.getDataCompra().toString());
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+				txtDataCompra.setText(pedidoSelecionado.getDataCompra().format(formatter));
 				
 				/*
 				 * ocutar botaocadastro
@@ -520,8 +544,8 @@ public class CadastrarPedido extends JPanel {
 		
 		
 		String nomeCliente = txtNomeCliente.getText();
-		double valorPagar = Double.parseDouble(txtValorPago.getText());
-		double cnpj = Double.parseDouble(txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", "")); 
+		double valorPagar = Double.parseDouble(txtValorPago.getText());//
+		String cnpj = txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", ""); 
 		String renavam = txtRenavam.getText();
 		String quantidade = txtQtdes.getText();
 		String datacompra = txtDataCompra.getText();
@@ -540,11 +564,10 @@ public class CadastrarPedido extends JPanel {
 			pedido.setValorPago(Double.valueOf(valorPagar));
 		}
 		
-		
-		if (cnpj == 0 ) {
+		if (cnpj == null || cnpj.trim() == "" || cnpj.isEmpty() ) {
 			verificarCampo += "Cnpj\n";
 		} else {
-			pedido.setCnpj(Double.valueOf(cnpj));
+			pedido.setCnpj(String.valueOf(cnpj));
 		}
 		
 		if (renavam == null || renavam.trim() == "" || renavam.isEmpty()) {
