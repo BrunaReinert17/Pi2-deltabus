@@ -62,15 +62,6 @@ public class MenuAdmin extends JFrame {
 
 		setContentPane(contentPane);
 		
-		ListagemUsuarios listarUsuarios = new ListagemUsuarios();
-		
-		listarUsuarios.setToolTipText("");
-		listarUsuarios.setLocation(579, 97);
-		panelTeste1 = listarUsuarios;
-		panelTeste1.setBounds(568, 104, 1184,725);
-		panelTeste1.setVisible(false);
-		
-		contentPane.add(panelTeste1);
 
 		contentPane.setLayout(null);
 		// aqui
@@ -125,7 +116,6 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
-				panelTeste1.setVisible(false);
 			}
 		});
 		btnCadastrarUsuarios.setForeground(new Color(0, 0, 0));
@@ -149,7 +139,7 @@ public class MenuAdmin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				panelTeste1.setVisible(true);
-				listarUsuarios.atualizarTabela();
+				//listarUsuarios.atualizarTabela();
 				panelTeste.setVisible(false);
 				
 			}
@@ -188,10 +178,7 @@ public class MenuAdmin extends JFrame {
 		RoundButton btnHome = new RoundButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuAdmin telaPrincipal = new MenuAdmin();
-				telaPrincipal.setLocationRelativeTo(null);
-				telaPrincipal.setVisible(true);
-				dispose();
+				panelTeste.setVisible(false);
 			}
 		});
 

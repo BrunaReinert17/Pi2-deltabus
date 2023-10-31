@@ -3,7 +3,7 @@ package modelo;
 public class Cliente {
 
 	private String nome;
-	private String numeroTelefone;
+	private Integer numeroTelefone;
 	private String email;
 	private String Cpf;
 	private Long cnpj;
@@ -12,8 +12,14 @@ public class Cliente {
 	public Cliente getCliente() {
 		return cliente;
 	}
-
-	public void setCliente(Cliente cliente) {
+	
+	public Cliente(String nome,Integer numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
+		super();
+		this.nome = nome;
+		this.numeroTelefone = numeroTelefone;
+		this.email = email;
+		this.Cpf = Cpf;;
+		this.Cep = cep;
 		this.cliente = cliente;
 	}
 
@@ -40,11 +46,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public String getNumeroTelefone() {
+	public Integer getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(String numeroTelefone) {
+	public void setNumeroTelefone(Integer numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 
