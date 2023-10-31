@@ -89,7 +89,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 			ps.executeUpdate();
 			return usuario;
-
+//retorno nao esta de acordo com os testes
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -141,18 +141,23 @@ public class UsuarioDAO implements InterfaceUsuario {
 			// metodo duplicado com selecionar usuario
 			ps.setString(1, usuario.getEmail());
 			ps.setString(2, usuario.getSenha());
+			
+			System.out.println(ps);
 
 			ResultSet rs = ps.executeQuery();
 			Usuario usuarioConectado = new Usuario();
 
 			while (rs.next()) {
+				long IdUsuario = rs.getLong("idUsuario");
 				String email = rs.getString("email");
 				String senha = rs.getString("senha");
 				String cargo = rs.getString("cargo");
 
+				usuarioConectado.setIdUsuario(IdUsuario);
 				usuarioConectado.setEmail(email);
 				usuarioConectado.setSenha(senha);
 				usuarioConectado.setCargo(cargo);
+				System.out.println("retornando usuario conectado");
 				return usuarioConectado;
 
 			}
@@ -174,8 +179,10 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setFloat(1, usuario.getIdUsuario());
+			ps.setLong(1, usuario.getIdUsuario());
+			System.out.println(ps);
 			ps.executeUpdate();
+			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

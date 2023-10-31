@@ -5,8 +5,10 @@
   <version>0.0.1-SNAPSHOT</version>
 
 <properties>
- <maven.compiler.source>17</maven.compiler.source>
- <maven.compiler.target>17</maven.compiler.target>
+ <maven.compiler.source>1.8</maven.compiler.source>
+ <maven.compiler.target>1.8</maven.compiler.target>
+ <junit.jupiter.version>5.9.1</junit.jupiter.version>
+ <junit.platform.version>1.9.1</junit.platform.version>
   </properties>
  
   <dependencies>  
@@ -42,7 +44,12 @@
     <artifactId>jfoenix</artifactId>
     <version>9.0.10</version>
 </dependency>
-
+<dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.9.1</version>
+        <scope>test</scope>
+</dependency>
 
 
 
