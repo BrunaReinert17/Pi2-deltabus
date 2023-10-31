@@ -65,8 +65,11 @@ public class ClienteDAO {
                 String email = rs.getString("email");
                 Long cnpj = rs.getLong("cnpj");
                 String cpf = rs.getString("cpf");
+                Long cep = rs.getLong("endereco_cep");
+                
+                Endereco endereco = new  Endereco(cep);
 
-                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf,cnpj);
+                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
                 return cli;
             }
         } catch (Exception e) {
@@ -77,14 +80,15 @@ public class ClienteDAO {
         return null;
     }
 	
+
 	public boolean inserirCliente(Cliente cliente) {
-		Conexao c = Conexao.getInstancia();
-		Connection con = c.conectar();
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 		int valida = 0;
 
 		try {
-			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, cpf, endereco_cep) VALUES (?,?,?,?,?,?)";
-			PreparedStatement stm = con.prepareStatement(query);
+			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, cpf, endereco_cep) VALUES (?,?,?,?,?,?);";
+			PreparedStatement stm = c.prepareStatement(query);
 			stm.setString(1, cliente.getNome());
 			stm.setString(2, cliente.getNumeroTelefone());
 			stm.setString(3, cliente.getEmail());
@@ -94,12 +98,12 @@ public class ClienteDAO {
 			
 			System.out.println(stm);
 			valida = stm.executeUpdate();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			c.fecharConexao();
+			con.fecharConexao();
 		}
-		return valida != 0;
+		return (valida == 0 ? false : true);
 	}
 
 	public static boolean excluirCliente(Cliente cliente) {

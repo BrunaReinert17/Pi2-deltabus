@@ -5,7 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import controle.EnderecoDAO;
+import controle.VeiculoDAO;
 import modelo.Endereco;
+import modelo.Veiculo;
 
 public class EnderecoDaoTest {
 
@@ -23,4 +25,22 @@ public class EnderecoDaoTest {
 		boolean IdEnderecoInserido = ende.inserirEndereco(e);
 		assertEquals(true,IdEnderecoInserido );
 	}
+	
+	 @Test
+		
+		public void testMetodoExcluirEnderecoSucesso() {
+			
+		   Endereco endereco = new Endereco();
+		   endereco.setCep(21346560); 
+			 
+		    EnderecoDAO dao1 = new EnderecoDAO();
+			boolean result = dao1.excluirEndereco(endereco);
+			assertEquals(true,result);
+			
+			
+			
+			
+
+			       
+	      }
 }

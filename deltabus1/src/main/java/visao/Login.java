@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
+import utilidades.RoundedPanel;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -34,6 +35,7 @@ import modelo.Usuario;
 import javax.swing.border.BevelBorder;
 import javax.swing.DropMode;
 import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
 
 public class Login extends JFrame {
 
@@ -79,10 +81,10 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JPanel panel1 = new JPanel();
-		panel1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, new Color(0, 128, 128), null, null, null));
-		panel1.setBounds(751, 218, 447, 549);
-		panel1.setBackground(new Color(255, 255, 255));
+		RoundedPanel panel1 = new RoundedPanel();
+		panel1.setBounds(761, 215, 443, 542);
+		panel1.setBorder(null);
+		panel1.setBackground(SystemColor.inactiveCaptionBorder);
 		panel1.setForeground(new Color(204, 204, 204));
 		contentPane.add(panel1);
 		panel1.setLayout(null);
@@ -197,8 +199,8 @@ public class Login extends JFrame {
 				});
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/imagem/fundo.png")));
 		lblNewLabel_1.setBounds(0, 0, 2040, 1072);
+		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/imagem/fundo.png")));
 		contentPane.add(lblNewLabel_1);
 	}
 }

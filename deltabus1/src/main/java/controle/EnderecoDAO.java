@@ -135,7 +135,5 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 		return false;
 	}
-	
-
 
 }

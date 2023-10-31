@@ -24,20 +24,22 @@ public class Cliente {
 	}
 
 	private Cliente cliente;
-
 	
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
 	public Cliente() {
+		super();
 	}
 
+	public Cliente(String nome, String numeroTelefone, String email, String Cpf, Long cnpj,Endereco endereco) {
+		super();
+		this.nome = nome;
+		this.numeroTelefone = numeroTelefone;
+		this.email = email;
+		this.Cpf = Cpf;
+		this.cnpj = cnpj;
+		this.endereco = endereco;
+
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -70,7 +72,6 @@ public class Cliente {
 		Cpf = cpf;
 	}
 
-
 	public Long getCnpj() {
 		return cnpj;
 	}
@@ -79,16 +80,22 @@ public class Cliente {
 		this.cnpj = cnpj;
 	}
 
-	public Cliente(String nome, String numeroTelefone, String email, String Cpf, Long cnpj) {
-		super();
-		this.nome = nome;
-		this.numeroTelefone = numeroTelefone;
-		this.email = email;
-		this.Cpf = Cpf;
-		this.cnpj = cnpj;
-
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	@Override
 	public String toString() {
 		return "Cliente [nome=" + nome + ", numeroTelefone=" + numeroTelefone + ", email=" + email + ", Cpf=" + Cpf + "]";
 	}
