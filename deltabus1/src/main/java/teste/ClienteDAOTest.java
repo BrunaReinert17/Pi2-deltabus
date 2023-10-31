@@ -12,7 +12,7 @@ public class ClienteDAOTest {
 	public void testMetodoInserirCliente() {
 		Cliente c = new Cliente();
 		c.setNome("Gisele");
-		c.setNumeroTelefone("(12)34567-8921");
+		//c.setNumeroTelefone("(12)34567-8921");
 		c.setEmail("gisele@gmail.com");
 		c.setCpf(null);
 		c.setCnpj(null);

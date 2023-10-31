@@ -4,22 +4,19 @@ public class Cliente {
 
 	private String nome;
 	private Integer numeroTelefone;
+	private Integer Cep;
+
 	private String email;
-	private String Cpf;
+	private Double Cpf;
 	private Long cnpj;
 	private Endereco endereco;
 	
-	public Cliente getCliente() {
-		return cliente;
-	}
 	
 	public Cliente(String nome,Integer numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
 		this.email = email;
-		this.Cpf = Cpf;;
-		this.Cep = cep;
 		this.cliente = cliente;
 	}
 
@@ -29,7 +26,7 @@ public class Cliente {
 		super();
 	}
 
-	public Cliente(String nome, String numeroTelefone, String email, String Cpf, Long cnpj,Endereco endereco) {
+	public Cliente(String nome, Integer numeroTelefone, String email, Double Cpf, Long cnpj,Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
@@ -39,6 +36,14 @@ public class Cliente {
 		this.endereco = endereco;
 
 	}
+	public Integer getCep() {
+		return Cep;
+	}
+
+	public void setCep(Integer cep) {
+		Cep = cep;
+	}
+
 	
 	public String getNome() {
 		return nome;
@@ -64,11 +69,11 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public String getCpf() {
+	public Double getCpf() {
 		return Cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(Double cpf) {
 		Cpf = cpf;
 	}
 

@@ -35,10 +35,10 @@ public class ClienteDAO {
 				Cliente cl = new Cliente();
 				Endereco endereco = new Endereco();
 				cl.setNome(rs.getString("nome"));
-				cl.setNumeroTelefone(rs.getString("numeroTelefone"));
+				cl.setNumeroTelefone(rs.getInt("numeroTelefone"));
 				cl.setEmail(rs.getString("email"));
 				cl.setCnpj(rs.getLong("Cnpj"));
-				cl.setCpf(rs.getString("Cpf"));
+				cl.setCpf(rs.getDouble("Cpf"));
 				endereco.setCep(rs.getInt("endereco_cep"));
 			
 				cliente.add(cl);
@@ -69,8 +69,8 @@ public class ClienteDAO {
                 
                 Endereco endereco = new  Endereco(cep);
 
-                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
-                return cli;
+                //Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
+                //return cli;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,10 +90,10 @@ public class ClienteDAO {
 			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, cpf, endereco_cep) VALUES (?,?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 			stm.setString(1, cliente.getNome());
-			stm.setString(2, cliente.getNumeroTelefone());
+			//stm.setString(2, cliente.getNumeroTelefone());
 			stm.setString(3, cliente.getEmail());
 			stm.setLong(4, cliente.getCnpj());
-			stm.setString(5, cliente.getCpf());
+			//stm.setString(5, cliente.getCpf());
 			stm.setLong(6, cliente.getEndereco().getCep());
 			
 			System.out.println(stm);
@@ -135,9 +135,9 @@ public class ClienteDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, cliente.getNome());
-			ps.setString(2, cliente.getNumeroTelefone());
+			//ps.setString(2, cliente.getNumeroTelefone());
 			ps.setString(3, cliente.getEmail());
-			ps.setString(4, cliente.getCpf());
+			//ps.setString(4, cliente.getCpf());
 			ps.setLong(6, cliente.getCnpj());
 
 			ps.executeUpdate();

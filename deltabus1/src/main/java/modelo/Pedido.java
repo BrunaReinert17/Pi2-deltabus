@@ -108,7 +108,14 @@ public class Pedido extends Veiculo {
 		this.nomeCliente = nomeCliente;
 	}
 
+	public void add(ArrayList<Pedido> pedidos) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	public void setId_pedidos(int int1) {
+		
+	}
 
 	
 

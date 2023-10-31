@@ -39,7 +39,7 @@ public class PedidoDAO implements InterfacePedido{
 					
 					 Pedido p = new Pedido();
 
-					 p.setId_pedido(rs.getInt("id_pedidos"));
+					 p.setId_pedidos(rs.getInt("id_pedidos"));
 					 p.setDataCompra(rs.getDate("dataCompra").toLocalDate());
 					 p.setQuantidade(rs.getInt("quantidade"));
 					 p.setValorPago(rs.getDouble("valorPago"));
@@ -97,7 +97,7 @@ public class PedidoDAO implements InterfacePedido{
 	}
 
 	@Override
-	public  boolean excluirPedido(Pedido pedido) {
+	public boolean excluirPedido(Pedido pedido) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
@@ -171,12 +171,4 @@ public class PedidoDAO implements InterfacePedido{
 			}
 			return valida != 0;
 		}
-	 
-	 public static boolean excluirPedido1(Pedido pedido) {
-	   
-		 
-		 
-		 return false;
-	 }
-	 
 }
