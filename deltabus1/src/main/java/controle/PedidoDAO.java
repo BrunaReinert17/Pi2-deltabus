@@ -96,8 +96,7 @@ public class PedidoDAO implements InterfacePedido{
 		return false;
 	}
 
-	@Override
-	public boolean excluirPedido(Pedido pedido) {
+	public  boolean excluirPedido(Pedido pedido) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
@@ -171,4 +170,22 @@ public class PedidoDAO implements InterfacePedido{
 			}
 			return valida != 0;
 		}
+	public static boolean excluirPedido1(Pedido pedido) {
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
+		String query = "DELETE FROM Pedido\r\n  WHERE Cliente = ?";
+
+		try {
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setString(1, pedido.getCliente());
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+		return false;
+	}
 }

@@ -233,7 +233,6 @@ public class MenuFuncionario extends JFrame {
 		btnlistaVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//listarveiculos.atualizarTabela();
-				panelTeste1.setVisible(true);
 				panelTeste.setVisible(false);
 				panelTeste3.setVisible(false);
 				panelTeste2.setVisible(false);

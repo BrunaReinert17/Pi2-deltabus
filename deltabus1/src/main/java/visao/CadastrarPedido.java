@@ -31,6 +31,10 @@ import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
 import mensagens.CadastroVeiculo;
+import mensagens.ConfirmacaoDeletar;
+import mensagens.Deletar1;
+import mensagens.Deletar2;
+import mensagens.InterfaceMensagemConfirmacao;
 import mensagens.LoginErro;
 import modelo.Endereco;
 import modelo.Funcionario;
@@ -287,8 +291,51 @@ public class CadastrarPedido extends JPanel {
 		RoundButton btnDeletar2 = new RoundButton("Confirmar");
 		btnDeletar2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int linhaSelecionada = table1.getSelectedRow();
+				if (linhaSelecionada >= 0) {
+			        Pedido pedido = listPedido.get(linhaSelecionada);
+
+			       
+                   ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
+                	   
+                	   
+
+						@Override
+						
+						public void mensagemConfirmada() {
+							PedidoDAO pedidoDAO = new PedidoDAO();
+							
+							if (PedidoDAO.excluirPedido1(pedido)) {
+			                DefaultTableModel model = (DefaultTableModel) table1.getModel();
+			                model.removeRow(linhaSelecionada);
+			                atualizarTabela();
+			            } else {
+			                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
+			                falha.setLocationRelativeTo(null);
+			                falha.setVisible(true);
+			            }
+							
+						}
+
+						@Override
+						public void mensagemCancelada() {
+							
+							
+						}
+			        	
+			        });
+			        confirmacao.setVisible(true);
+			     
+			    } else {
+			        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
+			        falha2.setLocationRelativeTo(null);
+			        falha2.setVisible(true);
+			    }
 			}
 		});
+        atualizarTabela();
+
+			
 		btnDeletar2.setText("Deletar");
 		btnDeletar2.setForeground(new Color(0, 0, 0));
 		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
