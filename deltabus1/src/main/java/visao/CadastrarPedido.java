@@ -298,9 +298,7 @@ public class CadastrarPedido extends JPanel {
 			       
                    ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
                 	   
-                	   
-
-						@Override
+                	   @Override
 						
 						public void mensagemConfirmada() {
 							PedidoDAO pedidoDAO = new PedidoDAO();
@@ -308,7 +306,7 @@ public class CadastrarPedido extends JPanel {
 							if (PedidoDAO.excluirPedido1(pedido)) {
 			                DefaultTableModel model = (DefaultTableModel) table1.getModel();
 			                model.removeRow(linhaSelecionada);
-			                atualizarTabela();
+			                
 			            } else {
 			                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
 			                falha.setLocationRelativeTo(null);
@@ -333,7 +331,7 @@ public class CadastrarPedido extends JPanel {
 			    }
 			}
 		});
-        atualizarTabela();
+      
 
 			
 		btnDeletar2.setText("Deletar");
@@ -486,7 +484,7 @@ public class CadastrarPedido extends JPanel {
 		if (quantidade == null || quantidade.trim() == "" || quantidade.isEmpty()) {
 			verificarCampo += "Renavam\n";
 		} else {
-			pedido.setRenavam(renavam);
+			pedido.setQuantidade(Integer.valueOf(quantidade));
 		}
 		 
 		if (datacompra == null || datacompra.trim() == "" || datacompra.isEmpty()) {

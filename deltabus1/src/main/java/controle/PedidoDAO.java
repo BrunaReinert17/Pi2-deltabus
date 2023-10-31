@@ -106,6 +106,8 @@ public class PedidoDAO implements InterfacePedido{
 			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, pedido.getCliente());
 			ps.executeUpdate();
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -179,7 +181,10 @@ public class PedidoDAO implements InterfacePedido{
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, pedido.getCliente());
-			ps.executeUpdate();
+			int n =ps.executeUpdate();
+			return (n==1);  /// retorna true se excluir algo
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
