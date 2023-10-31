@@ -150,21 +150,13 @@ public class CadastrarVeiculo extends JPanel {
 		add(panel_3);
 
 	
-		/**********/
-		MaskFormatter mascaraRenavam = null;
-		try {
-			mascaraRenavam = new MaskFormatter("###########");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		txtRenavam = new JFormattedTextField(mascaraRenavam);
+		txtRenavam = new JFormattedTextField();
 		txtRenavam.setBounds(207, 164, 167, 30);
 		txtRenavam.setText("");
 		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtRenavam);
 		txtRenavam.setColumns(10);
 		
-		/**********/
 		MaskFormatter mascaraPlacaOnibus = null;
 		try {
 		    mascaraPlacaOnibus = new MaskFormatter("UUU#U##");
@@ -596,7 +588,9 @@ public class CadastrarVeiculo extends JPanel {
 						@Override
 						
 						public void mensagemConfirmada() {
-							if (VeiculoDAO.excluirVeiculo(veiculo)) {
+							VeiculoDAO veiculoDAO = new VeiculoDAO();
+							
+							if (veiculoDAO.excluirVeiculo(veiculo)) {
 			                DefaultTableModel model = (DefaultTableModel) table.getModel();
 			                model.removeRow(linhaSelecionada);
 			                

@@ -93,7 +93,7 @@ public class VeiculoDAO {
 	}
 	
 
-	public static boolean excluirVeiculo(Veiculo veiculo) {
+	public boolean excluirVeiculo(Veiculo veiculo) {
 
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();

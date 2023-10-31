@@ -58,7 +58,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.ImageIcon;
 
-
 public class CadastrarUsuario extends JPanel {
 	private JTextField txtNome;
 	private JTextField txtEmail;
@@ -114,7 +113,6 @@ public class CadastrarUsuario extends JPanel {
 	private JPanel panel_5;
 	private ArrayList<Funcionario> listFuncionario;
 
-
 	public CadastrarUsuario() {
 		setLocale("Login");
 
@@ -135,7 +133,6 @@ public class CadastrarUsuario extends JPanel {
 		panel.setBounds(0, 37, 1184, 724);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
 
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
@@ -148,7 +145,7 @@ public class CadastrarUsuario extends JPanel {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		panel_1.add(lblNewLabel);
-		
+
 		RoundButton rndbtnDeletar = new RoundButton("Deletar");
 		rndbtnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -167,7 +164,7 @@ public class CadastrarUsuario extends JPanel {
 		textCPF.setBounds(496, 12, 177, 20);
 		panel_1.add(textCPF);
 		textCPF.setColumns(10);
-		
+
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setForeground(new Color(255, 255, 255));
 		btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -182,22 +179,22 @@ public class CadastrarUsuario extends JPanel {
 
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
-		
+
 		panel_4 = new JPanel();
 		panel_4.setBackground(new Color(220, 220, 220));
 		panel_4.setBounds(153, 419, 882, 234);
 		add(panel_4);
 		panel_4.setLayout(new BorderLayout());
-		
+
 		scrollPane_2 = new JScrollPane();
 		panel_4.add(scrollPane_2, BorderLayout.CENTER);
-		
+
 		table_1 = new JTable();
 		table_1.setFont(new Font("Dialog", Font.BOLD, 14));
 		table_1.setBackground(Color.WHITE);
 		scrollPane_2.setViewportView(table_1);
 		table_1.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] {"Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero", "Endereço"}));
+				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero", "Endereço" }));
 		scrollPane_2.setViewportView(table_1);
 
 		lblLimpar = new JLabel("");
@@ -312,7 +309,7 @@ public class CadastrarUsuario extends JPanel {
 		genero.add("Masculino");
 		genero.add("Feminino");
 		genero.add("Outro");
-		
+
 		cbGenero = new JComboBox();
 		cbGenero.setBounds(342, 257, 120, 31);
 		cbGenero.addAncestorListener(new AncestorListener() {
@@ -482,14 +479,14 @@ public class CadastrarUsuario extends JPanel {
 					}
 					System.out.println(ende);
 
-					boolean usuarioRetornoCadastro = false;
+					boolean usuarioRetornoCadastro;
 					System.out.println("ddddd1");
 					if (ende != false) {
 						System.out.println("ddddd12");
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
 						System.out.println(funcionario.getUsuario());
 						System.out.println("ddddd13");
-						if (usuarioRetornoCadastro != false) {
+						if (usuarioRetornoCadastro) {
 							System.out.println("ddddd14");
 							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
 							System.out.println(usuario);
@@ -500,7 +497,7 @@ public class CadastrarUsuario extends JPanel {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
-		        				atualizarTabela();
+								atualizarTabela();
 								limparDados();
 
 							} else {
@@ -524,7 +521,6 @@ public class CadastrarUsuario extends JPanel {
 		add(txtDataNasci);
 		txtDataNasci.setColumns(10);
 		atualizarTabela();
-
 
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
 		btnLimparCampo.setBounds(1061, 92, 84, 33);
@@ -569,7 +565,6 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int position = contentPane.getBaseline(WIDTH, HEIGHT);
-
 
 				funcionarioClick = listFunc.get(getComponentCount());
 				verificarDados(funcionarioClick);
@@ -627,24 +622,20 @@ public class CadastrarUsuario extends JPanel {
 						var usuario = new Usuario();
 						funcionario = verificarDados();
 						endereco = setarObjetoEndereco();
-						
-						
 
 						if (funcionario != null && usuario != null && endereco != null) {
 
 							funcionario.setEndereco(endereco);
 							funcionario.setUsuario(usuario);
 
-							
 							usuarioDao = new UsuarioDAO();
-							UsuarioDAO.getIntancia(usuario);
+							UsuarioDAO.getInstancia(usuario);
 							boolean retorno = funcionarioDao.alterarFuncionario(funcionario);
 							if (retorno == true) {
 								AlteraSucesso erroALt = new AlteraSucesso("Usuário Alterado!");
 								erroALt.setLocationRelativeTo(null);
 								erroALt.setVisible(true);
-							} 
-							else {
+							} else {
 								ErroAlterar erroALt = new ErroAlterar("Erro, Usuario Não Alterado!");
 								erroALt.setLocationRelativeTo(null);
 								erroALt.setVisible(true);
@@ -682,7 +673,7 @@ public class CadastrarUsuario extends JPanel {
 						Endereco endereco = new Endereco();
 						enderecoDao = new EnderecoDAO();
 						new EnderecoDAO();
-						
+
 						String cep = (String) txtCep.getText();
 						String uf = (String) cbUf.getSelectedItem();
 						String cidade = (String) cbCidade.getSelectedItem();
@@ -701,20 +692,19 @@ public class CadastrarUsuario extends JPanel {
 						} else {
 							endereco.setBairro(bairro);
 						}
-						
+
 						if (cidade == null || cidade.trim() == "" || cidade.isEmpty()) {
 							validacao += " Cidade\n";
 						} else {
 							endereco.setCidade(cidade);
 						}
-						
+
 						if (rua == null || rua.trim() == "" || rua.isEmpty()) {
 							validacao += " Rua\n";
 						} else {
 							endereco.setRua(rua);
 						}
 
-						
 						endereco.setUf(uf);
 						if (validacao.trim() == "") {
 							return endereco;
@@ -728,143 +718,89 @@ public class CadastrarUsuario extends JPanel {
 				btnSalvar.setFont(new Font("Tahoma", Font.BOLD, 16));
 				panel.add(btnSalvar, "cell 7 1,grow");
 
-			
-				
-/*
-				rndbtnAlterar.setVisible(false);
-				contentPane.remove(rndbtnAlterar);
-
-				txtCpf.setEditable(false);
-				int position = table.getSelectedRow();
-				String erros = "";
-
-				funcionarioSelecionado = listFunc.get(position);
-				verificarDados(funcionarioSelecionado);              
-				UsuarioSelecionado = listUsuario.get(position);
-             
-				JButton salvar = new JButton("salva");
-				salvar.addActionListener(new ActionListener() {
-
-					public void actionPerformed(ActionEvent e) {
-
-						String erros = "";
-
-						String nome = txtNome.getText();
-						String email = txtEmail.getText();
-						String dataNasci = (String) txtDataNasci.getText();
-						String genero = (String) cbGenero.getSelectedItem();
-						String numeroTelefone = txtTelefone.getText();
-						String cpf = txtCpf.getText().replace(".", "").replace("-", "");
-						String cep = (String) txtCep.getText();
-						String senha = txtSenha.getText();
-						String cargo = (String) cbFuncao.getSelectedItem();
-						String uf = (String) cbUf.getSelectedItem();
-						String cidade = (String) cbCidade.getSelectedItem();
-						String bairro = txtBairro.getText();
-						String rua = txtRua.getText();
-
-						Endereco endereco = new Endereco();
-						Funcionario funcionario = new Funcionario();
-						funcionario.setCpf(funcionarioSelecionado.getCpf());
-						Usuario usuario = new Usuario();
-						usuario.setIdUsuario(UsuarioSelecionado.getIdUsuario());
-
-						if (nome == null || nome.trim() == "" || nome.isEmpty()) {
-							erros += "nome\n";
-						} else {
-							funcionario.setNome(nome);
-						}
-						
-						if (email == null || email.trim() == "" || email.isEmpty()) {
-							erros += "email\n";
-						} else {
-							funcionario.setEmail(email);
-						}
-						
-						if(dataNasci == null || dataNasci.toString() == "" || dataNasci.isBlank()) {
-							erros += "dataNasci\n";
-						}else {
-							funcionario.setDatanasci(null);// nao é pra ser null
-						}
-						if(genero == null || genero.trim() == "" || genero.isEmpty()) {
-							erros += "genero\n";
-						}else {
-							funcionario.setGenero(genero);
-						}
-						
-						if(numeroTelefone ==  null || numeroTelefone.trim() == "" || numeroTelefone.isEmpty()) {
-							erros += "numeroTelefone\n";
-						}else {
-							funcionario.setNumeroTelefone(numeroTelefone);
-						}
-                        
-						if(cpf ==  null || cpf.trim() == "" || cpf.isEmpty()) {
-							erros += "cpf\n";
-						}else {
-							funcionario.setCpf(cpf);
-						}
-					
-						if(cep ==  null || cep.trim() == "" || cep.isEmpty()) {
-							erros += "cep\n";
-						}else {
-							endereco.setCep(Integer.valueOf(cep));
-						}
-						
-						if(senha ==  null || senha.trim() == "" || senha.isEmpty()) {
-							erros += "senha\n";
-						}else {
-							usuario.setSenha(senha);
-						}
-						
-						if(cargo ==  null || cargo.trim() == "" || cargo.isEmpty()) {
-							erros += "cargo\n";
-						}else {
-							usuario.setCargo(cargo);
-						}
-						
-						if(uf ==  null || uf.trim() == "" || uf.isEmpty()) {
-							erros += "uf\n";
-						}else {
-							endereco.setUf(uf);
-						}
-					
-						if(cidade ==  null || cidade.trim() == "" || cidade.isEmpty()) {
-							erros += "cidade\n";
-						}else {
-							endereco.setCidade(cidade);
-						}
-						
-						if(bairro ==  null || bairro.trim() == "" || bairro.isEmpty()) {
-							erros += "bairro\n";
-						}else {
-							endereco.setBairro(bairro);
-						}
-						
-						if(rua ==  null || rua.trim() == "" || rua.isEmpty()) {
-							erros += "rua\n";
-						}else {
-							endereco.setRua(rua);
-						}
-						
-						usuarioDao = new UsuarioDAO();
-						UsuarioDAO.getIntancia(usuario);
-						boolean retorno = funcionarioDao.alterarFuncionario(funcionario);
-						if (retorno == true) {
-							AlteraSucesso erroALt = new AlteraSucesso("Usuário Alterado!");
-							erroALt.setLocationRelativeTo(null);
-							erroALt.setVisible(true);
-						} 
-						else {
-							ErroAlterar erroALt = new ErroAlterar("Erro, Usuario Não Alterado!");
-							erroALt.setLocationRelativeTo(null);
-							erroALt.setVisible(true);
-						}
-						
-						
-						
-					}
-
-			});*/	
+				/*
+				 * rndbtnAlterar.setVisible(false); contentPane.remove(rndbtnAlterar);
+				 * 
+				 * txtCpf.setEditable(false); int position = table.getSelectedRow(); String
+				 * erros = "";
+				 * 
+				 * funcionarioSelecionado = listFunc.get(position);
+				 * verificarDados(funcionarioSelecionado); UsuarioSelecionado =
+				 * listUsuario.get(position);
+				 * 
+				 * JButton salvar = new JButton("salva"); salvar.addActionListener(new
+				 * ActionListener() {
+				 * 
+				 * public void actionPerformed(ActionEvent e) {
+				 * 
+				 * String erros = "";
+				 * 
+				 * String nome = txtNome.getText(); String email = txtEmail.getText(); String
+				 * dataNasci = (String) txtDataNasci.getText(); String genero = (String)
+				 * cbGenero.getSelectedItem(); String numeroTelefone = txtTelefone.getText();
+				 * String cpf = txtCpf.getText().replace(".", "").replace("-", ""); String cep =
+				 * (String) txtCep.getText(); String senha = txtSenha.getText(); String cargo =
+				 * (String) cbFuncao.getSelectedItem(); String uf = (String)
+				 * cbUf.getSelectedItem(); String cidade = (String) cbCidade.getSelectedItem();
+				 * String bairro = txtBairro.getText(); String rua = txtRua.getText();
+				 * 
+				 * Endereco endereco = new Endereco(); Funcionario funcionario = new
+				 * Funcionario(); funcionario.setCpf(funcionarioSelecionado.getCpf()); Usuario
+				 * usuario = new Usuario();
+				 * usuario.setIdUsuario(UsuarioSelecionado.getIdUsuario());
+				 * 
+				 * if (nome == null || nome.trim() == "" || nome.isEmpty()) { erros += "nome\n";
+				 * } else { funcionario.setNome(nome); }
+				 * 
+				 * if (email == null || email.trim() == "" || email.isEmpty()) { erros +=
+				 * "email\n"; } else { funcionario.setEmail(email); }
+				 * 
+				 * if(dataNasci == null || dataNasci.toString() == "" || dataNasci.isBlank()) {
+				 * erros += "dataNasci\n"; }else { funcionario.setDatanasci(null);// nao é pra
+				 * ser null } if(genero == null || genero.trim() == "" || genero.isEmpty()) {
+				 * erros += "genero\n"; }else { funcionario.setGenero(genero); }
+				 * 
+				 * if(numeroTelefone == null || numeroTelefone.trim() == "" ||
+				 * numeroTelefone.isEmpty()) { erros += "numeroTelefone\n"; }else {
+				 * funcionario.setNumeroTelefone(numeroTelefone); }
+				 * 
+				 * if(cpf == null || cpf.trim() == "" || cpf.isEmpty()) { erros += "cpf\n";
+				 * }else { funcionario.setCpf(cpf); }
+				 * 
+				 * if(cep == null || cep.trim() == "" || cep.isEmpty()) { erros += "cep\n";
+				 * }else { endereco.setCep(Integer.valueOf(cep)); }
+				 * 
+				 * if(senha == null || senha.trim() == "" || senha.isEmpty()) { erros +=
+				 * "senha\n"; }else { usuario.setSenha(senha); }
+				 * 
+				 * if(cargo == null || cargo.trim() == "" || cargo.isEmpty()) { erros +=
+				 * "cargo\n"; }else { usuario.setCargo(cargo); }
+				 * 
+				 * if(uf == null || uf.trim() == "" || uf.isEmpty()) { erros += "uf\n"; }else {
+				 * endereco.setUf(uf); }
+				 * 
+				 * if(cidade == null || cidade.trim() == "" || cidade.isEmpty()) { erros +=
+				 * "cidade\n"; }else { endereco.setCidade(cidade); }
+				 * 
+				 * if(bairro == null || bairro.trim() == "" || bairro.isEmpty()) { erros +=
+				 * "bairro\n"; }else { endereco.setBairro(bairro); }
+				 * 
+				 * if(rua == null || rua.trim() == "" || rua.isEmpty()) { erros += "rua\n";
+				 * }else { endereco.setRua(rua); }
+				 * 
+				 * usuarioDao = new UsuarioDAO(); UsuarioDAO.getIntancia(usuario); boolean
+				 * retorno = funcionarioDao.alterarFuncionario(funcionario); if (retorno ==
+				 * true) { AlteraSucesso erroALt = new AlteraSucesso("Usuário Alterado!");
+				 * erroALt.setLocationRelativeTo(null); erroALt.setVisible(true); } else {
+				 * ErroAlterar erroALt = new ErroAlterar("Erro, Usuario Não Alterado!");
+				 * erroALt.setLocationRelativeTo(null); erroALt.setVisible(true); }
+				 * 
+				 * 
+				 * 
+				 * }
+				 * 
+				 * });
+				 */
 			}
 		});
 		rndbtnAlterar.setText("Alterar");
@@ -881,12 +817,12 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnSalvar.setBackground(new Color(0, 128, 128));
 		rndbtnSalvar.setBounds(352, 698, 110, 31);
 		add(rndbtnSalvar);
-		
+
 		panel_5 = new JPanel();
 		panel_5.setBackground(new Color(0, 0, 0));
 		panel_5.setBounds(148, 411, 893, 249);
 		add(panel_5);
-		
+
 		JButton btnPesquisar_1 = new JButton("Pesquisar");
 		btnPesquisar_1.setForeground(Color.WHITE);
 		btnPesquisar_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -899,46 +835,46 @@ public class CadastrarUsuario extends JPanel {
 		});
 		btnPesquisar_1.setBounds(148, 385, 115, 23);
 		add(btnPesquisar_1);
-		
+
 		RoundButton rndbtnDeletar_1 = new RoundButton("Deletar");
 		rndbtnDeletar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int linhaSelecionada = table_1.getSelectedRow();
 				if (linhaSelecionada >= 0) {
-				    
-				    Funcionario funcionario = listFuncionario.get(linhaSelecionada);
-                    
-				    ConfirmacaoDeletarUsuario confirmar = new ConfirmacaoDeletarUsuario("Tem certeza que quer excluir", new InterfaceMensagemConfirmacao() { 
-				    
-                          @Override
-						
-						public void mensagemConfirmada() {
-							if (FuncionarioDAO.excluirFuncionario(funcionario)) {
-			                DefaultTableModel model = (DefaultTableModel) table_1.getModel();
-			                model.removeRow(linhaSelecionada);
-			                
-			            } else {
-			                DeletarUsuario1 falha = new DeletarUsuario1("Falha ao excluir veiculo");
-			                falha.setLocationRelativeTo(null);
-			                falha.setVisible(true);
-			            }
-							
-						}
 
-						@Override
-						public void mensagemCancelada() {
-							
-							
-						}
-			        	
-			        });
-			        confirmar.setVisible(true);
-			     
-			    } else {
-			        DeletarUsuario2 falha2 = new DeletarUsuario2("Selecione um veiculo para excluir");
-			        falha2.setLocationRelativeTo(null);
-			        falha2.setVisible(true);
-			    }
+					Funcionario funcionario = listFuncionario.get(linhaSelecionada);
+
+					ConfirmacaoDeletarUsuario confirmar = new ConfirmacaoDeletarUsuario("Tem certeza que quer excluir",
+							new InterfaceMensagemConfirmacao() {
+
+								@Override
+
+								public void mensagemConfirmada() {
+									if (FuncionarioDAO.excluirFuncionario(funcionario)) {
+										DefaultTableModel model = (DefaultTableModel) table_1.getModel();
+										model.removeRow(linhaSelecionada);
+
+									} else {
+										DeletarUsuario1 falha = new DeletarUsuario1("Falha ao excluir veiculo");
+										falha.setLocationRelativeTo(null);
+										falha.setVisible(true);
+									}
+
+								}
+
+								@Override
+								public void mensagemCancelada() {
+
+								}
+
+							});
+					confirmar.setVisible(true);
+
+				} else {
+					DeletarUsuario2 falha2 = new DeletarUsuario2("Selecione um veiculo para excluir");
+					falha2.setLocationRelativeTo(null);
+					falha2.setVisible(true);
+				}
 			}
 		});
 		rndbtnDeletar_1.setText("Deletar");
@@ -948,8 +884,7 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnDeletar_1.setBounds(920, 92, 115, 33);
 		add(rndbtnDeletar_1);
 		atualizarTabela();
-		
-		
+
 	}
 
 	protected void dispose() {
@@ -1093,18 +1028,20 @@ public class CadastrarUsuario extends JPanel {
 		}
 		return funcionario;
 	}
-	
-	public void atualizarTabela() {
-	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
-	FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-	listFuncionario = funcionarioDAO.consultarTodos();
-	System.out.println(listFuncionario);
-	for (int i = 0; i < listFuncionario.size(); i++) {
-		Funcionario funcionario = listFuncionario.get(i);
-		tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),funcionario.getDatanasci(),funcionario.getGenero(),funcionario.getEndereco().getCep()});
 
-	}
-	table_1.setModel(tabela);
+	public void atualizarTabela() {
+		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {},
+				new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		listFuncionario = funcionarioDAO.consultarTodos();
+		System.out.println(listFuncionario);
+		for (int i = 0; i < listFuncionario.size(); i++) {
+			Funcionario funcionario = listFuncionario.get(i);
+			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),
+					funcionario.getDatanasci(), funcionario.getGenero(), funcionario.getEndereco().getCep() });
+
+		}
+		table_1.setModel(tabela);
 	}
 
 	public void limparDados() {

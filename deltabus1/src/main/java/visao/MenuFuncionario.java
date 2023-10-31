@@ -88,23 +88,9 @@ public class MenuFuncionario extends JFrame {
 		contentPane.add(panelTeste3);
 
 
-		ListagemVeiculos listarveiculos = new ListagemVeiculos();
-		listarveiculos.setToolTipText("");
-		listarveiculos.setLocation(579, 97);
-		panelTeste1 = listarveiculos;
-		panelTeste1.setBounds(568, 104, 1200, 810);
-		panelTeste1.setVisible(false);
-
-		contentPane.add(panelTeste1);
 		
-		ListagemClientes listarclientes = new ListagemClientes();
-		listarclientes.setToolTipText("");
-		listarclientes.setLocation(579, 97);
-		panelTeste4 = listarclientes;
-		panelTeste4.setBounds(568, 104, 1200, 810);
-		panelTeste4.setVisible(false);
-
-		contentPane.add(panelTeste4);
+		
+		
 		
 		CadastrarPedido cadastrarVendas = new CadastrarPedido();
 		cadastrarVendas.setToolTipText("");
@@ -169,7 +155,6 @@ public class MenuFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste.setVisible(true);
 				panelTeste3.setVisible(false);
-				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
 				panelTeste4.setVisible(false);
 				
@@ -194,9 +179,7 @@ public class MenuFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste3.setVisible(true);
 				panelTeste.setVisible(false);
-				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
-				panelTeste4.setVisible(false);
 
 
 			}
@@ -235,11 +218,9 @@ public class MenuFuncionario extends JFrame {
 		RoundButton btnHome = new RoundButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelTeste1.setVisible(false);
 				panelTeste.setVisible(false);
 				panelTeste3.setVisible(false);
 				panelTeste2.setVisible(false);
-				panelTeste4.setVisible(false);
 			}
 		});
 		btnHome.setText("");
@@ -258,8 +239,6 @@ public class MenuFuncionario extends JFrame {
 				panelTeste.setVisible(false);
 				panelTeste3.setVisible(false);
 				panelTeste2.setVisible(false);
-				panelTeste4.setVisible(false);
-
 				
 			}
 		});
@@ -276,7 +255,6 @@ public class MenuFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste2.setVisible(true);
 				panelTeste.setVisible(false);
-				panelTeste1.setVisible(false);
 				panelTeste3.setVisible(false);
 				panelTeste4.setVisible(false);
 
