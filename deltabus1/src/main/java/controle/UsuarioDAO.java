@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Usuario;
@@ -31,22 +30,22 @@ public class UsuarioDAO implements InterfaceUsuario {
 		boolean valida = false;
 		if (usuario != null) {
 
-		try {
-		String query = "INSERT INTO usuario(senha, email, cargo) VALUES (?, ?, ?)";
-		PreparedStatement stm = c.prepareStatement(query);
-		stm.setString(1, usuario.getSenha());
-		stm.setString(2, usuario.getEmail());
-		stm.setString(3, usuario.getCargo());
+			try {
+				String query = "INSERT INTO usuario(senha, email, cargo) VALUES (?, ?, ?)";
+				PreparedStatement stm = c.prepareStatement(query);
+				stm.setString(1, usuario.getSenha());
+				stm.setString(2, usuario.getEmail());
+				stm.setString(3, usuario.getCargo());
 
-		valida = stm.executeUpdate() == 0 ? false : true;
-		} catch (Exception e) {
-		e.printStackTrace();
-		} finally {
-		con.fecharConexao();
-		}
+				valida = stm.executeUpdate() == 0 ? false : true;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				con.fecharConexao();
+			}
 		}
 		return valida;
-		}
+	}
 
 	public Usuario selecionar(Usuario usuarioModelo) {
 		Connection c = con.conectar();
@@ -54,6 +53,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 			PreparedStatement ps = c.prepareStatement("SELECT * FROM usuario where senha = ? AND email = ?");
 			ps.setString(1, usuarioModelo.getSenha());
 			ps.setString(2, usuarioModelo.getEmail());
+			ps.setString(3, usuarioModelo.getCargo());
 
 			ResultSet rs = ps.executeQuery();
 
@@ -135,19 +135,21 @@ public class UsuarioDAO implements InterfaceUsuario {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
+		Usuario usuarioConectado = null;
+
 		try {
 
 			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
 			// metodo duplicado com selecionar usuario
 			ps.setString(1, usuario.getEmail());
 			ps.setString(2, usuario.getSenha());
-			
+
 			System.out.println(ps);
 
 			ResultSet rs = ps.executeQuery();
-			Usuario usuarioConectado = new Usuario();
 
 			while (rs.next()) {
+				usuarioConectado = new Usuario();
 				long IdUsuario = rs.getLong("idUsuario");
 				String email = rs.getString("email");
 				String senha = rs.getString("senha");
@@ -168,7 +170,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 			con.fecharConexao();
 		}
 
-		return usuario;
+		return usuarioConectado;
 	}
 
 	public boolean excluirUsuario(Usuario usuario) {

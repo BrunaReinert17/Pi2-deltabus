@@ -98,25 +98,25 @@ public class Login extends JFrame {
 				String senha = txtSenha.getText();
 				usuario.setEmail(email);
 				usuario.setSenha(senha);
-								
+
 				UsuarioDAO usuarioDAO = new UsuarioDAO();
 				Usuario retorno = usuarioDAO.consultarLogin(usuario);
 
 				if (!email.isEmpty() && !senha.isEmpty()) {
 
-					if (retorno != null && retorno.getEmail().equals(email) && retorno.getSenha().equals(senha)) {
+					if (retorno != null) {
 						if (retorno.getCargo().equalsIgnoreCase("administrador")) {
-						MenuAdmin telaPrincipal = new MenuAdmin();
-						telaPrincipal.setLocationRelativeTo(null);
-						telaPrincipal.setVisible(true);
-						dispose();
-					} else {
-						MenuFuncionario telaFuncionario = new MenuFuncionario();
-						telaFuncionario.setLocationRelativeTo(null);
-						telaFuncionario.setVisible(true);
-						dispose();
-					} 
-						
+							MenuAdmin telaPrincipal = new MenuAdmin();
+							telaPrincipal.setLocationRelativeTo(null);
+							telaPrincipal.setVisible(true);
+							dispose();
+						} else {
+							MenuFuncionario telaFuncionario = new MenuFuncionario();
+							telaFuncionario.setLocationRelativeTo(null);
+							telaFuncionario.setVisible(true);
+							dispose();
+						}
+
 					} else {
 						LoginErro janelaErro = new LoginErro("Senha ou E-mail Incorretos!");
 						janelaErro.setLocationRelativeTo(null);
@@ -178,25 +178,25 @@ public class Login extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(Login.class.getResource("/imagem/icone senha.png")));
 		lblNewLabel_6.setBounds(72, 295, 56, 55);
 		panel1.add(lblNewLabel_6);
-		
+
 		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
 		showPasswordCheckBox.setBounds(126, 357, 132, 15);
 		panel1.add(showPasswordCheckBox);
 		showPasswordCheckBox.setBackground(Color.WHITE);
 		showPasswordCheckBox.setFont(new Font("Dialog", Font.PLAIN, 11));
-		
-				showPasswordCheckBox.addActionListener(new ActionListener() {
-		
-					@Override
-					public void actionPerformed(ActionEvent e) {
-		
-						if (showPasswordCheckBox.isSelected()) {
-							txtSenha.setEchoChar((char) 0);
-						} else {
-							txtSenha.setEchoChar('\u2022');
-						}
-					}
-				});
+
+		showPasswordCheckBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				if (showPasswordCheckBox.isSelected()) {
+					txtSenha.setEchoChar((char) 0);
+				} else {
+					txtSenha.setEchoChar('\u2022');
+				}
+			}
+		});
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(0, 0, 2040, 1072);
