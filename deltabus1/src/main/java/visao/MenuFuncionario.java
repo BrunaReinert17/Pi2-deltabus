@@ -153,7 +153,7 @@ public class MenuFuncionario extends JFrame {
 				panelTeste3.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
-				panelTeste4.setVisible(false);
+			
 				
 			}
 		});
@@ -178,7 +178,7 @@ public class MenuFuncionario extends JFrame {
 				panelTeste.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);
-				panelTeste4.setVisible(false);
+				
 
 
 			}
@@ -246,9 +246,8 @@ public class MenuFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelTeste2.setVisible(true);
 				panelTeste.setVisible(false);
-				panelTeste1.setVisible(false);
 				panelTeste3.setVisible(false);
-				panelTeste4.setVisible(false);
+			
 
 			}
 		});
@@ -262,7 +261,6 @@ public class MenuFuncionario extends JFrame {
 		btnlistaCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnlistaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelTeste4.setVisible(true);
 				panelTeste.setVisible(false);
 				panelTeste1.setVisible(false);
 				panelTeste2.setVisible(false);

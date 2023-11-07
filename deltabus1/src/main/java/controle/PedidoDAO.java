@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import modelo.Cliente;
 import modelo.Endereco;
+import modelo.FormaPagamento;
 import modelo.Pedido;
 import modelo.Veiculo;
 
@@ -43,7 +44,8 @@ public class PedidoDAO implements InterfacePedido{
 					 p.setDataCompra(rs.getDate("dataCompra").toLocalDate());
 					 p.setQuantidade(rs.getInt("quantidade"));
 					 p.setValorPago(rs.getDouble("valorPago"));
-					 p.setTipoPagamento(rs.getString("tipoPagamento"));
+					 String tipo = rs.getString("tipoPagamento");
+					 p.setTipoPagamento(FormaPagamento.getFormaPagamento(tipo));
 					 p.setCnpj(rs.getString("cnpj"));
 					 p.setRenavam(rs.getString("renavam"));
 					 p.setNomeCliente(rs.getString("nomeCliente"));
@@ -78,7 +80,7 @@ public class PedidoDAO implements InterfacePedido{
 			ps.setInt(1, pedido.getId_pedido());
 			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
 			ps.setDouble(3, pedido.getValorPago());
-			ps.setString(4, pedido.getTipoPagamento());
+			ps.setString(4, pedido.getTipoPagamento().getDescricao());
 			ps.setString(5, pedido.getRenavam());
 			ps.setString(6, pedido.getCnpj());
 			ps.setString(7, pedido.getNomeCliente());
@@ -128,7 +130,7 @@ public class PedidoDAO implements InterfacePedido{
 
 			p.setDouble(1, pedido.getValorPago());
 			p.setDate(2, java.sql.Date.valueOf(pedido.getDataCompra()));
-			p.setString(3, pedido.getTipoPagamento());
+			p.setString(3, pedido.getTipoPagamento().getDescricao());
 			p.setInt(4,pedido.getQuantidade());
 			p.setString(5,pedido.getNomeCliente());
 			p.setString(6, pedido.getRenavam());
@@ -157,7 +159,7 @@ public class PedidoDAO implements InterfacePedido{
 				PreparedStatement stm = c.prepareStatement(query);
 				stm.setDate(1, java.sql.Date.valueOf(pedido.getDataCompra()));
 				stm.setDouble(2, pedido.getValorPago());
-				stm.setString(3, pedido.getTipoPagamento());
+				stm.setString(3, pedido.getTipoPagamento().getDescricao());
 				stm.setString(4, pedido.getRenavam());
 				stm.setString(5, pedido.getCnpj());
 				stm.setString(6, pedido.getNomeCliente());

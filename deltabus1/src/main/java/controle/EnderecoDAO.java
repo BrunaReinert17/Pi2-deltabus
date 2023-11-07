@@ -4,15 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Endereco;
 
 public class EnderecoDAO implements InterfaceEndereco {
 	
+	
 	private Conexao con;
 	
 	@Override
-	public Endereco consultandoEndereco(Endereco endereco) {
+	public Endereco listandoEndereco(Endereco endereco) {
 		
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
@@ -43,7 +45,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			
 		} finally {
 			con.fecharConexao();
 		}
@@ -94,8 +96,9 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setFloat(1, endereco.getCep());
-			ps.executeUpdate();
+			ps.setInt(1, endereco.getCep());
+			ps.executeQuery();
+			return true;
 
 
 		} catch (Exception e) {
@@ -107,23 +110,24 @@ public class EnderecoDAO implements InterfaceEndereco {
 		return false;
 	}
 
+	@Override
 	public boolean alterarEndereco(Endereco endereco) {
 
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "UPDATE Endereco\r\n   SET" + "cidade = ?\r\n" + "bairro = ?" + "rua = ?" + " estado = ?"
-				+ "Uf = ? ,  WHERE cep = ?";
+		String query = "UPDATE Endereco" + "SET bairro = 'Progresso', rua = 'Zimerman', Uf = 'RS'\r\n" + "WHERE cep = 888888896;";
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setString(1, endereco.getCidade());
-			ps.setString(2, endereco.getBairro());
-			ps.setString(3, endereco.getRua());
+			ps.setString(0, endereco.getCidade());
+			ps.setString(1, endereco.getBairro());
+			ps.setString(2, endereco.getRua());
+			ps.setString(3, endereco.getUf());
+			ps.setLong(4, endereco.getCep());
 			
-			ps.setString(5, endereco.getUf());
-			ps.setLong(6, endereco.getCep());
 
 			ps.executeUpdate();
+			return true;
 
 			
 
@@ -135,7 +139,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 		return false;
 	}
+
+
 	
-
-
 }

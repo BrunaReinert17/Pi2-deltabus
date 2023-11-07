@@ -11,7 +11,7 @@ public class Pedido extends Veiculo {
 	private String cnpj;
 	private LocalDate dataCompra;
 	private double valorPago;
-	private String tipoPagamento;
+	private FormaPagamento tipoPagamento;
 	private String renavam;
 	private String nomeCliente;
 	
@@ -20,7 +20,7 @@ public class Pedido extends Veiculo {
 		super();
 	}
 	
-	public Pedido(int id_pedidos,int quantidade, String cnpj,LocalDate dataCompra, Double valorPago, String tipoPagamento, String renavam, String nomeCliente) {
+	public Pedido(int id_pedidos,int quantidade, String cnpj,LocalDate dataCompra, Double valorPago, FormaPagamento tipoPagamento, String renavam, String nomeCliente) {
 		super();
        
 		this.id_pedidos = id_pedidos;
@@ -73,11 +73,11 @@ public class Pedido extends Veiculo {
 		this.valorPago = valorPago;
 	}
 
-	public String getTipoPagamento() {
+	public FormaPagamento getTipoPagamento() {
 		return tipoPagamento;
 	}
 
-	public void setTipoPagamento(String tipoPagamento) {
+	public void setTipoPagamento(FormaPagamento tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
 	}
 
