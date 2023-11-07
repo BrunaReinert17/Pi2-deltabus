@@ -108,29 +108,18 @@ public class MenuFuncionario extends JFrame {
 		
 		JLabel lblNewLabel_9 = new JLabel("");
 		lblNewLabel_9.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone cadastro.png")));
-		lblNewLabel_9.setBounds(81, 650, 50, 54);
+		lblNewLabel_9.setBounds(79, 520, 50, 54);
 		panel.add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone cadastro.png")));
-		lblNewLabel_4.setBounds(81, 724, 50, 43);
+		lblNewLabel_4.setBounds(79, 594, 50, 43);
 		panel.add(lblNewLabel_4);
-
-		JLabel lblNewLabel_10 = new JLabel("");
-		lblNewLabel_10.setBounds(45, 574, 86, 54);
-		panel.add(lblNewLabel_10);
-		lblNewLabel_10.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
 
 		JLabel lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBounds(92, 337, 134, 43);
 		panel.add(lblNewLabel_7);
 		lblNewLabel_7.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/IconeHome.png")));
-
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_5.setBounds(45, 520, 145, 33);
-		panel.add(lblNewLabel_5);
-		lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone-5.png")));
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(-395, 421, 523, 73);
@@ -190,7 +179,7 @@ public class MenuFuncionario extends JFrame {
 		rndbtnCadastrarVeiculos.setForeground(Color.WHITE);
 		rndbtnCadastrarVeiculos.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnCadastrarVeiculos.setBackground(new Color(0, 128, 128));
-		rndbtnCadastrarVeiculos.setBounds(92, 650, 199, 43);
+		rndbtnCadastrarVeiculos.setBounds(90, 520, 199, 43);
 		panel.add(rndbtnCadastrarVeiculos);
 
 		JButton btnLogout = new RoundButton("Logout");
@@ -227,23 +216,6 @@ public class MenuFuncionario extends JFrame {
 		btnHome.setBackground(Color.WHITE);
 		btnHome.setBounds(162, 337, 64, 43);
 		panel.add(btnHome);
-
-		RoundButton btnlistaVeiculo = new RoundButton("Listagem de Veiculos");
-		btnlistaVeiculo.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnlistaVeiculo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//listarveiculos.atualizarTabela();
-				panelTeste.setVisible(false);
-				panelTeste3.setVisible(false);
-				panelTeste2.setVisible(false);
-				
-			}
-		});
-		btnlistaVeiculo.setBackground(new Color(0, 128, 128));
-		btnlistaVeiculo.setForeground(new Color(255, 255, 255));
-		btnlistaVeiculo.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnlistaVeiculo.setBounds(92, 584, 199, 43);
-		panel.add(btnlistaVeiculo);
 		
 		RoundButton btnCadastroDeVendas = new RoundButton("Cadastro de Vendas");
 		btnCadastroDeVendas.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -259,25 +231,8 @@ public class MenuFuncionario extends JFrame {
 		btnCadastroDeVendas.setForeground(new Color(255, 255, 255));
 		btnCadastroDeVendas.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastroDeVendas.setBackground(new Color(0, 128, 128));
-		btnCadastroDeVendas.setBounds(92, 715, 199, 43);
+		btnCadastroDeVendas.setBounds(90, 585, 199, 43);
 		panel.add(btnCadastroDeVendas);
-		
-		RoundButton btnlistaCliente = new RoundButton("Listagem de Cliente");
-		btnlistaCliente.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnlistaCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelTeste.setVisible(false);
-				panelTeste1.setVisible(false);
-				panelTeste2.setVisible(false);
-				panelTeste3.setVisible(false);
-			}
-		});
-		btnlistaCliente.setText("Listagem de Clientes");
-		btnlistaCliente.setForeground(Color.WHITE);
-		btnlistaCliente.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnlistaCliente.setBackground(new Color(0, 128, 128));
-		btnlistaCliente.setBounds(92, 520, 199, 43);
-		panel.add(btnlistaCliente);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/deltabus.png")));
