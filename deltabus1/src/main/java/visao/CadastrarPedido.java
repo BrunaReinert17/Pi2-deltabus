@@ -569,7 +569,7 @@ public class CadastrarPedido extends JPanel {
 		if (quantidade == null || quantidade.trim() == "" || quantidade.isEmpty()) {
 			verificarCampo += "Quantidade\n";
 		} else {
-			pedido.setRenavam(renavam);
+			pedido.setQuantidade(Integer.parseInt(quantidade));
 		}
 		 
 		if (datacompra == null || datacompra.trim() == "" || datacompra.isEmpty()) {
