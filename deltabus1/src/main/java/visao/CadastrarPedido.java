@@ -256,7 +256,7 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Pedido p = new Pedido();
+				Pedido p = verificarDados();
           	
 
 				boolean pedidoRetornoCadastro = false;
@@ -414,18 +414,24 @@ public class CadastrarPedido extends JPanel {
 			
 				
 				p.setId_pedido(pedidoSelecionado.getId_pedido());
-				p.setCnpj(pedidoSelecionado.getCnpj());
-            	p.setNomeCliente(pedidoSelecionado.getNomeCliente());
-            	p.setRenavam(pedidoSelecionado.getRenavam());
-                p.setTipoPagamento(pedidoSelecionado.getTipoPagamento());
-                p.setValorPago(pedidoSelecionado.getValorPago());
-                p.setQuantidade(pedidoSelecionado.getQuantidade());
-                p.setDataCompra(pedidoSelecionado.getDataCompra());
-
-                 /* if (p != null) {
+				
+                  if (p != null) {
                 	
-                	
-                    boolean resultado = PedidoDAO.inserirPedido1(p);
+               
+      				/*
+      				 * salvar alteracao no banco
+      				 * **/
+      				PedidoDAO pedidoDAO = new PedidoDAO();
+                      boolean resultado = pedidoDAO.alterarPedido(p);
+      				/*
+      				 * Atualizar tabela
+      				 * **/
+      				atualizarTabela();
+      				/*
+      				 * Ocular salvar e motrar cadastrar
+      				 * **/
+      				btnSalvar.setVisible(false);
+      				btnCadastrar_1.setVisible(true);
                     
                       if (resultado == true) {
            
@@ -438,24 +444,10 @@ public class CadastrarPedido extends JPanel {
                         erro1.setLocationRelativeTo(null);
                         erro1.setVisible(true);
                     }
-                } */
+                } 
                 
                 
                 
-				/*
-				 * salvar alteracao no banco
-				 * **/
-				PedidoDAO pedidoDAO = new PedidoDAO();
-                boolean resultado = pedidoDAO.alterarPedido(p);
-				/*
-				 * Atualizar tabela
-				 * **/
-				atualizarTabela();
-				/*
-				 * Ocular salvar e motrar cadastrar
-				 * **/
-				btnSalvar.setVisible(false);
-				btnCadastrar_1.setVisible(true);
 
 
 				
@@ -541,7 +533,8 @@ public class CadastrarPedido extends JPanel {
 		
 		
 		String nomeCliente = txtNomeCliente.getText();
-		double valorPago = Double.parseDouble(txtValorPago.getText().replace(".", ","));
+		System.out.println(txtValorPago.getText().replace(".", ","));
+		double valorPago = Double.parseDouble(txtValorPago.getText().replace(",", "."));
 		String cnpj = txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", ""); 
 		String renavam = txtRenavam.getText();
 		String quantidade = txtQtdes.getText();
