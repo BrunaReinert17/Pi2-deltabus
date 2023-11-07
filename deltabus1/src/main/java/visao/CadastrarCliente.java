@@ -233,22 +233,23 @@ public class CadastrarCliente extends JPanel {
 					}
 					System.out.println(ende);
 
-					boolean clienteRetornoCadastro = false;
+					boolean clienteRetornoCadastro;
 					System.out.println("ddddd1");
 					if (ende != false) {
 						System.out.println("ddddd12");
 						clienteRetornoCadastro = clienteDAO.inserirCliente(cliente.getCliente());
 						System.out.println(cliente.getCliente());
 						System.out.println("ddddd13");
-						if (clienteRetornoCadastro != false) {
+						if (clienteRetornoCadastro) {
 							System.out.println("ddddd14");
 							cliente = clienteDAO.selecionarCliente(cliente.getCliente());
 							System.out.println(cliente);
 							cliente.setCliente(cliente);
 							boolean resultado = clienteDAO.inserirCliente(cliente);
-
+							System.out.println(cliente);
+							
 							if (resultado = true) {
-								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
+								CadastroSucesso sucesso = new CadastroSucesso("Cliente Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								limparDados();

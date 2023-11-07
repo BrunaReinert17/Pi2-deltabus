@@ -134,7 +134,7 @@ VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468437, 21346560);
+VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,64646546468437, 21346560);
 
 
 -- INSERT Pedido --
