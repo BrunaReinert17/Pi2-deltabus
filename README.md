@@ -46,5 +46,4 @@ O software abrange dois tipos de usuários: o administrador e o funcionário, ca
 
 #  👨‍💻  Contribuintes
 
-<p align="left" >Docente 💗:  Andrey de Souza Inacio </p>
-<p align="left" >Discente 🎓🤘🏻: Maria Tereza, Bruna Reinert, Águida Ariane e Agatha Cristine Onofre.</p>
+<p align="left" >Discentes 🎓🤘🏻: Maria Tereza, Bruna Reinert, Águida Ariane e Agatha Cristine Onofre.</p>
