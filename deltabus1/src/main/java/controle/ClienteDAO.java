@@ -56,17 +56,11 @@ public class ClienteDAO implements InterfaceCliente {
 		try {
 			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, cpf, endereco_cep) values (?,?,?,?,?, ?);";
 			PreparedStatement stm = c.prepareStatement(query);
-			System.out.println(stm);
 			stm.setString(1, cliente.getNome());
-			System.out.println(stm);
 			stm.setString(2, cliente.getNumeroTelefone());
-			System.out.println(stm);
 			stm.setString(3, cliente.getEmail());
-			System.out.println(stm);
 			stm.setLong(4, cliente.getCnpj());
-			System.out.println(stm);
 			stm.setString(5, cliente.getCpf());
-			System.out.println(stm);
 			stm.setLong(6, cliente.getEndereco().getCep());
 			System.out.println(stm);
 
@@ -148,33 +142,5 @@ public class ClienteDAO implements InterfaceCliente {
 		return false;
 	}
 
-	public Cliente selecionarCliente(Cliente clienteModelo) {
-		Connection c = con.conectar();
-		try {
-			PreparedStatement ps = c.prepareStatement("SELECT * FROM clientes where cnpj = ?");
-			ps.setLong(1, clienteModelo.getCnpj());
 
-			ResultSet rs = ps.executeQuery();
-
-			if (rs.next()) {
-				String nome = rs.getString("nome");
-				String numeroTelefone = rs.getString("numeroTelefone");
-				String email = rs.getString("email");
-				Long cnpj = rs.getLong("cnpj");
-				String cpf = rs.getString("cpf");
-				Long enderecoCep = rs.getLong("endereco_cep");
-
-				Endereco endereco = new Endereco();
-				endereco.setCep(enderecoCep);
-
-				Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
-				return cli;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
-		}
-		return clienteModelo;
-	}
 }

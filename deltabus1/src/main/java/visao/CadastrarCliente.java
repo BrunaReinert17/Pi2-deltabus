@@ -231,24 +231,21 @@ public class CadastrarCliente extends JPanel {
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(cliente.getEndereco());
 					}
-					System.out.println(ende);
-
 					boolean clienteRetornoCadastro;
-					System.out.println("ddddd1");
 					if (ende != false) {
-						System.out.println("ddddd12");
-						clienteRetornoCadastro = clienteDAO.inserirCliente(cliente.getCliente());
-						System.out.println(cliente.getCliente());
-						System.out.println("ddddd13");
-						if (clienteRetornoCadastro) {
-							System.out.println("ddddd14");
-							cliente = clienteDAO.selecionarCliente(cliente.getCliente());
-							System.out.println(cliente);
-							cliente.setCliente(cliente);
-							boolean resultado = clienteDAO.inserirCliente(cliente);
-							System.out.println(cliente);
+							boolean resultado=false;
+							try {
+								resultado = clienteDAO.inserirCliente(cliente);
+							} catch (Exception e2) {
+								CadastroErro erro = new CadastroErro("Erro ao cadastrar, verifique os dados novamente!");
+								erro.setLocationRelativeTo(null);
+								erro.setVisible(true);
+								return;
 							
-							if (resultado = true) {
+							}
+							
+							
+							if (resultado == true) {
 								CadastroSucesso sucesso = new CadastroSucesso("Cliente Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
@@ -260,9 +257,9 @@ public class CadastrarCliente extends JPanel {
 								erro1.setLocationRelativeTo(null);
 								erro1.setVisible(true);
 							}
-						}
+						
 					} else {
-						CadastroErro1 erro1 = new CadastroErro1("Tente novamente!");
+						CadastroErro1 erro1 = new CadastroErro1("Erro ao cadastrar endereço!");
 						erro1.setLocationRelativeTo(null);
 						erro1.setVisible(true);
 					}
@@ -321,7 +318,7 @@ public class CadastrarCliente extends JPanel {
 
 		MaskFormatter mascaraCnpj = null;
 		try {
-			mascaraCnpj = new MaskFormatter("##.###.###/2001-##");
+			mascaraCnpj = new MaskFormatter("##.###.###/####-##");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
@@ -615,7 +612,6 @@ public class CadastrarCliente extends JPanel {
 
 		if (verificarCampo.trim() == "") {
 			cliente.setEndereco(endereco);
-			cliente.setCliente(cliente);
 			return cliente;
 		}
 

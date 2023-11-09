@@ -8,7 +8,6 @@ public class Cliente {
 	private String Cpf;
 	private Long cnpj;
 	private Endereco endereco;
-	private Cliente cliente;
 	
 	public Cliente() {
 		super();
@@ -72,13 +71,7 @@ public class Cliente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public Cliente getCliente() {
-		return cliente;
-	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 	
 	@Override
 	public String toString() {
