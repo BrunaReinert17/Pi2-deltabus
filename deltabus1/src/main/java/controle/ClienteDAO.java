@@ -35,12 +35,17 @@ public class ClienteDAO {
 				Cliente cl = new Cliente();
 				Endereco endereco = new Endereco();
 				cl.setNome(rs.getString("nome"));
-				cl.setNumeroTelefone(rs.getInt("numeroTelefone"));
+				cl.setNumeroTelefone(rs.getString("numeroTelefone"));
 				cl.setEmail(rs.getString("email"));
 				cl.setCnpj(rs.getLong("Cnpj"));
-				cl.setCpf(rs.getDouble("Cpf"));
+				cl.setCpf(rs.getString("Cpf"));
+				
+				
+				EnderecoDAO endeDao = new EnderecoDAO();
+				
 				endereco.setCep(rs.getInt("endereco_cep"));
-			
+			    endereco = endeDao.listandoEndereco(endereco);
+			    cl.setEndereco(endereco);
 				cliente.add(cl);
 			}
 		} catch (Exception e) {
@@ -68,9 +73,12 @@ public class ClienteDAO {
                 Long cep = rs.getLong("endereco_cep");
                 
                 Endereco endereco = new  Endereco(cep);
+                EnderecoDAO endeDao = new EnderecoDAO();
+                endereco = endeDao.listandoEndereco(endereco);
+                
 
-                //Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
-                //return cli;
+                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
+                return cli;
             }
         } catch (Exception e) {
             e.printStackTrace();

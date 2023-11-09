@@ -201,5 +201,11 @@ public class Veiculo {
 		this.situacao = situacao;
 
 	}
+	
+	
+	@Override
+	public String toString() {
+		return this.modelo +" "+ this.renavam;
+	}
 
 }

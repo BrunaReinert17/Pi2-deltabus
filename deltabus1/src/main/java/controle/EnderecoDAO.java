@@ -96,7 +96,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setInt(1, endereco.getCep());
+			ps.setLong(1, endereco.getCep());
 			ps.executeQuery();
 			return true;
 

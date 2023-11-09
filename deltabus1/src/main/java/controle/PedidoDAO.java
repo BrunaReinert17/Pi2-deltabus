@@ -46,9 +46,25 @@ public class PedidoDAO implements InterfacePedido{
 					 p.setValorPago(rs.getDouble("valorPago"));
 					 String tipo = rs.getString("tipoPagamento");
 					 p.setTipoPagamento(FormaPagamento.getFormaPagamento(tipo));
-					 p.setCnpj(rs.getString("cnpj"));
-					 p.setRenavam(rs.getString("renavam"));
-					 p.setNomeCliente(rs.getString("nomeCliente"));
+					 
+					 Long cnpj = rs.getLong("cnpj");
+					 ClienteDAO clienteDao = new ClienteDAO();
+					 Cliente c1 = new Cliente();
+					 c1.setCnpj(cnpj);
+					 c1 =  clienteDao.selecionarCliente(c1);
+					 p.setCliente(c1);
+					 System.out.println(cnpj);
+					 System.out.println(c1);
+					 
+					 Long id = rs.getLong("idVeiculo");
+					 Veiculo v = new Veiculo();
+					 v.setIdVeiculo(id);
+					 VeiculoDAO vei = new VeiculoDAO();
+					 v = vei.selecionarVeiculo(v);
+					 p.setVeiculo(v);
+					 System.out.println(id);
+					 System.out.println(v);
+					 
 					 listPedido.add(p);
 					 
 				}
@@ -72,19 +88,16 @@ public class PedidoDAO implements InterfacePedido{
 
 
 		String query = "INSERT INTO Pedido " 
-		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Cnpj, nomeCliente, quantidade) " 
+		+ "(dataCompra, valorPago,tipoPagamento,Cnpj,  quantidade) " 
 		+ "VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setInt(1, pedido.getId_pedido());
-			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
-			ps.setDouble(3, pedido.getValorPago());
-			ps.setString(4, pedido.getTipoPagamento().getDescricao());
-			ps.setString(5, pedido.getRenavam());
-			ps.setString(6, pedido.getCnpj());
-			ps.setString(7, pedido.getNomeCliente());
-			ps.setInt(8, pedido.getQuantidade());
+			ps.setDate(1,java.sql.Date.valueOf (pedido.getDataCompra()));
+			ps.setDouble(2, pedido.getValorPago());
+			ps.setString(3, pedido.getTipoPagamento().getDescricao());
+			ps.setLong(4, pedido.getCliente().getCnpj());
+			ps.setInt(5, pedido.getQuantidade());
 
 			ps.executeUpdate();
 			return true;
@@ -102,11 +115,11 @@ public class PedidoDAO implements InterfacePedido{
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "DELETE FROM Pedido\r\n  WHERE Cliente = ?";
+		String query = "DELETE FROM Pedido\r\n  WHERE Cnpj = ?";
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setString(1, pedido.getCnpj());
+			ps.setLong(1, pedido.getCliente().getCnpj());
 			ps.executeUpdate();
 			
 			
@@ -125,7 +138,7 @@ public class PedidoDAO implements InterfacePedido{
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "UPDATE Pedido   SET ValorPago = ?, dataCompra = ?, tipoPagamento = ?, quantidade = ?, nomeCliente = ?, Renavam = ?, cnpj = ?   WHERE id_pedidos = ?";
+		String query = "UPDATE Pedido   SET ValorPago = ?, dataCompra = ?, tipoPagamento = ?, quantidade = ?,  cnpj = ?   WHERE id_pedidos = ?";
 		try {
 			PreparedStatement p = c.prepareStatement(query);
 
@@ -133,10 +146,8 @@ public class PedidoDAO implements InterfacePedido{
 			p.setDate(2, java.sql.Date.valueOf(pedido.getDataCompra()));
 			p.setString(3, pedido.getTipoPagamento().getDescricao());
 			p.setInt(4,pedido.getQuantidade());
-			p.setString(5,pedido.getNomeCliente());
-			p.setString(6, pedido.getRenavam());
-			p.setString(7, pedido.getCnpj());
-			p.setInt(8, pedido.getId_pedido());
+			p.setLong(5, pedido.getCliente().getCnpj());
+			p.setInt(6, pedido.getId_pedido());
 			
 			System.out.print(p);
 			p.executeUpdate();
@@ -156,15 +167,13 @@ public class PedidoDAO implements InterfacePedido{
 
 
 			try {
-				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, renavam, Cnpj, nomeCliente, quantidade) VALUES (?,?, ?, ?, ?,?,?)";
+				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Cnpj, quantidade) VALUES (?,?, ?,?,?)";
 				PreparedStatement stm = c.prepareStatement(query);
 				stm.setDate(1, java.sql.Date.valueOf(pedido.getDataCompra()));
 				stm.setDouble(2, pedido.getValorPago());
 				stm.setString(3, pedido.getTipoPagamento().getDescricao());
-				stm.setString(4, pedido.getRenavam());
-				stm.setString(5, pedido.getCnpj());
-				stm.setString(6, pedido.getNomeCliente());
-				stm.setInt(7, pedido.getQuantidade());
+				stm.setLong(4, pedido.getCliente().getCnpj());
+				stm.setInt(5, pedido.getQuantidade());
 
 				valida = stm.executeUpdate();
 				
@@ -179,11 +188,11 @@ public class PedidoDAO implements InterfacePedido{
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "DELETE FROM Pedido\r\n  WHERE Cliente = ?";
+		String query = "DELETE FROM Pedido  WHERE Cnpj = ?";
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setString(1, pedido.getCliente());
+			ps.setLong(1, pedido.getCliente().getCnpj());
 			int n =ps.executeUpdate();
 			return (n==1);  /// retorna true se excluir algo
 			

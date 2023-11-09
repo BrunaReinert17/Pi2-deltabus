@@ -161,5 +161,44 @@ public class VeiculoDAO {
 
 		return false;
 	}
+	
+	
+
+	public Veiculo selecionarVeiculo (Veiculo veiculoModelo) {
+        Connection c = con.conectar();
+        try {
+            PreparedStatement ps = c.prepareStatement("SELECT * FROM veiculo where idVeiculo = ?");
+            ps.setLong(1, veiculoModelo.getIdVeiculo());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+            	
+            	Veiculo v = new Veiculo();
+            	v.setIdVeiculo(rs.getLong("idVeiculo"));
+            	v.setMarca(rs.getString("marca"));
+            	v.setModelo(rs.getString("modelo"));
+            	v.setPreco(rs.getDouble("preco"));
+            	v.setAno(rs.getInt("ano"));
+            	v.setAcessorios(rs.getString("acessorios"));
+            	v.setLotacao(rs.getInt("lotacao"));
+            	v.setCor(rs.getString("cor"));
+            	v.setTipoFrota(rs.getString("tipoFrota"));
+            	v.setTipoCombustivel(rs.getString("tipoCombustivel"));
+            	v.setPlaca(rs.getString("placa"));
+            	v.setRenavam(rs.getString("renavam"));
+            	v.setSituacao(rs.getString("situacao"));
+            	
+              return v;
+
+               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+        return null;
+    }
 
 }

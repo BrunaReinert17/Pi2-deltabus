@@ -3,30 +3,14 @@ package modelo;
 public class Cliente {
 
 	private String nome;
-	private Integer numeroTelefone;
-	private Integer Cep;
-
+	private String numeroTelefone;
 	private String email;
-	private Double Cpf;
+	private String Cpf;
 	private Long cnpj;
 	private Endereco endereco;
 	
 	
-	public Cliente(String nome,Integer numeroTelefone,String email,Double Cpf,Integer cep, Cliente cliente, Double cnpj) {
-		super();
-		this.nome = nome;
-		this.numeroTelefone = numeroTelefone;
-		this.email = email;
-		this.cliente = cliente;
-	}
-
-	private Cliente cliente;
-	
-	public Cliente() {
-		super();
-	}
-
-	public Cliente(String nome, Integer numeroTelefone, String email, Double Cpf, Long cnpj,Endereco endereco) {
+	public Cliente(String nome,String numeroTelefone,String email,String Cpf, Long cnpj, Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
@@ -34,14 +18,12 @@ public class Cliente {
 		this.Cpf = Cpf;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
-
-	}
-	public Integer getCep() {
-		return Cep;
 	}
 
-	public void setCep(Integer cep) {
-		Cep = cep;
+	private Cliente cliente;
+	
+	public Cliente() {
+		super();
 	}
 
 	
@@ -53,11 +35,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public Integer getNumeroTelefone() {
+	public String getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(Integer numeroTelefone) {
+	public void setNumeroTelefone(String numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 
@@ -69,11 +51,11 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public Double getCpf() {
+	public String getCpf() {
 		return Cpf;
 	}
 
-	public void setCpf(Double cpf) {
+	public void setCpf(String cpf) {
 		Cpf = cpf;
 	}
 
@@ -92,13 +74,7 @@ public class Cliente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public Cliente getCliente() {
-		return cliente;
-	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 	
 	@Override
 	public String toString() {

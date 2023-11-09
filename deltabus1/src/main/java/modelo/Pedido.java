@@ -8,29 +8,27 @@ public class Pedido extends Veiculo {
 
 	private int id_pedidos;
 	private int quantidade;
-	private String cnpj;
 	private LocalDate dataCompra;
 	private double valorPago;
 	private FormaPagamento tipoPagamento;
-	private String renavam;
-	private String nomeCliente;
+	private Veiculo veiculo;
+	private Cliente cliente;
 	
 
 	public Pedido() {
 		super();
 	}
 	
-	public Pedido(int id_pedidos,int quantidade, String cnpj,LocalDate dataCompra, Double valorPago, FormaPagamento tipoPagamento, String renavam, String nomeCliente) {
+	public Pedido(int id_pedidos,int quantidade, LocalDate dataCompra, Double valorPago, FormaPagamento tipoPagamento, Veiculo veiculo, Cliente cliente) {
 		super();
        
 		this.id_pedidos = id_pedidos;
 		this.quantidade = quantidade;
-		this.cnpj = cnpj;
 		this.dataCompra = dataCompra;
 		this.valorPago = valorPago;
 		this.tipoPagamento = tipoPagamento;		
-		this.renavam = renavam;		
-		this.nomeCliente = nomeCliente;
+		this.veiculo = veiculo;		
+		this.cliente = cliente;
 		}
 
 	public int getId_pedido() {
@@ -49,13 +47,6 @@ public class Pedido extends Veiculo {
 		this.quantidade = quantidade;
 	}
 
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
 
 	public LocalDate getDataCompra() {
 		return dataCompra;
@@ -81,20 +72,20 @@ public class Pedido extends Veiculo {
 		this.tipoPagamento = tipoPagamento;
 	}
 
-	public String getRenavam() {
-		return renavam;
+	public Veiculo getVeiculo() {
+		return veiculo;
 	}
 
-	public void setRenavam(String renavam) {
-		this.renavam = renavam;
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
 
-	public String getNomeCliente() {
-		return nomeCliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setNomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 }
 	

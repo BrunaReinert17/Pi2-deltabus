@@ -22,6 +22,7 @@ import javax.swing.text.MaskFormatter;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
+import controle.ClienteDAO;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.PedidoDAO;
@@ -38,6 +39,7 @@ import mensagens.Deletar2;
 import mensagens.InterfaceMensagemConfirmacao;
 import mensagens.ErroAlterar;
 import mensagens.LoginErro;
+import modelo.Cliente;
 import modelo.Endereco;
 import modelo.FormaPagamento;
 import modelo.Funcionario;
@@ -60,6 +62,8 @@ import java.awt.Choice;
 import java.awt.List;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class CadastrarPedido extends JPanel {
 	private JTextField txtNomeCliente;
@@ -77,13 +81,13 @@ public class CadastrarPedido extends JPanel {
 	private JTextField textField;
 	private JLabel lblLimpar;
 	private JTable table1;
-	private JTextField txtRenavam;
 	private JTextField txtDataCompra;
 	private JTextField txtQtdes;
 	private JComboBox cbPagamento;
 	private JTextField txtValorPago;
 	private ArrayList<Pedido> listPedido;
 	private Pedido pedidoSelecionado;
+	private JComboBox<Veiculo> cbVeiculo;
 
 	public CadastrarPedido() {
 		setLocale("Login");
@@ -150,7 +154,7 @@ public class CadastrarPedido extends JPanel {
 		
 		
 		JLabel lblNome = new JLabel("Cliente:");
-		lblNome.setBounds(652, 142, 67, 14);
+		lblNome.setBounds(483, 111, 67, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
 		add(lblNome);
 		JLabel lblCpf = new JLabel("CPF:");
@@ -160,7 +164,8 @@ public class CadastrarPedido extends JPanel {
 		add(lblNome);
 	
 		txtNomeCliente = new JFormattedTextField();
-		txtNomeCliente.setBounds(652, 164, 249, 30);
+		txtNomeCliente.setEditable(false);
+		txtNomeCliente.setBounds(483, 136, 405, 30);
 		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtNomeCliente.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtNomeCliente.setColumns(10);
@@ -168,7 +173,7 @@ public class CadastrarPedido extends JPanel {
 		
 
 		JLabel lblCnpj = new JLabel("CNPJ:");
-		lblCnpj.setBounds(291, 142, 98, 14);
+		lblCnpj.setBounds(278, 122, 98, 14);
 		lblCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCnpj);
 		/**********/
@@ -179,6 +184,26 @@ public class CadastrarPedido extends JPanel {
 			e1.printStackTrace();
 		}
 		txtCnpj = new JFormattedTextField(mascaraCnpj);
+		txtCnpj.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				ClienteDAO  clie = new ClienteDAO();
+				String cnpj = txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", "").trim(); 
+				Cliente clienteSelecionado = new Cliente(); 
+			    clienteSelecionado.setCnpj(Long.parseLong(cnpj));
+				clienteSelecionado = clie.selecionarCliente(clienteSelecionado);
+				if(clienteSelecionado == null) {
+					 CadastroErro1 erro1 = new CadastroErro1("Cnpj inválido, tente novamente!");
+                     erro1.setLocationRelativeTo(null);
+                     erro1.setVisible(true);
+                     txtCnpj.transferFocus();
+                     txtCnpj.setText("");
+				} else {
+					txtNomeCliente.setText(clienteSelecionado.getNome());
+				}
+				
+			}
+		});
 		txtCnpj.setBounds(278, 137, 182, 30);
 		txtCnpj.setText("");
 		txtCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -199,7 +224,7 @@ public class CadastrarPedido extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				txtNomeCliente.setText("");
 				txtCnpj.setText("");
-				txtRenavam.setText("");
+				cbVeiculo.setSelectedItem(null);
 				txtValorPago.setText("");
 				txtQtdes.setText("");
 				txtDataCompra.setText("");
@@ -214,9 +239,9 @@ public class CadastrarPedido extends JPanel {
 		lblQtde.setBounds(834, 220, 155, 14);
 		add(lblQtde);
 		
-		JLabel lblRenavam = new JLabel("Renavam:");
+		JLabel lblRenavam = new JLabel("Veículo:");
 		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblRenavam.setBounds(291, 220, 155, 14);
+		lblRenavam.setBounds(275, 209, 155, 14);
 		add(lblRenavam);
 
 		/**********/
@@ -226,12 +251,6 @@ public class CadastrarPedido extends JPanel {
 		} catch (ParseException e2) {
 		    e2.printStackTrace();
 		}
-		txtRenavam = new JFormattedTextField(mascaraRenavam);
-		txtRenavam.setBounds(278, 228, 132, 30);
-		txtRenavam.setText("");
-		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtRenavam);
-		txtRenavam.setColumns(10);
 		/**********/
 		
 		JLabel lblValor = new JLabel("Valor R$:");
@@ -248,7 +267,7 @@ public class CadastrarPedido extends JPanel {
 		rndbtnBuscar.setForeground(Color.WHITE);
 		rndbtnBuscar.setFont(new Font("Dialog", Font.BOLD, 14));
 		rndbtnBuscar.setBackground(new Color(0, 128, 128));
-		rndbtnBuscar.setBounds(529, 162, 75, 33);
+		rndbtnBuscar.setBounds(579, 79, 75, 33);
 		add(rndbtnBuscar);
 		
 		JPanel panel_4 = new JPanel();
@@ -443,8 +462,6 @@ public class CadastrarPedido extends JPanel {
 		btnPesquisar_1.setBackground(new Color(0, 128, 128));
 		btnPesquisar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cpfpesquisa = txtRenavam.getText();
-				atualizarTabela();
 			}
 		});
 		btnPesquisar_1.setBounds(291, 371, 115, 23);
@@ -527,9 +544,9 @@ public class CadastrarPedido extends JPanel {
 				 * 
 				 * */
 				System.out.println(pedidoSelecionado.getDataCompra().toString());
-				txtCnpj.setText(pedidoSelecionado.getCnpj());
-				txtNomeCliente.setText(pedidoSelecionado.getNomeCliente());
-				txtRenavam.setText(pedidoSelecionado.getRenavam());
+				txtCnpj.setText(String.valueOf(pedidoSelecionado.getCliente().getCnpj()));
+				txtNomeCliente.setText(pedidoSelecionado.getCliente().getNome());
+				cbVeiculo.setSelectedItem(pedidoSelecionado.getVeiculo());
 				cbPagamento.setSelectedItem(pedidoSelecionado.getTipoPagamento());
 				txtValorPago.setText(Double.toString(pedidoSelecionado.getValorPago()).replace(".", ","));
 				txtQtdes.setText(Integer.toString(pedidoSelecionado.getQuantidade()));
@@ -554,6 +571,16 @@ public class CadastrarPedido extends JPanel {
 		btnAlterarP.setBackground(new Color(0, 128, 128));
 		btnAlterarP.setBounds(705, 661, 116, 33);
 		add(btnAlterarP);
+		
+		cbVeiculo = new JComboBox<Veiculo>();
+		cbVeiculo.setBounds(278, 234, 145, 33);
+		VeiculoDAO veiDao= new VeiculoDAO();
+		ArrayList<Veiculo> listasVeiculos = veiDao.listar();
+		for (Veiculo veiculo : listasVeiculos) {
+			cbVeiculo.addItem(veiculo);
+		}
+		
+		add(cbVeiculo);
 		
 		atualizarTabela();
 		
@@ -584,17 +611,13 @@ public class CadastrarPedido extends JPanel {
 		System.out.println(txtValorPago.getText().replace(".", ","));
 		double valorPago = Double.parseDouble(txtValorPago.getText().replace(",", "."));
 		String cnpj = txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", ""); 
-		String renavam = txtRenavam.getText();
+		Veiculo v = (Veiculo) cbVeiculo.getSelectedItem();
+		pedido.setVeiculo(v);
 		String quantidade = txtQtdes.getText();
 		String datacompra = txtDataCompra.getText();
 		FormaPagamento formapagamento =  (FormaPagamento) cbPagamento.getSelectedItem();
 		
 		
-		if (nomeCliente == null || nomeCliente.trim() == "" || nomeCliente.isEmpty()) {
-			verificarCampo += "Nome\n";
-		} else {
-			pedido.setNomeCliente(nomeCliente);
-		}
 		
 		if (valorPago == 0) {
 			verificarCampo += "ValorPagar\n";
@@ -605,14 +628,15 @@ public class CadastrarPedido extends JPanel {
 		if (cnpj == null || cnpj.trim() == "" || cnpj.isEmpty() ) {
 			verificarCampo += "Cnpj\n";
 		} else {
-			pedido.setCnpj(String.valueOf(cnpj));
+			
+			Cliente c = new Cliente();
+			c.setCnpj(Long.parseLong(cnpj));
+			ClienteDAO cliDao = new ClienteDAO();
+			c = cliDao.selecionarCliente(c);
+			pedido.setCliente(c);
 		}
 		
-		if (renavam == null || renavam.trim() == "" || renavam.isEmpty()) {
-			verificarCampo += "Renavam\n";
-		} else {
-			pedido.setRenavam(renavam);
-		}
+	
 		
 		if (quantidade == null || quantidade.trim() == "" || quantidade.isEmpty()) {
 			verificarCampo += "Quantidade\n";
@@ -651,7 +675,7 @@ public void atualizarTabela() {
 	System.out.println(listPedido);
 	for (int i = 0; i < listPedido.size(); i++) {
 		Pedido pedido = listPedido.get(i);
-		tabela.addRow(new Object[] { pedido.getCnpj(), pedido.getNomeCliente(), pedido.getRenavam(),pedido.getTipoPagamento().getDescricao(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
+		tabela.addRow(new Object[] { pedido.getCliente().getCnpj(), pedido.getCliente().getNome(), pedido.getVeiculo().getRenavam(),pedido.getTipoPagamento().getDescricao(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
 
 	}
 	table1.setModel(tabela);
@@ -659,7 +683,7 @@ public void atualizarTabela() {
 	public void limparDados() {
 		txtNomeCliente.setText("");
 		txtCnpj.setText("");
-		txtRenavam.setText("");
+		cbVeiculo.setSelectedItem(null);
 		txtValorPago.setText("");
 		txtQtdes.setText("");
 		txtDataCompra.setText("");

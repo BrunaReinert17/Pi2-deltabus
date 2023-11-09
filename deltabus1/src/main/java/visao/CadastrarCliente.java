@@ -408,7 +408,7 @@ public class CadastrarCliente extends JPanel {
 		System.out.println(listClientes);
 		for (int i = 0; i < listClientes.size(); i++) {
 			Cliente cliente = listClientes.get(i);
-			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),cliente.getCpf(),cliente.getCnpj(),cliente.getCep()});
+			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),cliente.getCpf(),cliente.getCnpj(),cliente.getEndereco().getCep()});
 
 		}
 		table.setModel(tabela);
@@ -457,7 +457,7 @@ public class CadastrarCliente extends JPanel {
 		 if (numeroTelefone == null  || numeroTelefone.trim().isEmpty()) {
 			verificarCampo += "numeroTelefone\n";
 		} else {
-			cliente.setNumeroTelefone(Integer.valueOf(numeroTelefone));
+			cliente.setNumeroTelefone(numeroTelefone);
 
 		}
 
@@ -465,18 +465,20 @@ public class CadastrarCliente extends JPanel {
 			verificarCampo += "cpf\n";
 		} else {
 			
-			cliente.setCpf(Double.valueOf(cpf));
+			cliente.setCpf(cpf);
 		}
 
 		if (cep == null || cep.toString().trim().isEmpty()) {
 			verificarCampo += "cep\n";
 		} else {
-			cliente.setCep(Integer.valueOf(cep));
+			EnderecoDAO ende1 = new EnderecoDAO();
+			endereco.setCep(Long.parseLong(cep));
+			endereco = ende1.listandoEndereco(endereco);
+			cliente.setEndereco(endereco);
 
 		}
 
 		if (verificarCampo.trim() == "") {
-			cliente.setCliente(cliente);
 			return cliente;
 		}
 
