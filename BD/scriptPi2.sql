@@ -1,157 +1,215 @@
--- DROP DATABASES deltaBus IF EXISTS 
+DROP DATABASES deltaBus IF EXISTS 
+CREATE DATABASE  IF NOT EXISTS `deltabus2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `deltabus2`;
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+--
+-- Host: localhost    Database: deltabus2
+-- ------------------------------------------------------
+-- Server version	8.0.32
 
-CREATE SCHEMA IF NOT EXISTS `deltaBus2` ;
-USE deltabus2;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- -----------------------------------------------------
--- Table `deltaBus`.`Veiculo`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Veiculo` (
-  `idVeiculo` BIGINT(45) NOT NULL auto_increment,
-  `marca` VARCHAR(45) NOT NULL,
-  `modelo` VARCHAR(45) NOT NULL,
-  `preco` DOUBLE NOT NULL,
-  `ano` INT NOT NULL,
-  `acessorios` VARCHAR(45) NOT NULL,
-  `lotacao` INT NOT NULL,
-  `cor` VARCHAR(45) NOT NULL,
-  `tipoFrota` VARCHAR(45) NOT NULL,
-  `tipoCombustivel` VARCHAR(45) NOT NULL,
-   `placa` VARCHAR(45) NOT NULL,
-  `renavam` VARCHAR(45) NOT NULL,
-  `situacao` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idVeiculo`));
-ALTER TABLE Veiculo MODIFY COLUMN situacao VARCHAR(45) NOT NULL;
+--
+-- Table structure for table `clientes`
+--
 
--- -----------------------------------------------------
--- Table `deltaBus`.`endereco`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `endereco` (
-  `cep` BIGINT NOT NULL,
-  `cidade` VARCHAR(45) NOT NULL,
-  `bairro` VARCHAR(45) NOT NULL,
-  `rua` VARCHAR(45) NOT NULL,
-  `UF` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cep`));
-
--- -----------------------------------------------------
--- Table `deltaBus`.`Clientes`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Clientes` (
-  `Nome`  VARCHAR(255) NOT NULL,
-  `numeroTelefone` VARCHAR(14) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `cpf` VARCHAR(14) NOT NULL,
-  `cnpj` BIGINT NOT NULL,
-  `endereco_cep` BIGINT NOT NULL,
+DROP TABLE IF EXISTS `clientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clientes` (
+  `Nome` varchar(255) NOT NULL,
+  `numeroTelefone` varchar(14) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
+  `cnpj` bigint NOT NULL,
+  `endereco_cep` bigint NOT NULL,
   PRIMARY KEY (`cnpj`),
-    FOREIGN KEY (`endereco_cep`)
-    REFERENCES `endereco` (`cep`));
+  KEY `endereco_cep` (`endereco_cep`),
+  CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`endereco_cep`) REFERENCES `endereco` (`cep`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `clientes`
+--
 
--- -----------------------------------------------------
--- Table `deltaBus`.`Pedido`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Pedido` (
-  `id_pedidos` int not null auto_increment,
-  `dataCompra` DATE NOT NULL,
-   `quantidade` int not null,
-  `valorPago` DOUBLE NOT NULL,
-  `tipoPagamento` VARCHAR(45) NOT NULL,
-  `Cliente` DOUBLE NOT NULL,
-  `renavam` VARCHAR(45) NOT NULL,
-  `nomeCliente` VARCHAR(45) NOT NULL,
- PRIMARY KEY (`id_pedidos`));
- 
-  
--- -----------------------------------------------------
--- Table `deltaBus`.`Usuario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Usuario` (
-  `idUsuario` int NOT NULL auto_increment,
-  `senha` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `cargo` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idUsuario`));
+LOCK TABLES `clientes` WRITE;
+/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES ('bruna','5','brunar@gmail.com','1596857837',6666666666,21346560),('5255','           ','55555','55555555555',55555555555555,55555555);
+/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- ----------------------------------------------------
--- Table `deltaBus`.`funcionarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS funcionarios (
-  `cpf` DOUBLE NOT NULL,
-  `nome` VARCHAR(255) NOT NULL,
-  `dataNascimento` VARCHAR(45) NOT NULL,
-  `genero` VARCHAR(45) NOT NULL,
-  `numerotelefone` BIGINT NOT NULL,
-  `email` VARCHAR(35) NOT NULL,
+--
+-- Table structure for table `endereco`
+--
+
+DROP TABLE IF EXISTS `endereco`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `endereco` (
+  `cep` bigint NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `rua` varchar(45) NOT NULL,
+  `UF` varchar(45) NOT NULL,
+  PRIMARY KEY (`cep`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `endereco`
+--
+
+LOCK TABLES `endereco` WRITE;
+/*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
+INSERT INTO `endereco` VALUES (21346560,'Blumenau','Progresso','Rua Ernestine Ehrhardt','SC'),(55555555,'São José','5','55','SP');
+/*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `funcionarios`
+--
+
+DROP TABLE IF EXISTS `funcionarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `funcionarios` (
+  `cpf` double NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `dataNascimento` varchar(45) NOT NULL,
+  `genero` varchar(45) NOT NULL,
+  `numerotelefone` bigint NOT NULL,
+  `email` varchar(35) NOT NULL,
   `Usuario_idUsuario` int NOT NULL,
-  `endereco_cep` BIGINT NOT NULL,
+  `endereco_cep` bigint NOT NULL,
   PRIMARY KEY (`cpf`),
+  KEY `Usuario_idUsuario` (`Usuario_idUsuario`),
+  KEY `endereco_cep` (`endereco_cep`),
+  CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`),
+  CONSTRAINT `funcionarios_ibfk_2` FOREIGN KEY (`endereco_cep`) REFERENCES `endereco` (`cep`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-    FOREIGN KEY (`Usuario_idUsuario`)
-    REFERENCES `Usuario` (`idUsuario`),
- 
-    FOREIGN KEY (`endereco_cep`)
-    REFERENCES `endereco` (`cep`));
-    
-    -- SELECTS--
+--
+-- Dumping data for table `funcionarios`
+--
 
--- Select Veiculo --
-SELECT COUNT(*) FROM Veiculo;
-SELECT * FROM Veiculo ORDER By idVeiculo ASC;
+LOCK TABLES `funcionarios` WRITE;
+/*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
+INSERT INTO `funcionarios` VALUES (14058566,'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino',987654325,'agatha@gmail.com',1,21346560);
+/*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Select endereco --
-SELECT COUNT(*) FROM endereco;
-SELECT * FROM endereco ORDER BY cep ASC;
+--
+-- Table structure for table `pedido`
+--
 
--- Selects Clientes -- 
-SELECT COUNT(*) FROM Clientes; 
-SELECT * FROM Clientes ORDER BY cnpj ASC;
+DROP TABLE IF EXISTS `pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pedido` (
+  `id_pedidos` int NOT NULL AUTO_INCREMENT,
+  `dataCompra` date NOT NULL,
+  `quantidade` int NOT NULL,
+  `valorPago` double NOT NULL,
+  `tipoPagamento` varchar(45) NOT NULL,
+  `Cnpj` bigint NOT NULL,
+  `idVeiculo` bigint NOT NULL,
+  PRIMARY KEY (`id_pedidos`),
+  KEY `fk_pedidoCliente_idx` (`Cnpj`),
+  KEY `fk_pedidoVeiculo_idx` (`idVeiculo`),
+  CONSTRAINT `fk_pedidoCliente` FOREIGN KEY (`Cnpj`) REFERENCES `clientes` (`cnpj`),
+  CONSTRAINT `fk_pedidoVeiculo` FOREIGN KEY (`idVeiculo`) REFERENCES `veiculo` (`idVeiculo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Select pedido --
-SELECT count(*) FROM Pedido;
-SELECT * FROM Pedido ORDER BY id_pedidos ASC;
+--
+-- Dumping data for table `pedido`
+--
 
--- Selects Usuario -- 
-SELECT COUNT(*) FROM Usuario;
-SELECT * FROM Usuario  ORDER BY idUsuario ASC;
+LOCK TABLES `pedido` WRITE;
+/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Cartão',6666666666,1),(3,'2000-01-01',6,555.55,'Cartão',55555555555555,1);
+/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Select funcionarios -- 
-SELECT COUNT(*) FROM funcionarios;
-SELECT * FROM funcionarios ORDER BY cpf ASC;
+--
+-- Table structure for table `usuario`
+--
 
--- INSERT Veiculo --
--- NAO VAI ID 
-INSERT INTO Veiculo (marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) 
-VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado, GPS', 5, 'Azul', 'Passeio', 'diesel', 'ABC123', '123456784','Disponivel');
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario` (
+  `idUsuario` int NOT NULL AUTO_INCREMENT,
+  `senha` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `cargo` varchar(45) NOT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- INSERT endereco --
--- NAO PODE CEP REPETIDO 
-INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+--
+-- Dumping data for table `usuario`
+--
 
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'1312','bruna@gmail.com','administrador'),(2,'1234','maria@gmail.com','funcionario');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- INSERT  Clientes--
--- NAO PODE CPF REPETIDO 
-INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,64646546468437, 21346560);
+--
+-- Table structure for table `veiculo`
+--
 
+DROP TABLE IF EXISTS `veiculo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `veiculo` (
+  `idVeiculo` bigint NOT NULL AUTO_INCREMENT,
+  `marca` varchar(45) NOT NULL,
+  `modelo` varchar(45) NOT NULL,
+  `preco` double NOT NULL,
+  `ano` int NOT NULL,
+  `acessorios` varchar(45) NOT NULL,
+  `lotacao` int NOT NULL,
+  `cor` varchar(45) NOT NULL,
+  `tipoFrota` varchar(45) NOT NULL,
+  `tipoCombustivel` varchar(45) NOT NULL,
+  `placa` varchar(45) NOT NULL,
+  `renavam` varchar(45) NOT NULL,
+  `situacao` varchar(45) NOT NULL,
+  PRIMARY KEY (`idVeiculo`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- INSERT Pedido --
--- NAO COLOCA ID, O proprio banco COLOCA
-INSERT INTO Pedido (dataCompra, quantidade, valorPago, tipoPagamento, renavam, Cliente, nomeCliente) 
-VALUES ('2023-08-16', 5, 15000.00, 'Cartão',123456784,45455454481, "Laura" );
+--
+-- Dumping data for table `veiculo`
+--
 
---  INSERT Usuario --
-INSERT INTO Usuario ( senha, email, cargo)
-VALUES ( '1312', 'bruna@gmail.com', 'administrador');
+LOCK TABLES `veiculo` WRITE;
+/*!40000 ALTER TABLE `veiculo` DISABLE KEYS */;
+INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
+/*!40000 ALTER TABLE `veiculo` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-INSERT INTO Usuario ( senha, email, cargo)
-VALUES ( '1234', 'maria@gmail.com', 'funcionario');
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- INSERT administrador--
--- INSERT INTO adiministrador ( idEmail, senha) VALUES ('agatha.c2009@gmail.com','Agatha')--
-
--- INSERT Funcionario --
-INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('14058566', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346560);
+-- Dump completed on 2023-11-09 12:00:14
