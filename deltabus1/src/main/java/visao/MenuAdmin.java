@@ -130,20 +130,11 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
 		
-		
 
 		RoundButton rndbtnListar = new RoundButton("Listagem");
 		rndbtnListar.setHorizontalAlignment(SwingConstants.RIGHT);
 		rndbtnListar.setText("Listagem de Usuários");
-		rndbtnListar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				panelTeste1.setVisible(true);
-				//listarUsuarios.atualizarTabela();
-				panelTeste.setVisible(false);
-				
-			}
-		});
+
 
 		JLabel ImagemLogout = new JLabel("");
 		ImagemLogout.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone3.png")));

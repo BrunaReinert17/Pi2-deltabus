@@ -47,7 +47,7 @@ import mensagens.ListagemErro;
 import mensagens.LoginErro;
 import modelo.Endereco;
 import modelo.Funcionario;
-import modelo.StatusTelaUsuario;
+
 import modelo.Usuario;
 import utilidades.RoundButton;
 
@@ -471,7 +471,7 @@ public class CadastrarUsuario extends JPanel {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
-					Endereco endereco = enderecoDAO.consultandoEndereco(funcionario.getEndereco());
+					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
 					System.out.println(endereco);
 					boolean ende = true;
 					if (endereco == null) {

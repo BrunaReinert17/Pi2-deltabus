@@ -4,7 +4,7 @@ import modelo.Endereco;
 
 public interface InterfaceEndereco {
 
-	public Endereco consultandoEndereco(Endereco endereco);
+	public Endereco listandoEndereco(Endereco endereco);
 
 	public boolean inserirEndereco(Endereco endereco);
 

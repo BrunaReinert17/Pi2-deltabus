@@ -27,6 +27,7 @@ import controle.FuncionarioDAO;
 import controle.PedidoDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
+import mensagens.AlteraSucesso;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
@@ -35,8 +36,10 @@ import mensagens.ConfirmacaoDeletar;
 import mensagens.Deletar1;
 import mensagens.Deletar2;
 import mensagens.InterfaceMensagemConfirmacao;
+import mensagens.ErroAlterar;
 import mensagens.LoginErro;
 import modelo.Endereco;
+import modelo.FormaPagamento;
 import modelo.Funcionario;
 import modelo.Pedido;
 import modelo.Usuario;
@@ -55,10 +58,12 @@ import java.awt.TextField;
 import java.awt.BorderLayout;
 import java.awt.Choice;
 import java.awt.List;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class CadastrarPedido extends JPanel {
 	private JTextField txtNomeCliente;
-	private JTextField txtCliente;
+	private JTextField txtCnpj;
 	private JTextField txtDataDeNascimento;
 	private JLabel lblCep;
 	private JTextField txtBairro;
@@ -78,6 +83,7 @@ public class CadastrarPedido extends JPanel {
 	private JComboBox cbPagamento;
 	private JTextField txtValorPago;
 	private ArrayList<Pedido> listPedido;
+	private Pedido pedidoSelecionado;
 
 	public CadastrarPedido() {
 		setLocale("Login");
@@ -110,7 +116,7 @@ public class CadastrarPedido extends JPanel {
 		table1.setFont(new Font("Dialog", Font.BOLD, 14));
 		
 		table1.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] {"CNPJ", "Cliente", "Renavam", "Pagamento","Valor", "Qtde", "Data Compra"}));
+				new String[] {"Cnpj", "Cliente", "Renavam", "Pagamento","Valor", "Qtde", "Data Compra"}));
 		scrollPane.setViewportView(table1);
 		
 		
@@ -166,21 +172,21 @@ public class CadastrarPedido extends JPanel {
 		lblCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCnpj);
 		/**********/
-		MaskFormatter mascaraCpf = null;
+		MaskFormatter mascaraCnpj = null;
 		try {
-			mascaraCpf = new MaskFormatter("###.###.###-##");
+			mascaraCnpj = new MaskFormatter("##.###.###/####-##");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtCliente = new JFormattedTextField(mascaraCpf);
-		txtCliente.setBounds(291, 164, 182, 30);
-		txtCliente.setText("");
-		txtCliente.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtCnpj = new JFormattedTextField(mascaraCnpj);
+		txtCnpj.setBounds(278, 137, 182, 30);
+		txtCnpj.setText("");
+		txtCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
 		/**********/
-		txtCliente.setBackground(new Color(255, 255, 255));
-		txtCliente.setForeground(new Color(0, 0, 0));
-		txtCliente.setColumns(10);
-		add(txtCliente);
+		txtCnpj.setBackground(new Color(255, 255, 255));
+		txtCnpj.setForeground(new Color(0, 0, 0));
+		txtCnpj.setColumns(10);
+		add(txtCnpj);
 		
 		
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
@@ -192,7 +198,7 @@ public class CadastrarPedido extends JPanel {
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtNomeCliente.setText("");
-				txtCliente.setText("");
+				txtCnpj.setText("");
 				txtRenavam.setText("");
 				txtValorPago.setText("");
 				txtQtdes.setText("");
@@ -213,12 +219,20 @@ public class CadastrarPedido extends JPanel {
 		lblRenavam.setBounds(291, 220, 155, 14);
 		add(lblRenavam);
 
-		txtRenavam = new JFormattedTextField();
-		txtRenavam.setBounds(291, 239, 132, 30);
+		/**********/
+		MaskFormatter mascaraRenavam = null;
+		try {
+		    mascaraRenavam = new MaskFormatter("###########");
+		} catch (ParseException e2) {
+		    e2.printStackTrace();
+		}
+		txtRenavam = new JFormattedTextField(mascaraRenavam);
+		txtRenavam.setBounds(278, 228, 132, 30);
 		txtRenavam.setText("");
 		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtRenavam);
 		txtRenavam.setColumns(10);
+		/**********/
 		
 		JLabel lblValor = new JLabel("Valor R$:");
 		lblValor.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -246,23 +260,23 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-              Pedido pedido = verificarDados();
-          	  System.out.println("erro1");
+				Pedido p = verificarDados();
+          	
 
 				boolean pedidoRetornoCadastro = false;
-            	System.out.println("erro2");
+            	
 
-                if (pedido != null) {
-                	System.out.println("erro3");
+                if (p != null) {
+                	
                 	
                 	PedidoDAO pedidoDAO = new PedidoDAO();
-                    boolean resultado = PedidoDAO.inserirPedido1(pedido);
+                    boolean resultado = PedidoDAO.inserirPedido1(p);
                     
-                	System.out.println("erro1");
+                	
 
 
                     if (resultado == true) {
-                    	System.out.println("erro4");
+                    	
 
                         CadastroVeiculo cadastro = new CadastroVeiculo("Cadastrado com Sucesso!");
                         cadastro.setLocationRelativeTo(null);
@@ -270,7 +284,7 @@ public class CadastrarPedido extends JPanel {
         				atualizarTabela();
                        limparDados(); // Limpa os campos após o cadastro
                     } else {
-                    	System.out.println("erro5");
+                    	
                         CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
                         erro1.setLocationRelativeTo(null);
                         erro1.setVisible(true);
@@ -283,7 +297,7 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.setForeground(Color.WHITE);
 		btnCadastrar_1.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrar_1.setBackground(new Color(0, 128, 128));
-		btnCadastrar_1.setBounds(551, 679, 116, 33);
+		btnCadastrar_1.setBounds(364, 661, 116, 33);
 		add(btnCadastrar_1);
 		atualizarTabela();
 
@@ -337,8 +351,8 @@ public class CadastrarPedido extends JPanel {
 		btnDeletar2.setText("Deletar");
 		btnDeletar2.setForeground(new Color(0, 0, 0));
 		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnDeletar2.setBackground(new Color(245, 245, 245));
-		btnDeletar2.setBounds(1084, 92, 84, 33);
+		btnDeletar2.setBackground(new Color(0, 0, 0));
+		btnDeletar2.setBounds(538, 661, 116, 33);
 		add(btnDeletar2);
 		
 		RoundButton rndbtnBuscar_1 = new RoundButton("Limpar Campo");
@@ -368,46 +382,60 @@ public class CadastrarPedido extends JPanel {
 		/**********/
 		JLabel lblTipopagamento = new JLabel("Pagamento:");
 		lblTipopagamento.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblTipopagamento.setBounds(551, 220, 155, 14);
+		lblTipopagamento.setBounds(540, 205, 155, 23);
 		add(lblTipopagamento);
 		
-		
+		/**********/
+	
 		txtQtdes = new JFormattedTextField();
-		txtQtdes.setBounds(834, 239, 67, 30);
-		txtQtdes.setText("");
-		txtQtdes.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtQtdes);
-		txtQtdes.setColumns(10);
-		
-		ArrayList<String> fpagamento = new ArrayList<String>();
-		fpagamento.add("");
-		fpagamento.add("Cartão");
-		fpagamento.add("Dinheiro");
-		fpagamento.add("Pix");
-		fpagamento.add("Outro");
-		 cbPagamento = new JComboBox();
-		cbPagamento.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-				for (int i = 0; i <  fpagamento.size(); i++) {
-					cbPagamento.addItem(fpagamento.get(i));
+		txtQtdes.addKeyListener(new KeyAdapter() {
+	        public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+		          if (!((c >= '0') && (c <= '9') ||
+		             (c == KeyEvent.VK_BACK_SPACE) ||
+		             (c == KeyEvent.VK_DELETE))) {
+		            getToolkit().beep();
+		            e.consume();
+		          }
 
-				}
-			}
-			public void ancestorMoved(AncestorEvent event) {
-			}
-			public void ancestorRemoved(AncestorEvent event) {
+
 			}
 		});
-		cbPagamento.setBounds(551, 240, 89, 30);
+		txtQtdes.setBounds(821, 228, 67, 30);
+		txtQtdes.setColumns(10);
+		txtQtdes.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(txtQtdes);
+	
+		
+		/**********/
+		cbPagamento = new JComboBox();
+
+		cbPagamento.addItem(FormaPagamento.CARTAO);
+		cbPagamento.addItem(FormaPagamento.DINHEIRO);
+		cbPagamento.addItem(FormaPagamento.PIX);
+		cbPagamento.addItem(FormaPagamento.OUTRO);
+		cbPagamento.setBounds(538, 229, 89, 30);
 		add(cbPagamento);
 		
 		
-		txtValorPago = new JFormattedTextField();
-		txtValorPago.setBounds(678, 239, 126, 30);
-		txtValorPago.setText("");
+		
+		
+		
+		/**********/
+		MaskFormatter mascaraValor = null;
+		try {
+		    mascaraValor = new MaskFormatter(" ###,##");
+		} catch (ParseException e3) {
+		    e3.printStackTrace();
+		}
+		txtValorPago = new JFormattedTextField(mascaraValor);
+		txtValorPago.setBounds(665, 228, 126, 30);
 		txtValorPago.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtValorPago);
-		txtValorPago.setColumns(10);
+		/**********/
+		
+		
+		
 		
 		JButton btnPesquisar_1 = new JButton("Pesquisar");
 		btnPesquisar_1.setForeground(Color.WHITE);
@@ -421,6 +449,112 @@ public class CadastrarPedido extends JPanel {
 		});
 		btnPesquisar_1.setBounds(291, 371, 115, 23);
 		add(btnPesquisar_1);
+
+		RoundButton btnSalvar = new RoundButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				/*
+				 * Pegar dado do componente da tela 
+				 * **/
+				
+				Pedido p = verificarDados();
+			
+				
+				p.setId_pedido(pedidoSelecionado.getId_pedido());
+				
+                  if (p != null) {
+                	
+               
+      				/*
+      				 * salvar alteracao no banco
+      				 * **/
+      				PedidoDAO pedidoDAO = new PedidoDAO();
+                      boolean resultado = pedidoDAO.alterarPedido(p);
+      				/*
+      				 * Atualizar tabela
+      				 * **/
+      				atualizarTabela();
+      				/*
+      				 * Ocular salvar e motrar cadastrar
+      				 * **/
+      				btnSalvar.setVisible(false);
+      				btnCadastrar_1.setVisible(true);
+                    
+                      if (resultado == true) {
+           
+                        AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+                        alterar.setLocationRelativeTo(null);
+                        alterar.setVisible(true);
+                       limparDados(); // Limpa os campos após o cadastro
+                    } else {
+                        ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+                        erro1.setLocationRelativeTo(null);
+                        erro1.setVisible(true);
+                    }
+                } 
+                
+                
+                
+
+
+				
+			}
+		});
+		btnSalvar.setText("Salvar");
+		btnSalvar.setForeground(Color.WHITE);
+		btnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnSalvar.setBackground(new Color(0, 128, 128));
+		btnSalvar.setBounds(364, 661, 116, 33);
+		btnSalvar.setVisible(false);
+		add(btnSalvar);
+		
+		RoundButton btnAlterarP = new RoundButton("Alterar");
+		btnAlterarP.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				/***
+				 * selecionar registro
+				 * */
+				int pos = table1.getSelectedRow();
+				System.out.println(pos);
+				pedidoSelecionado =listPedido.get(pos);
+
+				
+
+				/*
+				 * preencher os campo
+				 * 
+				 * */
+				System.out.println(pedidoSelecionado.getDataCompra().toString());
+				txtCnpj.setText(pedidoSelecionado.getCnpj());
+				txtNomeCliente.setText(pedidoSelecionado.getNomeCliente());
+				txtRenavam.setText(pedidoSelecionado.getRenavam());
+				cbPagamento.setSelectedItem(pedidoSelecionado.getTipoPagamento());
+				txtValorPago.setText(Double.toString(pedidoSelecionado.getValorPago()).replace(".", ","));
+				txtQtdes.setText(Integer.toString(pedidoSelecionado.getQuantidade()));
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+				txtDataCompra.setText(pedidoSelecionado.getDataCompra().format(formatter));
+				
+				
+				/*
+				 * ocutar botaocadastro
+				 * aparecer botao salvar
+				 * 
+				 * 
+				 */
+				btnSalvar.setVisible(true);
+				btnCadastrar_1.setVisible(false);
+				
+				
+			}
+		});
+		btnAlterarP.setForeground(Color.WHITE);
+		btnAlterarP.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnAlterarP.setBackground(new Color(0, 128, 128));
+		btnAlterarP.setBounds(705, 661, 116, 33);
+		add(btnAlterarP);
+		
 		atualizarTabela();
 		
 	}
@@ -447,12 +581,13 @@ public class CadastrarPedido extends JPanel {
 		
 		
 		String nomeCliente = txtNomeCliente.getText();
-		String valorpagar = txtValorPago.getText();
-		String cliente = txtCliente.getText().replace(".", "").replace("-", "");
+		System.out.println(txtValorPago.getText().replace(".", ","));
+		double valorPago = Double.parseDouble(txtValorPago.getText().replace(",", "."));
+		String cnpj = txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", ""); 
 		String renavam = txtRenavam.getText();
 		String quantidade = txtQtdes.getText();
 		String datacompra = txtDataCompra.getText();
-		String formapagamento = (String) cbPagamento.getSelectedItem();
+		FormaPagamento formapagamento =  (FormaPagamento) cbPagamento.getSelectedItem();
 		
 		
 		if (nomeCliente == null || nomeCliente.trim() == "" || nomeCliente.isEmpty()) {
@@ -461,18 +596,16 @@ public class CadastrarPedido extends JPanel {
 			pedido.setNomeCliente(nomeCliente);
 		}
 		
-		if (valorpagar == null || valorpagar.trim() == "" || valorpagar.isEmpty()) {
-			verificarCampo += "Nome\n";
+		if (valorPago == 0) {
+			verificarCampo += "ValorPagar\n";
 		} else {
-			pedido.setValorPago(Double.valueOf(valorpagar));
+			pedido.setValorPago(valorPago);
 		}
 		
-		
-		if (cliente == null || cliente.trim() == "" || cliente.isEmpty()) {
-			verificarCampo += "CPF\n";
+		if (cnpj == null || cnpj.trim() == "" || cnpj.isEmpty() ) {
+			verificarCampo += "Cnpj\n";
 		} else {
-			String cpf = String.valueOf(cliente);
-			pedido.setCliente(cpf);
+			pedido.setCnpj(String.valueOf(cnpj));
 		}
 		
 		if (renavam == null || renavam.trim() == "" || renavam.isEmpty()) {
@@ -482,9 +615,9 @@ public class CadastrarPedido extends JPanel {
 		}
 		
 		if (quantidade == null || quantidade.trim() == "" || quantidade.isEmpty()) {
-			verificarCampo += "Renavam\n";
+			verificarCampo += "Quantidade\n";
 		} else {
-			pedido.setQuantidade(Integer.valueOf(quantidade));
+			pedido.setQuantidade(Integer.parseInt(quantidade));
 		}
 		 
 		if (datacompra == null || datacompra.trim() == "" || datacompra.isEmpty()) {
@@ -506,31 +639,26 @@ public class CadastrarPedido extends JPanel {
 				}
 			}
 		}
-		
-		if (formapagamento == null || formapagamento.trim() == "" || formapagamento.isEmpty()) {
-			verificarCampo += "Cor\n";
-		} else {
-			
-			pedido.setTipoPagamento(formapagamento);
-		}
+		  pedido.setTipoPagamento(formapagamento);
+	
 		
 		return pedido;
 }
 public void atualizarTabela() {
-	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "CNPJ", "Cliente", "Renavam", "Pagamento", "Valor", "Qtde", "Data Compra" });
+	DefaultTableModel tabela = new DefaultTableModel(new Object[][] {}, new String[] { "Cnpj", "Cliente", "Renavam", "Pagamento", "Valor", "Qtde", "Data Compra" });
 	PedidoDAO pedidoDAO = new PedidoDAO();
 	listPedido = pedidoDAO.listar();
 	System.out.println(listPedido);
 	for (int i = 0; i < listPedido.size(); i++) {
 		Pedido pedido = listPedido.get(i);
-		tabela.addRow(new Object[] { pedido.getCliente(), pedido.getNomeCliente(), pedido.getRenavam(),pedido.getTipoPagamento(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
+		tabela.addRow(new Object[] { pedido.getCnpj(), pedido.getNomeCliente(), pedido.getRenavam(),pedido.getTipoPagamento().getDescricao(),pedido.getValorPago(),pedido.getQuantidade(),pedido.getDataCompra()});
 
 	}
 	table1.setModel(tabela);
 }
 	public void limparDados() {
 		txtNomeCliente.setText("");
-		txtCliente.setText("");
+		txtCnpj.setText("");
 		txtRenavam.setText("");
 		txtValorPago.setText("");
 		txtQtdes.setText("");

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import modelo.Cliente;
 import modelo.Endereco;
+import modelo.FormaPagamento;
 import modelo.Pedido;
 import modelo.Veiculo;
 
@@ -39,12 +40,13 @@ public class PedidoDAO implements InterfacePedido{
 					
 					 Pedido p = new Pedido();
 
-					 p.setId_pedidos(rs.getInt("id_pedidos"));
+					 p.setId_pedido(rs.getInt("id_pedidos"));
 					 p.setDataCompra(rs.getDate("dataCompra").toLocalDate());
 					 p.setQuantidade(rs.getInt("quantidade"));
 					 p.setValorPago(rs.getDouble("valorPago"));
-					 p.setTipoPagamento(rs.getString("tipoPagamento"));
-					 p.setCliente(rs.getString("cliente"));
+					 String tipo = rs.getString("tipoPagamento");
+					 p.setTipoPagamento(FormaPagamento.getFormaPagamento(tipo));
+					 p.setCnpj(rs.getString("cnpj"));
 					 p.setRenavam(rs.getString("renavam"));
 					 p.setNomeCliente(rs.getString("nomeCliente"));
 					 listPedido.add(p);
@@ -70,7 +72,7 @@ public class PedidoDAO implements InterfacePedido{
 
 
 		String query = "INSERT INTO Pedido " 
-		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Clientes, nomeCliente, quantidade) " 
+		+ "(id_pedido, dataCompra, valorPago,tipoPagamento,renavam, Cnpj, nomeCliente, quantidade) " 
 		+ "VALUES (?, ?, ?, ?, ?)";
 
 		try {
@@ -78,9 +80,9 @@ public class PedidoDAO implements InterfacePedido{
 			ps.setInt(1, pedido.getId_pedido());
 			ps.setDate(2,java.sql.Date.valueOf (pedido.getDataCompra()));
 			ps.setDouble(3, pedido.getValorPago());
-			ps.setString(4, pedido.getTipoPagamento());
+			ps.setString(4, pedido.getTipoPagamento().getDescricao());
 			ps.setString(5, pedido.getRenavam());
-			ps.setString(6, pedido.getCliente());
+			ps.setString(6, pedido.getCnpj());
 			ps.setString(7, pedido.getNomeCliente());
 			ps.setInt(8, pedido.getQuantidade());
 
@@ -104,7 +106,7 @@ public class PedidoDAO implements InterfacePedido{
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setString(1, pedido.getCliente());
+			ps.setString(1, pedido.getCnpj());
 			ps.executeUpdate();
 			
 			
@@ -123,28 +125,29 @@ public class PedidoDAO implements InterfacePedido{
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "UPDATE Pedido\r\n   SET" + "ValorPago = ?\r\n" + "dataCompra = ?" + "tipoPagamento = ?"
-				+ " quantidade = ?" + " nomeCliente = ?" + " Renavam = ?" + "cliente = ?  ,  WHERE id_pedido = ?";
+		String query = "UPDATE Pedido   SET ValorPago = ?, dataCompra = ?, tipoPagamento = ?, quantidade = ?, nomeCliente = ?, Renavam = ?, cnpj = ?   WHERE id_pedidos = ?";
 		try {
 			PreparedStatement p = c.prepareStatement(query);
 
 			p.setDouble(1, pedido.getValorPago());
 			p.setDate(2, java.sql.Date.valueOf(pedido.getDataCompra()));
-			p.setString(3, pedido.getTipoPagamento());
-			p.setString(4, pedido.getCliente());
-			p.setString(5, pedido.getRenavam());
-			p.setString(6,pedido.getNomeCliente());
-			p.setInt(7,pedido.getQuantidade());
+			p.setString(3, pedido.getTipoPagamento().getDescricao());
+			p.setInt(4,pedido.getQuantidade());
+			p.setString(5,pedido.getNomeCliente());
+			p.setString(6, pedido.getRenavam());
+			p.setString(7, pedido.getCnpj());
 			p.setInt(8, pedido.getId_pedido());
+			
+			System.out.print(p);
 			p.executeUpdate();
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
 
-		return false;
+		return true;
 	}
 	 
 	 public static  boolean inserirPedido1(Pedido pedido) {
@@ -153,13 +156,13 @@ public class PedidoDAO implements InterfacePedido{
 
 
 			try {
-				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, renavam, Cliente, nomeCliente, quantidade) VALUES (?,?, ?, ?, ?,?,?)";
+				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, renavam, Cnpj, nomeCliente, quantidade) VALUES (?,?, ?, ?, ?,?,?)";
 				PreparedStatement stm = c.prepareStatement(query);
 				stm.setDate(1, java.sql.Date.valueOf(pedido.getDataCompra()));
 				stm.setDouble(2, pedido.getValorPago());
-				stm.setString(3, pedido.getTipoPagamento());
+				stm.setString(3, pedido.getTipoPagamento().getDescricao());
 				stm.setString(4, pedido.getRenavam());
-				stm.setString(5, pedido.getCliente());
+				stm.setString(5, pedido.getCnpj());
 				stm.setString(6, pedido.getNomeCliente());
 				stm.setInt(7, pedido.getQuantidade());
 

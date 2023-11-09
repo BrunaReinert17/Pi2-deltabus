@@ -8,10 +8,10 @@ public class Pedido extends Veiculo {
 
 	private int id_pedidos;
 	private int quantidade;
-	private String cliente;
+	private String cnpj;
 	private LocalDate dataCompra;
-	private Double valorPago;
-	private String tipoPagamento;
+	private double valorPago;
+	private FormaPagamento tipoPagamento;
 	private String renavam;
 	private String nomeCliente;
 	
@@ -20,29 +20,18 @@ public class Pedido extends Veiculo {
 		super();
 	}
 	
-	public Pedido(int id_pedidos,int quantidade, String cliente,LocalDate dataCompra, Double valorPago, String tipoPagamento, String renavam, String nomeCliente) {
-
+	public Pedido(int id_pedidos,int quantidade, String cnpj,LocalDate dataCompra, Double valorPago, FormaPagamento tipoPagamento, String renavam, String nomeCliente) {
 		super();
-         
+       
 		this.id_pedidos = id_pedidos;
-		
 		this.quantidade = quantidade;
-
-		this.cliente = cliente;
-
+		this.cnpj = cnpj;
 		this.dataCompra = dataCompra;
-
 		this.valorPago = valorPago;
-
-		this.tipoPagamento = tipoPagamento;
-		
-		this.renavam = renavam;
-		
+		this.tipoPagamento = tipoPagamento;		
+		this.renavam = renavam;		
 		this.nomeCliente = nomeCliente;
-		
-		
-
-	}
+		}
 
 	public int getId_pedido() {
 		return id_pedidos;
@@ -60,12 +49,12 @@ public class Pedido extends Veiculo {
 		this.quantidade = quantidade;
 	}
 
-	public String getCliente() {
-		return cliente;
+	public String getCnpj() {
+		return cnpj;
 	}
 
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 
 	public LocalDate getDataCompra() {
@@ -84,11 +73,11 @@ public class Pedido extends Veiculo {
 		this.valorPago = valorPago;
 	}
 
-	public String getTipoPagamento() {
+	public FormaPagamento getTipoPagamento() {
 		return tipoPagamento;
 	}
 
-	public void setTipoPagamento(String tipoPagamento) {
+	public void setTipoPagamento(FormaPagamento tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
 	}
 
@@ -107,18 +96,5 @@ public class Pedido extends Veiculo {
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
 	}
-
-	public void add(ArrayList<Pedido> pedidos) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setId_pedidos(int int1) {
-		
-	}
-
-	
-
-
 }
 	

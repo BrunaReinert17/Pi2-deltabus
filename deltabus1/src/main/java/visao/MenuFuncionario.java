@@ -230,15 +230,7 @@ public class MenuFuncionario extends JFrame {
 
 		RoundButton btnlistaVeiculo = new RoundButton("Listagem de Veiculos");
 		btnlistaVeiculo.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnlistaVeiculo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//listarveiculos.atualizarTabela();
-				panelTeste.setVisible(false);
-				panelTeste3.setVisible(false);
-				panelTeste2.setVisible(false);
-				
-			}
-		});
+		
 		btnlistaVeiculo.setBackground(new Color(0, 128, 128));
 		btnlistaVeiculo.setForeground(new Color(255, 255, 255));
 		btnlistaVeiculo.setFont(new Font("Dialog", Font.BOLD, 16));

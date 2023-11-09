@@ -1,4 +1,4 @@
--- DROP DATABASES deltaBus IF EXISTS 
+ DROP DATABASE  IF EXISTS deltabus2;
 
 CREATE SCHEMA IF NOT EXISTS `deltaBus2` ;
 USE deltabus2;
@@ -42,8 +42,6 @@ CREATE TABLE IF NOT EXISTS `Clientes` (
   `numeroTelefone` VARCHAR(14) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `cpf` VARCHAR(14) NOT NULL,
-  `cnpj` BIGINT NOT NULL,
-  `endereco_cep` BIGINT NOT NULL,
   PRIMARY KEY (`cnpj`),
     FOREIGN KEY (`endereco_cep`)
     REFERENCES `endereco` (`cep`));
@@ -58,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `Pedido` (
    `quantidade` int not null,
   `valorPago` DOUBLE NOT NULL,
   `tipoPagamento` VARCHAR(45) NOT NULL,
-  `Cliente` DOUBLE NOT NULL,
+  `Cnpj` VARCHAR(30) NOT NULL,
   `renavam` VARCHAR(45) NOT NULL,
   `nomeCliente` VARCHAR(45) NOT NULL,
  PRIMARY KEY (`id_pedidos`));
@@ -128,19 +126,19 @@ VALUES ('Marcopolo', 'Paradiso G8 1050', 100000000.00, '2023', 'Ar condicionado,
 -- INSERT endereco --
 -- NAO PODE CEP REPETIDO 
 INSERT INTO endereco (cep, cidade, bairro, rua,UF)
-VALUES ('21346560', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
+VALUES ('21346562', 'Blumenau', 'Progresso', 'Rua Ernestine Ehrhardt', 'SC');
 
 
 -- INSERT  Clientes--
 -- NAO PODE CPF REPETIDO 
 INSERT INTO Clientes (Nome, numeroTelefone, email, cpf,cnpj, endereco_cep) 
-VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468437, 21346560);
+VALUES ("Gisele" , '1234567892', 'gisele@gmail.com', 4545545441,464646546468437, 21346562);
 
 
 -- INSERT Pedido --
 -- NAO COLOCA ID, O proprio banco COLOCA
-INSERT INTO Pedido (dataCompra, quantidade, valorPago, tipoPagamento, renavam, Cliente, nomeCliente) 
-VALUES ('2023-08-16', 5, 15000.00, 'Cartao',123456784,45455454481, "Laura" );
+INSERT INTO Pedido (dataCompra, quantidade, valorPago, tipoPagamento, renavam, Cnpj, nomeCliente) 
+VALUES ('2023-08-16', 5, 15000.00, 'Cartao',123456784,464646546468437, "Laura" );
 
 --  INSERT Usuario --
 INSERT INTO Usuario ( senha, email, cargo)
@@ -154,4 +152,4 @@ VALUES ( '1234', 'maria@gmail.com', 'funcionario');
 
 -- INSERT Funcionario --
 INSERT INTO funcionarios (cpf, nome, dataNascimento, genero, numerotelefone,email, Usuario_idUsuario, endereco_cep) 
-VALUES ('14058566', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346560);
+VALUES ('14058568', 'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino', 987654325,'agatha@gmail.com','1',21346562);

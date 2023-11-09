@@ -512,19 +512,17 @@ public class CadastrarVeiculo extends JPanel {
 		lblPreco.setBounds(573, 295, 67, 14);
 		add(lblPreco);
 		
-		RoundButton btnCadastrar = new RoundButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
+		RoundButton btnCadastrar = new RoundButton("Cadastrar");// criando objeto
+		btnCadastrar.addActionListener(new ActionListener() {//adicionando ação ao botao
 			public void actionPerformed(ActionEvent e) {
 				
-				Veiculo veiculo = verificarDados();
-				
-				boolean veiculoRetornoCadastro = false;
+				Veiculo veiculo = verificarDados();// metodo
 				
 				
 
                 if (veiculo != null) {
                 	
-                	VeiculoDAO veiculoDAO = new VeiculoDAO();
+                	VeiculoDAO veiculoDAO = new VeiculoDAO();// instancia
                     boolean resultado = veiculoDAO.inserirVeiculo(veiculo);
                    
 
