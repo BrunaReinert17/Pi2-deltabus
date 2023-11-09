@@ -167,13 +167,14 @@ public class PedidoDAO implements InterfacePedido{
 
 
 			try {
-				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Cnpj, quantidade) VALUES (?,?, ?,?,?)";
+				String query = "INSERT INTO Pedido (dataCompra, valorPago, tipoPagamento, Cnpj, quantidade, idVeiculo) VALUES (?,?, ?,?,?,?)";
 				PreparedStatement stm = c.prepareStatement(query);
 				stm.setDate(1, java.sql.Date.valueOf(pedido.getDataCompra()));
 				stm.setDouble(2, pedido.getValorPago());
 				stm.setString(3, pedido.getTipoPagamento().getDescricao());
 				stm.setLong(4, pedido.getCliente().getCnpj());
 				stm.setInt(5, pedido.getQuantidade());
+				stm.setLong(6, pedido.getVeiculo().getIdVeiculo());
 
 				valida = stm.executeUpdate();
 				

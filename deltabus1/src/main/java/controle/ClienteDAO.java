@@ -40,7 +40,7 @@ public class ClienteDAO implements InterfaceCliente {
 				endereco.setCep(rs.getInt("endereco_cep"));
 			    endereco = endeDao.listandoEndereco(endereco);
 			    cl.setEndereco(endereco);
-				cliente.add(cl);
+				listcliente.add(cl);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,34 +49,39 @@ public class ClienteDAO implements InterfaceCliente {
 		}
 
 		return listcliente;
+		
 	}
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                String nome = rs.getString("nome");
-                String numeroTelefone = rs.getString("numeroTelefone");
-                String email = rs.getString("email");
-                Long cnpj = rs.getLong("cnpj");
-                String cpf = rs.getString("cpf");
-                Long cep = rs.getLong("endereco_cep");
-                
-                Endereco endereco = new  Endereco(cep);
-                EnderecoDAO endeDao = new EnderecoDAO();
-                endereco = endeDao.listandoEndereco(endereco);
-                
-
-                Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco);
-                return cli;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            con.fecharConexao();
-        }
-        return null;
-    }
 	
+	
+	public Cliente selecionarCliente(Cliente clienteModelo) { 
+		Connection c = con.conectar(); 
+		try { 
+			PreparedStatement ps = c.prepareStatement("SELECT * FROM clientes where cnpj = ?"); 
+			ps.setLong(1, clienteModelo.getCnpj()); 
+ 
+			ResultSet rs = ps.executeQuery(); 
+ 
+			if (rs.next()) { 
+				String nome = rs.getString("nome"); 
+				String numeroTelefone = rs.getString("numeroTelefone"); 
+				String email = rs.getString("email"); 
+				Long cnpj = rs.getLong("cnpj"); 
+				String cpf = rs.getString("cpf"); 
+				Long enderecoCep = rs.getLong("endereco_cep"); 
+ 
+				Endereco endereco = new Endereco(); 
+				endereco.setCep(enderecoCep); 
+				Cliente cli = new Cliente(nome, numeroTelefone, email, cpf, cnpj, endereco); 
+				return cli; 
+			} 
+		} catch (Exception e) { 
+			e.printStackTrace(); 
+		} finally { 
+			con.fecharConexao(); 
+		} 
+		return clienteModelo; 
+	} 
+
 
 	public boolean inserirCliente(Cliente cliente) {
 		con = Conexao.getInstancia();

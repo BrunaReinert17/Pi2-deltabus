@@ -225,7 +225,7 @@ public class CadastrarCliente extends JPanel {
 				} else {
 					ClienteDAO clienteDAO = new ClienteDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
-					Endereco endereco = enderecoDAO.consultandoEndereco(cliente.getEndereco());
+					Endereco endereco = enderecoDAO.listandoEndereco(cliente.getEndereco());
 					System.out.println(endereco);
 					boolean ende = true;
 					if (endereco == null) {
@@ -580,7 +580,12 @@ public class CadastrarCliente extends JPanel {
 		} else {
 			EnderecoDAO ende1 = new EnderecoDAO();
 			endereco.setCep(Long.parseLong(cep));
-			endereco = ende1.listandoEndereco(endereco);
+			Endereco enderecoSelecionado = ende1.listandoEndereco(endereco);
+			
+			if(enderecoSelecionado == null) {
+				ende1.inserirEndereco(endereco);
+				enderecoSelecionado = endereco;
+			}
 			cliente.setEndereco(endereco);
 
 		}
