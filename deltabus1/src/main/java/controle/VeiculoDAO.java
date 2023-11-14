@@ -117,7 +117,7 @@ public class VeiculoDAO {
 		return false;
 	}
 
-	public boolean alterarVeiculo(Veiculo veiculo) {
+	public static boolean alterarVeiculo(Veiculo veiculo) {
 
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
