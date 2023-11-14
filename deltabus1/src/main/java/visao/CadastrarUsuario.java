@@ -480,14 +480,14 @@ public class CadastrarUsuario extends JPanel {
 					System.out.println(ende);
 
 					boolean usuarioRetornoCadastro;
-					System.out.println("ddddd1");
+					
 					if (ende != false) {
-						System.out.println("ddddd12");
+						
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
 						System.out.println(funcionario.getUsuario());
-						System.out.println("ddddd13");
+						
 						if (usuarioRetornoCadastro) {
-							System.out.println("ddddd14");
+							;
 							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
 							System.out.println(usuario);
 							funcionario.setUsuario(usuario);
@@ -497,8 +497,8 @@ public class CadastrarUsuario extends JPanel {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
-								atualizarTabela();
 								limparDados();
+								atualizarTabela();
 
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
@@ -582,7 +582,6 @@ public class CadastrarUsuario extends JPanel {
 		btnPesquisar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = txtCpf.getText();
-				atualizarTabela();
 			}
 		});
 		btnPesquisar_1.setBounds(148, 385, 115, 23);

@@ -85,11 +85,6 @@ public class MenuAdmin extends JFrame {
 		panel.add(lblNewLabel_7);
 		lblNewLabel_7.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/IconeHome.png")));
 
-		JLabel lblListar = new JLabel("");
-		lblListar.setBounds(46, 530, 141, 33);
-		panel.add(lblListar);
-		lblListar.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone-5.png")));
-
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBounds(36, 596, 92, 33);
 		panel.add(lblNewLabel_4);
@@ -129,22 +124,12 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
-		
-
-		RoundButton rndbtnListar = new RoundButton("Listagem");
-		rndbtnListar.setHorizontalAlignment(SwingConstants.RIGHT);
-		rndbtnListar.setText("Listagem de Usuários");
 
 
 		JLabel ImagemLogout = new JLabel("");
 		ImagemLogout.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone3.png")));
 		ImagemLogout.setBounds(92, 776, 122, 47);
 		panel.add(ImagemLogout);
-		rndbtnListar.setForeground(Color.WHITE);
-		rndbtnListar.setFont(new Font("Dialog", Font.BOLD, 15));
-		rndbtnListar.setBackground(new Color(0, 128, 128));
-		rndbtnListar.setBounds(90, 530, 199, 43);
-		panel.add(rndbtnListar);
 
 		JButton btnLogout = new RoundButton("Logout");
 		btnLogout.setText("");
