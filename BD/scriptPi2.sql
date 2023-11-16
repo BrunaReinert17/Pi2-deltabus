@@ -158,19 +158,16 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `usuario`
---
+INSERT INTO deltabus2.usuario (senha, email, cargo) VALUES ('abc123', 'bruna@gmail.com', 'funcionario');
+INSERT INTO deltabus2.usuario (senha, email, cargo) VALUES ('abc1234', 'maria@gmail.com', 'administrador');
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'1312','bruna@gmail.com','administrador'),(2,'1234','maria@gmail.com','funcionario');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
+-- INSERT INTO `usuario` VALUES (1,'1312','bruna@gmail.com','administrador'),(2,'1234','maria@gmail.com','funcionario');
 
---
--- Table structure for table `veiculo`
---
+
+
+
+
+
 
 DROP TABLE IF EXISTS `veiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -197,19 +194,12 @@ CREATE TABLE `veiculo` (
 -- Dumping data for table `veiculo`
 --
 
-LOCK TABLES `veiculo` WRITE;
-/*!40000 ALTER TABLE `veiculo` DISABLE KEYS */;
+
 INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
-/*!40000 ALTER TABLE `veiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `veiculo` VALUES (2,'Scania','AGRALE/MASCA GRANMIDI O',134567.999,2023,'Banheiro',40,'Verde','Turismo','GNC','ABC222','987654321','Novo');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- IMPLEMENTAÇÂO DE NOVAS UNCIONALIDADES --
 
--- Dump completed on 2023-11-09 12:00:14
+
+
+

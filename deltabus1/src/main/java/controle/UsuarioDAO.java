@@ -10,6 +10,7 @@ import modelo.Usuario;
 
 public class UsuarioDAO implements InterfaceUsuario {
 
+	
 	private static UsuarioDAO usuarioDao;
 
 	private Conexao con;
@@ -17,7 +18,8 @@ public class UsuarioDAO implements InterfaceUsuario {
 	public UsuarioDAO() {
 		con = Conexao.getInstancia();
 	}
-
+	
+	
 	/**
 	 * Ideal que o metodo retorne o id inserido no banco e nao apenas verdadeiro e
 	 * falso
@@ -116,10 +118,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 				u.setSenha(rs.getString("idUsuario"));
 				u.setEmail(rs.getString("email"));
 				u.setCargo(rs.getString("cargo"));
-				// Long id = rs.getLong("idUsuario");
-				// String senha = rs.getString("senha");
-				// String email = rs.getString("email");
-				// String cargo = rs.getString("cargo");
+				
 				usuarios.add(u);
 			}
 		} catch (Exception e) {
