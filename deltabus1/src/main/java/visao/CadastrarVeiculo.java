@@ -29,6 +29,8 @@ import controle.PedidoDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
 import mensagens.AlteraSucesso;
+import mensagens.Alterar1;
+import mensagens.AlterarSucesso1;
 import mensagens.CadastroErro;
 
 import mensagens.CadastroErro1;
@@ -110,7 +112,7 @@ public class CadastrarVeiculo extends JPanel {
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(207, 404, 773, 250);
+		scrollPane.setBounds(102, 404, 999, 250);
 		add(scrollPane);
 		
 		table = new JTable();
@@ -553,6 +555,8 @@ public class CadastrarVeiculo extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				int pos = table.getSelectedRow();
+				
+				if(pos >= 0) {
 				System.out.println(pos);
 				pedidoSelecionado = listVei.get(pos);
 				
@@ -574,7 +578,12 @@ public class CadastrarVeiculo extends JPanel {
 				btnSalvar1.setVisible(true);
 				btnCadastrar.setVisible(false);
 				
-
+				}
+				else {
+					Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
+					falha1.setLocationRelativeTo(null);
+					falha1.setVisible(true);
+				}
 			}
 		});
 		btnAl.setText("Alterar");
@@ -612,7 +621,7 @@ public class CadastrarVeiculo extends JPanel {
                     
                       if (resultado == true) {
            
-                        AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+                        AlterarSucesso1 alterar = new AlterarSucesso1("Usuário alterado com Sucesso!");
                         alterar.setLocationRelativeTo(null);
                         alterar.setVisible(true);
                        limparDados(); 
@@ -634,7 +643,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnSalvar1.setBounds(407, 691, 132, 33);
 		add(btnSalvar1);
 		
-		RoundButton btnDeletar2 = new RoundButton("Confirmar");
+		RoundButton btnDeletar2 = new RoundButton("Deletar");
 		btnDeletar2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int linhaSelecionada = table.getSelectedRow();
@@ -688,7 +697,7 @@ public class CadastrarVeiculo extends JPanel {
 		
 		panel_4 = new JPanel();
 		panel_4.setBackground(new Color(0, 0, 0));
-		panel_4.setBounds(200, 398, 786, 262);
+		panel_4.setBounds(97, 398, 1012, 262);
 		add(panel_4);
 		
 		btnPesquisar = new JButton("Pesquisar");
