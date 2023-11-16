@@ -80,7 +80,6 @@ public class CadastrarVeiculo extends JPanel {
 	private JTextField textField;
 	private JLabel lblLimpar;
 	private JTextField textLotacao;
-	private JTextField textidVeiculo;
 	private JTextField textAno;
 	private JTextField textPreco;
 	private JComboBox cbCor;
@@ -189,11 +188,6 @@ public class CadastrarVeiculo extends JPanel {
 		lblCpf.setBounds(271, 245, 46, 14);
 		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblRenavam);
-
-		JLabel lblidVeiculo = new JLabel("idVeiculo :");
-		lblidVeiculo.setBounds(42, 713, 74, 14);
-		lblidVeiculo.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(lblidVeiculo);
 
 		JLabel lblModelo = new JLabel("Modelo: ");
 		lblModelo.setBounds(603, 145, 84, 14);
@@ -319,8 +313,7 @@ public class CadastrarVeiculo extends JPanel {
 			 textLotacao.setText("");
 					
 
-			textidVeiculo.setText("");
-
+		
 			 textAno.setText("");
 
 				 textPreco.setText("");
@@ -466,12 +459,6 @@ public class CadastrarVeiculo extends JPanel {
 		cbAcessorio.setBounds(469, 241, 167, 33);
 		add(cbAcessorio);
 		
-		textidVeiculo = new JTextField();
-		textidVeiculo.setFont(new Font("Dialog", Font.BOLD, 13));
-		textidVeiculo.setColumns(10);
-		textidVeiculo.setBounds(42, 672, 110, 30);
-		add(textidVeiculo);
-		
 		textAno = new JTextField();
 		textAno.setFont(new Font("Dialog", Font.BOLD, 13));
 		textAno.setColumns(10);
@@ -558,7 +545,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnCadastrar.setForeground(Color.WHITE);
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrar.setBackground(new Color(0, 128, 128));
-		btnCadastrar.setBounds(539, 691, 132, 33);
+		btnCadastrar.setBounds(407, 691, 132, 33);
 		add(btnCadastrar);
 		
 		RoundButton btnAl = new RoundButton("Alterar");
@@ -585,7 +572,7 @@ public class CadastrarVeiculo extends JPanel {
 				
 				
 				btnSalvar1.setVisible(true);
-				btnAl.setVisible(false);
+				btnCadastrar.setVisible(false);
 				
 
 			}
@@ -594,10 +581,10 @@ public class CadastrarVeiculo extends JPanel {
 		btnAl.setForeground(Color.WHITE);
 		btnAl.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnAl.setBackground(new Color(0, 0, 0));
-		btnAl.setBounds(714, 691, 132, 33);
+		btnAl.setBounds(650, 691, 132, 33);
 		add(btnAl);
 		
-		RoundButton btnSalvar1 = new RoundButton("Cadastrar");
+		btnSalvar1 = new RoundButton("Cadastrar");
 		btnSalvar1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -635,7 +622,8 @@ public class CadastrarVeiculo extends JPanel {
                         erro1.setVisible(true);
                     }
                 } 
-                
+               
+				
 				
 			}
 		});
@@ -643,7 +631,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnSalvar1.setForeground(Color.WHITE);
 		btnSalvar1.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnSalvar1.setBackground(new Color(0, 128, 128));
-		btnSalvar1.setBounds(363, 691, 132, 33);
+		btnSalvar1.setBounds(407, 691, 132, 33);
 		add(btnSalvar1);
 		
 		RoundButton btnDeletar2 = new RoundButton("Confirmar");
@@ -728,7 +716,7 @@ public class CadastrarVeiculo extends JPanel {
 		System.out.println(listVei);
 		for (int i = 0; i < listVei.size(); i++) {
 			Veiculo veiculo = listVei.get(i);
-			tabela.addRow(new Object[] { veiculo.getRenavam(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getCor(),veiculo.getPlaca(),veiculo.getLotacao(),veiculo.getTipoFrota(),veiculo.getTipoCombustivel(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco(),veiculo.getSituacao()});
+			tabela.addRow(new Object[] { veiculo.getTipoCombustivel(), veiculo.getMarca(), veiculo.getModelo(),veiculo.getPlaca(),veiculo.getTipoFrota(),veiculo.getLotacao(),veiculo.getRenavam(),veiculo.getCor(),veiculo.getAcessorios(),veiculo.getAno(),veiculo.getPreco(),veiculo.getSituacao()});
 
 		}
 		table.setModel(tabela);
@@ -762,7 +750,7 @@ public class CadastrarVeiculo extends JPanel {
 		
 		String lotacao = textLotacao.getText();
 		
-		String idveiculo = textidVeiculo.getText();
+		
 		
 		String ano = textAno.getText();
 		
@@ -858,12 +846,7 @@ public class CadastrarVeiculo extends JPanel {
 
 		}
 		
-		if (idveiculo == null || idveiculo.trim() == "" || idveiculo.isEmpty()) {
-			verificarCampo += "idVeiculo\n";
-		} else {
-			veiculo.setIdVeiculo(Long.valueOf(idveiculo));
-
-		}
+		
 		
 		
 		if (ano == null || ano.trim() == "" || ano.isEmpty()) {
@@ -900,7 +883,7 @@ public class CadastrarVeiculo extends JPanel {
 	 textLotacao.setText("");
 			
 
-	textidVeiculo.setText("");
+	
 
 	 textAno.setText("");
 
@@ -914,7 +897,7 @@ public class CadastrarVeiculo extends JPanel {
 		txtRenavam.setText(veiculoSelecionado.getRenavam());
 		txtPlaca.setText(String.valueOf(veiculoSelecionado.getPlaca()));
 		textLotacao.setText(String.valueOf(veiculoSelecionado.getLotacao()));
-		textidVeiculo.setText(String.valueOf(veiculoSelecionado.getIdVeiculo()));
+	
 		textAno.setText(String.valueOf(veiculoSelecionado.getAno()));
 		textPreco.setText(String.valueOf(veiculoSelecionado.getPreco()));
 		cbMarca.setToolTipText((veiculoSelecionado.getMarca()));

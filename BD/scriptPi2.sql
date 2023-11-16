@@ -1,4 +1,4 @@
-DROP DATABASES deltaBus IF EXISTS 
+DROP DATABASE  IF EXISTS deltabus2;
 CREATE DATABASE  IF NOT EXISTS `deltabus2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `deltabus2`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
@@ -199,7 +199,7 @@ CREATE TABLE `veiculo` (
 
 LOCK TABLES `veiculo` WRITE;
 /*!40000 ALTER TABLE `veiculo` DISABLE KEYS */;
-INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
+INSERT INTO `veiculo` VALUES (1,'diesel','Marcopolo','Paradiso G8 1050','ABC123','Passeio',5,'123456784','Azul', 'Ar condicionado', 2023,709999,'Disponivel');
 /*!40000 ALTER TABLE `veiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
