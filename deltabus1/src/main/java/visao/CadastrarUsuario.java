@@ -31,6 +31,7 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
+import controle.PedidoDAO;
 import controle.UsuarioDAO;
 import mensagens.ErroVeiculo;
 import mensagens.InterfaceMensagemConfirmacao;
@@ -47,7 +48,7 @@ import mensagens.ListagemErro;
 import mensagens.LoginErro;
 import modelo.Endereco;
 import modelo.Funcionario;
-
+import modelo.Pedido;
 import modelo.Usuario;
 import utilidades.RoundButton;
 
@@ -82,8 +83,8 @@ public class CadastrarUsuario extends JPanel {
 	private JLabel lblFuncao;
 	private JButton bntDeletar;
 	private JButton btnCadastrar;
+	private JButton btnSalvar1;
 	private JTextField txtDataNasci;
-	// Variaveis atribuidas
 	private String verificarCampo;
 	private JLabel txtRua;
 	private JTextField textRua;
@@ -94,13 +95,11 @@ public class CadastrarUsuario extends JPanel {
 	private JPanel panel_1;
 	private JTextField textCPF;
 	private JButton voltar;
-	private AbstractButton btnSalvar;
 	private String validacao = "";
 	private Funcionario funcionarioClick;
 	private ArrayList<Funcionario> listFunc;
 	private RoundButton rndbtnSalvar;
 	private ArrayList<Usuario> listUsuario;
-	private Usuario UsuarioSelecionado;
 	private Funcionario funcionarioSelecionado;
 	private UsuarioDAO usuarioDao;
 	private FuncionarioDAO funcionarioDao;
@@ -112,6 +111,7 @@ public class CadastrarUsuario extends JPanel {
 	private JTable table_1;
 	private JPanel panel_5;
 	private ArrayList<Funcionario> listFuncionario;
+	private Usuario usuarioSelecionado;
 
 	public CadastrarUsuario() {
 		setLocale("Login");
@@ -497,8 +497,9 @@ public class CadastrarUsuario extends JPanel {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
-								limparDados();
 								atualizarTabela();
+								
+								//NAO ESTA APARECENDO NA LISTAGEM
 
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
@@ -606,7 +607,7 @@ public class CadastrarUsuario extends JPanel {
 										model.removeRow(linhaSelecionada);
 
 									} else {
-										DeletarUsuario1 falha = new DeletarUsuario1("Falha ao excluir veiculo");
+										DeletarUsuario1 falha = new DeletarUsuario1("Falha ao excluir");
 										falha.setLocationRelativeTo(null);
 										falha.setVisible(true);
 									}
@@ -634,7 +635,111 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnDeletar_1.setBackground(Color.WHITE);
 		rndbtnDeletar_1.setBounds(920, 92, 115, 33);
 		add(rndbtnDeletar_1);
-		atualizarTabela();
+		
+		RoundButton btnAlterar = new RoundButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/***
+				 * selecionar registro
+				 * */
+				int pos = table_1.getSelectedRow();
+				System.out.println(pos);
+				funcionarioSelecionado =listFuncionario.get(pos);
+
+				
+
+				/*
+				 * preencher os campo
+				 * 
+				 * */
+				
+				txtNome.setText(funcionarioSelecionado.getNome());
+				txtCpf.setText(funcionarioSelecionado.getCpf());
+				cbGenero.setSelectedItem(funcionarioSelecionado.getGenero());
+				txtEmail.setText(funcionarioSelecionado.getEmail());
+				txtTelefone.setText(funcionarioSelecionado.getNumeroTelefone());
+				//txtDataNasci.setText(funcionarioSelecionado.getDatanasci());
+				//txtCep.setText(funcionarioSelecionado.getCep());
+				cbUf.setSelectedItem(funcionarioSelecionado.getEndereco());
+				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());
+				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco());
+				txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
+				//txtBairro.setText(funcionarioSelecionado.getEndereco());
+				//txtRua.setText(funcionarioSelecionado.getEndereco());
+
+				
+				
+				/*
+				 * ocutar botaocadastro
+				 * aparecer botao salvar
+				 * 
+				 * 
+				 */
+				btnSalvar1.setVisible(true);
+				btnCadastrar.setVisible(false);
+				System.out.println("erro");
+				
+				
+			}
+		});
+		btnAlterar.setForeground(Color.WHITE);
+		btnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnAlterar.setBackground(new Color(0, 128, 128));
+		btnAlterar.setBounds(760, 697, 116, 33);
+		add(btnAlterar);
+		
+		btnSalvar1 = new RoundButton("Salvar");
+		btnSalvar1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * Pegar dado do componente da tela 
+				 * **/
+				
+				Funcionario funcionario = verificarDados();
+				Usuario usuario = new Usuario();
+
+				
+				usuario.setIdUsuario(usuarioSelecionado.getIdUsuario());
+				
+                  if (funcionario != null) {
+      				/*
+      				 * salvar alteracao no banco
+      				 * **/
+      				FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+                    boolean resultado = funcionarioDAO.alterarFuncionario(funcionario);
+      				/*
+      				 * Atualizar tabela
+      				 * **/
+      				atualizarTabela();
+      				/*
+      				 * Ocular salvar e motrar cadastrar
+      				 * **/
+      				btnSalvar1.setVisible(false);
+      				btnCadastrar.setVisible(true);
+                    
+                      if (resultado == true) {
+           
+                        AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+                        alterar.setLocationRelativeTo(null);
+                        alterar.setVisible(true);
+                       limparDados(); // Limpa os campos após o cadastro
+                    } else {
+                        ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+                        erro1.setLocationRelativeTo(null);
+                        erro1.setVisible(true);
+                    }
+                } 
+                
+                
+			}
+		});
+		btnSalvar1.setText("Salvar");
+		btnSalvar1.setForeground(Color.WHITE);
+		btnSalvar1.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnSalvar1.setBackground(new Color(0, 128, 128));
+		btnSalvar1.setBounds(342, 697, 116, 33);
+		btnSalvar1.setVisible(false);
+		add(btnSalvar1);
 
 	}
 

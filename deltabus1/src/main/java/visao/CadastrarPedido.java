@@ -236,7 +236,7 @@ public class CadastrarPedido extends JPanel {
 		
 		JLabel lblQtde = new JLabel("Qtde:");
 		lblQtde.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblQtde.setBounds(834, 220, 155, 14);
+		lblQtde.setBounds(821, 209, 155, 14);
 		add(lblQtde);
 		
 		JLabel lblRenavam = new JLabel("Veículo:");
@@ -255,20 +255,8 @@ public class CadastrarPedido extends JPanel {
 		
 		JLabel lblValor = new JLabel("Valor R$:");
 		lblValor.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblValor.setBounds(678, 220, 155, 14);
+		lblValor.setBounds(665, 209, 155, 14);
 		add(lblValor);
-		
-		RoundButton rndbtnBuscar = new RoundButton("Limpar Campo");
-		rndbtnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		rndbtnBuscar.setText("Buscar");
-		rndbtnBuscar.setForeground(Color.WHITE);
-		rndbtnBuscar.setFont(new Font("Dialog", Font.BOLD, 14));
-		rndbtnBuscar.setBackground(new Color(0, 128, 128));
-		rndbtnBuscar.setBounds(579, 79, 75, 33);
-		add(rndbtnBuscar);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(0, 0, 0));
@@ -368,19 +356,11 @@ public class CadastrarPedido extends JPanel {
 
 			
 		btnDeletar2.setText("Deletar");
-		btnDeletar2.setForeground(new Color(0, 0, 0));
+		btnDeletar2.setForeground(new Color(255, 255, 255));
 		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnDeletar2.setBackground(new Color(0, 0, 0));
 		btnDeletar2.setBounds(538, 661, 116, 33);
 		add(btnDeletar2);
-		
-		RoundButton rndbtnBuscar_1 = new RoundButton("Limpar Campo");
-		rndbtnBuscar_1.setText("Buscar");
-		rndbtnBuscar_1.setForeground(Color.WHITE);
-		rndbtnBuscar_1.setFont(new Font("Dialog", Font.BOLD, 14));
-		rndbtnBuscar_1.setBackground(new Color(0, 128, 128));
-		rndbtnBuscar_1.setBounds(433, 237, 84, 33);
-		add(rndbtnBuscar_1);
 		
 		JLabel lblDataCompra = new JLabel("Data de Compra :");
 		lblDataCompra.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -573,7 +553,7 @@ public class CadastrarPedido extends JPanel {
 		add(btnAlterarP);
 		
 		cbVeiculo = new JComboBox<Veiculo>();
-		cbVeiculo.setBounds(278, 234, 145, 33);
+		cbVeiculo.setBounds(278, 228, 145, 33);
 		VeiculoDAO veiDao= new VeiculoDAO();
 		ArrayList<Veiculo> listasVeiculos = veiDao.listar();
 		for (Veiculo veiculo : listasVeiculos) {
