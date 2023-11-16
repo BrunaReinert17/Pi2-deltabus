@@ -463,14 +463,18 @@ public class CadastrarUsuario extends JPanel {
 				System.out.println("aaaa");
 				System.out.println(funcionario);
 				Usuario usuario = new Usuario();
+				
 				if (funcionario == null) {
+					
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
+					
 				} else {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
+					
 					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
 					System.out.println(endereco);
 					boolean ende = true;
@@ -487,12 +491,12 @@ public class CadastrarUsuario extends JPanel {
 						System.out.println(funcionario.getUsuario());
 						
 						if (usuarioRetornoCadastro) {
-							;
 							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
-							System.out.println(usuario);
 							funcionario.setUsuario(usuario);
-							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
+		                	PedidoDAO pedidoDAO = new PedidoDAO();
 
+							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
+							
 							if (resultado = true) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
@@ -583,6 +587,7 @@ public class CadastrarUsuario extends JPanel {
 		btnPesquisar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpfpesquisa = txtCpf.getText();
+				atualizarTabela();
 			}
 		});
 		btnPesquisar_1.setBounds(148, 385, 115, 23);
@@ -656,16 +661,19 @@ public class CadastrarUsuario extends JPanel {
 				txtNome.setText(funcionarioSelecionado.getNome());
 				txtCpf.setText(funcionarioSelecionado.getCpf());
 				cbGenero.setSelectedItem(funcionarioSelecionado.getGenero());
-				txtEmail.setText(funcionarioSelecionado.getEmail());
+				txtEmail.setText(funcionarioSelecionado.getUsuario().getEmail());
 				txtTelefone.setText(funcionarioSelecionado.getNumeroTelefone());
-				//txtDataNasci.setText(funcionarioSelecionado.getDatanasci());
-				//txtCep.setText(funcionarioSelecionado.getCep());
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+				txtDataNasci.setText(funcionarioSelecionado.getDatanasci().format(formatter));
+				txtCep.setText(Long.toString(funcionarioSelecionado.getEndereco().getCep()));
 				cbUf.setSelectedItem(funcionarioSelecionado.getEndereco());
 				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());
+				System.out.println("erro2");
+
 				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco());
 				txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
-				//txtBairro.setText(funcionarioSelecionado.getEndereco());
-				//txtRua.setText(funcionarioSelecionado.getEndereco());
+				//txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco()));
+				//txtRua.setText(String.valueOf(funcionarioSelecionado.getEndereco()));
 
 				
 				
@@ -699,7 +707,7 @@ public class CadastrarUsuario extends JPanel {
 				Usuario usuario = new Usuario();
 
 				
-				usuario.setIdUsuario(usuarioSelecionado.getIdUsuario());
+				funcionario.setUsuario(funcionarioSelecionado.getUsuario());
 				
                   if (funcionario != null) {
       				/*

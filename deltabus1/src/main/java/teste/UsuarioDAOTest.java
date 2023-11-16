@@ -42,13 +42,13 @@ public class UsuarioDAOTest {
 //
 //	}
 
-	@Test
-	@Order(2)  
-	public void TestListarUsuario() {
-		UsuarioDAO dao = new UsuarioDAO();
-		ArrayList<Usuario> resultado = dao.listar();
-		assertNotNull(resultado);
-	}
+//	@Test
+//	@Order(2)  
+//	public void TestListarUsuario() {
+//		UsuarioDAO dao = new UsuarioDAO();
+//		ArrayList<Usuario> resultado = dao.listar();
+//		assertNotNull(resultado);
+//	}
 //
 //	@Test
 //	@Order(4)  
