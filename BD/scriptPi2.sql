@@ -1,11 +1,8 @@
-DROP DATABASE IF EXISTS  deltaBus ;
+UNLOCK TABLES;
+DROP DATABASE IF EXISTS deltabus2;
 CREATE DATABASE  IF NOT EXISTS `deltabus2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `deltabus2`;
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
---
--- Host: localhost    Database: deltabus2
--- ------------------------------------------------------
--- Server version	8.0.32
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -136,27 +133,16 @@ CREATE TABLE `pedido` (
 -- Dumping data for table `pedido`
 --
 
-LOCK TABLES `pedido` WRITE;
-/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+
 INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Cartão',6666666666,1),(3,'2000-01-01',6,555.55,'Cartão',55555555555555,1);
-/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `usuario`
---
-
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
-  `idUsuario` int NOT NULL AUTO_INCREMENT,
-  `senha` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `cargo` varchar(45) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+   `idUsuario` int NOT NULL AUTO_INCREMENT,
+   `senha` varchar(45) NOT NULL,
+   `email` varchar(45) NOT NULL,
+   `cargo` varchar(45) NOT NULL,
+   PRIMARY KEY (`idUsuario`)
+);
 
 INSERT INTO deltabus2.usuario (senha, email, cargo) VALUES ('abc123', 'bruna@gmail.com', 'funcionario');
 INSERT INTO deltabus2.usuario (senha, email, cargo) VALUES ('abc1234', 'maria@gmail.com', 'administrador');
@@ -198,7 +184,7 @@ CREATE TABLE `veiculo` (
 INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
 INSERT INTO `veiculo` VALUES (2,'Scania','AGRALE/MASCA GRANMIDI O',134567.999,2023,'Banheiro',40,'Verde','Turismo','GNC','ABC222','987654321','Novo');
 
--- IMPLEMENTAÇÂO DE NOVAS UNCIONALIDADES --
+
 
 
 
