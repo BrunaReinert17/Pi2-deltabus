@@ -31,21 +31,23 @@ public class VeiculoDAO {
 			while (rs.next()) {
 
 				Veiculo v = new Veiculo();
-
-				v.setIdVeiculo(rs.getLong("idveiculo"));
-				v.setRenavam(rs.getString("renavam"));
-				v.setMarca(rs.getString("marca"));
-				v.setModelo(rs.getString("modelo"));
-				v.setCor(rs.getString("cor"));
-				v.setPlaca(rs.getString("placa"));
-				v.setLotacao(rs.getInt("lotacao"));
-				v.setTipoFrota(rs.getString("tipofrota"));
-				v.setTipoCombustivel(rs.getString("tipocombustivel"));
-				v.setAcessorios(rs.getString("acessorios"));
-				v.setAno(rs.getInt("ano"));
-				v.setPreco(rs.getDouble("preco"));
-				v.setSituacao(rs.getString("situacao"));
-				veiculos.add(v);
+				
+				
+                v.setIdVeiculo(rs.getLong("idveiculo"));
+                v.setTipoCombustivel(rs.getString("tipocombustivel"));
+                v.setMarca(rs.getString("marca"));
+                v.setModelo(rs.getString("modelo"));
+                v.setPlaca(rs.getString("placa"));
+                v.setTipoFrota(rs.getString("tipofrota"));
+                v.setLotacao(rs.getInt("lotacao"));
+                v.setRenavam(rs.getString("renavam"));
+                v.setCor(rs.getString("cor"));
+                v.setAcessorios(rs.getString("acessorios"));
+                v.setAno(rs.getInt("ano"));
+                v.setPreco(rs.getDouble("preco"));
+                v.setSituacao(rs.getString("situacao"));
+                veiculos.add(v);
+                
 
 			}
 
@@ -66,20 +68,21 @@ public class VeiculoDAO {
 		if(veiculo != null) {
 
 		try {
-			String query = "INSERT INTO Veiculo(marca, modelo, preco, ano, acessorios, lotacao, cor, tipoFrota, tipoCombustivel, placa, renavam, situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO Veiculo(tipoCombustivel, marca, modelo, placa, tipoFrota,lotacao, renavam, cor, acessorios, ano, preco , situacao) VALUES (?,?, ?, ?, ?,?,?,?,?,?,?,?)";
 			PreparedStatement stm = c.prepareStatement(query);
-			stm.setString(1, veiculo.getMarca());
-			stm.setString(2, veiculo.getModelo());
-			stm.setDouble(3, veiculo.getPreco());
-			stm.setInt(4, veiculo.getAno());
-			stm.setString(5, veiculo.getAcessorios());
+			stm.setString(1, veiculo.getTipoCombustivel());
+			stm.setString(2, veiculo.getMarca());
+			stm.setString(3, veiculo.getModelo());
+			stm.setString(4, veiculo.getPlaca());
+			stm.setString(5, veiculo.getTipoFrota());
 			stm.setInt(6, veiculo.getLotacao());
-			stm.setString(7, veiculo.getPlaca());
-			stm.setString(8, veiculo.getRenavam());
-			stm.setString(9, veiculo.getCor());
-			stm.setString(10, veiculo.getTipoFrota());
-			stm.setString(11, veiculo.getTipoCombustivel());
+			stm.setString(7, veiculo.getRenavam());
+			stm.setString(8, veiculo.getCor());
+			stm.setString(9, veiculo.getAcessorios());
+			stm.setInt(10, veiculo.getAno());
+			stm.setDouble(11, veiculo.getPreco());
 			stm.setString(12, veiculo.getSituacao());
+		
 
 			valida = stm.executeUpdate() == 0 ? false : true;
 		} catch (Exception e) {
@@ -117,7 +120,7 @@ public class VeiculoDAO {
 		return false;
 	}
 
-	public boolean alterarVeiculo(Veiculo veiculo) {
+	public static boolean alterarVeiculo(Veiculo veiculo) {
 
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();

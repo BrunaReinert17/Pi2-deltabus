@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS  deltaBus ;
+DROP DATABASE  IF EXISTS deltabus2;
 CREATE DATABASE  IF NOT EXISTS `deltabus2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `deltabus2`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
@@ -79,26 +79,18 @@ UNLOCK TABLES;
 -- Table structure for table `funcionarios`
 --
 
-DROP TABLE IF EXISTS `funcionarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `funcionarios` (
-  `cpf` double NOT NULL,
-  `nome` varchar(255) NOT NULL,
-  `dataNascimento` varchar(45) NOT NULL,
-  `genero` varchar(45) NOT NULL,
-  `numerotelefone` bigint NOT NULL,
-  `email` varchar(35) NOT NULL,
-  `Usuario_idUsuario` int NOT NULL,
-  `endereco_cep` bigint NOT NULL,
-  PRIMARY KEY (`cpf`),
-  KEY `Usuario_idUsuario` (`Usuario_idUsuario`),
-  KEY `endereco_cep` (`endereco_cep`),
-  CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`),
-  CONSTRAINT `funcionarios_ibfk_2` FOREIGN KEY (`endereco_cep`) REFERENCES `endereco` (`cep`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
+CREATE TABLE funcionarios (
+  cpf double NOT NULL,
+  nome varchar(255) NOT NULL,
+  dataNascimento varchar(45) NOT NULL,
+  genero varchar(45) NOT NULL,
+  numerotelefone bigint NOT NULL,
+  email varchar(35) NOT NULL,
+  Usuario_idUsuario int NOT NULL,
+  endereco_cep bigint NOT NULL,
+  PRIMARY KEY (cpf),
+  KEY Usuario_idUsuario (Usuario_idUsuario),
+  KEY endereco_cep (endereco_cep));
 --
 -- Dumping data for table `funcionarios`
 --
@@ -146,17 +138,13 @@ UNLOCK TABLES;
 -- Table structure for table `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `idUsuario` int NOT NULL AUTO_INCREMENT,
-  `senha` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `cargo` varchar(45) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE usuario (
+  idUsuario int NOT NULL AUTO_INCREMENT,
+  senha varchar(45) NOT NULL,
+  email varchar(45) NOT NULL,
+  cargo varchar(45) NOT NULL,
+  PRIMARY KEY (idUsuario)
+); 
 
 --
 -- Dumping data for table `usuario`
@@ -199,7 +187,7 @@ CREATE TABLE `veiculo` (
 
 LOCK TABLES `veiculo` WRITE;
 /*!40000 ALTER TABLE `veiculo` DISABLE KEYS */;
-INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
+INSERT INTO `veiculo` VALUES (1,'diesel','Marcopolo','Paradiso G8 1050','ABC123','Passeio',5,'123456784','Azul', 'Ar condicionado', 2023,709999,'Disponivel');
 /*!40000 ALTER TABLE `veiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

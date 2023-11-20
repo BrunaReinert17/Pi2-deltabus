@@ -13,15 +13,15 @@ import javax.swing.border.EmptyBorder;
 
 import utilidades.RoundButton;
 
-public class ErroAlterar extends JFrame {
+public class Alterar1 extends JFrame {
 
 	private JPanel contentPane;
-	private JLabel lblDadoInvalido;
+	private JLabel lblFalha2;
 
 	/**
 	 * Create the frame.
 	 */
-	public ErroAlterar (String mensagem) {
+	public Alterar1(String mensagem) {
 		setBackground(new Color(0, 128, 128));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 346, 213);
@@ -31,8 +31,8 @@ public class ErroAlterar extends JFrame {
 
 		setContentPane(contentPane);
 
-		lblDadoInvalido = new JLabel("");
-		lblDadoInvalido.setText(mensagem);
+		lblFalha2 = new JLabel("");
+		lblFalha2.setText(mensagem);
 		contentPane.setLayout(null);
 
 		RoundButton btnOk = new RoundButton("Ok");
@@ -40,7 +40,7 @@ public class ErroAlterar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnOk.setBounds(146, 123, 55, 29);
+		btnOk.setBounds(139, 123, 55, 29);
 		btnOk.setText("OK");
 		btnOk.setForeground(new Color(255, 255, 255));
 		btnOk.setFont(new Font("Dialog", Font.BOLD, 11));
@@ -52,15 +52,15 @@ public class ErroAlterar extends JFrame {
         });
 		contentPane.add(btnOk);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(CadastroErro.class.getResource("/imagem/MensageAviso.png")));
-		lblNewLabel.setBounds(124, -15, 107, 76);
-		contentPane.add(lblNewLabel);
+		JLabel lblAviso = new JLabel("");
+		lblAviso.setIcon(new ImageIcon(LoginErro1.class.getResource("/imagem/MensageAviso.png")));
+		lblAviso.setBounds(117, -19, 110, 84);
+		contentPane.add(lblAviso);
 		
-		JLabel lblErroAlterar = new JLabel("Erro de alteração, tente novamente!");
-		lblErroAlterar.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblErroAlterar.setForeground(Color.WHITE);
-		lblErroAlterar.setBounds(59, 82, 261, 24);
-		contentPane.add(lblErroAlterar);
+		JLabel lblFalha2 = new JLabel("Selecione uma linha da lista para Alterar");
+		lblFalha2.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblFalha2.setForeground(new Color(255, 255, 255));
+		lblFalha2.setBounds(52, 82, 246, 14);
+		contentPane.add(lblFalha2);
 	}
 }

@@ -116,10 +116,6 @@ public class UsuarioDAO implements InterfaceUsuario {
 				u.setSenha(rs.getString("idUsuario"));
 				u.setEmail(rs.getString("email"));
 				u.setCargo(rs.getString("cargo"));
-				// Long id = rs.getLong("idUsuario");
-				// String senha = rs.getString("senha");
-				// String email = rs.getString("email");
-				// String cargo = rs.getString("cargo");
 				usuarios.add(u);
 			}
 		} catch (Exception e) {
