@@ -655,17 +655,23 @@ public class CadastrarUsuario extends JPanel {
 				
 				txtNome.setText(funcionarioSelecionado.getNome());
 				txtCpf.setText(funcionarioSelecionado.getCpf());
+				System.out.println("Cpf nao vai");
 				cbGenero.setSelectedItem(funcionarioSelecionado.getGenero());
 				txtEmail.setText(funcionarioSelecionado.getEmail());
 				txtTelefone.setText(funcionarioSelecionado.getNumeroTelefone());
-				//txtDataNasci.setText(funcionarioSelecionado.getDatanasci());
-				//txtCep.setText(funcionarioSelecionado.getCep());
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+				txtDataNasci.setText(funcionarioSelecionado.getDatanasci().format(formatter));
+				txtCep.setText(Long.toString(funcionarioSelecionado.getEndereco().getCep()));
 				cbUf.setSelectedItem(funcionarioSelecionado.getEndereco());
 				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());
+				//ver como fazer pois puxa de usuario e não funcionario
+				System.out.println("erro2");
 				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco());
 				txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
-				//txtBairro.setText(funcionarioSelecionado.getEndereco());
-				//txtRua.setText(funcionarioSelecionado.getEndereco());
+				//ver como fazer pois puxa de usuario e não funcionario
+				txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco().getCep()));
+				textRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getCep()));
+				//ver como puxar o cep para os outros endereços
 
 				
 				
@@ -696,10 +702,8 @@ public class CadastrarUsuario extends JPanel {
 				 * **/
 				
 				Funcionario funcionario = verificarDados();
-				Usuario usuario = new Usuario();
 
-				
-				usuario.setIdUsuario(usuarioSelecionado.getIdUsuario());
+				funcionario.setUsuario(funcionarioSelecionado.getUsuario());
 				
                   if (funcionario != null) {
       				/*
@@ -887,13 +891,13 @@ public class CadastrarUsuario extends JPanel {
 
 	public void atualizarTabela() {
 		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
+				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		listFuncionario = funcionarioDAO.consultarTodos();
 		System.out.println(listFuncionario);
 		for (int i = 0; i < listFuncionario.size(); i++) {
 			Funcionario funcionario = listFuncionario.get(i);
-			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getCpf(), funcionario.getNumeroTelefone(),
+			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getEmail(), funcionario.getCpf(), funcionario.getNumeroTelefone(),
 					funcionario.getDatanasci(), funcionario.getGenero(), funcionario.getEndereco().getCep() });
 
 		}

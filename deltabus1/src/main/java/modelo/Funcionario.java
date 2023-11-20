@@ -18,15 +18,14 @@ public class Funcionario {
 		super();
 	}
 
-	public Funcionario(String nome, LocalDate datanasci, String genero, String numeroTelefone, String cpf,
+	public Funcionario(String nome, LocalDate datanasci, String genero, String email, String numeroTelefone, String cpf,
 			Endereco endereco, Usuario usuario) {
 		super();
 		this.nome = nome;
 		this.datanasci = datanasci;
 		this.genero = genero;
 		this.numeroTelefone = numeroTelefone;
-
-		
+		this.email = email;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.usuario = usuario;
@@ -99,9 +98,11 @@ public class Funcionario {
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + nome + ", datanasci=" + datanasci + ", genero=" + genero + ", numeroTelefone="
+		return "Funcionario [nome=" + nome + ", datanasci=" + datanasci + ", genero=" + genero + ", email=" + email + ", numeroTelefone="
 				+ numeroTelefone + ", cpf=" + cpf + ", endereco=" + endereco + ", usuario=" + usuario + "]";
 	}
+
+	
 
 	
 

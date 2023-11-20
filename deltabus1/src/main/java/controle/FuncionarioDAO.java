@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.Usuario;
+import java.time.LocalDate;
+
 
 public class FuncionarioDAO implements InterfaceFuncionario {
 
@@ -95,16 +97,13 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 			ps.setLong(7, funcionario.getEndereco().getCep());
 			ps.executeUpdate();
 
-			return true;
-
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
 
-		return false;
+		return true;
 	}
 
 	public ArrayList<Funcionario> consultarTodos() {
@@ -127,6 +126,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				endereco.setCep(rs.getInt("endereco_cep"));
 				usuario.setIdUsuario(rs.getLong("Usuario_idUsuario"));
 				funcionario.setCpf(rs.getString("cpf"));
+				funcionario.setEmail(rs.getString("email"));
 				funcionario.setNome(rs.getString("nome"));
 				funcionario.setGenero(rs.getString("genero"));
 				funcionario.setNumeroTelefone(rs.getString("numerotelefone"));
