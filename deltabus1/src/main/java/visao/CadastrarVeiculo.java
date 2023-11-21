@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,8 +29,8 @@ import controle.PedidoDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
 import mensagens.AlteraSucesso;
-import mensagens.Alterar1;
-import mensagens.AlterarSucesso1;
+//import mensagens.Alterar1;
+//import mensagens.AlterarSucesso1;
 import mensagens.CadastroErro;
 
 import mensagens.CadastroErro1;
@@ -580,9 +580,9 @@ public class CadastrarVeiculo extends JPanel {
 				
 				}
 				else {
-					Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
-					falha1.setLocationRelativeTo(null);
-					falha1.setVisible(true);
+					//Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
+					//falha1.setLocationRelativeTo(null);
+					//falha1.setVisible(true);
 				}
 			}
 		});
@@ -621,10 +621,10 @@ public class CadastrarVeiculo extends JPanel {
                     
                       if (resultado == true) {
            
-                        AlterarSucesso1 alterar = new AlterarSucesso1("Usuário alterado com Sucesso!");
-                        alterar.setLocationRelativeTo(null);
-                        alterar.setVisible(true);
-                       limparDados(); 
+                       // AlterarSucesso1 alterar = new AlterarSucesso1("Usuário alterado com Sucesso!");
+                       // alterar.setLocationRelativeTo(null);
+                       // alterar.setVisible(true);
+                      // limparDados(); 
                     } else {
                         ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
                         erro1.setLocationRelativeTo(null);
