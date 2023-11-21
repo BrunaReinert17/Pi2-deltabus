@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -29,13 +30,18 @@ import controle.PedidoDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
 import mensagens.AlteraSucesso;
+import mensagens.AlteracaoNaoRealizada;
+import mensagens.Alterar1;
+import mensagens.AlterarSucesso1;
 //import mensagens.Alterar1;
 //import mensagens.AlterarSucesso1;
 import mensagens.CadastroErro;
 
 import mensagens.CadastroErro1;
+import mensagens.CadastroErro2;
 import mensagens.CadastroSucesso;
 import mensagens.CadastroVeiculo;
+import mensagens.ConfirmacaoAlterar;
 import mensagens.ConfirmacaoDeletar;
 import mensagens.Deletar1;
 import mensagens.Deletar2;
@@ -535,7 +541,11 @@ public class CadastrarVeiculo extends JPanel {
                         erro1.setVisible(true);
                     }
                 }
-				
+                else {
+                	CadastroErro2 erro2 = new CadastroErro2("Veriique os campos e tente novamente!");
+                    erro2.setLocationRelativeTo(null);
+                    erro2.setVisible(true);
+                }
 				
 			}
 			});
@@ -580,9 +590,9 @@ public class CadastrarVeiculo extends JPanel {
 				
 				}
 				else {
-					//Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
-					//falha1.setLocationRelativeTo(null);
-					//falha1.setVisible(true);
+					Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
+					falha1.setLocationRelativeTo(null);
+					falha1.setVisible(true);
 				}
 			}
 		});
@@ -593,7 +603,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnAl.setBounds(650, 691, 132, 33);
 		add(btnAl);
 		
-		btnSalvar1 = new RoundButton("Cadastrar");
+		btnSalvar1 = new RoundButton("Salvar");
 		btnSalvar1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -601,7 +611,20 @@ public class CadastrarVeiculo extends JPanel {
 				
 				v.setIdVeiculo(pedidoSelecionado.getIdVeiculo());
 				
-				if (v != null) {
+				if (!veiculoAlterado(v, pedidoSelecionado)) {
+		           
+					AlteracaoNaoRealizada alterar = new AlteracaoNaoRealizada("Erro de alteração, tente novamente!");
+					alterar.setLocationRelativeTo(null);
+					alterar.setVisible(true);
+		            return; 
+		        }
+				 
+ConfirmacaoAlterar confirmacao = new ConfirmacaoAlterar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
+				
+					
+					
+					public void mensagemConfirmada() {
+					if (v != null) {
                 	
 		               
       				/*
@@ -617,22 +640,30 @@ public class CadastrarVeiculo extends JPanel {
       				 * Ocular salvar e motrar cadastrar
       				 * **/
       				btnSalvar1.setVisible(false);
-      				btnAl.setVisible(true);
+      				btnCadastrar.setVisible(true);
                     
                       if (resultado == true) {
            
-                       // AlterarSucesso1 alterar = new AlterarSucesso1("Usuário alterado com Sucesso!");
-                       // alterar.setLocationRelativeTo(null);
-                       // alterar.setVisible(true);
-                      // limparDados(); 
+                        AlterarSucesso1 alterar = new AlterarSucesso1("Usuário alterado com Sucesso!");
+                        alterar.setLocationRelativeTo(null);
+                        alterar.setVisible(true);
+                        limparDados(); 
                     } else {
                         ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
                         erro1.setLocationRelativeTo(null);
                         erro1.setVisible(true);
                     }
-                } 
+                }
+					}
+					
+					public void mensagemCancelada() {
+						
+						
+					}
                
-				
+				});
+				confirmacao.setVisible(true);
+			
 				
 			}
 		});
@@ -656,6 +687,8 @@ public class CadastrarVeiculo extends JPanel {
                 	   
 
 						@Override
+
+
 						
 						public void mensagemConfirmada() {
 							VeiculoDAO veiculoDAO = new VeiculoDAO();
@@ -918,4 +951,51 @@ public class CadastrarVeiculo extends JPanel {
 		cbSituacao.setToolTipText(veiculoSelecionado.getSituacao());
 		
 	}
+	
+	private boolean veiculoAlterado(Veiculo novoVeiculo, Veiculo veiculoOriginal) {
+	    
+	    if (!Objects.equals(novoVeiculo.getIdVeiculo(), veiculoOriginal.getIdVeiculo())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getMarca(), veiculoOriginal.getMarca())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getModelo(), veiculoOriginal.getModelo())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getPreco(), veiculoOriginal.getPreco())) {
+	        return true;
+	    }
+	    if (novoVeiculo.getAno() != veiculoOriginal.getAno()) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getAcessorios(), veiculoOriginal.getAcessorios())) {
+	        return true;
+	    }
+	    if (novoVeiculo.getLotacao() != veiculoOriginal.getLotacao()) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getPlaca(), veiculoOriginal.getPlaca())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getRenavam(), veiculoOriginal.getRenavam())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getCor(), veiculoOriginal.getCor())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getTipoFrota(), veiculoOriginal.getTipoFrota())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getTipoCombustivel(), veiculoOriginal.getTipoCombustivel())) {
+	        return true;
+	    }
+	    if (!Objects.equals(novoVeiculo.getSituacao(), veiculoOriginal.getSituacao())) {
+	        return true;
+	    }
+
+	   
+	    return false;
+	}
+
 }

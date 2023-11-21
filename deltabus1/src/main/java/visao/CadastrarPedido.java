@@ -270,7 +270,7 @@ public class CadastrarPedido extends JPanel {
 				Pedido p = verificarDados();
           	
 
-				boolean pedidoRetornoCadastro = false;
+				
             	
 
                 if (p != null) {
