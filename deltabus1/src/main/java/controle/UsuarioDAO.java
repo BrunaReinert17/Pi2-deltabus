@@ -129,6 +129,8 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 		return usuarios;
 	}
+	
+	
 
 	public Usuario consultarLogin(Usuario usuario) {
 		con = Conexao.getInstancia();
@@ -171,6 +173,8 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 		return usuarioConectado;
 	}
+	
+	
 
 	public boolean excluirUsuario(Usuario usuario) {
 		Conexao con = Conexao.getInstancia();
