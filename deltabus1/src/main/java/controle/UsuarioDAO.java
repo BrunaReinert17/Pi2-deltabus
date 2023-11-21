@@ -96,12 +96,15 @@ public class UsuarioDAO implements InterfaceUsuario {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "UPDATE Endereco\r\n   SET" + "Email = ?\r\n" + "Senha = ?" + "Cargo = ? ,  WHERE idUsuario = ?";
+		String query = "UPDATE usuario SET " + "Email = ?, " + "Senha = ?, " + "Cargo = ?   WHERE idUsuario = ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, usuario.getEmail());
 			ps.setString(2, usuario.getSenha());
 			ps.setString(3, usuario.getCargo());
+			ps.setLong(4, usuario.getIdUsuario());
+			System.out.println(ps);
+			
 
 			ps.executeUpdate();
 			return usuario;

@@ -65,7 +65,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 		System.out.println("end13");
 		try {
 			String query = "INSERT INTO endereco (cep, cidade, bairro, rua, UF)values(?,?,?,?,?);";
-			PreparedStatement stm = c.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setLong(1, endereco.getCep());
 			stm.setString(2, endereco.getCidade());
@@ -77,18 +77,6 @@ public class EnderecoDAO implements InterfaceEndereco {
 			
 			
 
-	        if (affectedRows == 0) {
-	            throw new SQLException("Creating user failed, no rows affected.");
-	        }
-
-	        try (ResultSet generatedKeys = stm.getGeneratedKeys()) {
-	            if (generatedKeys.next()) {
-	                return generatedKeys.getLong(1);
-	            }
-	            else {
-	                throw new SQLException("Creating user failed, no ID obtained.");
-	            }
-	        }
 	   
 			
 		} catch (SQLException e) {

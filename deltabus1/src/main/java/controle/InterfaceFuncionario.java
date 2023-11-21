@@ -4,7 +4,7 @@ import modelo.Funcionario;
 
 public interface InterfaceFuncionario {
 
-	public boolean inserirFuncionario(Funcionario funcionario);
+	public long inserirFuncionario(Funcionario funcionario);
 
 	public boolean deletarFuncionario(Funcionario funcionario);
 

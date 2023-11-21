@@ -472,10 +472,10 @@ public class CadastrarUsuario extends JPanel {
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
 					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
+				
 					System.out.println(endereco);
 					if (endereco == null) {
-						long ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
-						endereco.setCep(ende);
+						long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
 
 					int usuarioRetornoCadastro;
@@ -489,9 +489,9 @@ public class CadastrarUsuario extends JPanel {
 							//usuario = usuarioDAO.selecionar(funcionario.getUsuario());
 							//System.out.println(usuario);
 							//funcionario.setUsuario(usuario);
-							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
+							long resultado = funcionarioDAO.inserirFuncionario(funcionario);
 
-							if (resultado == true) {
+							if (resultado >0) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
@@ -683,14 +683,27 @@ public class CadastrarUsuario extends JPanel {
 				
 				Funcionario funcionario = verificarDados();
 
-				funcionario.setUsuario(funcionarioSelecionado.getUsuario());
+				funcionario.getUsuario().setIdUsuario(funcionarioSelecionado.getUsuario().getIdUsuario());
 				
                   if (funcionario != null) {
       				/*
       				 * salvar alteracao no banco
       				 * **/
+                	  
+                	 EnderecoDAO enderecoDAO = new EnderecoDAO();
+  					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
+  				
+  					if (endereco == null) {
+  						long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
+  					}
+
+                	  
+                	  
       				FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
                     boolean resultado = funcionarioDAO.alterarFuncionario(funcionario);
+                    
+                    UsuarioDAO usuario = new UsuarioDAO();
+                    usuario.alterarUsuario(funcionario.getUsuario());
       				/*
       				 * Atualizar tabela
       				 * **/

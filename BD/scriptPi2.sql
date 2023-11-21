@@ -80,7 +80,7 @@ UNLOCK TABLES;
 --
 
 CREATE TABLE funcionarios (
-  cpf double NOT NULL,
+  cpf bigint NOT NULL,
   nome varchar(255) NOT NULL,
   dataNascimento varchar(45) NOT NULL,
   genero varchar(45) NOT NULL,
