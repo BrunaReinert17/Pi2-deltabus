@@ -112,7 +112,7 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		
 		ArrayList<Funcionario> listFunc = new ArrayList<Funcionario>();
 		try {
-			PreparedStatement ps = c.prepareStatement("select * from funcionarios");
+			PreparedStatement ps = c.prepareStatement("select * from funcionarios join usuario u on u.idUsuario = funcionarios.Usuario_idUsuario join endereco on funcionarios.endereco_cep=endereco.cep");
 
 			ResultSet rs = ps.executeQuery();
 
@@ -124,7 +124,16 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 				
 
 				endereco.setCep(rs.getInt("endereco_cep"));
+				endereco.setBairro(rs.getString("bairro"));
+				endereco.setCidade(rs.getString("cidade"));
+				endereco.setRua(rs.getString("rua"));
+				endereco.setUf(rs.getString("UF"));
+
 				usuario.setIdUsuario(rs.getLong("Usuario_idUsuario"));
+				usuario.setCargo(rs.getString("cargo"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+
 				funcionario.setCpf(rs.getString("cpf"));
 				funcionario.setEmail(rs.getString("email"));
 				funcionario.setNome(rs.getString("nome"));

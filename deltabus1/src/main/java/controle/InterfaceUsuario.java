@@ -4,7 +4,7 @@ import modelo.Usuario;
 
 public interface InterfaceUsuario {
 
-	public boolean inserirUsuario(Usuario usuario);
+	public int inserirUsuario(Usuario usuario);
 
 	public boolean excluirUsuario(Usuario usuario);
 

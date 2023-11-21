@@ -227,12 +227,14 @@ public class CadastrarCliente extends JPanel {
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					Endereco endereco = enderecoDAO.listandoEndereco(cliente.getEndereco());
 					System.out.println(endereco);
-					boolean ende = true;
+					//boolean ende = true;
 					if (endereco == null) {
-						ende = enderecoDAO.inserirEndereco(cliente.getEndereco());
+						long ende = enderecoDAO.inserirEndereco(cliente.getEndereco());
+						cliente.getEndereco().setCep(ende);
+						
 					}
 					boolean clienteRetornoCadastro;
-					if (ende != false) {
+					if (endereco != null) {
 							boolean resultado=false;
 							try {
 								resultado = clienteDAO.inserirCliente(cliente);

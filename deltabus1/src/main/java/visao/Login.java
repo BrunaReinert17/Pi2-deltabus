@@ -70,7 +70,7 @@ public class Login extends JFrame {
 	public Login() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/imagem/logoampliada.png")));
 		setExtendedState(MAXIMIZED_BOTH);
-		setTitle("Login");
+		setTitle("Entrar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1400);
 		contentPane = new JPanel();
@@ -89,7 +89,7 @@ public class Login extends JFrame {
 		contentPane.add(panel1);
 		panel1.setLayout(null);
 
-		btnNewButton = new RoundButton("Login");
+		btnNewButton = new RoundButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -146,12 +146,12 @@ public class Login extends JFrame {
 
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(Login.class.getResource("/imagem/titulo2.png")));
-		lblNewLabel_2.setBounds(-361, 76, 734, 114);
+		lblNewLabel_2.setBounds(-362, 76, 734, 114);
 		panel1.add(lblNewLabel_2);
 
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagem/logo.png")));
-		lblNewLabel.setBounds(-361, 66, 916, 150);
+		lblNewLabel.setBounds(-362, 61, 916, 150);
 		panel1.add(lblNewLabel);
 
 		txtSenha = new JPasswordField();

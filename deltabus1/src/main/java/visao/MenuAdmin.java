@@ -140,10 +140,10 @@ public class MenuAdmin extends JFrame {
 				logout.setVisible(true);
 			}
 		});
-		btnLogout.setForeground(new Color(255, 255, 255));
+		btnLogout.setForeground(new Color(245, 245, 245));
 		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnLogout.setBackground(Color.WHITE);
-		btnLogout.setBounds(109, 769, 146, 54);
+		btnLogout.setBackground(new Color(245, 245, 245));
+		btnLogout.setBounds(148, 780, 70, 43);
 		panel.add(btnLogout);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -159,11 +159,16 @@ public class MenuAdmin extends JFrame {
 		});
 
 		btnHome.setText("");
-		btnHome.setForeground(Color.WHITE);
+		btnHome.setForeground(new Color(255, 255, 255));
 		btnHome.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnHome.setBackground(Color.WHITE);
+		btnHome.setBackground(new Color(255, 255, 255));
 		btnHome.setBounds(162, 337, 64, 43);
 		panel.add(btnHome);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/menu panel.png")));
+		lblNewLabel_5.setBounds(-126, -63, 502, 1209);
+		panel.add(lblNewLabel_5);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/deltabus.png")));

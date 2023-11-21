@@ -174,7 +174,7 @@ public class MenuFuncionario extends JFrame {
 
 		JLabel ImagemLogout = new JLabel("");
 		ImagemLogout.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone3.png")));
-		ImagemLogout.setBounds(92, 839, 122, 47);
+		ImagemLogout.setBounds(92, 780, 122, 47);
 		panel.add(ImagemLogout);
 		rndbtnCadastrarVeiculos.setForeground(Color.WHITE);
 		rndbtnCadastrarVeiculos.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -191,10 +191,10 @@ public class MenuFuncionario extends JFrame {
 				logout.setVisible(true);
 			}
 		});
-		btnLogout.setForeground(new Color(255, 255, 255));
+		btnLogout.setForeground(new Color(245, 245, 245));
 		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnLogout.setBackground(Color.WHITE);
-		btnLogout.setBounds(109, 832, 146, 54);
+		btnLogout.setBackground(new Color(245, 245, 245));
+		btnLogout.setBounds(148, 780, 70, 43);
 		panel.add(btnLogout);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -233,6 +233,11 @@ public class MenuFuncionario extends JFrame {
 		btnCadastroDeVendas.setBackground(new Color(0, 128, 128));
 		btnCadastroDeVendas.setBounds(90, 585, 199, 43);
 		panel.add(btnCadastroDeVendas);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/menu panel.png")));
+		lblNewLabel_5.setBounds(-126, -63, 502, 1209);
+		panel.add(lblNewLabel_5);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/deltabus.png")));

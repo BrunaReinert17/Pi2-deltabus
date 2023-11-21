@@ -6,7 +6,7 @@ public interface InterfaceEndereco {
 
 	public Endereco listandoEndereco(Endereco endereco);
 
-	public boolean inserirEndereco(Endereco endereco);
+	public long inserirEndereco(Endereco endereco);
 
 	public boolean excluirEndereco(Endereco endereco);
 

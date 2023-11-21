@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Endereco;
@@ -55,17 +56,16 @@ public class EnderecoDAO implements InterfaceEndereco {
 	
 
 	@Override
-	public boolean inserirEndereco(Endereco endereco) {
+	public long  inserirEndereco(Endereco endereco) {
 		System.out.println("end1");
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		PreparedStatement st = null;
-		int valida = 0;
+		int affectedRows = 0;
 		System.out.println("end13");
 		try {
 			String query = "INSERT INTO endereco (cep, cidade, bairro, rua, UF)values(?,?,?,?,?);";
-			PreparedStatement stm = c.prepareStatement(query);
+			PreparedStatement stm = c.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			stm.setLong(1, endereco.getCep());
 			stm.setString(2, endereco.getCidade());
@@ -73,7 +73,23 @@ public class EnderecoDAO implements InterfaceEndereco {
 			stm.setString(4, endereco.getRua());
 			stm.setString(5,endereco.getUf());
 			System.out.println(stm);
-			valida = stm.executeUpdate();
+			affectedRows = stm.executeUpdate();
+			
+			
+
+	        if (affectedRows == 0) {
+	            throw new SQLException("Creating user failed, no rows affected.");
+	        }
+
+	        try (ResultSet generatedKeys = stm.getGeneratedKeys()) {
+	            if (generatedKeys.next()) {
+	                return generatedKeys.getLong(1);
+	            }
+	            else {
+	                throw new SQLException("Creating user failed, no ID obtained.");
+	            }
+	        }
+	   
 			
 		} catch (SQLException e) {
 
@@ -82,7 +98,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 			con.fecharConexao();
 		}
 
-		return (valida == 0 ? false : true);
+		return affectedRows;
 
 	}
 

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Usuario;
@@ -22,29 +23,44 @@ public class UsuarioDAO implements InterfaceUsuario {
 	 * Ideal que o metodo retorne o id inserido no banco e nao apenas verdadeiro e
 	 * falso
 	 */
-	public boolean inserirUsuario(Usuario usuario) {
+	public int inserirUsuario(Usuario usuario) {
 
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		boolean valida = false;
+		int id=0;
 		if (usuario != null) {
 
 			try {
 				String query = "INSERT INTO usuario(senha, email, cargo) VALUES (?, ?, ?)";
-				PreparedStatement stm = c.prepareStatement(query);
+				PreparedStatement stm = c.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 				stm.setString(1, usuario.getSenha());
 				stm.setString(2, usuario.getEmail());
 				stm.setString(3, usuario.getCargo());
 
-				valida = stm.executeUpdate() == 0 ? false : true;
+				int affectedRows = stm.executeUpdate();
+				
+
+		        if (affectedRows == 0) {
+		            throw new SQLException("Creating user failed, no rows affected.");
+		        }
+				
+				 try (ResultSet generatedKeys = stm.getGeneratedKeys()) {
+			            if (generatedKeys.next()) {
+			                id = generatedKeys.getInt(1);
+			            }
+			            else {
+			                throw new SQLException("Creating user failed, no ID obtained.");
+			            }
+			        }
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				con.fecharConexao();
 			}
 		}
-		return valida;
+		return id;
 	}
 
 	public Usuario selecionar(Usuario usuarioModelo) {

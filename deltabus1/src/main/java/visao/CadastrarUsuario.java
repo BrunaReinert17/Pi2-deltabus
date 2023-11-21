@@ -112,6 +112,7 @@ public class CadastrarUsuario extends JPanel {
 	private JPanel panel_5;
 	private ArrayList<Funcionario> listFuncionario;
 	private Usuario usuarioSelecionado;
+	private JLabel lblNewLabel_1;
 
 	public CadastrarUsuario() {
 		setLocale("Login");
@@ -179,6 +180,11 @@ public class CadastrarUsuario extends JPanel {
 
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/deletar.png")));
+		lblNewLabel_1.setBounds(1105, 83, 75, 33);
+		add(lblNewLabel_1);
 
 		panel_4 = new JPanel();
 		panel_4.setBackground(new Color(220, 220, 220));
@@ -198,7 +204,7 @@ public class CadastrarUsuario extends JPanel {
 		scrollPane_2.setViewportView(table_1);
 
 		lblLimpar = new JLabel("");
-		lblLimpar.setBounds(1035, 92, 110, 33);
+		lblLimpar.setBounds(984, 83, 110, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
 		lblLimpar.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
@@ -253,22 +259,16 @@ public class CadastrarUsuario extends JPanel {
 		lblCpf1.setBounds(714, 157, 46, 14);
 		lblCpf1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCpf1);
-		/**********/
-		MaskFormatter mascaraCpf = null;
-		try {
-			mascaraCpf = new MaskFormatter("###.###.###-##");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		txtCpf = new JFormattedTextField(mascaraCpf);
+		
+		txtCpf = new JFormattedTextField();
 		txtCpf.setBounds(714, 176, 132, 30);
 		txtCpf.setText("");
 		txtCpf.setFont(new Font("Dialog", Font.BOLD, 13));
-		/**********/
 		txtCpf.setBackground(new Color(255, 255, 255));
 		txtCpf.setForeground(new Color(0, 0, 0));
 		txtCpf.setColumns(10);
 		add(txtCpf);
+		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setBounds(153, 239, 98, 14);
 		lblTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -277,11 +277,11 @@ public class CadastrarUsuario extends JPanel {
 		/**********/
 		MaskFormatter mascaraTelefone = null;
 		try {
-			mascaraCpf = new MaskFormatter("(##)####-####");
+			mascaraTelefone = new MaskFormatter("(##)####-####");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtTelefone = new JFormattedTextField(mascaraCpf);
+		txtTelefone = new JFormattedTextField(mascaraTelefone);
 		txtTelefone.setBounds(153, 257, 132, 30);
 		txtTelefone.setText("");
 		/**********/
@@ -296,11 +296,11 @@ public class CadastrarUsuario extends JPanel {
 		/**********/
 		MaskFormatter mascaraDataDeNascimento = null;
 		try {
-			mascaraCpf = new MaskFormatter("##/##/####");
+			mascaraDataDeNascimento = new MaskFormatter("##/##/####");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtDataNasci = new JFormattedTextField(mascaraCpf);
+		txtDataNasci = new JFormattedTextField(mascaraDataDeNascimento);
 		txtDataNasci.setBounds(900, 177, 135, 29);
 		txtDataNasci.setFont(new Font("Dialog", Font.BOLD, 13));
 		/**********/
@@ -330,11 +330,11 @@ public class CadastrarUsuario extends JPanel {
 		/**********/
 		MaskFormatter mascaraCep = null;
 		try {
-			mascaraCpf = new MaskFormatter("#####-###");
+			mascaraCep = new MaskFormatter("#####-###");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtCep = new JFormattedTextField(mascaraCpf);
+		txtCep = new JFormattedTextField(mascaraCep);
 		txtCep.setBounds(515, 257, 149, 30);
 		txtCep.setText("");
 		/**********/
@@ -454,7 +454,7 @@ public class CadastrarUsuario extends JPanel {
 		add(lblFuncao);
 
 		btnCadastrar = new RoundButton("Cadastrar");
-		btnCadastrar.setBounds(545, 697, 132, 33);
+		btnCadastrar.setBounds(471, 696, 117, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -473,33 +473,31 @@ public class CadastrarUsuario extends JPanel {
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
 					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
 					System.out.println(endereco);
-					boolean ende = true;
 					if (endereco == null) {
-						ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
+						long ende = enderecoDAO.inserirEndereco(funcionario.getEndereco());
+						endereco.setCep(ende);
 					}
-					System.out.println(ende);
 
-					boolean usuarioRetornoCadastro;
+					int usuarioRetornoCadastro;
 					
-					if (ende != false) {
+					if (endereco != null) {
 						
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
-						System.out.println(funcionario.getUsuario());
-						
-						if (usuarioRetornoCadastro) {
-							;
-							usuario = usuarioDAO.selecionar(funcionario.getUsuario());
-							System.out.println(usuario);
-							funcionario.setUsuario(usuario);
+												
+						if (usuarioRetornoCadastro!=0) {
+							funcionario.getUsuario().setIdUsuario(usuarioRetornoCadastro);
+							//usuario = usuarioDAO.selecionar(funcionario.getUsuario());
+							//System.out.println(usuario);
+							//funcionario.setUsuario(usuario);
 							boolean resultado = funcionarioDAO.inserirFuncionario(funcionario);
 
-							if (resultado = true) {
+							if (resultado == true) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								atualizarTabela();
 								
-								//NAO ESTA APARECENDO NA LISTAGEM
+								//NAO ESTA APARECENDO NA LISTAGEM E CPF E ID ESTAO RESULTANDO EM 0
 
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
@@ -524,10 +522,10 @@ public class CadastrarUsuario extends JPanel {
 		atualizarTabela();
 
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
-		btnLimparCampo.setBounds(1061, 92, 84, 33);
+		btnLimparCampo.setBounds(1042, 83, 40, 33);
 		btnLimparCampo.setText("");
 		btnLimparCampo.setBackground(new Color(245, 245, 245));
-		btnLimparCampo.setForeground(Color.WHITE);
+		btnLimparCampo.setForeground(new Color(245, 245, 245));
 		btnLimparCampo.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -576,18 +574,6 @@ public class CadastrarUsuario extends JPanel {
 		panel_5.setBounds(148, 411, 893, 249);
 		add(panel_5);
 
-		JButton btnPesquisar_1 = new JButton("Pesquisar");
-		btnPesquisar_1.setForeground(Color.WHITE);
-		btnPesquisar_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnPesquisar_1.setBackground(new Color(0, 128, 128));
-		btnPesquisar_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String cpfpesquisa = txtCpf.getText();
-			}
-		});
-		btnPesquisar_1.setBounds(148, 385, 115, 23);
-		add(btnPesquisar_1);
-
 		RoundButton rndbtnDeletar_1 = new RoundButton("Deletar");
 		rndbtnDeletar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -629,11 +615,11 @@ public class CadastrarUsuario extends JPanel {
 				}
 			}
 		});
-		rndbtnDeletar_1.setText("Deletar");
-		rndbtnDeletar_1.setForeground(Color.BLACK);
+		rndbtnDeletar_1.setText("");
+		rndbtnDeletar_1.setForeground(new Color(245, 245, 245));
 		rndbtnDeletar_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		rndbtnDeletar_1.setBackground(Color.WHITE);
-		rndbtnDeletar_1.setBounds(920, 92, 115, 33);
+		rndbtnDeletar_1.setBackground(new Color(245, 245, 245));
+		rndbtnDeletar_1.setBounds(1116, 83, 40, 33);
 		add(rndbtnDeletar_1);
 		
 		RoundButton btnAlterar = new RoundButton("Alterar");
@@ -655,24 +641,18 @@ public class CadastrarUsuario extends JPanel {
 				
 				txtNome.setText(funcionarioSelecionado.getNome());
 				txtCpf.setText(funcionarioSelecionado.getCpf());
-				System.out.println("Cpf nao vai");
 				cbGenero.setSelectedItem(funcionarioSelecionado.getGenero());
 				txtEmail.setText(funcionarioSelecionado.getEmail());
 				txtTelefone.setText(funcionarioSelecionado.getNumeroTelefone());
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
 				txtDataNasci.setText(funcionarioSelecionado.getDatanasci().format(formatter));
 				txtCep.setText(Long.toString(funcionarioSelecionado.getEndereco().getCep()));
-				cbUf.setSelectedItem(funcionarioSelecionado.getEndereco());
-				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());
-				//ver como fazer pois puxa de usuario e não funcionario
-				System.out.println("erro2");
-				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco());
+				cbUf.setSelectedItem(funcionarioSelecionado.getEndereco().getUf());
+				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());				
+				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco().getCidade());
 				txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
-				//ver como fazer pois puxa de usuario e não funcionario
-				txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco().getCep()));
-				textRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getCep()));
-				//ver como puxar o cep para os outros endereços
-
+				txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco().getBairro()));
+				textRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getRua()));
 				
 				
 				/*
@@ -690,8 +670,8 @@ public class CadastrarUsuario extends JPanel {
 		});
 		btnAlterar.setForeground(Color.WHITE);
 		btnAlterar.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnAlterar.setBackground(new Color(0, 128, 128));
-		btnAlterar.setBounds(760, 697, 116, 33);
+		btnAlterar.setBackground(new Color(0, 0, 0));
+		btnAlterar.setBounds(655, 696, 116, 33);
 		add(btnAlterar);
 		
 		btnSalvar1 = new RoundButton("Salvar");
@@ -741,7 +721,7 @@ public class CadastrarUsuario extends JPanel {
 		btnSalvar1.setForeground(Color.WHITE);
 		btnSalvar1.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnSalvar1.setBackground(new Color(0, 128, 128));
-		btnSalvar1.setBounds(342, 697, 116, 33);
+		btnSalvar1.setBounds(471, 696, 116, 33);
 		btnSalvar1.setVisible(false);
 		add(btnSalvar1);
 
