@@ -60,7 +60,6 @@ public class EnderecoDAO implements InterfaceEndereco {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		PreparedStatement st = null;
 		int valida = 0;
 		System.out.println("end13");
 		try {
@@ -116,28 +115,25 @@ public class EnderecoDAO implements InterfaceEndereco {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "UPDATE Endereco" + "SET bairro = 'Progresso', rua = 'Zimerman', Uf = 'RS'\r\n" + "WHERE cep = 888888896;";
+		String query = "UPDATE Endereco" + "SET bairro = ?, rua = ?, Uf = ?" + "WHERE cep = ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
-			ps.setString(0, endereco.getCidade());
-			ps.setString(1, endereco.getBairro());
-			ps.setString(2, endereco.getRua());
-			ps.setString(3, endereco.getUf());
-			ps.setLong(4, endereco.getCep());
-			
-
+			ps.setLong(1, endereco.getCep());
+			ps.setString(2, endereco.getCidade());
+			ps.setString(3, endereco.getBairro());
+			ps.setString(4, endereco.getRua());
+			ps.setString(5, endereco.getUf());
 			ps.executeUpdate();
-			return true;
 
 			
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
 
-		return false;
+		return true;
 	}
 
 }

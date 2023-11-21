@@ -61,7 +61,6 @@ public class CadastrarCliente extends JPanel {
 	private JTextField txtNome;
 	private JTextField txtEmail;
 	private JTextField txtnumeroTelefone;
-	private JTextField txtCpf;
 	private JTextField txtCep;
 	private JLabel lblCep;
 	private JLabel lblBairro;
@@ -104,7 +103,7 @@ public class CadastrarCliente extends JPanel {
 		scrollPane3.setViewportView(table);
 
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep" }));
+				new String[] { "Nome", "Numero Telefone", "Email", "Cnpj", "Cep" }));
 		scrollPane3.setViewportView(table);
 
 		lblLimpar = new JLabel("");
@@ -155,14 +154,9 @@ public class CadastrarCliente extends JPanel {
 
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(122, 92, 67, 14);
-		lblNome.setFont(new Font("Dialog", Font.BOLD, 18));
-		add(lblNome);
-
-		JLabel lblCpf = new JLabel("CPF:");
-		lblCpf.setFont(new Font("Dialog", Font.BOLD, 18));
-		lblCpf.setBounds(271, 245, 46, 14);
 		lblNome.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblNome);
+
 
 		JLabel lblEmail1 = new JLabel("Email:");
 		lblEmail1.setBounds(435, 92, 67, 14);
@@ -170,7 +164,7 @@ public class CadastrarCliente extends JPanel {
 		add(lblEmail1);
 
 		JLabel lblnumeroTelefone = new JLabel("Telefone:");
-		lblnumeroTelefone.setBounds(367, 171, 98, 14);
+		lblnumeroTelefone.setBounds(123, 170, 98, 14);
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblnumeroTelefone);
@@ -183,7 +177,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtnumeroTelefone = new JFormattedTextField(mascaranumeroTelefone);
-		txtnumeroTelefone.setBounds(367, 190, 182, 30);
+		txtnumeroTelefone.setBounds(123, 189, 182, 30);
 		txtnumeroTelefone.setText("");
 		txtnumeroTelefone.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtnumeroTelefone.setColumns(10);
@@ -197,7 +191,7 @@ public class CadastrarCliente extends JPanel {
 			e1.printStackTrace();
 		}
 		txtCep = new JFormattedTextField(mascaraCep);
-		txtCep.setBounds(122, 190, 142, 30);
+		txtCep.setBounds(732, 111, 142, 30);
 		txtCep.setText("");
 		/**********/
 
@@ -206,7 +200,7 @@ public class CadastrarCliente extends JPanel {
 		add(txtCep);
 
 		lblCep = new JLabel("CEP:");
-		lblCep.setBounds(122, 171, 155, 14);
+		lblCep.setBounds(732, 92, 155, 14);
 		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCep);
@@ -222,8 +216,6 @@ public class CadastrarCliente extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				Cliente cliente = verificarDados();
-				System.out.println("aaaa");
-				System.out.println(cliente);
 				if (cliente == null) {
 					CadastroErro erro = new CadastroErro("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
@@ -232,7 +224,6 @@ public class CadastrarCliente extends JPanel {
 					ClienteDAO clienteDAO = new ClienteDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					Endereco endereco = enderecoDAO.listandoEndereco(cliente.getEndereco());
-					System.out.println(endereco);
 					boolean ende = true;
 					if (endereco == null) {
 						ende = enderecoDAO.inserirEndereco(cliente.getEndereco());
@@ -288,7 +279,6 @@ public class CadastrarCliente extends JPanel {
 
 				txtNome.setText("");
 				txtEmail.setText("");
-				txtCpf.setText("");
 				txtnumeroTelefone.setText("");
 				txtCep.setText("");
 				txtCnpj.setText("");
@@ -302,25 +292,6 @@ public class CadastrarCliente extends JPanel {
 		});
 		add(btnLimparCampo);
 
-		JLabel lblCpf2 = new JLabel("CPF");
-		lblCpf2.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblCpf2.setBounds(745, 92, 155, 14);
-		add(lblCpf2);
-		/**********/
-		MaskFormatter mascaraCpf2 = null;
-		try {
-			mascaraCpf2 = new MaskFormatter("###.###.###-##");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		txtCpf = new JFormattedTextField(mascaraCpf2);
-		txtCpf.setBounds(745, 111, 142, 30);
-		txtCpf.setText("");
-		txtCpf.setFont(new Font("Dialog", Font.BOLD, 13));
-		add(txtCpf);
-		txtCpf.setColumns(10);
-		/**********/
-
 		MaskFormatter mascaraCnpj = null;
 		try {
 			mascaraCnpj = new MaskFormatter("##.###.###/####-##");
@@ -329,7 +300,7 @@ public class CadastrarCliente extends JPanel {
 		}
 
 		txtCnpj = new JFormattedTextField(mascaraCnpj);
-		txtCnpj.setBounds(652, 190, 235, 30);
+		txtCnpj.setBounds(408, 189, 235, 30);
 		txtCnpj.setText("");
 		txtCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtCnpj);
@@ -338,7 +309,7 @@ public class CadastrarCliente extends JPanel {
 
 		JLabel lblCnpj = new JLabel("CNPJ:");
 		lblCnpj.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblCnpj.setBounds(652, 171, 155, 14);
+		lblCnpj.setBounds(408, 170, 155, 14);
 		add(lblCnpj);
 
 		ArrayList<String> uf = new ArrayList<>();
@@ -348,7 +319,7 @@ public class CadastrarCliente extends JPanel {
 		uf.add("RS");
 		uf.add("PR");
 		cbUf = new JComboBox();
-		cbUf.setBounds(873, 271, 98, 30);
+		cbUf.setBounds(122, 271, 98, 30);
 		cbUf.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < uf.size(); i++) {
@@ -367,24 +338,24 @@ public class CadastrarCliente extends JPanel {
 
 		JLabel lblUf = new JLabel("UF:");
 		lblUf.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblUf.setBounds(873, 242, 84, 14);
+		lblUf.setBounds(122, 242, 84, 14);
 		add(lblUf);
 
 		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblRua.setBounds(122, 241, 155, 14);
+		lblRua.setBounds(271, 241, 155, 14);
 		add(lblRua);
 
 		txtRua = new JTextField();
 		txtRua.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtRua.setColumns(10);
-		txtRua.setBounds(122, 270, 182, 31);
+		txtRua.setBounds(271, 270, 182, 31);
 		add(txtRua);
 
 		txtBairro = new JTextField();
 		txtBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtBairro.setColumns(10);
-		txtBairro.setBounds(367, 271, 182, 30);
+		txtBairro.setBounds(516, 271, 182, 30);
 		add(txtBairro);
 
 		ArrayList<String> cidade = new ArrayList<>();
@@ -394,7 +365,7 @@ public class CadastrarCliente extends JPanel {
 		cidade.add("Gaspar");
 		cidade.add("Blumenau");
 		cbCidade = new JComboBox();
-		cbCidade.setBounds(587, 271, 182, 30);
+		cbCidade.setBounds(691, 181, 182, 30);
 		cbCidade.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < cidade.size(); i++) {
@@ -413,12 +384,12 @@ public class CadastrarCliente extends JPanel {
 
 		lblBairro = new JLabel("Bairro:");
 		lblBairro.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblBairro.setBounds(367, 242, 155, 14);
+		lblBairro.setBounds(516, 242, 155, 14);
 		add(lblBairro);
 
 		JLabel lblCidade = new JLabel("Cidade:");
 		lblCidade.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblCidade.setBounds(587, 242, 155, 14);
+		lblCidade.setBounds(691, 152, 155, 14);
 		add(lblCidade);
 
 		setContentPane(contentPane);
@@ -477,24 +448,6 @@ public class CadastrarCliente extends JPanel {
 		panel_4.setBounds(214, 361, 763, 267);
 		add(panel_4);
 
-		JButton btnPesquisar_1 = new JButton("Pesquisar");
-		btnPesquisar_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String cpfpesquisa = txtCnpj.getText();
-				atualizarTabela();
-			}
-		});
-		btnPesquisar_1.setBounds(291, 371, 115, 23);
-		add(btnPesquisar_1);
-		atualizarTabela();
-
-		btnPesquisar_1.setForeground(Color.WHITE);
-		btnPesquisar_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnPesquisar_1.setBackground(new Color(245, 245, 245));
-		btnPesquisar_1.setBounds(214, 331, 115, 23);
-		add(btnPesquisar_1);
-		
-		
 		RoundButton btnSalvar = new RoundButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -553,7 +506,6 @@ public class CadastrarCliente extends JPanel {
 				txtnumeroTelefone.setText(clienteSelecionado.getNumeroTelefone());
 				txtEmail.setText(clienteSelecionado.getEmail());
 				txtCnpj.setText(Long.toString(clienteSelecionado.getCnpj()));
-				txtCpf.setText(clienteSelecionado.getCpf());
 				txtCep.setText(Long.toString(clienteSelecionado.getEndereco().getCep()));
 				cbCidade.setSelectedItem(clienteSelecionado.getEndereco().getCidade());
 				txtBairro.setText(clienteSelecionado.getEndereco().getBairro());
@@ -581,14 +533,14 @@ public class CadastrarCliente extends JPanel {
 
 	public void atualizarTabela() {
 		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Numero Telefone", "Email", "Cpf", "Cnpj", "Cep" });
+				new String[] { "Nome", "Numero Telefone", "Email", "Cnpj", "Cep" });
 		ClienteDAO clientedao = new ClienteDAO();
 		listClientes = clientedao.listar();
 		System.out.println(listClientes);
 		for (int i = 0; i < listClientes.size(); i++) {
 			Cliente cliente = listClientes.get(i);
-			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),
-					cliente.getCpf(), cliente.getCnpj(), cliente.getEndereco().getCep() });
+			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail()
+					, cliente.getCnpj(), cliente.getEndereco().getCep() });
 
 		}
 		table.setModel(tabela);
@@ -621,8 +573,6 @@ public class CadastrarCliente extends JPanel {
 
 		String email = txtEmail.getText();
 
-		String cpf = txtCpf.getText().replace(".", "").replace("-", "");
-
 		String numeroTelefone = txtnumeroTelefone.getText().replace("-", "").replace("(", "").replace(")", "");
 
 		String cep = txtCep.getText().replace("-", "");
@@ -648,12 +598,7 @@ public class CadastrarCliente extends JPanel {
 		} else {
 			cliente.setEmail(email);
 		}
-		if (cpf == null || cpf.toString().trim().isEmpty()) {
-			verificarCampo += "cpf\n";
-		} else {
-
-			cliente.setCpf(cpf);
-		}
+		
 		if (numeroTelefone == null || numeroTelefone.isEmpty()) {
 			verificarCampo += "numeroTelefone\n";
 		} else {
@@ -714,7 +659,6 @@ public class CadastrarCliente extends JPanel {
 	public void limparDados() {
 		txtNome.setText("");
 		txtEmail.setText("");
-		txtCpf.setText("");
 		txtnumeroTelefone.setText("");
 		txtCep.setText("");
 		txtCnpj.setText("");

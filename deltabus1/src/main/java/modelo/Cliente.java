@@ -5,17 +5,15 @@ public class Cliente {
 	private String nome;
 	private String numeroTelefone;
 	private String email;
-	private String Cpf;
 	private Long cnpj;
 	private Endereco endereco;
 	
 	
-	public Cliente(String nome,String numeroTelefone,String email,String Cpf, Long cnpj, Endereco endereco) {
+	public Cliente(String nome,String numeroTelefone,String email, Long cnpj, Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.numeroTelefone = numeroTelefone;
 		this.email = email;
-		this.Cpf = Cpf;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
 	}
@@ -51,13 +49,7 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public String getCpf() {
-		return Cpf;
-	}
 
-	public void setCpf(String cpf) {
-		Cpf = cpf;
-	}
 
 	public Long getCnpj() {
 		return cnpj;
@@ -79,7 +71,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [nome=" + nome + ", numeroTelefone=" + numeroTelefone + ", email=" + email 
-				+ ", Cpf=" + Cpf + ",endereco=" + endereco + "]";
+				+ ",endereco=" + endereco + "]";
 	}
 
 }

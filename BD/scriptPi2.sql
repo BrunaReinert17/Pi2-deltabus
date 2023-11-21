@@ -29,7 +29,6 @@ CREATE TABLE `clientes` (
   `Nome` varchar(255) NOT NULL,
   `numeroTelefone` varchar(14) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `cpf` varchar(14) NOT NULL,
   `cnpj` bigint NOT NULL,
   `endereco_cep` bigint NOT NULL,
   PRIMARY KEY (`cnpj`),
@@ -44,7 +43,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES ('agatha','11111111111','agathacor@gmail.com','1596857837',77777777777777,21346560);
+INSERT INTO `clientes` VALUES ('agatha','11111111111','agathacor@gmail.com',77777777777777,21346560);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 

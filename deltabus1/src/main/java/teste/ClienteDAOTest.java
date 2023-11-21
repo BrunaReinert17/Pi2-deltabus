@@ -24,7 +24,6 @@ public class ClienteDAOTest {
 		c.setNome("Gisele");
 		c.setNumeroTelefone("(12)34567-8921");
 		c.setEmail("gisele@gmail.com");
-		c.setCpf("4545545441");
 		c.setCnpj(Long.valueOf(464468437));
 
 		Endereco endereco = new Endereco();
@@ -74,7 +73,6 @@ public class ClienteDAOTest {
 		assertEquals("Gisele", primeiroCliente.getNome());
 		assertEquals("(12)34567-8921", primeiroCliente.getNumeroTelefone());
 		assertEquals("gisele@gmail.com", primeiroCliente.getEmail());
-		assertEquals("4545545441", primeiroCliente.getCpf());
 		// assertEquals(464468437, primeiroCliente.getCnpj());
 		assertEquals(21346560, primeiroCliente.getEndereco().getCep());
 
@@ -87,7 +85,6 @@ public class ClienteDAOTest {
 		c.setNome("Gisele");
 		c.setNumeroTelefone("Modelo");
 		c.setEmail("gisele@gmail.com");
-		c.setCpf("4545545441");
 		c.setCnpj(Long.valueOf(464468437));
 
 		Endereco endereco = new Endereco();
