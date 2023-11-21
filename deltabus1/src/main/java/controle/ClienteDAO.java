@@ -12,15 +12,17 @@ import modelo.Endereco;
 public class ClienteDAO implements InterfaceCliente {
 
 	private static Conexao con;
+	public ClienteDAO() {
+		con = Conexao.getInstancia();
+	}
 
 	public static ArrayList<Cliente> listar() {
-		con = Conexao.getInstancia();
 		Connection c = con.conectar();
+		ArrayList<Cliente> listcliente = new ArrayList<>();
 
-		ArrayList<Cliente> listcliente = new ArrayList<Cliente>();
-
+		String query = "SELECT * FROM clientes";
 		try {
-			PreparedStatement ps = c.prepareStatement("SELECT * FROM Clientes");
+			PreparedStatement ps = c.prepareStatement(query);
 
 			ResultSet rs = ps.executeQuery();
 
@@ -42,7 +44,7 @@ public class ClienteDAO implements InterfaceCliente {
 			    cl.setEndereco(endereco);
 				listcliente.add(cl);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
@@ -86,7 +88,9 @@ public class ClienteDAO implements InterfaceCliente {
 	public boolean inserirCliente(Cliente cliente) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
-		int valida = 0;
+		boolean valida = false;
+		
+		if(cliente != null) {
 
 		try {
 			String query = "INSERT INTO Clientes(Nome, numeroTelefone, email, cnpj, cpf, endereco_cep) values (?,?,?,?,?, ?);";
@@ -99,13 +103,14 @@ public class ClienteDAO implements InterfaceCliente {
 			stm.setLong(6, cliente.getEndereco().getCep());
 			System.out.println(stm);
 
-			valida = stm.executeUpdate();
-		} catch (SQLException e) {
+			valida = stm.executeUpdate() == 0 ? false : true;
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
-		return (valida == 0 ? false : true);
+		}
+		return valida;
 	}
 
 	public boolean excluirCliente(Cliente cliente) {
@@ -113,7 +118,7 @@ public class ClienteDAO implements InterfaceCliente {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "DELETE FROM Clientes\r\n  WHERE cnpj = ?";
+		String query = "DELETE FROM clientes  WHERE cnpj = ?";
 
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
@@ -133,8 +138,8 @@ public class ClienteDAO implements InterfaceCliente {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		String query = "UPDATE Clientes\r\n SET" + " nome = ?\r\n" + "numeroTelefone = ?" + " email = ?" + " cpf = ?"
-				+ "endereco_cep = ? , WHERE cnpj = ?";
+		String query = "UPDATE Clientes SET" + " nome = ?," + "numeroTelefone = ?," + " email = ?," + " cpf = ?,"
+				+ "endereco_cep = ?  WHERE cnpj = ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
 			ps.setString(1, cliente.getNome());

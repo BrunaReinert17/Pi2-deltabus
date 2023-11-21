@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,6 +27,7 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import controle.ClienteDAO;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
+import controle.PedidoDAO;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
@@ -35,12 +37,16 @@ import mensagens.DeletarCliente1;
 import mensagens.DeletarCliente2;
 import mensagens.DeletarUsuario1;
 import mensagens.DeletarUsuario2;
+import mensagens.ErroAlterar;
 import mensagens.InterfaceMensagemConfirmacao;
+import mensagens.AlterarSucessoCliente;
+import mensagens.Alterar1;
 import mensagens.CadastroCliente;
 
 import modelo.Cliente;
 import modelo.Endereco;
 import modelo.Funcionario;
+import modelo.Pedido;
 import utilidades.RoundButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.AncestorListener;
@@ -61,7 +67,6 @@ public class CadastrarCliente extends JPanel {
 	private JLabel lblBairro;
 	private JLabel lblFuno;
 	private JButton bntDeletar;
-	private JButton btnCadastrar;
 
 	// Variaveis atribuidasa
 	private String verificarCampo;
@@ -74,6 +79,7 @@ public class CadastrarCliente extends JPanel {
 	private JComboBox cbCidade;
 	private JComboBox cbUf;
 	private JTable table;
+	private Cliente clienteSelecionado;
 	private ArrayList<Cliente> listClientes;
 
 	public CadastrarCliente() {
@@ -209,8 +215,8 @@ public class CadastrarCliente extends JPanel {
 		lblBairro.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblBairro.setBounds(768, 428, 155, 14);
 
-		btnCadastrar = new RoundButton("Confirmar");
-		btnCadastrar.setBounds(527, 661, 116, 33);
+		RoundButton btnCadastrar = new RoundButton("Confirmar");
+		btnCadastrar.setBounds(527, 673, 116, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -233,31 +239,30 @@ public class CadastrarCliente extends JPanel {
 					}
 					boolean clienteRetornoCadastro;
 					if (ende != false) {
-							boolean resultado=false;
-							try {
-								resultado = clienteDAO.inserirCliente(cliente);
-							} catch (Exception e2) {
-								CadastroErro erro = new CadastroErro("Erro ao cadastrar, verifique os dados novamente!");
-								erro.setLocationRelativeTo(null);
-								erro.setVisible(true);
-								return;
-							
-							}
-							
-							
-							if (resultado == true) {
-								CadastroSucesso sucesso = new CadastroSucesso("Cliente Cadastrado com Sucesso!");
-								sucesso.setLocationRelativeTo(null);
-								sucesso.setVisible(true);
-								limparDados();
-								atualizarTabela();
+						boolean resultado = false;
+						try {
+							resultado = clienteDAO.inserirCliente(cliente);
+						} catch (Exception e2) {
+							CadastroErro erro = new CadastroErro("Erro ao cadastrar, verifique os dados novamente!");
+							erro.setLocationRelativeTo(null);
+							erro.setVisible(true);
+							return;
 
-							} else {
-								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
-								erro1.setLocationRelativeTo(null);
-								erro1.setVisible(true);
-							}
-						
+						}
+
+						if (resultado == true) {
+							CadastroSucesso sucesso = new CadastroSucesso("Cliente Cadastrado com Sucesso!");
+							sucesso.setLocationRelativeTo(null);
+							sucesso.setVisible(true);
+							limparDados();
+							atualizarTabela();
+
+						} else {
+							CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+							erro1.setLocationRelativeTo(null);
+							erro1.setVisible(true);
+						}
+
 					} else {
 						CadastroErro1 erro1 = new CadastroErro1("Erro ao cadastrar endereço!");
 						erro1.setLocationRelativeTo(null);
@@ -488,10 +493,90 @@ public class CadastrarCliente extends JPanel {
 		btnPesquisar_1.setBackground(new Color(245, 245, 245));
 		btnPesquisar_1.setBounds(214, 331, 115, 23);
 		add(btnPesquisar_1);
+		
+		
+		RoundButton btnSalvar = new RoundButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+				Cliente c = verificarDados();
 
+				c.setCnpj(clienteSelecionado.getCnpj());
+
+				if (c != null) {
+
+					ClienteDAO clienteDAO = new ClienteDAO();
+					boolean resultado = clienteDAO.alterarCliente(c);
+
+					atualizarTabela();
+					btnSalvar.setVisible(false);
+					btnCadastrar.setVisible(true);
+
+					if (resultado == true) {
+
+						AlterarSucessoCliente alterar = new  AlterarSucessoCliente("Cliente alterado com Sucesso!");
+						alterar.setLocationRelativeTo(null);
+						alterar.setVisible(true);
+						atualizarTabela();
+						limparDados(); 
+					} else {
+						ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+						erro1.setLocationRelativeTo(null);
+						erro1.setVisible(true);
+					}
+				}
+
+			}
+		});
+		btnSalvar.setText("Salvar");
+		btnSalvar.setForeground(Color.WHITE);
+		btnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnSalvar.setBackground(new Color(0, 128, 128));
+		btnSalvar.setBounds(527, 673, 116, 33);
+		btnSalvar.setVisible(false);
+		add(btnSalvar);
+
+
+		RoundButton btnAlterarP = new RoundButton("Alterar");
+		btnAlterarP.addActionListener(new ActionListener() {
+
+
+			public void actionPerformed(ActionEvent e) {
+			
+				int pos = table.getSelectedRow();
+				
+				if(pos >= 0) {
+				System.out.println(pos);
+				clienteSelecionado = listClientes.get(pos);
+
+				txtNome.setText(clienteSelecionado.getNome());
+				txtnumeroTelefone.setText(clienteSelecionado.getNumeroTelefone());
+				txtEmail.setText(clienteSelecionado.getEmail());
+				txtCnpj.setText(Long.toString(clienteSelecionado.getCnpj()));
+				txtCpf.setText(clienteSelecionado.getCpf());
+				txtCep.setText(Long.toString(clienteSelecionado.getEndereco().getCep()));
+				cbCidade.setSelectedItem(clienteSelecionado.getEndereco().getCidade());
+				txtBairro.setText(clienteSelecionado.getEndereco().getBairro());
+				txtRua.setText(clienteSelecionado.getEndereco().getRua());
+				cbUf.setSelectedItem(clienteSelecionado.getEndereco().getUf());
+
+				btnSalvar.setVisible(true);
+				btnCadastrar.setVisible(false);
+				}
+				else {
+					Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
+					falha1.setLocationRelativeTo(null);
+					falha1.setVisible(true);
+				}
+			}
+		});
+		btnAlterarP.setForeground(Color.WHITE);
+		btnAlterarP.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnAlterarP.setBackground(new Color(0, 128, 128));
+		btnAlterarP.setBounds(691, 673, 116, 33);
+		add(btnAlterarP);
+
+		
 	}
 
 	public void atualizarTabela() {
@@ -502,7 +587,8 @@ public class CadastrarCliente extends JPanel {
 		System.out.println(listClientes);
 		for (int i = 0; i < listClientes.size(); i++) {
 			Cliente cliente = listClientes.get(i);
-			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),cliente.getCpf(),cliente.getCnpj(),cliente.getEndereco().getCep()});
+			tabela.addRow(new Object[] { cliente.getNome(), cliente.getNumeroTelefone(), cliente.getEmail(),
+					cliente.getCpf(), cliente.getCnpj(), cliente.getEndereco().getCep() });
 
 		}
 		table.setModel(tabela);
@@ -581,8 +667,8 @@ public class CadastrarCliente extends JPanel {
 			EnderecoDAO ende1 = new EnderecoDAO();
 			endereco.setCep(Long.parseLong(cep));
 			Endereco enderecoSelecionado = ende1.listandoEndereco(endereco);
-			
-			if(enderecoSelecionado == null) {
+
+			if (enderecoSelecionado == null) {
 				ende1.inserirEndereco(endereco);
 				enderecoSelecionado = endereco;
 			}

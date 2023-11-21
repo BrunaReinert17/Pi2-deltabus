@@ -29,6 +29,7 @@ import controle.PedidoDAO;
 import controle.UsuarioDAO;
 import controle.VeiculoDAO;
 import mensagens.AlteraSucesso;
+import mensagens.Alterar1;
 //import mensagens.Alterar1;
 //import mensagens.AlterarSucesso1;
 import mensagens.CadastroErro;
@@ -580,9 +581,9 @@ public class CadastrarVeiculo extends JPanel {
 				
 				}
 				else {
-					//Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
-					//falha1.setLocationRelativeTo(null);
-					//falha1.setVisible(true);
+					Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
+					falha1.setLocationRelativeTo(null);
+					falha1.setVisible(true);
 				}
 			}
 		});
