@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -30,10 +31,12 @@ import controle.UsuarioDAO;
 import controle.VeiculoDAO;
 import mensagens.AlteraSucesso;
 import mensagens.Alterar1;
+import mensagens.AlterarNaorealizado;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
 import mensagens.CadastroVeiculo;
+import mensagens.ConfirmaAlterar;
 import mensagens.ConfirmacaoDeletar;
 import mensagens.Deletar1;
 import mensagens.Deletar2;
@@ -254,18 +257,6 @@ public class CadastrarPedido extends JPanel {
 		lblValor.setBounds(665, 209, 155, 14);
 		add(lblValor);
 
-		RoundButton rndbtnBuscar = new RoundButton("Limpar Campo");
-		rndbtnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		rndbtnBuscar.setText("Buscar");
-		rndbtnBuscar.setForeground(Color.WHITE);
-		rndbtnBuscar.setFont(new Font("Dialog", Font.BOLD, 14));
-		rndbtnBuscar.setBackground(new Color(0, 128, 128));
-		rndbtnBuscar.setBounds(579, 79, 75, 33);
-		add(rndbtnBuscar);
-
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(0, 0, 0));
 		panel_4.setBounds(291, 397, 616, 249);
@@ -445,41 +436,56 @@ public class CadastrarPedido extends JPanel {
 
 				p.setId_pedido(pedidoSelecionado.getId_pedido());
 
-				if (p != null) {
-					/*
-					 * Verificar se houve alteração nos dados
-					 **/
-					
-					/*
-					 * salvar alteracao no banco
-					 **/
-					PedidoDAO pedidoDAO = new PedidoDAO();
-					boolean resultado = pedidoDAO.alterarPedido(p);
+				if (!pedidoAlterado(p, pedidoSelecionado)) {
 
-					atualizarTabela();
-					/*
-					 * Ocular salvar e motrar cadastrar
-					 **/
-					btnSalvar.setVisible(false);
-					btnCadastrar_1.setVisible(true);
-
-					if (resultado == true) {
-
-						AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
-						alterar.setLocationRelativeTo(null);
-						alterar.setVisible(true);
-						atualizarTabela();
-						limparDados(); // Limpa os campos após o cadastro
-
-					} else {
-						ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
-						erro1.setLocationRelativeTo(null);
-						erro1.setVisible(true);
-					}
-
+					AlterarNaorealizado alterar = new AlterarNaorealizado("Erro de alteração, tente novamente!");
+					alterar.setLocationRelativeTo(null);
+					alterar.setVisible(true);
+					return;
 				}
+
+				ConfirmaAlterar confirmacao = new ConfirmaAlterar("Tem certeza que quer excluir o veículo?",new InterfaceMensagemConfirmacao() {
+
+							public void mensagemConfirmada() {
+								if (p != null) {
+									/*
+									 * salvar alteracao no banco
+									 **/
+									PedidoDAO pedidoDAO = new PedidoDAO();
+									boolean resultado = pedidoDAO.alterarPedido(p);
+
+									atualizarTabela();
+									/*
+									 * Ocular salvar e motrar cadastrar
+									 **/
+									btnSalvar.setVisible(false);
+									btnCadastrar_1.setVisible(true);
+
+									if (resultado == true) {
+
+										AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+										alterar.setLocationRelativeTo(null);
+										alterar.setVisible(true);
+										atualizarTabela();
+										limparDados(); // Limpa os campos após o cadastro
+
+									} else {
+										ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+										erro1.setLocationRelativeTo(null);
+										erro1.setVisible(true);
+									}
+								}
+							}
+
+							public void mensagemCancelada() {
+
+							}
+						});
+				confirmacao.setVisible(true);
+
 			}
 		});
+
 		btnSalvar.setText("Salvar");
 		btnSalvar.setForeground(Color.WHITE);
 		btnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -548,6 +554,28 @@ public class CadastrarPedido extends JPanel {
 
 		atualizarTabela();
 
+	}
+
+	protected boolean pedidoAlterado(Pedido novoPedido, Pedido pedidoSelecionado2) {
+		if (!Objects.equals(novoPedido.getCliente(), pedidoSelecionado2.getCliente())) {
+			return true;
+		}
+		if (!Objects.equals(novoPedido.getVeiculo(), pedidoSelecionado2.getVeiculo())) {
+			return true;
+		}
+		if (!Objects.equals(novoPedido.getTipoPagamento(), pedidoSelecionado2.getTipoPagamento())) {
+			return true;
+		}
+		if (!Objects.equals(novoPedido.getValorPago(), pedidoSelecionado2.getValorPago())) {
+			return true;
+		}
+		if (!Objects.equals(novoPedido.getQuantidade(), pedidoSelecionado2.getQuantidade())) {
+			return true;
+		}
+		if (!Objects.equals(novoPedido.getDataCompra(), pedidoSelecionado2.getDataCompra())) {
+			return true;
+		}
+		return false;
 	}
 
 	protected void setSelectedItem(Object object) {
