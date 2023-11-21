@@ -100,10 +100,18 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblNewLabel_1.setBounds(109, 275, 184, 18);
 		panel.add(lblNewLabel_1);
+		
+		
 
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(-792, 82, 1210, 211);
+		//Codigo mudar perfil
+		
+		
+		
+		
+		lblNewLabel_2.setBounds(-791, 56, 1210, 211);
 		panel.add(lblNewLabel_2);
+		
 		lblNewLabel_2.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/perfil.png")));
 
 		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
@@ -164,6 +172,10 @@ public class MenuAdmin extends JFrame {
 		btnHome.setBackground(Color.WHITE);
 		btnHome.setBounds(162, 337, 64, 43);
 		panel.add(btnHome);
+		
+		JButton bntPerfil = new JButton("Editar Perfil");
+		bntPerfil.setBounds(147, 225, 92, 18);
+		panel.add(bntPerfil);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/deltabus.png")));

@@ -57,7 +57,7 @@ public class ErroAlterar extends JFrame {
 		lblNewLabel.setBounds(124, -15, 107, 76);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblErroAlterar = new JLabel("Nenhum Usuario Selecionado!");
+		JLabel lblErroAlterar = new JLabel("Nenhum Pedido Alterado!");
 		lblErroAlterar.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblErroAlterar.setForeground(Color.WHITE);
 		lblErroAlterar.setBounds(79, 88, 198, 24);

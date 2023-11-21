@@ -83,10 +83,18 @@ CREATE TABLE `veiculo` (
   `situacao` varchar(45) NOT NULL,
   PRIMARY KEY (`idVeiculo`)
 );
-
-
 INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
 INSERT INTO `veiculo` VALUES (2,'Scania','AGRALE/MASCA GRANMIDI O',134567.999,2023,'Banheiro',40,'Verde','Turismo','GNC','ABC222','987654321','Novo');
+
+
+
+CREATE TABLE imagens (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255),
+    conteudo MEDIUMBLOB
+);
+
+SELECT * FROM imagens;
 
   -- SELECTS--
 
