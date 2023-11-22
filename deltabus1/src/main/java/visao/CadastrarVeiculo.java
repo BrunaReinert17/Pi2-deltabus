@@ -98,6 +98,7 @@ public class CadastrarVeiculo extends JPanel {
 	private Veiculo pedidoSelecionado;
 	private JButton btnSalvar1;
 	private JButton btnAl;
+	private JLabel lblNewLabel_1;
 	
 	public CadastrarVeiculo() {
 		setLocale("Login");
@@ -109,6 +110,11 @@ public class CadastrarVeiculo extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(CadastrarVeiculo.class.getResource("/imagem/deletar.png")));
+		lblNewLabel_1.setBounds(1110, 92, 48, 30);
+		add(lblNewLabel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(107, 375, 999, 250);
@@ -124,7 +130,7 @@ public class CadastrarVeiculo extends JPanel {
 		scrollPane.setViewportView(table);
 		
 		lblLimpar = new JLabel("");
-		lblLimpar.setBounds(932, 92, 110, 33);
+		lblLimpar.setBounds(988, 92, 118, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
 		lblLimpar.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
@@ -299,10 +305,10 @@ public class CadastrarVeiculo extends JPanel {
 		
 		
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
-		btnLimparCampo.setBounds(976, 92, 53, 33);
+		btnLimparCampo.setBounds(1048, 92, 41, 33);
 		btnLimparCampo.setText("");
 		btnLimparCampo.setBackground(new Color(245, 245, 245));
-		btnLimparCampo.setForeground(Color.WHITE);
+		btnLimparCampo.setForeground(new Color(245, 245, 245));
 		btnLimparCampo.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -546,7 +552,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnCadastrar.setForeground(Color.WHITE);
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnCadastrar.setBackground(new Color(0, 128, 128));
-		btnCadastrar.setBounds(447, 683, 132, 33);
+		btnCadastrar.setBounds(458, 666, 132, 33);
 		add(btnCadastrar);
 		
 		RoundButton btnAl = new RoundButton("Alterar");
@@ -589,7 +595,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnAl.setForeground(Color.WHITE);
 		btnAl.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnAl.setBackground(new Color(0, 0, 0));
-		btnAl.setBounds(651, 683, 132, 33);
+		btnAl.setBounds(662, 666, 132, 33);
 		add(btnAl);
 		
 		btnSalvar1 = new RoundButton("Cadastrar");
@@ -639,7 +645,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnSalvar1.setForeground(Color.WHITE);
 		btnSalvar1.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnSalvar1.setBackground(new Color(0, 128, 128));
-		btnSalvar1.setBounds(447, 683, 132, 33);
+		btnSalvar1.setBounds(458, 666, 132, 33);
 		add(btnSalvar1);
 		
 		RoundButton btnDeletar2 = new RoundButton("Deletar");
@@ -687,11 +693,11 @@ public class CadastrarVeiculo extends JPanel {
 			    }
 			}
 		});
-		btnDeletar2.setText("Deletar");
-		btnDeletar2.setForeground(Color.BLACK);
+		btnDeletar2.setText("");
+		btnDeletar2.setForeground(new Color(245, 245, 245));
 		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnDeletar2.setBackground(new Color(245, 245, 245));
-		btnDeletar2.setBounds(1057, 92, 98, 33);
+		btnDeletar2.setBounds(1120, 92, 41, 33);
 		add(btnDeletar2);
 		
 		panel_4 = new JPanel();

@@ -183,7 +183,7 @@ public class CadastrarUsuario extends JPanel {
 		
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/deletar.png")));
-		lblNewLabel_1.setBounds(1105, 83, 75, 33);
+		lblNewLabel_1.setBounds(1105, 92, 75, 33);
 		add(lblNewLabel_1);
 
 		panel_4 = new JPanel();
@@ -204,7 +204,7 @@ public class CadastrarUsuario extends JPanel {
 		scrollPane_2.setViewportView(table_1);
 
 		lblLimpar = new JLabel("");
-		lblLimpar.setBounds(984, 83, 110, 33);
+		lblLimpar.setBounds(986, 92, 110, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
 		lblLimpar.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
@@ -497,8 +497,6 @@ public class CadastrarUsuario extends JPanel {
 								sucesso.setVisible(true);
 								atualizarTabela();
 								
-								//NAO ESTA APARECENDO NA LISTAGEM E CPF E ID ESTAO RESULTANDO EM 0
-
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
 								erro1.setLocationRelativeTo(null);
@@ -522,7 +520,7 @@ public class CadastrarUsuario extends JPanel {
 		atualizarTabela();
 
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
-		btnLimparCampo.setBounds(1042, 83, 40, 33);
+		btnLimparCampo.setBounds(1048, 92, 41, 33);
 		btnLimparCampo.setText("");
 		btnLimparCampo.setBackground(new Color(245, 245, 245));
 		btnLimparCampo.setForeground(new Color(245, 245, 245));
@@ -619,7 +617,7 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnDeletar_1.setForeground(new Color(245, 245, 245));
 		rndbtnDeletar_1.setFont(new Font("Dialog", Font.BOLD, 16));
 		rndbtnDeletar_1.setBackground(new Color(245, 245, 245));
-		rndbtnDeletar_1.setBounds(1116, 83, 40, 33);
+		rndbtnDeletar_1.setBounds(1120, 92, 41, 33);
 		add(rndbtnDeletar_1);
 		
 		RoundButton btnAlterar = new RoundButton("Alterar");

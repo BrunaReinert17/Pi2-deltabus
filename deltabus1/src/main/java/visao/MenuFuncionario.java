@@ -194,7 +194,7 @@ public class MenuFuncionario extends JFrame {
 		btnLogout.setForeground(new Color(245, 245, 245));
 		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
 		btnLogout.setBackground(new Color(245, 245, 245));
-		btnLogout.setBounds(148, 780, 70, 43);
+		btnLogout.setBounds(153, 780, 57, 43);
 		panel.add(btnLogout);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -211,10 +211,10 @@ public class MenuFuncionario extends JFrame {
 			}
 		});
 		btnHome.setText("");
-		btnHome.setForeground(Color.WHITE);
+		btnHome.setForeground(new Color(245, 245, 245));
 		btnHome.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnHome.setBackground(Color.WHITE);
-		btnHome.setBounds(162, 337, 64, 43);
+		btnHome.setBackground(new Color(245, 245, 245));
+		btnHome.setBounds(162, 337, 44, 43);
 		panel.add(btnHome);
 		
 		RoundButton btnCadastroDeVendas = new RoundButton("Cadastro de Vendas");
@@ -235,8 +235,8 @@ public class MenuFuncionario extends JFrame {
 		panel.add(btnCadastroDeVendas);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/menu panel.png")));
-		lblNewLabel_5.setBounds(-126, -63, 502, 1209);
+		lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Telas Pi.png")));
+		lblNewLabel_5.setBounds(0, 0, 376, 1012);
 		panel.add(lblNewLabel_5);
 
 		JLabel lblNewLabel1 = new JLabel("New label");

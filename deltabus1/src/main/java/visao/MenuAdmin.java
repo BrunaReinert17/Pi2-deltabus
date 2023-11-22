@@ -85,11 +85,6 @@ public class MenuAdmin extends JFrame {
 		panel.add(lblNewLabel_7);
 		lblNewLabel_7.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/IconeHome.png")));
 
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setBounds(36, 596, 92, 33);
-		panel.add(lblNewLabel_4);
-		lblNewLabel_4.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Icone2.png")));
-
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(-395, 421, 523, 73);
 		panel.add(lblNewLabel_3);
@@ -143,7 +138,7 @@ public class MenuAdmin extends JFrame {
 		btnLogout.setForeground(new Color(245, 245, 245));
 		btnLogout.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
 		btnLogout.setBackground(new Color(245, 245, 245));
-		btnLogout.setBounds(148, 780, 70, 43);
+		btnLogout.setBounds(151, 780, 55, 43);
 		panel.add(btnLogout);
 
 		JLabel lblNewLabel = new JLabel("");
@@ -159,16 +154,12 @@ public class MenuAdmin extends JFrame {
 		});
 
 		btnHome.setText("");
-		btnHome.setForeground(new Color(255, 255, 255));
+		btnHome.setForeground(new Color(245, 245, 245));
 		btnHome.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
-		btnHome.setBackground(new Color(255, 255, 255));
-		btnHome.setBounds(162, 337, 64, 43);
+		btnHome.setBackground(new Color(245, 245, 245));
+		btnHome.setBounds(162, 337, 44, 43);
 		panel.add(btnHome);
 		
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/menu panel.png")));
-		lblNewLabel_5.setBounds(-126, -63, 502, 1209);
-		panel.add(lblNewLabel_5);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/deltabus.png")));
@@ -179,6 +170,11 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi (2).png")));
 		lblNewLabel_6.setBounds(201, 11, 1659, 1003);
 		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi.png")));
+		lblNewLabel_5.setBounds(0, 0, 376, 1012);
+		panel.add(lblNewLabel_5);
 
 	}
 }

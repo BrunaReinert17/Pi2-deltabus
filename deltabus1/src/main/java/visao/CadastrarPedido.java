@@ -125,7 +125,7 @@ public class CadastrarPedido extends JPanel {
 		
 		
 		lblLimpar = new JLabel("");
-		lblLimpar.setBounds(933, 92, 110, 33);
+		lblLimpar.setBounds(984, 92, 110, 33);
 		lblLimpar.setBackground(new Color(245, 245, 245));
 		lblLimpar.setIcon(new ImageIcon(CadastrarPedido.class.getResource("/imagem/Icone4.png")));
 		add(lblLimpar);
@@ -215,7 +215,7 @@ public class CadastrarPedido extends JPanel {
 		
 		
 		JButton btnLimparCampo = new RoundButton("Limpar Campo");
-		btnLimparCampo.setBounds(968, 92, 84, 33);
+		btnLimparCampo.setBounds(1048, 92, 41, 33);
 		btnLimparCampo.setText("");
 		btnLimparCampo.setBackground(new Color(245, 245, 245));
 		btnLimparCampo.setForeground(new Color(245, 245, 245));
@@ -284,7 +284,6 @@ public class CadastrarPedido extends JPanel {
 
                     if (resultado == true) {
                     	
-
                         CadastroVeiculo cadastro = new CadastroVeiculo("Cadastrado com Sucesso!");
                         cadastro.setLocationRelativeTo(null);
                         cadastro.setVisible(true);
@@ -307,60 +306,6 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.setBounds(475, 661, 116, 33);
 		add(btnCadastrar_1);
 		atualizarTabela();
-
-		
-		RoundButton btnDeletar2 = new RoundButton("Confirmar");
-		btnDeletar2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int linhaSelecionada = table1.getSelectedRow();
-				if (linhaSelecionada >= 0) {
-			        Pedido pedido = listPedido.get(linhaSelecionada);
-
-			       
-                   ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
-                	   
-                	   @Override
-						
-						public void mensagemConfirmada() {
-							PedidoDAO pedidoDAO = new PedidoDAO();
-							
-							if (PedidoDAO.excluirPedido1(pedido)) {
-			                DefaultTableModel model = (DefaultTableModel) table1.getModel();
-			                model.removeRow(linhaSelecionada);
-			                
-			            } else {
-			                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
-			                falha.setLocationRelativeTo(null);
-			                falha.setVisible(true);
-			            }
-							
-						}
-
-						@Override
-						public void mensagemCancelada() {
-							
-							
-						}
-			        	
-			        });
-			        confirmacao.setVisible(true);
-			     
-			    } else {
-			        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
-			        falha2.setLocationRelativeTo(null);
-			        falha2.setVisible(true);
-			    }
-			}
-		});
-      
-
-			
-		btnDeletar2.setText("Deletar");
-		btnDeletar2.setForeground(new Color(245, 245, 245));
-		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnDeletar2.setBackground(new Color(245, 245, 245));
-		btnDeletar2.setBounds(1080, 92, 84, 33);
-		add(btnDeletar2);
 		
 		JLabel lblDataCompra = new JLabel("Data de Compra :");
 		lblDataCompra.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -534,7 +479,7 @@ public class CadastrarPedido extends JPanel {
 		});
 		btnAlterarP.setForeground(Color.WHITE);
 		btnAlterarP.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnAlterarP.setBackground(new Color(0, 128, 128));
+		btnAlterarP.setBackground(new Color(0, 0, 0));
 		btnAlterarP.setBounds(640, 661, 116, 33);
 		add(btnAlterarP);
 		
@@ -547,6 +492,65 @@ public class CadastrarPedido extends JPanel {
 		}
 		
 		add(cbVeiculo);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(CadastrarPedido.class.getResource("/imagem/deletar.png")));
+		lblNewLabel_1.setBounds(1104, 92, 54, 33);
+		add(lblNewLabel_1);
+		
+				
+				RoundButton btnDeletar2 = new RoundButton("Deletar");
+				btnDeletar2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int linhaSelecionada = table1.getSelectedRow();
+						if (linhaSelecionada >= 0) {
+					        Pedido pedido = listPedido.get(linhaSelecionada);
+
+					       
+                   ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
+                	   
+                	   @Override
+								
+								public void mensagemConfirmada() {
+									PedidoDAO pedidoDAO = new PedidoDAO();
+									
+									if (PedidoDAO.excluirPedido1(pedido)) {
+					                DefaultTableModel model = (DefaultTableModel) table1.getModel();
+					                model.removeRow(linhaSelecionada);
+					                
+					            } else {
+					                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
+					                falha.setLocationRelativeTo(null);
+					                falha.setVisible(true);
+					            }
+									
+								}
+
+								@Override
+								public void mensagemCancelada() {
+									
+									
+								}
+					        	
+					        });
+					        confirmacao.setVisible(true);
+					     
+					    } else {
+					        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
+					        falha2.setLocationRelativeTo(null);
+					        falha2.setVisible(true);
+					    }
+					}
+				});
+				
+
+			
+		btnDeletar2.setText("Deletar");
+		btnDeletar2.setForeground(new Color(245, 245, 245));
+		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnDeletar2.setBackground(new Color(245, 245, 245));
+		btnDeletar2.setBounds(1120, 92, 41, 33);
+		add(btnDeletar2);
 		
 		atualizarTabela();
 		
