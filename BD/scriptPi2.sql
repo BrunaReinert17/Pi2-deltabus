@@ -60,6 +60,7 @@ CREATE TABLE `usuario` (
    `senha` varchar(45) NOT NULL,
    `email` varchar(45) NOT NULL,
    `cargo` varchar(45) NOT NULL,
+   `imagem` MEDIUMBLOB null,
    PRIMARY KEY (`idUsuario`)
 );
 
@@ -88,13 +89,8 @@ INSERT INTO `veiculo` VALUES (2,'Scania','AGRALE/MASCA GRANMIDI O',134567.999,20
 
 
 
-CREATE TABLE imagens (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255),
-    conteudo MEDIUMBLOB
-);
 
-SELECT * FROM imagens;
+
 
   -- SELECTS--
 
