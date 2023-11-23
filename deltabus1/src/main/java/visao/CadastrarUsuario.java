@@ -5,9 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -461,7 +458,7 @@ public class CadastrarUsuario extends JPanel {
 				} else {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
-					UsuarioDAO usuarioDAO = new UsuarioDAO();
+					UsuarioDAO usuarioDAO = UsuarioDAO.getInstancia();
 					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
 
 					System.out.println(endereco);
@@ -481,26 +478,6 @@ public class CadastrarUsuario extends JPanel {
 							// System.out.println(usuario);
 							// funcionario.setUsuario(usuario);
 							long resultado = funcionarioDAO.inserirFuncionario(funcionario);
-
-							File img = new File("/imagem/perfil.png");
-							if (img != null) {
-								boolean retorno = usuarioDAO.alterarImagemPerfil(img, usuarioRetornoCadastro);
-								if (retorno == true) {
-									CadastroSucesso sucesso = new CadastroSucesso("Imagem alterada com sucesso!");
-									sucesso.setLocationRelativeTo(null);
-									sucesso.setVisible(true);
-								} else {
-									CadastroErro1 erro1 = new CadastroErro1("Erro de alteração, tente novamente!");
-									erro1.setLocationRelativeTo(null);
-									erro1.setVisible(true);
-								}
-							}
-							try {
-								usuario.setArquivoImagem(new FileInputStream(img));
-							} catch (FileNotFoundException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
 
 							if (resultado > 0) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
@@ -702,7 +679,7 @@ public class CadastrarUsuario extends JPanel {
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					boolean resultado = funcionarioDAO.alterarFuncionario(funcionario);
 
-					UsuarioDAO usuario = new UsuarioDAO();
+					UsuarioDAO usuario = UsuarioDAO.getInstancia();
 					usuario.alterarUsuario(funcionario.getUsuario());
 					/*
 					 * Atualizar tabela

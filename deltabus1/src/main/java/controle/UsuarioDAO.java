@@ -3,6 +3,7 @@ package controle;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,12 +15,11 @@ import modelo.Usuario;
 
 public class UsuarioDAO implements InterfaceUsuario {
 
-	private static UsuarioDAO usuarioDao;
-
+	private static UsuarioDAO instancia;
 	private Conexao con;
 
-	public UsuarioDAO() {
-		con = Conexao.getInstancia();
+	private UsuarioDAO() {
+
 	}
 
 	/**
@@ -35,16 +35,13 @@ public class UsuarioDAO implements InterfaceUsuario {
 		if (usuario != null) {
 
 			try {
-				String query = "INSERT INTO usuario(senha, email, cargo, imagem) VALUES (?, ?, ?, ?)";
+				String query = "INSERT INTO usuario(senha, email, cargo) VALUES (?, ?, ?)";
 				PreparedStatement stm = c.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 				stm.setString(1, usuario.getSenha());
 				stm.setString(2, usuario.getEmail());
 				stm.setString(3, usuario.getCargo());
 
-				FileInputStream fis = usuario.getArquivoImagem();
-
 				PreparedStatement ps = c.prepareStatement(query);
-				ps.setBinaryStream(4, fis, usuario.getArquivoImagem().hashCode());
 
 				int affectedRows = stm.executeUpdate();
 
@@ -174,13 +171,13 @@ public class UsuarioDAO implements InterfaceUsuario {
 				String email = rs.getString("email");
 				String senha = rs.getString("senha");
 				String cargo = rs.getString("cargo");
-				FileInputStream fis = (FileInputStream) rs.getBinaryStream("imagem");
+				Blob blob = rs.getBlob("imagem");
 
 				usuarioConectado.setIdUsuario(IdUsuario);
 				usuarioConectado.setEmail(email);
 				usuarioConectado.setSenha(senha);
 				usuarioConectado.setCargo(cargo);
-				usuarioConectado.setArquivoImagem(fis);
+				usuarioConectado.setArquivoImagem(blob);
 				System.out.println("retornando usuario conectado");
 				return usuarioConectado;
 
@@ -216,37 +213,11 @@ public class UsuarioDAO implements InterfaceUsuario {
 		return false;
 	}
 
-	public static UsuarioDAO getInstancia(Usuario usuario) {
-		Conexao con = Conexao.getInstancia();
-		Connection c = con.conectar();
-
-		try {
-
-			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
-			// metodo duplicado com selecionar usuario
-			ps.setString(1, usuario.getEmail());
-			ps.setString(2, usuario.getSenha());
-
-			ResultSet rs = ps.executeQuery();
-			Usuario usuarioConectado = new Usuario();
-
-			while (rs.next()) {
-				String email = rs.getString("email");
-				String senha = rs.getString("senha");
-				String cargo = rs.getString("cargo");
-
-				usuarioConectado.setEmail(email);
-				usuarioConectado.setSenha(senha);
-				usuarioConectado.setCargo(cargo);
-
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
+	public static UsuarioDAO getInstancia() {
+		if (instancia == null) {
+			instancia = new UsuarioDAO();
 		}
-		return usuarioDao;
+		return instancia;
 
 	}
 
@@ -277,6 +248,49 @@ public class UsuarioDAO implements InterfaceUsuario {
 		}
 
 		return false;
+	}
+
+	@Override
+	public Usuario buscaUsuarioPorId(long idUsuario) {
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
+		Usuario usuarioConectado = null;
+
+		try {
+
+			PreparedStatement ps = c.prepareStatement("select * from usuario where idUsuario = ?");
+			ps.setLong(1, idUsuario);
+
+			System.out.println(ps);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				usuarioConectado = new Usuario();
+				long IdUsuario = rs.getLong("idUsuario");
+				String email = rs.getString("email");
+				String senha = rs.getString("senha");
+				String cargo = rs.getString("cargo");
+				Blob blob = rs.getBlob("imagem");
+
+				usuarioConectado.setIdUsuario(IdUsuario);
+				usuarioConectado.setEmail(email);
+				usuarioConectado.setSenha(senha);
+				usuarioConectado.setCargo(cargo);
+				usuarioConectado.setArquivoImagem(blob);
+				System.out.println("retornando usuario conectado");
+				return usuarioConectado;
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+
+		return usuarioConectado;
 	}
 
 }

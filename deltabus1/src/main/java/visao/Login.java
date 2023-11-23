@@ -1,41 +1,28 @@
 package visao;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import utilidades.RoundButton;
-import utilidades.RoundedPanel;
-
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.UIManager;
-import javax.swing.JPasswordField;
 import java.awt.SystemColor;
-import javax.swing.ImageIcon;
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.SoftBevelBorder;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import controle.UsuarioDAO;
 import mensagens.LoginErro;
 import mensagens.LoginErro1;
 import modelo.Usuario;
-
-import javax.swing.border.BevelBorder;
-import javax.swing.DropMode;
-import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
+import utilidades.RoundButton;
+import utilidades.RoundedPanel;
 
 public class Login extends JFrame {
 
@@ -99,7 +86,7 @@ public class Login extends JFrame {
 				usuario.setEmail(email);
 				usuario.setSenha(senha);
 
-				UsuarioDAO usuarioDAO = new UsuarioDAO();
+				UsuarioDAO usuarioDAO = UsuarioDAO.getInstancia();
 				Usuario retorno = usuarioDAO.consultarLogin(usuario);
 
 				if (!email.isEmpty() && !senha.isEmpty()) {

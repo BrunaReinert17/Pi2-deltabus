@@ -1,6 +1,5 @@
 package teste;
 
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -13,12 +12,13 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import controle.UsuarioDAO;
 import modelo.Usuario;
+
 @TestMethodOrder(OrderAnnotation.class)
 public class UsuarioDAOTest {
 	// annotation
-	//if 
+	// if
 	@Test
-	@Order(1)  
+	@Order(1)
 	public void testMetodoInserirUsuarioSucesso() {
 		Usuario u = new Usuario();
 
@@ -26,9 +26,10 @@ public class UsuarioDAOTest {
 		u.setSenha("12345");
 		u.setCargo("Administrador");
 
-		UsuarioDAO dao = new UsuarioDAO();
-		//boolean resultado = dao.inserirUsuario(u);
-		//assertEquals(true, resultado);
+		UsuarioDAO dao = UsuarioDAO.getInstancia();
+		;
+		// boolean resultado = dao.inserirUsuario(u);
+		// assertEquals(true, resultado);
 
 	}
 
@@ -43,12 +44,14 @@ public class UsuarioDAOTest {
 //	}
 
 	@Test
-	@Order(2)  
+	@Order(2)
 	public void TestListarUsuario() {
-		UsuarioDAO dao = new UsuarioDAO();
+		UsuarioDAO dao = UsuarioDAO.getInstancia();
+		;
 		ArrayList<Usuario> resultado = dao.listar();
 		assertNotNull(resultado);
 	}
+
 //
 //	@Test
 //	@Order(4)  
@@ -60,15 +63,16 @@ public class UsuarioDAOTest {
 //	}
 //
 	@Test
-	@Order(3)  
+	@Order(3)
 	public void TestAlterarUsuario() {
-		
+
 		Usuario u = new Usuario();
 		u.setEmail("aluno@gmail.com");
 		u.setSenha("12345");
 		u.setCargo("Administrador");
-		UsuarioDAO dao = new UsuarioDAO();
-		
+		UsuarioDAO dao = UsuarioDAO.getInstancia();
+		;
+
 		u = dao.consultarLogin(u);
 		u.setSenha("123456");
 		Usuario resultado = dao.alterarUsuario(u);
@@ -86,15 +90,16 @@ public class UsuarioDAOTest {
 //
 
 	@Test
-	@Order(4)  
+	@Order(4)
 	public void TestExcluirUsuario() {
 
 		Usuario u = new Usuario();
 		u.setEmail("aluno@gmail.com");
 		u.setSenha("123456");
 		u.setCargo("Administrador");
-		UsuarioDAO dao = new UsuarioDAO();
-		
+		UsuarioDAO dao = UsuarioDAO.getInstancia();
+		;
+
 		u = dao.consultarLogin(u);
 		System.out.println(u);
 		boolean resultado = dao.excluirUsuario(u);

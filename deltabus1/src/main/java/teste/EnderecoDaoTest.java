@@ -14,7 +14,6 @@ import modelo.Veiculo;
 
 public class EnderecoDaoTest {
 
-	
 	@Test
 	public void testMetodoInserirEndereco() {
 		Endereco e = new Endereco();
@@ -23,21 +22,20 @@ public class EnderecoDaoTest {
 		e.setBairro("Lagoa");
 		e.setRua(" Jóse Reinert");
 		e.setUf("SC");
-		
+
 		EnderecoDAO ende = new EnderecoDAO();
-		//boolean resultado = ende.inserirEndereco(e);
-		//(true,resultado );
+		// boolean resultado = ende.inserirEndereco(e);
+		// (true,resultado );
 	}
-	
+
 	@Test
-	public void testMedotoInserirEnderecoErro(){
+	public void testMedotoInserirEnderecoErro() {
 		Endereco e = null;
 		EnderecoDAO dao = new EnderecoDAO();
-		//boolean resultado = dao.inserirEndereco(e);
-		//assertEquals(false,resultado );
+		// boolean resultado = dao.inserirEndereco(e);
+		// assertEquals(false,resultado );
 	}
-	
-	
+
 	@Test
 	public void TestExcluirEndereco() {
 		Endereco e = new Endereco();
@@ -46,13 +44,13 @@ public class EnderecoDaoTest {
 		e.setBairro("Lagoa");
 		e.setRua("figueira");
 		e.setUf("SC");
-	
+
 		EnderecoDAO dao = new EnderecoDAO();
 
 		boolean resultado = dao.excluirEndereco(e);
-		assertNotNull( resultado);
+		assertNotNull(resultado);
 	}
-	
+
 	@Test
 	public void TestExcluirEnderecoErro() {
 		Endereco e = null;
@@ -60,7 +58,7 @@ public class EnderecoDaoTest {
 		boolean resultado = dao.excluirEndereco(e);
 		assertEquals(false, resultado);
 	}
-	
+
 	@Test
 	public void TestAlterarEndereco() {
 		Endereco e = new Endereco();
@@ -70,12 +68,10 @@ public class EnderecoDaoTest {
 		e.setBairro("Progresso");
 		e.setRua("Zimerman");
 		e.setUf("RS");
-		
+
 		EnderecoDAO dao = new EnderecoDAO();
 		boolean resultado = dao.alterarEndereco(e);
-		assertNotNull( resultado);
+		assertNotNull(resultado);
 	}
-	
-	
-	
+
 }

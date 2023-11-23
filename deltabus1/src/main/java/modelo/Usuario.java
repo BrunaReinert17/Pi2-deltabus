@@ -1,6 +1,6 @@
 package modelo;
 
-import java.io.FileInputStream;
+import java.sql.Blob;
 
 public class Usuario {
 
@@ -8,13 +8,13 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String cargo;
-	private FileInputStream arquivoImagem;
+	private Blob arquivoImagem;
 
-	public FileInputStream getArquivoImagem() {
+	public Blob getArquivoImagem() {
 		return arquivoImagem;
 	}
 
-	public void setArquivoImagem(FileInputStream arquivoImagem) {
+	public void setArquivoImagem(Blob arquivoImagem) {
 		this.arquivoImagem = arquivoImagem;
 	}
 

@@ -16,5 +16,7 @@ public interface InterfaceUsuario {
 	
 	public boolean alterarImagemPerfil(File arquivoImagem, long idUsuario);
 	
+	public Usuario buscaUsuarioPorId(long idUsuario);
+	
 
 }

@@ -1,37 +1,32 @@
 package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.sql.Blob;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import controle.UsuarioDAO;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
-import mensagens.LoginErro;
 import mensagens.Logout;
 import modelo.Usuario;
 import utilidades.RoundButton;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-
-import java.awt.Frame;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.FileOutputStream;
 
 public class MenuAdmin extends JFrame {
 
@@ -90,14 +85,37 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_1.setBounds(109, 275, 184, 18);
 		panel.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(-792, 82, 1210, 211);
-		panel.add(lblNewLabel_2);
+		JLabel lblImagem = new JLabel("");
+		lblImagem.setBounds(77, 31, 199, 195);
+		panel.add(lblImagem);
 
-		String name = "/imagem/perfil.png";
-		usuario.getArquivoImagem();
+		/*
+		 * Trocar aqui para não pegar imagem estatica e sim a imagem que esta no banco
+		 */
+		Blob arquivoImagem = usuarioLogado.getArquivoImagem();
+		if (arquivoImagem == null) {
+			// se nao tiver nada no banco
+			lblImagem.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/perfil.png")));
+		} else {
 
-		lblNewLabel_2.setIcon(new ImageIcon(MenuAdmin.class.getResource(name)));
+			long a = 0;
+			try {
+				a = arquivoImagem.length();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			byte barr[] = new byte[(int) a];
+			try {
+				barr = arquivoImagem.getBytes(1, (int) a);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			ImageIcon img = new ImageIcon(barr);
+			lblImagem.setIcon(img);
+
+		}
 
 		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
 		btnCadastrarUsuarios.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -167,16 +185,11 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_6.setBounds(201, 11, 1659, 1003);
 		contentPane.add(lblNewLabel_6);
 
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi.png")));
-		lblNewLabel_5.setBounds(0, 0, 376, 1012);
-		panel.add(lblNewLabel_5);
-
 		JButton btnAlterarImagem = new JButton("Alterar imagem");
 		btnAlterarImagem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				UsuarioDAO dao = UsuarioDAO.getInstancia(usuarioLogado);
+				UsuarioDAO dao = UsuarioDAO.getInstancia();
 
 				JFileChooser fc = new JFileChooser();
 				int res = fc.showOpenDialog(null);
@@ -187,6 +200,26 @@ public class MenuAdmin extends JFrame {
 					if (img != null) {
 						boolean retorno = dao.alterarImagemPerfil(img, usuarioLogado.getIdUsuario());
 						if (retorno == true) {
+
+							usuarioLogado = dao.buscaUsuarioPorId(usuarioLogado.getIdUsuario());
+							Blob blobImg = usuarioLogado.getArquivoImagem();
+							long a = 0;
+							try {
+								a = blobImg.length();
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							byte barr[] = new byte[(int) a];
+							try {
+								barr = blobImg.getBytes(1, (int) a);
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							ImageIcon imgs = new ImageIcon(barr);
+							lblImagem.setIcon(imgs);
+
 							CadastroSucesso sucesso = new CadastroSucesso("Imagem alterada com sucesso!");
 							sucesso.setLocationRelativeTo(null);
 							sucesso.setVisible(true);
