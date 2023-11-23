@@ -1,5 +1,8 @@
 package controle;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,32 +31,35 @@ public class UsuarioDAO implements InterfaceUsuario {
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
-		int id=0;
+		int id = 0;
 		if (usuario != null) {
 
 			try {
-				String query = "INSERT INTO usuario(senha, email, cargo) VALUES (?, ?, ?)";
+				String query = "INSERT INTO usuario(senha, email, cargo, imagem) VALUES (?, ?, ?, ?)";
 				PreparedStatement stm = c.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 				stm.setString(1, usuario.getSenha());
 				stm.setString(2, usuario.getEmail());
 				stm.setString(3, usuario.getCargo());
 
-				int affectedRows = stm.executeUpdate();
-				
+				FileInputStream fis = usuario.getArquivoImagem();
 
-		        if (affectedRows == 0) {
-		            throw new SQLException("Creating user failed, no rows affected.");
-		        }
-				
-				 try (ResultSet generatedKeys = stm.getGeneratedKeys()) {
-			            if (generatedKeys.next()) {
-			                id = generatedKeys.getInt(1);
-			            }
-			            else {
-			                throw new SQLException("Creating user failed, no ID obtained.");
-			            }
-			        }
-				
+				PreparedStatement ps = c.prepareStatement(query);
+				ps.setBinaryStream(4, fis, usuario.getArquivoImagem().hashCode());
+
+				int affectedRows = stm.executeUpdate();
+
+				if (affectedRows == 0) {
+					throw new SQLException("Creating user failed, no rows affected.");
+				}
+
+				try (ResultSet generatedKeys = stm.getGeneratedKeys()) {
+					if (generatedKeys.next()) {
+						id = generatedKeys.getInt(1);
+					} else {
+						throw new SQLException("Creating user failed, no ID obtained.");
+					}
+				}
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -104,7 +110,6 @@ public class UsuarioDAO implements InterfaceUsuario {
 			ps.setString(3, usuario.getCargo());
 			ps.setLong(4, usuario.getIdUsuario());
 			System.out.println(ps);
-			
 
 			ps.executeUpdate();
 			return usuario;
@@ -169,11 +174,13 @@ public class UsuarioDAO implements InterfaceUsuario {
 				String email = rs.getString("email");
 				String senha = rs.getString("senha");
 				String cargo = rs.getString("cargo");
+				FileInputStream fis = (FileInputStream) rs.getBinaryStream("imagem");
 
 				usuarioConectado.setIdUsuario(IdUsuario);
 				usuarioConectado.setEmail(email);
 				usuarioConectado.setSenha(senha);
 				usuarioConectado.setCargo(cargo);
+				usuarioConectado.setArquivoImagem(fis);
 				System.out.println("retornando usuario conectado");
 				return usuarioConectado;
 
@@ -241,6 +248,35 @@ public class UsuarioDAO implements InterfaceUsuario {
 		}
 		return usuarioDao;
 
+	}
+
+	@Override
+	public boolean alterarImagemPerfil(File arquivoImagem, long idUsuario) {
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
+		String query = "UPDATE usuario SET imagem = ? WHERE idUsuario = ?";
+		try {
+			FileInputStream fis = null;
+			try {
+				fis = new FileInputStream(arquivoImagem);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setBinaryStream(1, fis, (int) arquivoImagem.length());
+			ps.setLong(2, idUsuario);
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+
+		return false;
 	}
 
 }

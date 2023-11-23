@@ -5,17 +5,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,18 +27,15 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
-
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
-import controle.PedidoDAO;
 import controle.UsuarioDAO;
-import mensagens.ErroVeiculo;
-import mensagens.InterfaceMensagemConfirmacao;
 import mensagens.AlteraSucesso;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
@@ -43,21 +44,11 @@ import mensagens.ConfirmacaoDeletarUsuario;
 import mensagens.DeletarUsuario1;
 import mensagens.DeletarUsuario2;
 import mensagens.ErroAlterar;
-import mensagens.Limpar;
-import mensagens.ListagemErro;
-import mensagens.LoginErro;
+import mensagens.InterfaceMensagemConfirmacao;
 import modelo.Endereco;
 import modelo.Funcionario;
-import modelo.Pedido;
 import modelo.Usuario;
 import utilidades.RoundButton;
-
-import javax.swing.AbstractButton;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.event.AncestorListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.event.AncestorEvent;
-import javax.swing.ImageIcon;
 
 public class CadastrarUsuario extends JPanel {
 	private JTextField txtNome;
@@ -180,7 +171,7 @@ public class CadastrarUsuario extends JPanel {
 
 		btnPesquisar.setBounds(362, 10, 115, 23);
 		panel_1.add(btnPesquisar);
-		
+
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/deletar.png")));
 		lblNewLabel_1.setBounds(1105, 92, 75, 33);
@@ -259,7 +250,7 @@ public class CadastrarUsuario extends JPanel {
 		lblCpf1.setBounds(714, 157, 46, 14);
 		lblCpf1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCpf1);
-		
+
 		txtCpf = new JFormattedTextField();
 		txtCpf.setBounds(714, 176, 132, 30);
 		txtCpf.setText("");
@@ -268,7 +259,7 @@ public class CadastrarUsuario extends JPanel {
 		txtCpf.setForeground(new Color(0, 0, 0));
 		txtCpf.setColumns(10);
 		add(txtCpf);
-		
+
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setBounds(153, 239, 98, 14);
 		lblTelefone.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -472,31 +463,51 @@ public class CadastrarUsuario extends JPanel {
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					UsuarioDAO usuarioDAO = new UsuarioDAO();
 					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
-				
+
 					System.out.println(endereco);
 					if (endereco == null) {
 						long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
 					}
 
 					int usuarioRetornoCadastro;
-					
+
 					if (endereco != null) {
-						
+
 						usuarioRetornoCadastro = usuarioDAO.inserirUsuario(funcionario.getUsuario());
-												
-						if (usuarioRetornoCadastro!=0) {
+
+						if (usuarioRetornoCadastro != 0) {
 							funcionario.getUsuario().setIdUsuario(usuarioRetornoCadastro);
-							//usuario = usuarioDAO.selecionar(funcionario.getUsuario());
-							//System.out.println(usuario);
-							//funcionario.setUsuario(usuario);
+							// usuario = usuarioDAO.selecionar(funcionario.getUsuario());
+							// System.out.println(usuario);
+							// funcionario.setUsuario(usuario);
 							long resultado = funcionarioDAO.inserirFuncionario(funcionario);
 
-							if (resultado >0) {
+							File img = new File("/imagem/perfil.png");
+							if (img != null) {
+								boolean retorno = usuarioDAO.alterarImagemPerfil(img, usuarioRetornoCadastro);
+								if (retorno == true) {
+									CadastroSucesso sucesso = new CadastroSucesso("Imagem alterada com sucesso!");
+									sucesso.setLocationRelativeTo(null);
+									sucesso.setVisible(true);
+								} else {
+									CadastroErro1 erro1 = new CadastroErro1("Erro de alteração, tente novamente!");
+									erro1.setLocationRelativeTo(null);
+									erro1.setVisible(true);
+								}
+							}
+							try {
+								usuario.setArquivoImagem(new FileInputStream(img));
+							} catch (FileNotFoundException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+
+							if (resultado > 0) {
 								CadastroSucesso sucesso = new CadastroSucesso("Usuário Cadastrado com Sucesso!");
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								atualizarTabela();
-								
+
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
 								erro1.setLocationRelativeTo(null);
@@ -561,12 +572,10 @@ public class CadastrarUsuario extends JPanel {
 		RoundButton rndbtnAlterar = new RoundButton("Alterar");
 		rndbtnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-					}
-				});
 
-			
-				
+			}
+		});
+
 		panel_5 = new JPanel();
 		panel_5.setBackground(new Color(0, 0, 0));
 		panel_5.setBounds(148, 411, 893, 249);
@@ -619,24 +628,22 @@ public class CadastrarUsuario extends JPanel {
 		rndbtnDeletar_1.setBackground(new Color(245, 245, 245));
 		rndbtnDeletar_1.setBounds(1120, 92, 41, 33);
 		add(rndbtnDeletar_1);
-		
+
 		RoundButton btnAlterar = new RoundButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/***
 				 * selecionar registro
-				 * */
+				 */
 				int pos = table_1.getSelectedRow();
 				System.out.println(pos);
-				funcionarioSelecionado =listFuncionario.get(pos);
-
-				
+				funcionarioSelecionado = listFuncionario.get(pos);
 
 				/*
 				 * preencher os campo
 				 * 
-				 * */
-				
+				 */
+
 				txtNome.setText(funcionarioSelecionado.getNome());
 				txtCpf.setText(funcionarioSelecionado.getCpf());
 				cbGenero.setSelectedItem(funcionarioSelecionado.getGenero());
@@ -646,24 +653,21 @@ public class CadastrarUsuario extends JPanel {
 				txtDataNasci.setText(funcionarioSelecionado.getDatanasci().format(formatter));
 				txtCep.setText(Long.toString(funcionarioSelecionado.getEndereco().getCep()));
 				cbUf.setSelectedItem(funcionarioSelecionado.getEndereco().getUf());
-				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());				
+				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());
 				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco().getCidade());
 				txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
 				txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco().getBairro()));
 				textRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getRua()));
-				
-				
+
 				/*
-				 * ocutar botaocadastro
-				 * aparecer botao salvar
+				 * ocutar botaocadastro aparecer botao salvar
 				 * 
 				 * 
 				 */
 				btnSalvar1.setVisible(true);
 				btnCadastrar.setVisible(false);
 				System.out.println("erro");
-				
-				
+
 			}
 		});
 		btnAlterar.setForeground(Color.WHITE);
@@ -671,61 +675,58 @@ public class CadastrarUsuario extends JPanel {
 		btnAlterar.setBackground(new Color(0, 0, 0));
 		btnAlterar.setBounds(655, 696, 116, 33);
 		add(btnAlterar);
-		
+
 		btnSalvar1 = new RoundButton("Salvar");
 		btnSalvar1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
-				 * Pegar dado do componente da tela 
-				 * **/
-				
+				 * Pegar dado do componente da tela
+				 **/
+
 				Funcionario funcionario = verificarDados();
 
 				funcionario.getUsuario().setIdUsuario(funcionarioSelecionado.getUsuario().getIdUsuario());
-				
-                  if (funcionario != null) {
-      				/*
-      				 * salvar alteracao no banco
-      				 * **/
-                	  
-                	 EnderecoDAO enderecoDAO = new EnderecoDAO();
-  					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
-  				
-  					if (endereco == null) {
-  						long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
-  					}
 
-                	  
-                	  
-      				FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-                    boolean resultado = funcionarioDAO.alterarFuncionario(funcionario);
-                    
-                    UsuarioDAO usuario = new UsuarioDAO();
-                    usuario.alterarUsuario(funcionario.getUsuario());
-      				/*
-      				 * Atualizar tabela
-      				 * **/
-      				atualizarTabela();
-      				/*
-      				 * Ocular salvar e motrar cadastrar
-      				 * **/
-      				btnSalvar1.setVisible(false);
-      				btnCadastrar.setVisible(true);
-                    
-                      if (resultado == true) {
-           
-                        AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
-                        alterar.setLocationRelativeTo(null);
-                        alterar.setVisible(true);
-                       limparDados(); // Limpa os campos após o cadastro
-                    } else {
-                        ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
-                        erro1.setLocationRelativeTo(null);
-                        erro1.setVisible(true);
-                    }
-                } 
-                
-                
+				if (funcionario != null) {
+					/*
+					 * salvar alteracao no banco
+					 **/
+
+					EnderecoDAO enderecoDAO = new EnderecoDAO();
+					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
+
+					if (endereco == null) {
+						long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
+					}
+
+					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+					boolean resultado = funcionarioDAO.alterarFuncionario(funcionario);
+
+					UsuarioDAO usuario = new UsuarioDAO();
+					usuario.alterarUsuario(funcionario.getUsuario());
+					/*
+					 * Atualizar tabela
+					 **/
+					atualizarTabela();
+					/*
+					 * Ocular salvar e motrar cadastrar
+					 **/
+					btnSalvar1.setVisible(false);
+					btnCadastrar.setVisible(true);
+
+					if (resultado == true) {
+
+						AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+						alterar.setLocationRelativeTo(null);
+						alterar.setVisible(true);
+						limparDados(); // Limpa os campos após o cadastro
+					} else {
+						ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+						erro1.setLocationRelativeTo(null);
+						erro1.setVisible(true);
+					}
+				}
+
 			}
 		});
 		btnSalvar1.setText("Salvar");
@@ -839,6 +840,7 @@ public class CadastrarUsuario extends JPanel {
 		} else {
 			usuario.setCargo(funcao);
 		}
+
 		if (senha == null || senha.trim() == "" || senha.isEmpty()) {
 			verificarCampo += "senha\n";
 		} else {
@@ -888,8 +890,9 @@ public class CadastrarUsuario extends JPanel {
 		System.out.println(listFuncionario);
 		for (int i = 0; i < listFuncionario.size(); i++) {
 			Funcionario funcionario = listFuncionario.get(i);
-			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getEmail(), funcionario.getCpf(), funcionario.getNumeroTelefone(),
-					funcionario.getDatanasci(), funcionario.getGenero(), funcionario.getEndereco().getCep() });
+			tabela.addRow(new Object[] { funcionario.getNome(), funcionario.getEmail(), funcionario.getCpf(),
+					funcionario.getNumeroTelefone(), funcionario.getDatanasci(), funcionario.getGenero(),
+					funcionario.getEndereco().getCep() });
 
 		}
 		table_1.setModel(tabela);

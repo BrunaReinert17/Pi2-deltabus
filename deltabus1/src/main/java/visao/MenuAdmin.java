@@ -15,14 +15,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controle.UsuarioDAO;
 import mensagens.CadastroErro1;
+import mensagens.CadastroSucesso;
 import mensagens.LoginErro;
 import mensagens.Logout;
+import modelo.Usuario;
 import utilidades.RoundButton;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+
 import java.awt.Frame;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class MenuAdmin extends JFrame {
 
@@ -31,24 +40,10 @@ public class MenuAdmin extends JFrame {
 	private RoundButton bntLogout;
 	private JPanel panelTeste;
 	private JPanel panelTeste1;
+	private Usuario usuarioLogado;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuAdmin frame = new MenuAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public MenuAdmin() {
+	public MenuAdmin(Usuario usuario) {
+		usuarioLogado = usuario;
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuAdmin.class.getResource("/imagem/logoampliada.png")));
 		setTitle("Principal Administrador");
@@ -61,7 +56,6 @@ public class MenuAdmin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		
 
 		contentPane.setLayout(null);
 		// aqui
@@ -71,7 +65,7 @@ public class MenuAdmin extends JFrame {
 		panelTeste = panelUsuario;
 		panelTeste.setBounds(568, 104, 1200, 800);
 		panelTeste.setVisible(false);
-		
+
 		contentPane.add(panelTeste);
 
 		JPanel panel = new JPanel();
@@ -99,7 +93,11 @@ public class MenuAdmin extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBounds(-792, 82, 1210, 211);
 		panel.add(lblNewLabel_2);
-		lblNewLabel_2.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/perfil.png")));
+
+		String name = "/imagem/perfil.png";
+		usuario.getArquivoImagem();
+
+		lblNewLabel_2.setIcon(new ImageIcon(MenuAdmin.class.getResource(name)));
 
 		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
 		btnCadastrarUsuarios.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -119,7 +117,6 @@ public class MenuAdmin extends JFrame {
 		btnCadastrarUsuarios.setBackground(new Color(0, 128, 128));
 		btnCadastrarUsuarios.setBounds(90, 457, 199, 43);
 		panel.add(btnCadastrarUsuarios);
-
 
 		JLabel ImagemLogout = new JLabel("");
 		ImagemLogout.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/icone3.png")));
@@ -159,7 +156,6 @@ public class MenuAdmin extends JFrame {
 		btnHome.setBackground(new Color(245, 245, 245));
 		btnHome.setBounds(162, 337, 44, 43);
 		panel.add(btnHome);
-		
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/deltabus.png")));
@@ -170,11 +166,42 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi (2).png")));
 		lblNewLabel_6.setBounds(201, 11, 1659, 1003);
 		contentPane.add(lblNewLabel_6);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi.png")));
 		lblNewLabel_5.setBounds(0, 0, 376, 1012);
 		panel.add(lblNewLabel_5);
+
+		JButton btnAlterarImagem = new JButton("Alterar imagem");
+		btnAlterarImagem.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				UsuarioDAO dao = UsuarioDAO.getInstancia(usuarioLogado);
+
+				JFileChooser fc = new JFileChooser();
+				int res = fc.showOpenDialog(null);
+				if (res == JFileChooser.APPROVE_OPTION) {
+
+//					File img = new File("/imagem/perfil.png");
+					File img = fc.getSelectedFile();
+					if (img != null) {
+						boolean retorno = dao.alterarImagemPerfil(img, usuarioLogado.getIdUsuario());
+						if (retorno == true) {
+							CadastroSucesso sucesso = new CadastroSucesso("Imagem alterada com sucesso!");
+							sucesso.setLocationRelativeTo(null);
+							sucesso.setVisible(true);
+						} else {
+							CadastroErro1 erro1 = new CadastroErro1("Erro de alteração, tente novamente!");
+							erro1.setLocationRelativeTo(null);
+							erro1.setVisible(true);
+						}
+					}
+				}
+
+			}
+		});
+		btnAlterarImagem.setBounds(109, 241, 128, 23);
+		panel.add(btnAlterarImagem);
 
 	}
 }

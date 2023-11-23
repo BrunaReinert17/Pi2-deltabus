@@ -1,14 +1,23 @@
 package modelo;
 
+import java.io.FileInputStream;
+
 public class Usuario {
 
 	private long idUsuario;
 	private String email;
 	private String senha;
 	private String cargo;
+	private FileInputStream arquivoImagem;
 
-	
-	
+	public FileInputStream getArquivoImagem() {
+		return arquivoImagem;
+	}
+
+	public void setArquivoImagem(FileInputStream arquivoImagem) {
+		this.arquivoImagem = arquivoImagem;
+	}
+
 	public Usuario() {
 		super();
 	}
@@ -59,7 +68,4 @@ public class Usuario {
 		return "Usuario [idUsuario=" + idUsuario + ", email=" + email + ", senha=" + senha + ", cargo=" + cargo + "]";
 	}
 
-
-
-	
 }

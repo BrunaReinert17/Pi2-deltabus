@@ -106,7 +106,7 @@ public class Login extends JFrame {
 
 					if (retorno != null) {
 						if (retorno.getCargo().equalsIgnoreCase("administrador")) {
-							MenuAdmin telaPrincipal = new MenuAdmin();
+							MenuAdmin telaPrincipal = new MenuAdmin(retorno);
 							telaPrincipal.setLocationRelativeTo(null);
 							telaPrincipal.setVisible(true);
 							dispose();
