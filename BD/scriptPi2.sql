@@ -66,6 +66,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO usuario (senha, email, cargo) VALUES ('abc123', 'bruna@gmail.com', 'funcionario');
 INSERT INTO usuario (senha, email, cargo) VALUES ('abc1234', 'maria@gmail.com', 'administrador');
+INSERT INTO usuario (senha, email, cargo) VALUES ('abc12345', 'aguida@gmail.com', 'funcionario');
 
 
 CREATE TABLE `veiculo` (
