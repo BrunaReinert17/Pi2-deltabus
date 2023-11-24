@@ -68,6 +68,11 @@ public class MenuAdmin extends JFrame {
 		panel.setBounds(0, 0, 376, 1061);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/editar.png")));
+		lblNewLabel_2.setBounds(10, 22, 61, 61);
+		panel.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBounds(92, 337, 134, 43);
@@ -86,7 +91,7 @@ public class MenuAdmin extends JFrame {
 		panel.add(lblNewLabel_1);
 
 		JLabel lblImagem = new JLabel("");
-		lblImagem.setBounds(77, 31, 199, 195);
+		lblImagem.setBounds(104, 87, 199, 195);
 		panel.add(lblImagem);
 
 		/*
@@ -174,6 +179,11 @@ public class MenuAdmin extends JFrame {
 		btnHome.setBackground(new Color(245, 245, 245));
 		btnHome.setBounds(162, 337, 44, 43);
 		panel.add(btnHome);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Telas Pi.png")));
+		lblNewLabel_5.setBounds(0, 0, 376, 1012);
+		panel.add(lblNewLabel_5);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/deltabus.png")));
@@ -184,8 +194,17 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/Telas Pi (2).png")));
 		lblNewLabel_6.setBounds(201, 11, 1659, 1003);
 		contentPane.add(lblNewLabel_6);
-
-		JButton btnAlterarImagem = new JButton("Alterar imagem");
+		
+		RoundButton btnAlterarImagem = new RoundButton("Home");
+		btnAlterarImagem.setText("");
+		btnAlterarImagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAlterarImagem.setForeground(new Color(255, 255, 255));
+		btnAlterarImagem.setBackground(new Color(255, 255, 255));
+		btnAlterarImagem.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnAlterarImagem.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		btnAlterarImagem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -233,7 +252,7 @@ public class MenuAdmin extends JFrame {
 
 			}
 		});
-		btnAlterarImagem.setBounds(109, 241, 128, 23);
+		btnAlterarImagem.setBounds(20, 23, 44, 32);
 		panel.add(btnAlterarImagem);
 
 	}
