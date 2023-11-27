@@ -377,6 +377,8 @@ public class CadastrarUsuario extends JPanel {
 		lblBairro_1.setBounds(153, 321, 155, 14);
 		lblBairro_1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblBairro_1);
+		
+		
 		ArrayList<String> uf = new ArrayList<>();
 		uf.add("");
 		uf.add("SC");

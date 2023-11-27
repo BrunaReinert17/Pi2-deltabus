@@ -89,6 +89,8 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblNewLabel_1.setBounds(109, 275, 184, 18);
 		panel.add(lblNewLabel_1);
+		
+		
 
 		JLabel lblImagem = new JLabel("");
 		lblImagem.setBounds(104, 87, 199, 195);

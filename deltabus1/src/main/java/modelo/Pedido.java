@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Pedido extends Veiculo {
+public class Pedido extends Veiculo  {
 
 	private int id_pedidos;
 	private int quantidade;
