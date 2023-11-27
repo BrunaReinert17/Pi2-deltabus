@@ -197,7 +197,7 @@ public class MenuAdmin extends JFrame {
 		lblNewLabel_6.setBounds(201, 11, 1659, 1003);
 		contentPane.add(lblNewLabel_6);
 		
-		RoundButton btnAlterarImagem = new RoundButton("Home");
+		RoundButton btnAlterarImagem = new RoundButton("Imagem");
 		btnAlterarImagem.setText("");
 		btnAlterarImagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

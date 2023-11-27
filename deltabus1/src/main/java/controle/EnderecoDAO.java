@@ -45,7 +45,8 @@ public class EnderecoDAO implements InterfaceEndereco {
 		} finally {
 			con.fecharConexao();
 		}
-		return null;
+		return endereco;
+		//return null;
 
 	}
 

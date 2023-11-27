@@ -101,6 +101,11 @@ public class MenuFuncionario extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(MenuAdmin.class.getResource("/imagem/editar.png")));
+		lblNewLabel_2.setBounds(10, 23, 61, 61);
+		panel.add(lblNewLabel_2);
+		
 		JLabel lblImagem = new JLabel("");
 		lblImagem.setBounds(104, 87, 199, 195);
 		panel.add(lblImagem);
@@ -130,68 +135,6 @@ public class MenuFuncionario extends JFrame {
 			lblImagem.setIcon(img);
 
 		}
-		
-		JButton btnAlterarImagem = new JButton("New button");
-		btnAlterarImagem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnAlterarImagem.setForeground(new Color(255, 255, 255));
-		btnAlterarImagem.setBackground(new Color(255, 255, 255));
-		btnAlterarImagem.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnAlterarImagem.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
-		btnAlterarImagem.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				UsuarioDAO dao = UsuarioDAO.getInstancia();
-
-				JFileChooser fc = new JFileChooser();
-				int res = fc.showOpenDialog(null);
-				if (res == JFileChooser.APPROVE_OPTION) {
-
-//					File img = new File("/imagem/perfil.png");
-					File img = fc.getSelectedFile();
-					if (img != null) {
-						boolean retorno = dao.alterarImagemPerfil(img, usuarioLogado.getIdUsuario());
-						if (retorno == true) {
-
-							usuarioLogado = dao.buscaUsuarioPorId(usuarioLogado.getIdUsuario());
-							Blob blobImg = usuarioLogado.getArquivoImagem();
-							long a = 0;
-							try {
-								a = blobImg.length();
-							} catch (SQLException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							byte barr[] = new byte[(int) a];
-							try {
-								barr = blobImg.getBytes(1, (int) a);
-							} catch (SQLException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							ImageIcon imgs = new ImageIcon(barr);
-							lblImagem.setIcon(imgs);
-
-							CadastroSucesso sucesso = new CadastroSucesso("Imagem alterada com sucesso!");
-							sucesso.setLocationRelativeTo(null);
-							sucesso.setVisible(true);
-						} else {
-							CadastroErro1 erro1 = new CadastroErro1("Erro de alteração, tente novamente!");
-							erro1.setLocationRelativeTo(null);
-							erro1.setVisible(true);
-						}
-					}
-				}
-
-			}
-		});
-		btnAlterarImagem.setBounds(20, 23, 44, 32);
-		panel.add(btnAlterarImagem);
-		
-		btnAlterarImagem.setBounds(20, 23, 89, 23);
-		panel.add(btnAlterarImagem);
 		
 		JLabel lblNewLabel_9 = new JLabel("");
 		lblNewLabel_9.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/icone cadastro.png")));
@@ -322,6 +265,68 @@ public class MenuFuncionario extends JFrame {
 		btnAlterarImagem1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/Telas Pi.png")));
 		btnAlterarImagem1.setBounds(0, 0, 376, 1012);
 		panel.add(btnAlterarImagem1);
+		
+		JButton btnAlterarImagem = new JButton("");
+		btnAlterarImagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAlterarImagem.setForeground(new Color(245, 245, 245));
+		btnAlterarImagem.setBackground(new Color(255, 255, 255));
+		btnAlterarImagem.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnAlterarImagem.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
+		btnAlterarImagem.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				UsuarioDAO dao = UsuarioDAO.getInstancia();
+
+				JFileChooser fc = new JFileChooser();
+				int res = fc.showOpenDialog(null);
+				if (res == JFileChooser.APPROVE_OPTION) {
+
+//					File img = new File("/imagem/perfil.png");
+					File img = fc.getSelectedFile();
+					if (img != null) {
+						boolean retorno = dao.alterarImagemPerfil(img, usuarioLogado.getIdUsuario());
+						if (retorno == true) {
+
+							usuarioLogado = dao.buscaUsuarioPorId(usuarioLogado.getIdUsuario());
+							Blob blobImg = usuarioLogado.getArquivoImagem();
+							long a = 0;
+							try {
+								a = blobImg.length();
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							byte barr[] = new byte[(int) a];
+							try {
+								barr = blobImg.getBytes(1, (int) a);
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							ImageIcon imgs = new ImageIcon(barr);
+							lblImagem.setIcon(imgs);
+
+							CadastroSucesso sucesso = new CadastroSucesso("Imagem alterada com sucesso!");
+							sucesso.setLocationRelativeTo(null);
+							sucesso.setVisible(true);
+						} else {
+							CadastroErro1 erro1 = new CadastroErro1("Erro de alteração, tente novamente!");
+							erro1.setLocationRelativeTo(null);
+							erro1.setVisible(true);
+						}
+					}
+				}
+
+			}
+		});
+		btnAlterarImagem.setBounds(20, 23, 44, 32);
+		panel.add(btnAlterarImagem);
+		
+		btnAlterarImagem.setBounds(20, 23, 44, 32);
+		panel.add(btnAlterarImagem);
 
 		JLabel lblNewLabel1 = new JLabel("New label");
 		lblNewLabel1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/imagem/deltabus.png")));
@@ -338,6 +343,4 @@ public class MenuFuncionario extends JFrame {
 		contentPane.add(lblNewLabel_8);
 
 	}
-	
-	
 }

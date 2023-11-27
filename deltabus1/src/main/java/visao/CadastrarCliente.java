@@ -243,7 +243,7 @@ public class CadastrarCliente extends JPanel {
 		lblBairro.setBounds(768, 428, 155, 14);
 
 		btnCadastrar = new RoundButton("Confirmar");
-		btnCadastrar.setBounds(527, 673, 116, 33);
+		btnCadastrar.setBounds(462, 674, 116, 33);
 		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -500,8 +500,8 @@ public class CadastrarCliente extends JPanel {
 		});
 		btnAlterarC.setForeground(Color.WHITE);
 		btnAlterarC.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnAlterarC.setBackground(new Color(0, 128, 128));
-		btnAlterarC.setBounds(691, 673, 116, 33);
+		btnAlterarC.setBackground(new Color(0, 0, 0));
+		btnAlterarC.setBounds(641, 674, 116, 33);
 		add(btnAlterarC);
 		
 		btnSalvar = new RoundButton("Salvar");
@@ -548,7 +548,7 @@ public class CadastrarCliente extends JPanel {
 		btnSalvar.setForeground(Color.WHITE);
 		btnSalvar.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnSalvar.setBackground(new Color(0, 128, 128));
-		btnSalvar.setBounds(527, 673, 116, 33);
+		btnSalvar.setBounds(463, 674, 116, 33);
 		btnSalvar.setVisible(false);
 		add(btnSalvar);
 
