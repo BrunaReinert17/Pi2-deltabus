@@ -6,13 +6,12 @@ CREATE TABLE `clientes` (
   `Nome` varchar(255) NOT NULL,
   `numeroTelefone` varchar(14) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `cpf` varchar(14) NOT NULL,
   `cnpj` bigint NOT NULL,
   `endereco_cep` bigint NOT NULL,
   PRIMARY KEY (`cnpj`)
 ) ;
 
-INSERT INTO `clientes` VALUES ('bruna','5','brunar@gmail.com','1596857837',6666666666,21346560),('5255','           ','55555','55555555555',55555555555555,55555555);
+INSERT INTO `clientes` VALUES ('bruna','57412567854','brunar@gmail.com',66666666666666,21346560);
 
 CREATE TABLE `endereco` (
   `cep` bigint NOT NULL,
