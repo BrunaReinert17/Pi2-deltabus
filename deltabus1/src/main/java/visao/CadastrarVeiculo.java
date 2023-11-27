@@ -303,7 +303,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnLimparCampo.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnLimparCampo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+           
 				txtRenavam.setText("");
 
 				txtPlaca.setText("");
@@ -314,7 +314,7 @@ public class CadastrarVeiculo extends JPanel {
 
 				textPreco.setText("");
 
-				cbModelo.setSelectedIndex(-1);
+				cbModelo_1.setSelectedIndex(-1);
 
 				cbCor.setSelectedIndex(-1);
 
@@ -326,9 +326,7 @@ public class CadastrarVeiculo extends JPanel {
 
 				cbAcessorio.setSelectedIndex(-1);
 
-				cbKlm.setSelectedIndex(-1);
-
-				cbSituacao.setSelectedIndex(-1);
+			cbSituacao.setSelectedIndex(-1);
 
 			}
 		});
@@ -603,14 +601,6 @@ public class CadastrarVeiculo extends JPanel {
 
 				v.setIdVeiculo(pedidoSelecionado.getIdVeiculo());
 
-				if (!veiculoAlterado(v, pedidoSelecionado)) {
-
-					AlteracaoNaoRealizada alterar = new AlteracaoNaoRealizada("Erro de alteração, tente novamente!");
-					alterar.setLocationRelativeTo(null);
-					alterar.setVisible(true);
-					return;
-				}
-
 				ConfirmacaoAlterar confirmacao = new ConfirmacaoAlterar("Tem certeza que quer excluir o veículo?",
 						new InterfaceMensagemConfirmacao() {
 
@@ -638,6 +628,7 @@ public class CadastrarVeiculo extends JPanel {
 										alterar.setLocationRelativeTo(null);
 										alterar.setVisible(true);
 										limparDados();
+										
 									} else {
 										ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
 										erro1.setLocationRelativeTo(null);
@@ -651,6 +642,7 @@ public class CadastrarVeiculo extends JPanel {
 							}
 
 						});
+				confirmacao.setLocationRelativeTo(null);
 				confirmacao.setVisible(true);
 
 			}
@@ -890,7 +882,25 @@ public class CadastrarVeiculo extends JPanel {
 
 		textPreco.setText("");
 
+		cbModelo_1.setSelectedIndex(-1);
+
+		cbCor.setSelectedIndex(-1);
+
+		cbFrota.setSelectedIndex(-1);
+
+		cbCombustivel.setSelectedIndex(-1);
+
+		cbMarca.setSelectedIndex(-1);
+
+		cbAcessorio.setSelectedIndex(-1);
+
+		cbSituacao.setSelectedIndex(-1);
+	
 	}
+		
+		
+
+	
 
 	private void preencherDados(Veiculo veiculoSelecionado) {
 		txtRenavam.setText(veiculoSelecionado.getRenavam());
@@ -909,49 +919,5 @@ public class CadastrarVeiculo extends JPanel {
 
 	}
 
-	private boolean veiculoAlterado(Veiculo novoVeiculo, Veiculo veiculoOriginal) {
-
-		if (!Objects.equals(novoVeiculo.getIdVeiculo(), veiculoOriginal.getIdVeiculo())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getMarca(), veiculoOriginal.getMarca())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getModelo(), veiculoOriginal.getModelo())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getPreco(), veiculoOriginal.getPreco())) {
-			return true;
-		}
-		if (novoVeiculo.getAno() != veiculoOriginal.getAno()) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getAcessorios(), veiculoOriginal.getAcessorios())) {
-			return true;
-		}
-		if (novoVeiculo.getLotacao() != veiculoOriginal.getLotacao()) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getPlaca(), veiculoOriginal.getPlaca())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getRenavam(), veiculoOriginal.getRenavam())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getCor(), veiculoOriginal.getCor())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getTipoFrota(), veiculoOriginal.getTipoFrota())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getTipoCombustivel(), veiculoOriginal.getTipoCombustivel())) {
-			return true;
-		}
-		if (!Objects.equals(novoVeiculo.getSituacao(), veiculoOriginal.getSituacao())) {
-			return true;
-		}
-
-		return false;
-	}
-
+	
 }
