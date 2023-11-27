@@ -412,18 +412,6 @@ public class CadastrarPedido extends JPanel {
 		txtValorPago.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtValorPago);
 		/**********/
-
-		JButton btnPesquisar_1 = new JButton("Pesquisar");
-		btnPesquisar_1.setForeground(Color.WHITE);
-		btnPesquisar_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnPesquisar_1.setBackground(new Color(0, 128, 128));
-		btnPesquisar_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnPesquisar_1.setBounds(291, 371, 115, 23);
-		add(btnPesquisar_1);
-
 		RoundButton btnSalvar = new RoundButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -436,17 +424,7 @@ public class CadastrarPedido extends JPanel {
 
 				p.setId_pedido(pedidoSelecionado.getId_pedido());
 
-				if (!pedidoAlterado(p, pedidoSelecionado)) {
-
-					AlterarNaorealizado alterar = new AlterarNaorealizado("Erro de alteração, tente novamente!");
-					alterar.setLocationRelativeTo(null);
-					alterar.setVisible(true);
-					return;
-				}
-
-				ConfirmaAlterar confirmacao = new ConfirmaAlterar("Tem certeza que quer excluir o veículo?",new InterfaceMensagemConfirmacao() {
-
-							public void mensagemConfirmada() {
+							
 								if (p != null) {
 									/*
 									 * salvar alteracao no banco
@@ -480,10 +458,7 @@ public class CadastrarPedido extends JPanel {
 							public void mensagemCancelada() {
 
 							}
-						});
-				confirmacao.setVisible(true);
-
-			}
+			
 		});
 
 		btnSalvar.setText("Salvar");
@@ -556,27 +531,7 @@ public class CadastrarPedido extends JPanel {
 
 	}
 
-	protected boolean pedidoAlterado(Pedido novoPedido, Pedido pedidoSelecionado2) {
-		if (!Objects.equals(novoPedido.getCliente(), pedidoSelecionado2.getCliente())) {
-			return true;
-		}
-		if (!Objects.equals(novoPedido.getVeiculo(), pedidoSelecionado2.getVeiculo())) {
-			return true;
-		}
-		if (!Objects.equals(novoPedido.getTipoPagamento(), pedidoSelecionado2.getTipoPagamento())) {
-			return true;
-		}
-		if (!Objects.equals(novoPedido.getValorPago(), pedidoSelecionado2.getValorPago())) {
-			return true;
-		}
-		if (!Objects.equals(novoPedido.getQuantidade(), pedidoSelecionado2.getQuantidade())) {
-			return true;
-		}
-		if (!Objects.equals(novoPedido.getDataCompra(), pedidoSelecionado2.getDataCompra())) {
-			return true;
-		}
-		return false;
-	}
+
 
 	protected void setSelectedItem(Object object) {
 	}
