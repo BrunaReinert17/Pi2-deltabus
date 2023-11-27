@@ -565,7 +565,8 @@ public class CadastrarVeiculo extends JPanel {
 		btnAl.setBounds(714, 691, 132, 33);
 		add(btnAl);
 		
-		RoundButton btnSalvar1 = new RoundButton("Cadastrar");
+		RoundButton btnSalvar1 = new RoundButton("Salvar");
+		
 		btnSalvar1.setText("Salvar");
 		btnSalvar1.setForeground(Color.WHITE);
 		btnSalvar1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -573,7 +574,7 @@ public class CadastrarVeiculo extends JPanel {
 		btnSalvar1.setBounds(363, 691, 132, 33);
 		add(btnSalvar1);
 		
-		RoundButton btnDeletar2 = new RoundButton("Confirmar");
+		RoundButton btnDeletar2 = new RoundButton("Deletar");
 		btnDeletar2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int linhaSelecionada = table.getSelectedRow();
