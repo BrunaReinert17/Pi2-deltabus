@@ -74,8 +74,8 @@ public class CadastrarUsuario extends JPanel {
 	private JButton btnSalvar1;
 	private JTextField txtDataNasci;
 	private String verificarCampo;
-	private JLabel txtRua;
-	private JTextField textRua;
+	private JLabel lblRua;
+	private JTextField txtRua;
 	private JTextField textField;
 	private JLabel lblLimpar;
 	private JPanel panel;
@@ -188,7 +188,7 @@ public class CadastrarUsuario extends JPanel {
 		table_1.setBackground(Color.WHITE);
 		scrollPane_2.setViewportView(table_1);
 		table_1.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero", "Endereço" }));
+				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Gênero", "CEP" }));
 		scrollPane_2.setViewportView(table_1);
 
 		lblLimpar = new JLabel("");
@@ -523,7 +523,7 @@ public class CadastrarUsuario extends JPanel {
 				txtCep.setText("");
 				txtSenha.setText("");
 				txtBairro.setText("");
-				textRua.setText("");
+				txtRua.setText("");
 				cbUf.setSelectedIndex(-1);
 				cbCidade.setSelectedIndex(-1);
 				cbFuncao.setSelectedIndex(-1);
@@ -536,15 +536,15 @@ public class CadastrarUsuario extends JPanel {
 		lblGnero_1.setBounds(342, 239, 98, 14);
 		lblGnero_1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblGnero_1);
-		txtRua = new JLabel("Rua:");
-		txtRua.setBounds(405, 321, 155, 14);
+		lblRua = new JLabel("Rua:");
+		lblRua.setBounds(405, 321, 155, 14);
+		lblRua.setFont(new Font("Dialog", Font.BOLD, 13));
+		add(lblRua);
+		txtRua = new JTextField();
+		txtRua.setBounds(405, 339, 188, 31);
 		txtRua.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtRua.setColumns(10);
 		add(txtRua);
-		textRua = new JTextField();
-		textRua.setBounds(405, 339, 188, 31);
-		textRua.setFont(new Font("Dialog", Font.BOLD, 13));
-		textRua.setColumns(10);
-		add(textRua);
 
 		RoundButton rndbtnAlterar = new RoundButton("Alterar");
 		rndbtnAlterar.addActionListener(new ActionListener() {
@@ -591,6 +591,7 @@ public class CadastrarUsuario extends JPanel {
 
 							});
 					confirmar.setVisible(true);
+			        confirmar.setLocationRelativeTo(null);
 
 				} else {
 					DeletarUsuario2 falha2 = new DeletarUsuario2("Selecione um veiculo para excluir");
@@ -634,7 +635,7 @@ public class CadastrarUsuario extends JPanel {
 				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco().getCidade());
 				txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
 				txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco().getBairro()));
-				textRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getRua()));
+				txtRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getRua()));
 
 				/*
 				 * ocutar botaocadastro aparecer botao salvar
@@ -696,6 +697,7 @@ public class CadastrarUsuario extends JPanel {
 						AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
 						alterar.setLocationRelativeTo(null);
 						alterar.setVisible(true);
+						atualizarTabela();
 						limparDados(); // Limpa os campos após o cadastro
 					} else {
 						ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
@@ -713,6 +715,7 @@ public class CadastrarUsuario extends JPanel {
 		btnSalvar1.setBounds(471, 696, 116, 33);
 		btnSalvar1.setVisible(false);
 		add(btnSalvar1);
+		atualizarTabela();
 
 	}
 
@@ -762,7 +765,7 @@ public class CadastrarUsuario extends JPanel {
 		String senha = txtSenha.getText();
 		String bairro = txtBairro.getText();
 		String cidade = (String) cbCidade.getSelectedItem();
-		String rua = txtRua.getText();
+		String rua = lblRua.getText();
 
 		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
 			verificarCampo += "Nome\n";
@@ -861,7 +864,7 @@ public class CadastrarUsuario extends JPanel {
 
 	public void atualizarTabela() {
 		DefaultTableModel tabela = new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "Endereço" });
+				new String[] { "Nome", "Email", "Cpf", "Telefone", "Data de Nascimento", "Genero", "CEP" });
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		listFuncionario = funcionarioDAO.consultarTodos();
 		System.out.println(listFuncionario);
@@ -884,5 +887,10 @@ public class CadastrarUsuario extends JPanel {
 		txtCep.setText("");
 		txtSenha.setText("");
 		txtBairro.setText("");
+		txtRua.setText("");
+		cbUf.setSelectedIndex(-1);
+		cbCidade.setSelectedIndex(-1);
+		cbFuncao.setSelectedIndex(-1);
+		cbGenero.setSelectedIndex(-1);
 	}
 }

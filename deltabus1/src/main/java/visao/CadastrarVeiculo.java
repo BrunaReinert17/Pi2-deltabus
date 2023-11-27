@@ -653,13 +653,12 @@ public class CadastrarVeiculo extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int linhaSelecionada = table.getSelectedRow();
 				if (linhaSelecionada >= 0) {
-			        Veiculo veiculo = listVei.get(linhaSelecionada);
-
+					
+			       Veiculo veiculo = listVei.get(linhaSelecionada);
 			       
-                   ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
+                   ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao()
+                   {
                 	   
-                	   
-
 						@Override
 						
 						public void mensagemConfirmada() {
@@ -685,6 +684,7 @@ public class CadastrarVeiculo extends JPanel {
 			        	
 			        });
 			        confirmacao.setVisible(true);
+			        confirmacao.setLocationRelativeTo(null);
 			     
 			    } else {
 			        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");

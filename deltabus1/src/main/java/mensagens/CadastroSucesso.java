@@ -52,7 +52,9 @@ public class CadastroSucesso extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		lblSucesso = new JLabel(mensagem);
-		lblSucesso.setBounds(10, 81, 310, 14);
+		lblSucesso.setForeground(new Color(255, 255, 255));
+		lblSucesso.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblSucesso.setBounds(73, 81, 211, 14);
 		contentPane.add(lblSucesso);
 	}
 }

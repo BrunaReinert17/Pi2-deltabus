@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.UsuarioDAO;
+import mensagens.CadastroSucesso;
 import mensagens.LoginErro;
 import mensagens.LoginErro1;
 import modelo.Usuario;
@@ -96,11 +97,17 @@ public class Login extends JFrame {
 							MenuAdmin telaPrincipal = new MenuAdmin(retorno);
 							telaPrincipal.setLocationRelativeTo(null);
 							telaPrincipal.setVisible(true);
+							CadastroSucesso sucesso = new CadastroSucesso("Você entrou com sucesso!");
+							sucesso.setVisible(true);
+							sucesso.setLocationRelativeTo(null);
 							dispose();
 						} else {
 							MenuFuncionario telaFuncionario = new MenuFuncionario();
 							telaFuncionario.setLocationRelativeTo(null);
 							telaFuncionario.setVisible(true);
+							CadastroSucesso sucesso = new CadastroSucesso("Você entrou com sucesso!");
+							sucesso.setVisible(true);
+							sucesso.setLocationRelativeTo(null);
 							dispose();
 						}
 

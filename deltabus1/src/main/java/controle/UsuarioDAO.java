@@ -110,7 +110,6 @@ public class UsuarioDAO implements InterfaceUsuario {
 
 			ps.executeUpdate();
 			return usuario;
-//retorno nao esta de acordo com os testes
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -134,7 +133,7 @@ public class UsuarioDAO implements InterfaceUsuario {
 				Usuario u = new Usuario();
 
 				u.setIdUsuario(rs.getLong("idUsuario"));
-				u.setSenha(rs.getString("idUsuario"));
+				u.setSenha(rs.getString("senha"));
 				u.setEmail(rs.getString("email"));
 				u.setCargo(rs.getString("cargo"));
 				usuarios.add(u);
@@ -157,7 +156,6 @@ public class UsuarioDAO implements InterfaceUsuario {
 		try {
 
 			PreparedStatement ps = c.prepareStatement("select * from usuario where email = ? and senha = ?");
-			// metodo duplicado com selecionar usuario
 			ps.setString(1, usuario.getEmail());
 			ps.setString(2, usuario.getSenha());
 

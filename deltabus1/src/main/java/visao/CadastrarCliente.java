@@ -458,6 +458,8 @@ public class CadastrarCliente extends JPanel {
 
 							});
 					confirmar.setVisible(true);
+			        confirmar.setLocationRelativeTo(null);
+
 
 				} else {
 					DeletarCliente2 falha2 = new DeletarCliente2("Selecione um veiculo para excluir");
