@@ -102,7 +102,7 @@ public class Login extends JFrame {
 							sucesso.setLocationRelativeTo(null);
 							dispose();
 						} else {
-							MenuFuncionario telaFuncionario = new MenuFuncionario();
+							MenuFuncionario telaFuncionario = new MenuFuncionario(retorno);
 							telaFuncionario.setLocationRelativeTo(null);
 							telaFuncionario.setVisible(true);
 							CadastroSucesso sucesso = new CadastroSucesso("Você entrou com sucesso!");
