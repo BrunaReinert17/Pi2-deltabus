@@ -232,8 +232,7 @@ public class CadastrarPedido extends JPanel {
 			}
 		});
 		add(btnLimparCampo);
-		
-		
+
 		JLabel lblQtde = new JLabel("Quantidade:");
 		lblQtde.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblQtde.setBounds(652, 255, 155, 14);
@@ -257,7 +256,7 @@ public class CadastrarPedido extends JPanel {
 		lblValor.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblValor.setBounds(462, 255, 155, 14);
 		add(lblValor);
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(0, 0, 0));
 		panel_4.setBounds(297, 373, 616, 249);
@@ -267,31 +266,31 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Pedido p = verificarDados();
+				Pedido pedi = verificarDados();
 
 				
             	
 
-				if (p != null) {
+				if (pedi != null) {
 
-					PedidoDAO pedidoDAO = new PedidoDAO();
-					boolean resultado = PedidoDAO.inserirPedido1(p);
+					PedidoDAO pediDAO = new PedidoDAO();
+					boolean resultado = pediDAO.inserirPedido(pedi);
 
-                    if (resultado == true) {
-                    	
-                        CadastroVeiculo cadastro = new CadastroVeiculo("Cadastrado com Sucesso!");
-                        cadastro.setLocationRelativeTo(null);
-                        cadastro.setVisible(true);
-        				atualizarTabela();
-                       limparDados(); // Limpa os campos após o cadastro
-                    } else {
-                    	
-                        CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
-                        erro1.setLocationRelativeTo(null);
-                        erro1.setVisible(true);
-                    }
-                }
-				
+					if (resultado == true) {
+						// O pedido foi cadastrado com sucesso
+						CadastroVeiculo cadastro = new CadastroVeiculo("Pedido Cadastrado com Sucesso!");
+						cadastro.setLocationRelativeTo(null);
+						cadastro.setVisible(true);
+						atualizarTabela();
+						limparDados(); // Limpa os campos após o cadastro
+					} else {
+						// Ocorreu um erro durante o cadastro
+						CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
+						erro1.setLocationRelativeTo(null);
+						erro1.setVisible(true);
+					}
+				}
+
 			}
 		});
 		btnCadastrar_1.setText("Cadastrar");
@@ -301,10 +300,10 @@ public class CadastrarPedido extends JPanel {
 		btnCadastrar_1.setBounds(475, 661, 116, 33);
 		add(btnCadastrar_1);
 		atualizarTabela();
-		
+
 		JLabel lblDataCompra = new JLabel("Data de Compra :");
 		lblDataCompra.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblDataCompra.setBounds(785, 220, 155, 14);
+		lblDataCompra.setBounds(791, 255, 155, 14);
 		add(lblDataCompra);
 		/**********/
 		MaskFormatter mascaraDatacompra = null;
@@ -377,41 +376,40 @@ public class CadastrarPedido extends JPanel {
 
 				p.setId_pedido(pedidoSelecionado.getId_pedido());
 
-							
-								if (p != null) {
-									/*
-									 * salvar alteracao no banco
-									 **/
-									PedidoDAO pedidoDAO = new PedidoDAO();
-									boolean resultado = pedidoDAO.alterarPedido(p);
+				if (p != null) {
+					/*
+					 * salvar alteracao no banco
+					 **/
+					PedidoDAO pedidoDAO = new PedidoDAO();
+					boolean resultado = pedidoDAO.alterarPedido(p);
 
-									atualizarTabela();
-									/*
-									 * Ocular salvar e motrar cadastrar
-									 **/
-									btnSalvar.setVisible(false);
-									btnCadastrar_1.setVisible(true);
+					atualizarTabela();
+					/*
+					 * Ocular salvar e motrar cadastrar
+					 **/
+					btnSalvar.setVisible(false);
+					btnCadastrar_1.setVisible(true);
 
-									if (resultado == true) {
+					if (resultado == true) {
 
-										AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
-										alterar.setLocationRelativeTo(null);
-										alterar.setVisible(true);
-										atualizarTabela();
-										limparDados(); // Limpa os campos após o cadastro
+						AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+						alterar.setLocationRelativeTo(null);
+						alterar.setVisible(true);
+						atualizarTabela();
+						limparDados(); // Limpa os campos após o cadastro
 
-									} else {
-										ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
-										erro1.setLocationRelativeTo(null);
-										erro1.setVisible(true);
-									}
-								}
-							}
+					} else {
+						ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+						erro1.setLocationRelativeTo(null);
+						erro1.setVisible(true);
+					}
+				}
+			}
 
-							public void mensagemCancelada() {
+			public void mensagemCancelada() {
 
-							}
-			
+			}
+
 		});
 
 		btnSalvar.setText("Salvar");
@@ -472,79 +470,73 @@ public class CadastrarPedido extends JPanel {
 
 		cbVeiculo = new JComboBox<Veiculo>();
 		cbVeiculo.setBounds(762, 172, 145, 30);
-		VeiculoDAO veiDao= new VeiculoDAO();
+		VeiculoDAO veiDao = new VeiculoDAO();
 		ArrayList<Veiculo> listasVeiculos = veiDao.listar();
 		for (Veiculo veiculo : listasVeiculos) {
 			cbVeiculo.addItem(veiculo);
 		}
 
 		add(cbVeiculo);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(CadastrarPedido.class.getResource("/imagem/deletar.png")));
 		lblNewLabel_1.setBounds(1104, 92, 54, 33);
 		add(lblNewLabel_1);
-		
-				
-				RoundButton btnDeletar2 = new RoundButton("Deletar");
-				btnDeletar2.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						int linhaSelecionada = table1.getSelectedRow();
-						if (linhaSelecionada >= 0) {
-					        Pedido pedido = listPedido.get(linhaSelecionada);
 
-					       
-                   ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?", new InterfaceMensagemConfirmacao() {
-                	   
-                	   @Override
-								
+		RoundButton btnDeletar2 = new RoundButton("Deletar");
+		btnDeletar2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int linhaSelecionada = table1.getSelectedRow();
+				if (linhaSelecionada >= 0) {
+					Pedido pedido = listPedido.get(linhaSelecionada);
+
+					ConfirmacaoDeletar confirmacao = new ConfirmacaoDeletar("Tem certeza que quer excluir o veículo?",
+							new InterfaceMensagemConfirmacao() {
+
+								@Override
+
 								public void mensagemConfirmada() {
 									PedidoDAO pedidoDAO = new PedidoDAO();
-									
+
 									if (PedidoDAO.excluirPedido1(pedido)) {
-					                DefaultTableModel model = (DefaultTableModel) table1.getModel();
-					                model.removeRow(linhaSelecionada);
-					                
-					            } else {
-					                Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
-					                falha.setLocationRelativeTo(null);
-					                falha.setVisible(true);
-					            }
-									
+										DefaultTableModel model = (DefaultTableModel) table1.getModel();
+										model.removeRow(linhaSelecionada);
+
+									} else {
+										Deletar1 falha = new Deletar1("Falha ao excluir veiculo");
+										falha.setLocationRelativeTo(null);
+										falha.setVisible(true);
+									}
+
 								}
 
 								@Override
 								public void mensagemCancelada() {
-									
-									
-								}
-					        	
-					        });
-					        confirmacao.setVisible(true);
-					        confirmacao.setLocationRelativeTo(null);
-					     
-					    } else {
-					        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
-					        falha2.setLocationRelativeTo(null);
-					        falha2.setVisible(true);
-					    }
-					}
-				});
-				
 
-			
+								}
+
+							});
+					confirmacao.setVisible(true);
+					confirmacao.setLocationRelativeTo(null);
+
+				} else {
+					Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
+					falha2.setLocationRelativeTo(null);
+					falha2.setVisible(true);
+				}
+			}
+		});
+
 		btnDeletar2.setText("Deletar");
 		btnDeletar2.setForeground(new Color(245, 245, 245));
 		btnDeletar2.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnDeletar2.setBackground(new Color(245, 245, 245));
 		btnDeletar2.setBounds(1120, 92, 41, 33);
 		add(btnDeletar2);
-		
+
 		atualizarTabela();
 
 	}
-
-
 
 	protected void setSelectedItem(Object object) {
 	}
@@ -566,21 +558,24 @@ public class CadastrarPedido extends JPanel {
 
 		String nomeCliente = txtNomeCliente.getText();
 		System.out.println(txtValorPago.getText().replace(".", ","));
-		double valorPago = Double.parseDouble(txtValorPago.getText().replace(",", "."));
-		String cnpj = txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "")
-				.replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", "");
+		String valorPagoText = txtValorPago.getText().replace(",", "").replace(".", "").replace(" ", "");
+		String cnpj = txtCnpj.getText().replace("##", "").replace(".", "").replace("###", "").replace(".", "").replace("###", "").replace("/", "").replace("####", "").replace("-", "").replace("##", "");
 		Veiculo v = (Veiculo) cbVeiculo.getSelectedItem();
 		pedido.setVeiculo(v);
 		String quantidade = txtQtdes.getText();
 		String datacompra = txtDataCompra.getText();
 		FormaPagamento formapagamento = (FormaPagamento) cbPagamento.getSelectedItem();
 
-		if (valorPago == 0) {
-			verificarCampo += "ValorPagar\n";
-		} else {
-			pedido.setValorPago(valorPago);
-		}
+		
 
+		if (!valorPagoText.isEmpty()) {
+		    double valorPago = Double.parseDouble(valorPagoText);
+		    // Continue com o processamento do valorPago
+		} else {
+		    // Lide com a situação em que o campo está vazio
+		    System.out.println("O campo de valor pago está vazio.");
+		}
+		
 		if (cnpj == null || cnpj.trim() == "" || cnpj.isEmpty()) {
 			verificarCampo += "Cnpj\n";
 		} else {

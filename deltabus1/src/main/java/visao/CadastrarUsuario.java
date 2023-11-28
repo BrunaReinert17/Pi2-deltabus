@@ -34,6 +34,7 @@ import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
 import mensagens.AlteraSucesso;
+import mensagens.Alterar1;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
@@ -616,6 +617,8 @@ public class CadastrarUsuario extends JPanel {
 				 * selecionar registro
 				 */
 				int pos = table_1.getSelectedRow();
+				
+				if (pos >= 0) {
 				System.out.println(pos);
 				funcionarioSelecionado = listFuncionario.get(pos);
 
@@ -646,7 +649,12 @@ public class CadastrarUsuario extends JPanel {
 				 */
 				btnSalvar1.setVisible(true);
 				btnCadastrar.setVisible(false);
-				System.out.println("erro");
+				}else {
+					Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
+					falha1.setLocationRelativeTo(null);
+					falha1.setVisible(true);
+				}
+				
 
 			}
 		});
