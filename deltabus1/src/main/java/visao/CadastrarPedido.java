@@ -66,6 +66,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class CadastrarPedido extends JPanel {
 	private JTextField txtNomeCliente;
@@ -351,7 +355,8 @@ public class CadastrarPedido extends JPanel {
 						}
 			        	
 			        });
-			        confirmacao.setVisible(true);
+                   confirmacao.setLocationRelativeTo(null);
+			       confirmacao.setVisible(true);
 			     
 			    } else {
 			        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");
@@ -437,6 +442,7 @@ public class CadastrarPedido extends JPanel {
 		    e3.printStackTrace();
 		}
 		txtValorPago = new JFormattedTextField(mascaraValor);
+		txtValorPago.setEditable(false);
 		txtValorPago.setBounds(646, 244, 126, 30);
 		txtValorPago.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtValorPago);
@@ -534,7 +540,7 @@ public class CadastrarPedido extends JPanel {
 				txtNomeCliente.setText(pedidoSelecionado.getCliente().getNome());
 				cbVeiculo.setSelectedItem(pedidoSelecionado.getVeiculo());
 				cbPagamento.setSelectedItem(pedidoSelecionado.getTipoPagamento());
-				txtValorPago.setText(Double.toString(pedidoSelecionado.getValorPago()).replace(".", ","));
+				txtValorPago.setText(Double.toString(pedidoSelecionado.getVeiculo().getPreco()).replace(".", ","));
 				txtQtdes.setText(Integer.toString(pedidoSelecionado.getQuantidade()));
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
 				txtDataCompra.setText(pedidoSelecionado.getDataCompra().format(formatter));
@@ -564,6 +570,15 @@ public class CadastrarPedido extends JPanel {
 		add(btnAlterarP);
 		
 		cbVeiculo = new JComboBox<Veiculo>();
+		
+		cbVeiculo.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				Veiculo v = (Veiculo) cbVeiculo.getSelectedItem();
+				txtValorPago.setText(String.valueOf(v.getPreco()).replace(".", ","));
+				
+				
+			}
+		});
 		cbVeiculo.setFont(new Font("Dialog", Font.BOLD, 13));
 		cbVeiculo.setBounds(291, 244, 145, 30);
 		VeiculoDAO veiDao= new VeiculoDAO();
@@ -571,8 +586,12 @@ public class CadastrarPedido extends JPanel {
 		for (Veiculo veiculo : listasVeiculos) {
 			cbVeiculo.addItem(veiculo);
 		}
+		Veiculo v = listasVeiculos.get(0);
+		txtValorPago.setText(String.valueOf(v.getPreco()).replace(".", ","));
+
 		
 		add(cbVeiculo);
+		
 		
 		atualizarTabela();
 		

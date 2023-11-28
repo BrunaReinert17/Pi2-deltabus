@@ -126,7 +126,7 @@ public class VeiculoDAO {
 		Connection c = con.conectar();
 
 		String query = "UPDATE Veiculo " + "SET Marca = ?, " + "Modelo = ?, " + "Preco = ?, " + "Ano = ?, " + "Acessorios = ?, " +  "Lotacao = ?, " + "Placa = ?, " +  "Renavam = ?, " +  "Cor = ?, " +  "TipoFrota = ?, " 
-		+ "TipoCombustivel = ?, " + "Situacao = ? " + "WHERE renavam = ?";
+		+ "TipoCombustivel = ?, " + "Situacao = ? " + "WHERE idVeiculo= ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(query);
 
@@ -142,7 +142,9 @@ public class VeiculoDAO {
 			ps.setString(10, veiculo.getTipoFrota());
 			ps.setString(11, veiculo.getTipoCombustivel());
 			ps.setString(12, veiculo.getSituacao());
-			ps.setString(13, veiculo.getRenavam());
+			ps.setLong(13, veiculo.getIdVeiculo());
+			
+			System.out.println(ps);
 		
 
 			int sucesso = ps.executeUpdate();
