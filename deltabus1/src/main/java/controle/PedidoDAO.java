@@ -79,43 +79,39 @@ public class PedidoDAO implements InterfacePedido{
 		return listPedido;
 		
 	}
-	 
 
-	 public boolean inserirPedido(Pedido pedido) {
-		    if (pedido != null && pedido.getDataCompra() != null) {
-		        con = Conexao.getInstancia();
-		        Connection c = con.conectar();
+	public boolean inserirPedido(Pedido pedido) {
+		con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
-		        int valida = 0;
+		int valida = 0;
 
-		        String query = "INSERT INTO Pedido " + "(dataCompra, valorPago,tipoPagamento,Cnpj,  quantidade) " + "VALUES (?, ?, ?, ?, ?)";
 
-		        try {
-		            PreparedStatement ps = c.prepareStatement(query);
-		            ps.setDate(1, java.sql.Date.valueOf(pedido.getDataCompra()));
-		            ps.setDouble(2, pedido.getValorPago());
-		            ps.setString(3, pedido.getTipoPagamento().getDescricao());
-		            ps.setLong(4, pedido.getCliente().getCnpj());
-		            ps.setInt(5, pedido.getQuantidade());
+		String query = "INSERT INTO Pedido " 
+		+ "(dataCompra, valorPago,tipoPagamento,Cnpj,  quantidade) " 
+		+ "VALUES (?, ?, ?, ?, ?)";
 
-		            ps.executeUpdate();
-		            return true;
+		try {
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setDate(1,java.sql.Date.valueOf (pedido.getDataCompra()));
+			ps.setDouble(2, pedido.getValorPago());
+			ps.setString(3, pedido.getTipoPagamento().getDescricao());
+			ps.setLong(4, pedido.getCliente().getCnpj());
+			ps.setInt(5, pedido.getQuantidade());
 
-		        } catch (Exception e) {
-		            e.printStackTrace();
-		        } finally {
-		            con.fecharConexao();
-		        }
-		    }
-		    return false;
+			ps.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
 		}
-
-	
-	
+		
+		return false;
+	}
 
 	public  boolean excluirPedido(Pedido pedido) {
-		
-		if (pedido != null) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
@@ -133,7 +129,7 @@ public class PedidoDAO implements InterfacePedido{
 		} finally {
 			con.fecharConexao();
 		}
-		}
+
 		return false;
 	}
 
