@@ -155,21 +155,6 @@ public class CadastrarUsuario extends JPanel {
 		panel_1.add(textCPF);
 		textCPF.setColumns(10);
 
-		JButton btnPesquisar = new JButton("Pesquisar");
-		btnPesquisar.setForeground(new Color(255, 255, 255));
-		btnPesquisar.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnPesquisar.setBackground(new Color(0, 128, 128));
-		btnPesquisar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String cpfpesquisa = textCPF.getText();
-
-			}
-
-		});
-
-		btnPesquisar.setBounds(362, 10, 115, 23);
-		panel_1.add(btnPesquisar);
-
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(CadastrarUsuario.class.getResource("/imagem/deletar.png")));
 		lblNewLabel_1.setBounds(1105, 92, 75, 33);
@@ -468,6 +453,7 @@ public class CadastrarUsuario extends JPanel {
 					System.out.println(endereco);
 					if (endereco == null) {
 						long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
+						endereco = funcionario.getEndereco();
 					}
 
 					int usuarioRetornoCadastro;
@@ -478,9 +464,7 @@ public class CadastrarUsuario extends JPanel {
 
 						if (usuarioRetornoCadastro != 0) {
 							funcionario.getUsuario().setIdUsuario(usuarioRetornoCadastro);
-							// usuario = usuarioDAO.selecionar(funcionario.getUsuario());
-							// System.out.println(usuario);
-							// funcionario.setUsuario(usuario);
+			
 							long resultado = funcionarioDAO.inserirFuncionario(funcionario);
 
 							if (resultado > 0) {
@@ -549,13 +533,6 @@ public class CadastrarUsuario extends JPanel {
 		txtRua.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtRua.setColumns(10);
 		add(txtRua);
-
-		RoundButton rndbtnAlterar = new RoundButton("Alterar");
-		rndbtnAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
 
 		panel_5 = new JPanel();
 		panel_5.setBackground(new Color(0, 0, 0));
@@ -776,7 +753,7 @@ public class CadastrarUsuario extends JPanel {
 		String senha = txtSenha.getText();
 		String bairro = txtBairro.getText();
 		String cidade = (String) cbCidade.getSelectedItem();
-		String rua = lblRua.getText();
+		String rua = txtRua.getText();
 
 		if (nome == null || nome.trim() == "" || nome.isEmpty()) {
 			verificarCampo += "Nome\n";
