@@ -113,7 +113,7 @@ INSERT INTO `endereco` VALUES (21346560,'Blumenau','Progresso','Rua Ernestine Eh
 INSERT INTO `funcionarios` VALUES (14058566,'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino',987654325,'agatha@gmail.com',1,21346560);
 
 -- INSERT pedido --
-INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Crédito',66666666666666,1),(3,'2000-01-01',6,555.55,'Débito',55555555555555,1);
+INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Cartão',66666666666666,1),(3,'2000-01-01',6,555.55,'Cartão',55555555555555,1);
 
 -- INSERT usuario --
 INSERT INTO usuario (senha, email, cargo) VALUES ('abc123', 'bruna@gmail.com', 'funcionario');
