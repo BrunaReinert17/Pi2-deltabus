@@ -592,7 +592,7 @@ public class CadastrarVeiculo extends JPanel {
 						erro1.setVisible(true);
 					}
 				} else {
-					CadastroErro2 erro2 = new CadastroErro2("Veriique os campos e tente novamente!");
+					CadastroErro2 erro2 = new CadastroErro2("Verique os campos e tente novamente!");
 					erro2.setLocationRelativeTo(null);
 					erro2.setVisible(true);
 				}
@@ -657,7 +657,7 @@ public class CadastrarVeiculo extends JPanel {
 
 				v.setIdVeiculo(pedidoSelecionado.getIdVeiculo());
 
-				ConfirmacaoAlterar confirmacao = new ConfirmacaoAlterar("Tem certeza que quer excluir o veículo?",
+				ConfirmacaoAlterar confirmar = new ConfirmacaoAlterar("Tem certeza que quer excluir o veículo?",
 						new InterfaceMensagemConfirmacao() {
 
 							public void mensagemConfirmada() {
@@ -698,8 +698,8 @@ public class CadastrarVeiculo extends JPanel {
 							}
 
 						});
-				confirmacao.setLocationRelativeTo(null);
-				confirmacao.setVisible(true);
+				confirmar.setLocationRelativeTo(null);
+				confirmar.setVisible(true);
 
 			}
 		});
@@ -743,6 +743,7 @@ public class CadastrarVeiculo extends JPanel {
 								}
 
 							});
+					confirmacao.setLocationRelativeTo(null);
 					confirmacao.setVisible(true);
 
 				} else {

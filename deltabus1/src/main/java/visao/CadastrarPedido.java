@@ -355,7 +355,8 @@ public class CadastrarPedido extends JPanel {
 						}
 			        	
 			        });
-			        confirmacao.setVisible(true);
+                   confirmacao.setLocationRelativeTo(null);
+			       confirmacao.setVisible(true);
 			     
 			    } else {
 			        Deletar2 falha2 = new Deletar2("Selecione um usuario para excluir");

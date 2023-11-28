@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -30,6 +32,7 @@ import javax.swing.event.AncestorListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
+import controle.ClienteDAO;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.UsuarioDAO;
@@ -44,6 +47,7 @@ import mensagens.DeletarUsuario1;
 import mensagens.DeletarUsuario2;
 import mensagens.ErroAlterar;
 import mensagens.InterfaceMensagemConfirmacao;
+import modelo.Cliente;
 import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.Usuario;
@@ -315,6 +319,7 @@ public class CadastrarUsuario extends JPanel {
 		txtCep.setBounds(515, 257, 149, 30);
 		txtCep.setText("");
 		/**********/
+		
 
 		txtCep.setFont(new Font("Dialog", Font.BOLD, 13));
 		txtCep.setColumns(10);
@@ -507,7 +512,7 @@ public class CadastrarUsuario extends JPanel {
 								sucesso.setLocationRelativeTo(null);
 								sucesso.setVisible(true);
 								atualizarTabela();
-
+								limparDados();
 							} else {
 								CadastroErro1 erro1 = new CadastroErro1("Erro de Cadastro, tente novamente!");
 								erro1.setLocationRelativeTo(null);
