@@ -1,6 +1,6 @@
 package controle;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import modelo.Cliente;
 import modelo.Endereco;
-import modelo.Usuario;
 
 public class ClienteDAO implements InterfaceCliente {
 
