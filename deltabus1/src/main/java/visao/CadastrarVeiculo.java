@@ -552,7 +552,7 @@ public class CadastrarVeiculo extends JPanel {
 
 		MaskFormatter mascaraValor = null;
 		try {
-			mascaraValor = new MaskFormatter("###.###,##");
+			mascaraValor = new MaskFormatter("###,##");
 		} catch (ParseException e3) {
 			e3.printStackTrace();
 		}
