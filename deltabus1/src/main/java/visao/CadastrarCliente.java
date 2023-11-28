@@ -371,10 +371,41 @@ public class CadastrarCliente extends JPanel {
 
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
-		cidade.add("São José");
+		cidade.add("SC");
 		cidade.add("Ilhota");
 		cidade.add("Gaspar");
 		cidade.add("Blumenau");
+		cidade.add("Florianópolis");
+		cidade.add("Joinville");
+		cidade.add("Itajaí");
+		
+		cidade.add("");
+		cidade.add("SP");
+		cidade.add("São Paulo");
+		cidade.add("Guarulhos");
+		cidade.add("Campinas");
+		cidade.add("São Bernardo do Campo");
+		cidade.add("Santo André");
+		cidade.add("Osasco");
+		
+		cidade.add("");
+		cidade.add("RS");
+		cidade.add("Porto Alegre.");
+		cidade.add("Caxias do Sul.");
+		cidade.add("Canoas.");
+		cidade.add("Pelotas.");
+		cidade.add("Santa Maria.");
+		cidade.add("Gramado");
+		
+		cidade.add("");
+		cidade.add("PR");
+		cidade.add("Curitiba");
+		cidade.add("Adrianópolis");
+		cidade.add("Campo Largo");
+		cidade.add("Ponta Grossa");
+		cidade.add("Londrina");
+		cidade.add("Cascavel");
+		
 		cbCidade = new JComboBox();
 		cbCidade.setBounds(830, 244, 155, 30);
 		cbCidade.addAncestorListener(new AncestorListener() {
@@ -438,6 +469,7 @@ public class CadastrarCliente extends JPanel {
 
 							});
 					confirmar.setVisible(true);
+					confirmar.setLocationRelativeTo(null);
 
 				} else {
 					DeletarCliente2 falha2 = new DeletarCliente2("Selecione um veiculo para excluir");

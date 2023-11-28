@@ -11,9 +11,6 @@ CREATE TABLE `clientes` (
   PRIMARY KEY (`cnpj`)
 ) ;
 
-INSERT INTO `clientes` VALUES ('bruna','57412567854','brunar@gmail.com',66666666666666,21346560);
-INSERT INTO `clientes` VALUES ('maria','57412568888','mariaa@gmail.com',55555555555555,21346560);
-
 
 CREATE TABLE `endereco` (
   `cep` bigint NOT NULL,
@@ -23,8 +20,6 @@ CREATE TABLE `endereco` (
   `UF` varchar(45) NOT NULL,
   PRIMARY KEY (`cep`)
 );
-
-INSERT INTO `endereco` VALUES (21346560,'Blumenau','Progresso','Rua Ernestine Ehrhardt','SC'),(55555555,'São José','5','55','SP');
 
 
 CREATE TABLE `funcionarios` (
@@ -40,9 +35,6 @@ CREATE TABLE `funcionarios` (
 );
 
 
-INSERT INTO `funcionarios` VALUES (14058566,'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino',987654325,'agatha@gmail.com',1,21346560);
-
-
 CREATE TABLE `pedido` (
   `id_pedidos` int NOT NULL AUTO_INCREMENT,
   `dataCompra` date NOT NULL,
@@ -54,7 +46,6 @@ CREATE TABLE `pedido` (
   PRIMARY KEY (`id_pedidos`)
 );
 
-INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Cartão',66666666666666,1),(3,'2000-01-01',6,555.55,'Cartão',55555555555555,1);
 
 CREATE TABLE `usuario` (
    `idUsuario` int NOT NULL AUTO_INCREMENT,
@@ -64,11 +55,6 @@ CREATE TABLE `usuario` (
    `imagem` MEDIUMBLOB null,
    PRIMARY KEY (`idUsuario`)
 );
-
-INSERT INTO usuario (senha, email, cargo) VALUES ('abc123', 'bruna@gmail.com', 'funcionario');
-INSERT INTO usuario (senha, email, cargo) VALUES ('abc1234', 'maria@gmail.com', 'administrador');
-INSERT INTO usuario (senha, email, cargo) VALUES ('abc12345', 'aguida@gmail.com', 'funcionario');
-
 
 CREATE TABLE `veiculo` (
   `idVeiculo` bigint NOT NULL AUTO_INCREMENT,
@@ -86,8 +72,7 @@ CREATE TABLE `veiculo` (
   `situacao` varchar(45) NOT NULL,
   PRIMARY KEY (`idVeiculo`)
 );
-INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
-INSERT INTO `veiculo` VALUES (2,'Scania','AGRALE/MASCA GRANMIDI O',134567.999,2023,'Banheiro',40,'Verde','Turismo','GNC','ABC222','987654321','Novo');
+
 
   -- SELECTS--
 
@@ -114,3 +99,32 @@ SELECT * FROM Usuario  ORDER BY idUsuario ASC;
 -- Select funcionarios -- 
 SELECT COUNT(*) FROM funcionarios;
 SELECT * FROM funcionarios ORDER BY cpf ASC;
+
+-- INSERTS --
+
+-- INSERT cliente --
+INSERT INTO `clientes` VALUES ('bruna','57412567854','brunar@gmail.com',66666666666666,21346560);
+INSERT INTO `clientes` VALUES ('maria','57412568888','mariaa@gmail.com',55555555555555,21346560);
+
+-- INSERT endereco --
+INSERT INTO `endereco` VALUES (21346560,'Blumenau','Progresso','Rua Ernestine Ehrhardt','SC'),(55555555,'São José','5','55','SP');
+
+-- INSERT funcionario --
+INSERT INTO `funcionarios` VALUES (14058566,'Agatha Cristine Onofre Ribeiro','2004-01-19','Feminino',987654325,'agatha@gmail.com',1,21346560);
+
+-- INSERT pedido --
+INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Crédito',66666666666666,1),(3,'2000-01-01',6,555.55,'Débito',55555555555555,1);
+
+-- INSERT usuario --
+INSERT INTO usuario (senha, email, cargo) VALUES ('abc123', 'bruna@gmail.com', 'funcionario');
+INSERT INTO usuario (senha, email, cargo) VALUES ('abc1234', 'maria@gmail.com', 'administrador');
+INSERT INTO usuario (senha, email, cargo) VALUES ('abc12345', 'aguida@gmail.com', 'funcionario');
+
+-- INSERT veiculo --
+INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
+INSERT INTO `veiculo` VALUES (2,'Scania','AGRALE/MASCA GRANMIDI O',134567.999,2023,'Banheiro',40,'Verde','Turismo','GNC','ABC222','987654321','Novo');
+INSERT INTO `veiculo` VALUES (3, 'Volvo', 'VOLVO/7700', 150000.50, 2022, 'Sem Banheiro', 45, 'Azul', 'Turismo', 'Diesel', 'XYZ123', '123456789', 'Semi Novo');
+INSERT INTO `veiculo` VALUES (4, 'Mercedes-Benz', 'M. BENZ/OF 1721', 120000.75, 2021, 'Com Banheiro', 35, 'Amarelo', 'Turismo', 'Diesel', 'DEF456', '987654321', 'Novo');
+INSERT INTO `veiculo` VALUES (5, 'MAN', 'MAN/VOLKSBUS', 100000.25, 2020, 'Com Banheiro', 50, 'Branco', 'Executivo', 'Diesel', 'GHI789', '123456789', 'Semi Novo');
+INSERT INTO `veiculo` VALUES (6, 'Iveco', 'IVECO/CURSOR', 80000.80, 2019, 'Sem Banheiro', 30, 'Vermelho', 'Fretamento', 'Diesel', 'JKL012', '987654321', 'Novo');
+INSERT INTO `veiculo` VALUES (7, 'Renault', 'RENAULT/MIDIL', 95000.00, 2018, 'Com Banheiro', 55, 'Preto', 'Turismo', 'Diesel', 'MNO345', '123456789', 'Semi Novo');

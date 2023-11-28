@@ -225,7 +225,16 @@ public class CadastrarVeiculo extends JPanel {
 		marca.add("Volkswagen");
 		marca.add("Mercedes");
 		marca.add("Agrale");
-
+		marca.add("Agrale");
+		marca.add("Marcopolo");
+		marca.add("Scania");
+		marca.add("Volvo");
+		marca.add("Mercedes-Benz");
+		marca.add("MAN");
+		marca.add("Iveco");
+		marca.add("Renault");
+		
+		
 		cbMarca = new JComboBox();
 		cbMarca.setBounds(407, 163, 167, 33);
 		cbMarca.addAncestorListener(new AncestorListener() {
@@ -249,6 +258,12 @@ public class CadastrarVeiculo extends JPanel {
 		cor.add("");
 		cor.add("Azul");
 		cor.add("Verde");
+		cor.add("Preto");
+		cor.add("Rosa");
+		cor.add("Azul-eclipse");
+		cor.add("Chumbo");
+		cor.add("Vermelho");
+		cor.add("Branco");
 		cor.add("Preto");
 
 		cbCor = new JComboBox();
@@ -381,7 +396,14 @@ public class CadastrarVeiculo extends JPanel {
 		modelo.add("marcopolo");
 		modelo.add("Volvo");
 		modelo.add("Comil");
-
+		modelo.add("Paradiso G8 1050");
+		modelo.add("AGRALE/MASCA GRANMIDI O");
+		modelo.add("VOLVO/7700");
+		modelo.add("M. BENZ/OF 1721");
+		modelo.add("MAN/VOLKSBUS");
+		modelo.add("IVECO/CURSOR");
+		modelo.add("RENAULT/MIDIL");
+		
 		cbModelo_1 = new JComboBox();
 		cbModelo_1.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
@@ -530,7 +552,7 @@ public class CadastrarVeiculo extends JPanel {
 
 		MaskFormatter mascaraValor = null;
 		try {
-			mascaraValor = new MaskFormatter("###,##");
+			mascaraValor = new MaskFormatter("###.###,##");
 		} catch (ParseException e3) {
 			e3.printStackTrace();
 		}

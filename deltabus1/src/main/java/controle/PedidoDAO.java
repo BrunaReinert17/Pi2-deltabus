@@ -17,6 +17,7 @@ import modelo.Veiculo;
 public class PedidoDAO implements InterfacePedido{
    
 	 private static Conexao con;
+	private Object idVeiculo;
 	 
 	 public PedidoDAO() {
 	        con = Conexao.getInstancia();
@@ -80,37 +81,40 @@ public class PedidoDAO implements InterfacePedido{
 		
 	}
 
-	public boolean inserirPedido(Pedido pedido) {
-		con = Conexao.getInstancia();
-		Connection c = con.conectar();
 
-		int valida = 0;
+	
+	 public boolean inserirPedido(Pedido pedido) {
+		    if (pedido != null && pedido.getDataCompra() != null) {
+		        con = Conexao.getInstancia();
+		        Connection c = con.conectar();
 
+		        int valida = 0;
 
-		String query = "INSERT INTO Pedido " 
-		+ "(dataCompra, valorPago,tipoPagamento,Cnpj,  quantidade) " 
-		+ "VALUES (?, ?, ?, ?, ?)";
+		        String query = "INSERT INTO Pedido " + "(dataCompra, valorPago,tipoPagamento,Cnpj,  quantidade, idVeiculo) " + "VALUES (?, ?, ?, ?, ?, ?)";
+		        if (idVeiculo != null) {
+		        	System.out.println("ouuuuuuuu");
+		        try {
+		            PreparedStatement ps = c.prepareStatement(query);
+		            ps.setDate(1, java.sql.Date.valueOf(pedido.getDataCompra()));
+		            ps.setDouble(2, pedido.getValorPago());
+		            ps.setString(3, pedido.getTipoPagamento().getDescricao());
+		            ps.setLong(4, pedido.getCliente().getCnpj());
+		            ps.setInt(5, pedido.getQuantidade());
+		            ps.setLong(6, pedido.getIdVeiculo());
 
-		try {
-			PreparedStatement ps = c.prepareStatement(query);
-			ps.setDate(1,java.sql.Date.valueOf (pedido.getDataCompra()));
-			ps.setDouble(2, pedido.getValorPago());
-			ps.setString(3, pedido.getTipoPagamento().getDescricao());
-			ps.setLong(4, pedido.getCliente().getCnpj());
-			ps.setInt(5, pedido.getQuantidade());
+		            ps.executeUpdate();
+		            return true;
 
-			ps.executeUpdate();
-			return true;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        } finally {
+		            con.fecharConexao();
+		        }
+		        }
+		    }
+		    return false;
 		}
-		
-		return false;
-	}
-
+     
 	public  boolean excluirPedido(Pedido pedido) {
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();

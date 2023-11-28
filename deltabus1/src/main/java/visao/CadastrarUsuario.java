@@ -38,6 +38,7 @@ import mensagens.Alterar1;
 import mensagens.CadastroErro;
 import mensagens.CadastroErro1;
 import mensagens.CadastroSucesso;
+import mensagens.ConfirmacaoAlterar;
 import mensagens.ConfirmacaoDeletarUsuario;
 import mensagens.DeletarUsuario1;
 import mensagens.DeletarUsuario2;
@@ -282,6 +283,8 @@ public class CadastrarUsuario extends JPanel {
 		genero.add("");
 		genero.add("Masculino");
 		genero.add("Feminino");
+		genero.add("Transgênero");
+		genero.add("Não-binário");
 		genero.add("Outro");
 
 		cbGenero = new JComboBox();
@@ -329,10 +332,42 @@ public class CadastrarUsuario extends JPanel {
 
 		ArrayList<String> cidade = new ArrayList<>();
 		cidade.add("");
-		cidade.add("São José");
+		cidade.add("SC");
 		cidade.add("Ilhota");
 		cidade.add("Gaspar");
 		cidade.add("Blumenau");
+		cidade.add("Florianópolis");
+		cidade.add("Joinville");
+		cidade.add("Itajaí");
+		
+		cidade.add("");
+		cidade.add("SP");
+		cidade.add("São Paulo");
+		cidade.add("Guarulhos");
+		cidade.add("Campinas");
+		cidade.add("São Bernardo do Campo");
+		cidade.add("Santo André");
+		cidade.add("Osasco");
+		
+		cidade.add("");
+		cidade.add("RS");
+		cidade.add("Porto Alegre.");
+		cidade.add("Caxias do Sul.");
+		cidade.add("Canoas.");
+		cidade.add("Pelotas.");
+		cidade.add("Santa Maria.");
+		cidade.add("Gramado");
+		
+		cidade.add("");
+		cidade.add("PR");
+		cidade.add("Curitiba");
+		cidade.add("Adrianópolis");
+		cidade.add("Campo Largo");
+		cidade.add("Ponta Grossa");
+		cidade.add("Londrina");
+		cidade.add("Cascavel");
+		
+		
 		cbCidade = new JComboBox();
 		cbCidade.setBounds(853, 257, 182, 30);
 		cbCidade.addAncestorListener(new AncestorListener() {
@@ -363,14 +398,14 @@ public class CadastrarUsuario extends JPanel {
 		lblBairro_1.setBounds(153, 321, 155, 14);
 		lblBairro_1.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblBairro_1);
-		
-		
+
 		ArrayList<String> uf = new ArrayList<>();
 		uf.add("");
 		uf.add("SC");
 		uf.add("SP");
 		uf.add("RS");
 		uf.add("PR");
+		
 		cbUf = new JComboBox();
 		cbUf.setBounds(714, 257, 98, 30);
 		cbUf.addAncestorListener(new AncestorListener() {
@@ -439,7 +474,7 @@ public class CadastrarUsuario extends JPanel {
 				System.out.println("aaaa");
 				System.out.println(funcionario);
 				Usuario usuario = new Usuario();
-				
+
 				if (funcionario == null) {
 					CadastroErro1 erro = new CadastroErro1("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
@@ -572,7 +607,7 @@ public class CadastrarUsuario extends JPanel {
 
 							});
 					confirmar.setVisible(true);
-			        confirmar.setLocationRelativeTo(null);
+					confirmar.setLocationRelativeTo(null);
 
 				} else {
 					DeletarUsuario2 falha2 = new DeletarUsuario2("Selecione um veiculo para excluir");
@@ -595,44 +630,43 @@ public class CadastrarUsuario extends JPanel {
 				 * selecionar registro
 				 */
 				int pos = table_1.getSelectedRow();
-				
+
 				if (pos >= 0) {
-				System.out.println(pos);
-				funcionarioSelecionado = listFuncionario.get(pos);
+					System.out.println(pos);
+					funcionarioSelecionado = listFuncionario.get(pos);
 
-				/*
-				 * preencher os campo
-				 * 
-				 */
+					/*
+					 * preencher os campo
+					 * 
+					 */
 
-				txtNome.setText(funcionarioSelecionado.getNome());
-				txtCpf.setText(funcionarioSelecionado.getCpf());
-				cbGenero.setSelectedItem(funcionarioSelecionado.getGenero());
-				txtEmail.setText(funcionarioSelecionado.getEmail());
-				txtTelefone.setText(funcionarioSelecionado.getNumeroTelefone());
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
-				txtDataNasci.setText(funcionarioSelecionado.getDatanasci().format(formatter));
-				txtCep.setText(Long.toString(funcionarioSelecionado.getEndereco().getCep()));
-				cbUf.setSelectedItem(funcionarioSelecionado.getEndereco().getUf());
-				cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());
-				cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco().getCidade());
-				txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
-				txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco().getBairro()));
-				txtRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getRua()));
+					txtNome.setText(funcionarioSelecionado.getNome());
+					txtCpf.setText(funcionarioSelecionado.getCpf());
+					cbGenero.setSelectedItem(funcionarioSelecionado.getGenero());
+					txtEmail.setText(funcionarioSelecionado.getEmail());
+					txtTelefone.setText(funcionarioSelecionado.getNumeroTelefone());
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+					txtDataNasci.setText(funcionarioSelecionado.getDatanasci().format(formatter));
+					txtCep.setText(Long.toString(funcionarioSelecionado.getEndereco().getCep()));
+					cbUf.setSelectedItem(funcionarioSelecionado.getEndereco().getUf());
+					cbFuncao.setSelectedItem(funcionarioSelecionado.getUsuario().getCargo());
+					cbCidade.setSelectedItem(funcionarioSelecionado.getEndereco().getCidade());
+					txtSenha.setText(funcionarioSelecionado.getUsuario().getSenha());
+					txtBairro.setText(String.valueOf(funcionarioSelecionado.getEndereco().getBairro()));
+					txtRua.setText(String.valueOf(funcionarioSelecionado.getEndereco().getRua()));
 
-				/*
-				 * ocutar botaocadastro aparecer botao salvar
-				 * 
-				 * 
-				 */
-				btnSalvar1.setVisible(true);
-				btnCadastrar.setVisible(false);
-				}else {
+					/*
+					 * ocutar botaocadastro aparecer botao salvar
+					 * 
+					 * 
+					 */
+					btnSalvar1.setVisible(true);
+					btnCadastrar.setVisible(false);
+				} else {
 					Alterar1 falha1 = new Alterar1("Selecione uma linha da lista para alterar");
 					falha1.setLocationRelativeTo(null);
 					falha1.setVisible(true);
 				}
-				
 
 			}
 		});
@@ -652,48 +686,56 @@ public class CadastrarUsuario extends JPanel {
 				Funcionario funcionario = verificarDados();
 
 				funcionario.getUsuario().setIdUsuario(funcionarioSelecionado.getUsuario().getIdUsuario());
+				ConfirmacaoAlterar confirmacao = new ConfirmacaoAlterar("Tem certeza que deseja realizar alteração?",new InterfaceMensagemConfirmacao() {
+							public void mensagemConfirmada() {
+								if (funcionario != null) {
+									/*
+									 * salvar alteracao no banco
+									 **/
 
-				if (funcionario != null) {
-					/*
-					 * salvar alteracao no banco
-					 **/
+									EnderecoDAO enderecoDAO = new EnderecoDAO();
+									Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
 
-					EnderecoDAO enderecoDAO = new EnderecoDAO();
-					Endereco endereco = enderecoDAO.listandoEndereco(funcionario.getEndereco());
+									if (endereco == null) {
+										long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
+									}
 
-					if (endereco == null) {
-						long cep = enderecoDAO.inserirEndereco(funcionario.getEndereco());
-					}
+									FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+									boolean resultado = funcionarioDAO.alterarFuncionario(funcionario);
 
-					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-					boolean resultado = funcionarioDAO.alterarFuncionario(funcionario);
+									UsuarioDAO usuario = UsuarioDAO.getInstancia();
+									usuario.alterarUsuario(funcionario.getUsuario());
+									/*
+									 * Atualizar tabela
+									 **/
+									atualizarTabela();
+									/*
+									 * Ocular salvar e motrar cadastrar
+									 **/
+									btnSalvar1.setVisible(false);
+									btnCadastrar.setVisible(true);
 
-					UsuarioDAO usuario = UsuarioDAO.getInstancia();
-					usuario.alterarUsuario(funcionario.getUsuario());
-					/*
-					 * Atualizar tabela
-					 **/
-					atualizarTabela();
-					/*
-					 * Ocular salvar e motrar cadastrar
-					 **/
-					btnSalvar1.setVisible(false);
-					btnCadastrar.setVisible(true);
+									if (resultado == true) {
 
-					if (resultado == true) {
+										AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
+										alterar.setLocationRelativeTo(null);
+										alterar.setVisible(true);
+										atualizarTabela();
+										limparDados(); // Limpa os campos após o cadastro
+									} else {
+										ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
+										erro1.setLocationRelativeTo(null);
+										erro1.setVisible(true);
+									}
+								}
+							}
 
-						AlteraSucesso alterar = new AlteraSucesso("Usuário alterado com Sucesso!");
-						alterar.setLocationRelativeTo(null);
-						alterar.setVisible(true);
-						atualizarTabela();
-						limparDados(); // Limpa os campos após o cadastro
-					} else {
-						ErroAlterar erro1 = new ErroAlterar("Erro de alteração, tente novamente!");
-						erro1.setLocationRelativeTo(null);
-						erro1.setVisible(true);
-					}
-				}
+							public void mensagemCancelada() {
 
+							}
+						});
+				confirmacao.setLocationRelativeTo(null);
+				confirmacao.setVisible(true);
 			}
 		});
 		btnSalvar1.setText("Salvar");
