@@ -12,6 +12,8 @@ CREATE TABLE `clientes` (
 ) ;
 
 INSERT INTO `clientes` VALUES ('bruna','57412567854','brunar@gmail.com',66666666666666,21346560);
+INSERT INTO `clientes` VALUES ('maria','57412568888','mariaa@gmail.com',55555555555555,21346560);
+
 
 CREATE TABLE `endereco` (
   `cep` bigint NOT NULL,
@@ -52,7 +54,7 @@ CREATE TABLE `pedido` (
   PRIMARY KEY (`id_pedidos`)
 );
 
-INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Cartão',6666666666,1),(3,'2000-01-01',6,555.55,'Cartão',55555555555555,1);
+INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Cartão',66666666666666,1),(3,'2000-01-01',6,555.55,'Cartão',55555555555555,1);
 
 CREATE TABLE `usuario` (
    `idUsuario` int NOT NULL AUTO_INCREMENT,

@@ -16,6 +16,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
+		if (endereco != null) {
 		try {
 			PreparedStatement ps = c.prepareStatement("select * from endereco where cep = ?");
 			ps.setLong(1, endereco.getCep());
@@ -45,19 +46,20 @@ public class EnderecoDAO implements InterfaceEndereco {
 		} finally {
 			con.fecharConexao();
 		}
+		}
 		return endereco;
-		//return null;
+		
 
 	}
 
 	@Override
 	public long inserirEndereco(Endereco endereco) {
-		System.out.println("end1");
+		
 		con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
 		int affectedRows = 0;
-		System.out.println("end13");
+		if (endereco != null) {
 		try {
 			String query = "INSERT INTO endereco (cep, cidade, bairro, rua, UF) values(?,?,?,?,?)";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -76,7 +78,7 @@ public class EnderecoDAO implements InterfaceEndereco {
 		} finally {
 			con.fecharConexao();
 		}
-
+		}
 		return affectedRows;
 
 	}

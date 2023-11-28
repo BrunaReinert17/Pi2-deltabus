@@ -454,8 +454,9 @@ public class CadastrarUsuario extends JPanel {
 				System.out.println("aaaa");
 				System.out.println(funcionario);
 				Usuario usuario = new Usuario();
+				
 				if (funcionario == null) {
-					CadastroErro erro = new CadastroErro("Dados inválidos!");
+					CadastroErro1 erro = new CadastroErro1("Dados inválidos!");
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
 				} else {
