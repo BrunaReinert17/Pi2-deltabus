@@ -217,6 +217,7 @@ public class MenuFuncionario extends JFrame {
 		
 
 		btnCadastrarClientes = new RoundButton("Cadastro de Clientes");
+		btnCadastrarClientes.setText("Cadastrar Clientes");
 		btnCadastrarClientes.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnCadastrarClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

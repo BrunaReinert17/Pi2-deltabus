@@ -122,7 +122,7 @@ INSERT INTO usuario (senha, email, cargo) VALUES ('abc12345', 'aguida@gmail.com'
 INSERT INTO usuario (senha, email, cargo) VALUES ('abc321', 'agatha@gmail.com', 'administrador');
 
 -- INSERT veiculo --
-INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
+INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
 INSERT INTO `veiculo` VALUES (2,'Scania','AGRALE/MASCA GRANMIDI O',134567.999,2023,'Banheiro',40,'Verde','Turismo','GNC','ABC222','987654321','Novo');
 INSERT INTO `veiculo` VALUES (3, 'Volvo', 'VOLVO/7700', 150000.50, 2022, 'Sem Banheiro', 45, 'Azul', 'Turismo', 'Diesel', 'XYZ123', '123456789', 'Semi Novo');
 INSERT INTO `veiculo` VALUES (4, 'Mercedes-Benz', 'M. BENZ/OF 1721', 120000.75, 2021, 'Com Banheiro', 35, 'Amarelo', 'Turismo', 'Diesel', 'DEF456', '987654321', 'Novo');

@@ -125,6 +125,7 @@ public class MenuAdmin extends JFrame {
 		}
 
 		btnCadastrarUsuarios = new RoundButton("Cadastro de Usuário");
+		btnCadastrarUsuarios.setText("Cadastrar Usuário");
 		btnCadastrarUsuarios.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnCadastrarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

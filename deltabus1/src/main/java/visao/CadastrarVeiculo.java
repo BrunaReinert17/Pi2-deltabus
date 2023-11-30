@@ -120,7 +120,7 @@ public class CadastrarVeiculo extends JPanel {
 		add(lblNewLabel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(207, 404, 773, 250);
+		scrollPane.setBounds(85, 404, 1043, 250);
 		add(scrollPane);
 
 		table = new JTable();
@@ -171,7 +171,7 @@ public class CadastrarVeiculo extends JPanel {
 			e3.printStackTrace();
 		}
 		txtRenavam = new JFormattedTextField(renavam);
-		txtRenavam.setBounds(207, 164, 167, 30);
+		txtRenavam.setBounds(85, 164, 167, 30);
 		txtRenavam.setText("");
 		txtRenavam.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtRenavam);
@@ -185,7 +185,7 @@ public class CadastrarVeiculo extends JPanel {
 			e1.printStackTrace();
 		}
 		txtPlaca = new JFormattedTextField(mascaraPlacaOnibus);
-		txtPlaca.setBounds(802, 164, 167, 30);
+		txtPlaca.setBounds(923, 164, 167, 30);
 		txtPlaca.setText("");
 		txtPlaca.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtPlaca);
@@ -193,7 +193,7 @@ public class CadastrarVeiculo extends JPanel {
 		/**********/
 
 		JLabel lblRenavam = new JLabel("Renavam:");
-		lblRenavam.setBounds(207, 145, 67, 14);
+		lblRenavam.setBounds(85, 139, 67, 14);
 		lblRenavam.setFont(new Font("Dialog", Font.BOLD, 18));
 		add(lblRenavam);
 
@@ -204,18 +204,18 @@ public class CadastrarVeiculo extends JPanel {
 		add(lblRenavam);
 
 		JLabel lblModelo = new JLabel("Modelo: ");
-		lblModelo.setBounds(603, 145, 84, 14);
+		lblModelo.setBounds(629, 139, 84, 14);
 		lblModelo.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblModelo);
 
 		JLabel lblLotacao = new JLabel("Lotação: ");
-		lblLotacao.setBounds(668, 222, 67, 14);
+		lblLotacao.setBounds(923, 222, 67, 14);
 		lblLotacao.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblLotacao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblLotacao);
 
 		lblSituacao = new JLabel("Situação:");
-		lblSituacao.setBounds(376, 295, 67, 14);
+		lblSituacao.setBounds(362, 299, 67, 14);
 		lblSituacao.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblSituacao.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblSituacao);
@@ -236,7 +236,7 @@ public class CadastrarVeiculo extends JPanel {
 		
 		
 		cbMarca = new JComboBox();
-		cbMarca.setBounds(407, 163, 167, 33);
+		cbMarca.setBounds(362, 163, 167, 33);
 		cbMarca.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < marca.size(); i++) {
@@ -267,7 +267,7 @@ public class CadastrarVeiculo extends JPanel {
 		cor.add("Preto");
 
 		cbCor = new JComboBox();
-		cbCor.setBounds(306, 241, 127, 33);
+		cbCor.setBounds(362, 247, 127, 33);
 		cbCor.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 				for (int i = 0; i < cor.size(); i++) {
@@ -289,28 +289,28 @@ public class CadastrarVeiculo extends JPanel {
 		lblCor.setBounds(218, 327, 42, 14);
 
 		lblCor = new JLabel("Cor:");
-		lblCor.setBounds(306, 222, 42, 14);
+		lblCor.setBounds(362, 222, 42, 14);
 		lblCor.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblCor.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCor);
 
 		lblFrota = new JLabel("Frota: ");
-		lblFrota.setBounds(764, 222, 67, 14);
+		lblFrota.setBounds(923, 299, 67, 14);
 		lblFrota.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblFrota);
 
 		lblPlaca = new JLabel("Placa:");
-		lblPlaca.setBounds(802, 145, 59, 14);
+		lblPlaca.setBounds(923, 139, 59, 14);
 		lblPlaca.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblPlaca);
 
 		lblAcessorios = new JLabel("Acessórios:");
-		lblAcessorios.setBounds(469, 222, 84, 14);
+		lblAcessorios.setBounds(629, 222, 84, 14);
 		lblAcessorios.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblAcessorios);
 
 		lblCombustivel = new JLabel("Combustível: ");
-		lblCombustivel.setBounds(207, 291, 90, 23);
+		lblCombustivel.setBounds(85, 295, 90, 23);
 		lblCombustivel.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblCombustivel);
 
@@ -381,12 +381,12 @@ public class CadastrarVeiculo extends JPanel {
 		add(btnLimparCampo);
 
 		JLabel lblMarca = new JLabel("Marca:");
-		lblMarca.setBounds(407, 145, 98, 14);
+		lblMarca.setBounds(362, 139, 98, 14);
 		lblMarca.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(lblMarca);
 
 		txtAno = new JLabel("Ano:");
-		txtAno.setBounds(207, 222, 42, 14);
+		txtAno.setBounds(85, 222, 42, 14);
 		txtAno.setFont(new Font("Dialog", Font.BOLD, 13));
 		add(txtAno);
 
@@ -420,13 +420,13 @@ public class CadastrarVeiculo extends JPanel {
 			}
 		});
 		cbModelo_1.setFont(new Font("Dialog", Font.BOLD, 13));
-		cbModelo_1.setBounds(603, 163, 167, 33);
+		cbModelo_1.setBounds(629, 163, 167, 33);
 		add(cbModelo_1);
 
 		textLotacao = new JTextField();
 		textLotacao.setFont(new Font("Dialog", Font.BOLD, 13));
 		textLotacao.setColumns(10);
-		textLotacao.setBounds(668, 242, 67, 30);
+		textLotacao.setBounds(923, 248, 67, 30);
 		add(textLotacao);
 
 		ArrayList<String> frota = new ArrayList<String>();
@@ -452,7 +452,7 @@ public class CadastrarVeiculo extends JPanel {
 			}
 		});
 		cbFrota.setFont(new Font("Dialog", Font.BOLD, 13));
-		cbFrota.setBounds(764, 241, 205, 33);
+		cbFrota.setBounds(923, 324, 205, 33);
 		add(cbFrota);
 
 		ArrayList<String> combustivel = new ArrayList<String>();
@@ -478,7 +478,7 @@ public class CadastrarVeiculo extends JPanel {
 			}
 		});
 		cbCombustivel.setFont(new Font("Dialog", Font.BOLD, 13));
-		cbCombustivel.setBounds(207, 312, 132, 33);
+		cbCombustivel.setBounds(85, 324, 132, 33);
 		add(cbCombustivel);
 
 		ArrayList<String> acessorio = new ArrayList<String>();
@@ -507,7 +507,7 @@ public class CadastrarVeiculo extends JPanel {
 		});
 
 		cbAcessorio.setFont(new Font("Dialog", Font.BOLD, 13));
-		cbAcessorio.setBounds(469, 241, 167, 33);
+		cbAcessorio.setBounds(629, 247, 167, 33);
 		add(cbAcessorio);
          
 		MaskFormatter ano = null;
@@ -521,7 +521,7 @@ public class CadastrarVeiculo extends JPanel {
 		textAno = new JTextField();
 		textAno.setFont(new Font("Dialog", Font.BOLD, 13));
 		textAno.setColumns(10);
-		textAno.setBounds(207, 242, 67, 30);
+		textAno.setBounds(85, 242, 67, 30);
 		add(textAno);
 
 		ArrayList<String> situacao = new ArrayList<String>();
@@ -547,7 +547,7 @@ public class CadastrarVeiculo extends JPanel {
 			}
 		});
 		cbSituacao.setFont(new Font("Dialog", Font.BOLD, 13));
-		cbSituacao.setBounds(376, 312, 153, 33);
+		cbSituacao.setBounds(362, 324, 153, 33);
 		add(cbSituacao);
 
 		MaskFormatter mascaraValor = null;
@@ -559,12 +559,12 @@ public class CadastrarVeiculo extends JPanel {
 		textPreco = new JFormattedTextField(mascaraValor);
 		textPreco.setFont(new Font("Dialog", Font.BOLD, 13));
 		textPreco.setColumns(10);
-		textPreco.setBounds(573, 313, 110, 30);
+		textPreco.setBounds(629, 325, 110, 30);
 		add(textPreco);
 
 		JLabel lblPreco = new JLabel("Preço:");
 		lblPreco.setFont(new Font("Dialog", Font.BOLD, 13));
-		lblPreco.setBounds(573, 295, 67, 14);
+		lblPreco.setBounds(629, 304, 67, 14);
 		add(lblPreco);
 
 		RoundButton btnCadastrar = new RoundButton("Cadastrar");// criando objeto
@@ -762,7 +762,7 @@ public class CadastrarVeiculo extends JPanel {
 
 		panel_4 = new JPanel();
 		panel_4.setBackground(new Color(0, 0, 0));
-		panel_4.setBounds(200, 398, 786, 262);
+		panel_4.setBounds(77, 398, 1059, 262);
 		add(panel_4);
 
 		setContentPane(contentPane);
