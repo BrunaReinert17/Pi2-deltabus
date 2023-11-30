@@ -536,16 +536,21 @@ public class CadastrarCliente extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				Cliente c = verificarDados();
+				
 
-				c.setCnpj(clienteSelecionado.getCnpj());
+				
 
 				if (c != null) {
+					
+					c.setCnpj(clienteSelecionado.getCnpj());
 
 					EnderecoDAO enderecoDAO = new EnderecoDAO();
 					Endereco endereco = enderecoDAO.listandoEndereco(c.getEndereco());
 
 					if (endereco == null) {
 						long cep = enderecoDAO.inserirEndereco(c.getEndereco());
+					}else {
+						boolean cep = enderecoDAO.alterarEndereco(c.getEndereco());
 					}
 
 					ClienteDAO clienteDAO = new ClienteDAO();
@@ -567,6 +572,11 @@ public class CadastrarCliente extends JPanel {
 						erro1.setLocationRelativeTo(null);
 						erro1.setVisible(true);
 					}
+				}
+				else {
+					CamposVazios erro = new CamposVazios("Dados inválidos!");
+					erro.setLocationRelativeTo(null);
+					erro.setVisible(true);
 				}
 
 			}
