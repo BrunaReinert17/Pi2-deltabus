@@ -119,6 +119,7 @@ INSERT INTO `pedido` VALUES (2,'2023-09-16',2,150000,'Cartão',66666666666666,1)
 INSERT INTO usuario (senha, email, cargo) VALUES ('abc123', 'bruna@gmail.com', 'funcionario');
 INSERT INTO usuario (senha, email, cargo) VALUES ('abc1234', 'maria@gmail.com', 'administrador');
 INSERT INTO usuario (senha, email, cargo) VALUES ('abc12345', 'aguida@gmail.com', 'funcionario');
+INSERT INTO usuario (senha, email, cargo) VALUES ('abc321', 'agatha@gmail.com', 'administrador');
 
 -- INSERT veiculo --
 INSERT INTO `veiculo` VALUES (1,'Marcopolo','Paradiso G8 1050',100000000,2023,'Ar condicionado, GPS',5,'Azul','Passeio','diesel','ABC123','123456784','Disponivel');
