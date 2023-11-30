@@ -29,19 +29,24 @@ O software abrange dois tipos de usuários: o administrador e o funcionário, ca
 
 
 # Tela Login
-![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/c7c4ddbd-e697-498d-83be-763e549afc0f)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/15c02037-b700-4983-ac34-7fe8f7be6dca)
+
 
 # Tela Menu Administrador
-![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/d5f31d76-d5e4-4293-b9ce-488aeb609e61)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/a8699ad0-b97c-4584-ae40-8b38a501f734)
+
 
 # Cadastrar Usuario
-![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/33847841-5d2e-4f40-aab3-6059cb4c0a97)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/07a1db4f-746f-41ed-83b0-6a057a17ccda)
+
 
 # Tela Menu Funcionario
-![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/8521ac17-f44c-41a5-a29e-cfa8a9c0e6b7)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/0bb540d3-4ab9-492f-8080-cb6144b2015f)
+
 
 # Cadastrar Pedido
-![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/98daddc1-3905-4309-8b95-a31d658e9110)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/a066dbd0-cdf8-4297-839a-359087ab9f84)
+
 
 # ⚙️ Tecnologias e Ferramentas 
 <img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white"><img align="center" alt="Eli-java" height="40" width="100" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" ><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"><img align="center" alt="Eli-java" height="40" width="130" src="https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white">
