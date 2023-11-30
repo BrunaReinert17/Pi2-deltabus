@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_T1DzUI-NEe6XYaQa9PD_Zg">
+  <modelElement href="deltabus1.uml#_T0sm8I-NEe6XYaQa9PD_Zg"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4aeRAI-NEe6XYaQa9PD_Zg" sourceAnchor="468.0,98.0" targetAnchor="0.0,87.0" target="_4affJ4-NEe6XYaQa9PD_Zg" source="_4bmSYI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UmgeYI-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4affII-NEe6XYaQa9PD_Zg" text="">
+      <visualProperties xmi:id="_4tlaQI-NEe6XYaQa9PD_Zg" position="-5.5,2.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_4affIY-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="endereco" navigable="true">
+      <modelElement href="deltabus1.uml#_UlLotI-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tkzMo-NEe6XYaQa9PD_Zg" position="42.33333333333326,-46.5"/>
+      <visibility xmi:id="_4affIo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affI4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4affJI-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_UmgeYY-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tlaQY-NEe6XYaQa9PD_Zg" position="-29.307692307692378,2.5"/>
+      <visibility xmi:id="_4affJY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affJo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4cPLkI-NEe6XYaQa9PD_Zg" sourceAnchor="161.0,0.0" targetAnchor="198.0,267.0" target="_4c4r0I-NEe6XYaQa9PD_Zg" source="_4bmSYI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UmhFdo-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4cpbQI-NEe6XYaQa9PD_Zg" text="">
+      <visualProperties xmi:id="_4tmBUY-NEe6XYaQa9PD_Zg" position="2.0,-17.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_4cpbQY-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="endereco" navigable="true">
+      <modelElement href="deltabus1.uml#_UlNd5I-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tmBUI-NEe6XYaQa9PD_Zg" position="-66.0,-83.0"/>
+      <visibility xmi:id="_4crQcY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4crQcI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4cqCUI-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_UmhFd4-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tmBUo-NEe6XYaQa9PD_Zg" position="2.0,37.0"/>
+      <visibility xmi:id="_4crQc4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4crQco-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4cr3gI-NEe6XYaQa9PD_Zg" target="_4c4r0I-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UmhFdI-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4cr3gY-NEe6XYaQa9PD_Zg" text=""/>
+    <sourceRole xmi:id="_4cr3go-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="datanasci" navigable="true">
+      <modelElement href="deltabus1.uml#_UlNd4I-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4cr3g4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4cr3hI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4cr3hY-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_UmhFdY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4cr3ho-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4cr3h4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4cvh4I-NEe6XYaQa9PD_Zg" sourceAnchor="15.0,0.0" targetAnchor="262.0,267.0" target="_4c4r0I-NEe6XYaQa9PD_Zg" source="_4fIukI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UmhsgI-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4cvh4Y-NEe6XYaQa9PD_Zg" text="">
+      <visualProperties xmi:id="_4tnPcI-NEe6XYaQa9PD_Zg" position="2.0,-3.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_4cvh4o-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="usuario" navigable="true">
+      <modelElement href="deltabus1.uml#_UlNd5Y-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tmoYI-NEe6XYaQa9PD_Zg" position="41.0,-46.0"/>
+      <visibility xmi:id="_4cvh44-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4cvh5I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4cvh5Y-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_UmhsgY-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tnPcY-NEe6XYaQa9PD_Zg" position="-17.0,10.0"/>
+      <visibility xmi:id="_4cvh5o-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4cvh54-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4dOqEI-NEe6XYaQa9PD_Zg" sourceAnchor="367.0,0.0" targetAnchor="215.0,213.0" target="_4eTBEI-NEe6XYaQa9PD_Zg" source="_4affJ4-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UmhsiI-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4d-Q8I-NEe6XYaQa9PD_Zg" text="">
+      <visualProperties xmi:id="_4tkzMI-NEe6XYaQa9PD_Zg" position="2.5,-8.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_4d-Q8Y-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="cliente" navigable="true">
+      <modelElement href="deltabus1.uml#_UlPTEY-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tkMIo-NEe6XYaQa9PD_Zg" position="-90.5,-46.0"/>
+      <visibility xmi:id="_4eAGJI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eAGI4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4d-Q8o-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_UmhsiY-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tkzMY-NEe6XYaQa9PD_Zg" position="-16.5,5.666666666666629"/>
+      <visibility xmi:id="_4eAGJo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eAGJY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4dyDsI-NEe6XYaQa9PD_Zg" target="_4eTBEI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_Umhsgo-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4eAGII-NEe6XYaQa9PD_Zg" text=""/>
+    <sourceRole xmi:id="_4eAGIY-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="dataCompra" navigable="true">
+      <modelElement href="deltabus1.uml#_UlOE8o-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eAtMY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eAtMI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4eAGIo-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_Umhsg4-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eAtM4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eAtMo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4eBUQI-NEe6XYaQa9PD_Zg" target="_4eTBEI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UmhshI-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4eBUQY-NEe6XYaQa9PD_Zg" text=""/>
+    <sourceRole xmi:id="_4eBUQo-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="tipoPagamento" navigable="true">
+      <modelElement href="deltabus1.uml#_UlOsBI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eBUQ4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eBURI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4eBURY-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_UmhshY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eBURo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eBUR4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4eP9wI-NEe6XYaQa9PD_Zg" sourceAnchor="491.0,346.0" targetAnchor="161.0,0.0" target="_4eTBEI-NEe6XYaQa9PD_Zg" source="_4fdesI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_Umhsho-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4eP9wY-NEe6XYaQa9PD_Zg" text="">
+      <visualProperties xmi:id="_4todkI-NEe6XYaQa9PD_Zg" position="2.0,-9.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_4eP9wo-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="veiculo" navigable="true">
+      <modelElement href="deltabus1.uml#_UlPTEI-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4tn2gI-NEe6XYaQa9PD_Zg" position="-94.0,1.0"/>
+      <visibility xmi:id="_4eP9w4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eP9xI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4eP9xY-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_Umhsh4-NEe6XYaQa9PD_Zg"/>
+      <visualProperties xmi:id="_4todkY-NEe6XYaQa9PD_Zg" position="-17.0,-60.0"/>
+      <visibility xmi:id="_4eP9xo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eP9x4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_4eRL4I-NEe6XYaQa9PD_Zg" sourceAnchor="131.0,0.0" targetAnchor="461.0,346.0" superClass="_4fdesI-NEe6XYaQa9PD_Zg" subClass="_4eTBEI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_Ui2tcI-NEe6XYaQa9PD_Zg"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4erbkI-NEe6XYaQa9PD_Zg" target="_4fIukI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UmiTkI-NEe6XYaQa9PD_Zg"/>
+    <nameVisual xmi:id="_4esCoI-NEe6XYaQa9PD_Zg" text=""/>
+    <sourceRole xmi:id="_4esCoY-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="arquivoImagem" navigable="true">
+      <modelElement href="deltabus1.uml#_UlP6Io-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4esCoo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4esCo4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4esCpI-NEe6XYaQa9PD_Zg" aggregationKind="NONE" name="">
+      <modelElement href="deltabus1.uml#_UmiTkY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4esCpY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4esCpo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_4fdesI-NEe6XYaQa9PD_Zg" name="Veiculo" associationsOut="_4eP9wI-NEe6XYaQa9PD_Zg" subclassedBy="_4eRL4I-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UYkwEI-NEe6XYaQa9PD_Zg"/>
+    <visualProperties xmi:id="_4fdesY-NEe6XYaQa9PD_Zg" position="1435.0,110.0" size="507.0,346.0"/>
+    <visibility xmi:id="_4fdeso-NEe6XYaQa9PD_Zg" label="+"/>
+    <attributes xmi:id="_4fdes4-NEe6XYaQa9PD_Zg" name="idVeiculo">
+      <modelElement href="deltabus1.uml#_UlQhMI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fdetI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fdetY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fdeto-NEe6XYaQa9PD_Zg" name="Long">
+        <modelElement href="deltabus1.uml#_UkMKMI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fdet4-NEe6XYaQa9PD_Zg" name="marca">
+      <modelElement href="deltabus1.uml#_UlQhMY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fdeuI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fdeuY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fdeuo-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fdeu4-NEe6XYaQa9PD_Zg" name="modelo">
+      <modelElement href="deltabus1.uml#_UlQhMo-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fdevI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fdevY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fdevo-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fdev4-NEe6XYaQa9PD_Zg" name="preco">
+      <modelElement href="deltabus1.uml#_UlQhM4-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fdewI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fdewY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fdewo-NEe6XYaQa9PD_Zg" name="Double">
+        <modelElement href="deltabus1.uml#_UkP0kI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fdew4-NEe6XYaQa9PD_Zg" name="ano">
+      <modelElement href="deltabus1.uml#_UlQhNI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fdexI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fdexY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fdexo-NEe6XYaQa9PD_Zg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fdex4-NEe6XYaQa9PD_Zg" name="acessorios">
+      <modelElement href="deltabus1.uml#_UlRIQI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fdeyI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fdeyY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fdeyo-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fdey4-NEe6XYaQa9PD_Zg" name="lotacao">
+      <modelElement href="deltabus1.uml#_UlRIQY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fdezI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fdezY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fdezo-NEe6XYaQa9PD_Zg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fdez4-NEe6XYaQa9PD_Zg" name="placa">
+      <modelElement href="deltabus1.uml#_UlRIQo-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fde0I-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde0Y-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fde0o-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fde04-NEe6XYaQa9PD_Zg" name="renavam">
+      <modelElement href="deltabus1.uml#_UlRIQ4-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fde1I-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde1Y-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fde1o-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fde14-NEe6XYaQa9PD_Zg" name="cor">
+      <modelElement href="deltabus1.uml#_UlRIRI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fde2I-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde2Y-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fde2o-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fde24-NEe6XYaQa9PD_Zg" name="TipoFrota">
+      <modelElement href="deltabus1.uml#_UlRvUI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fde3I-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde3Y-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fde3o-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fde34-NEe6XYaQa9PD_Zg" name="TipoCombustivel">
+      <modelElement href="deltabus1.uml#_UlRvUY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fde4I-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde4Y-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fde4o-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fde44-NEe6XYaQa9PD_Zg" name="situacao">
+      <modelElement href="deltabus1.uml#_UlRvUo-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fde5I-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde5Y-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fde5o-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_4fde54-NEe6XYaQa9PD_Zg" name="Veiculo">
+      <modelElement href="deltabus1.uml#_UYl-MI-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4fde6I-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4fde6Y-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde6o-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4fde64-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYl-M4-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4fde7I-NEe6XYaQa9PD_Zg" name="Veiculo">
+          <modelElement href="deltabus1.uml#_UYkwEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4fde7Y-NEe6XYaQa9PD_Zg" name="toString">
+      <modelElement href="deltabus1.uml#_UYmlQI-NEe6XYaQa9PD_Zg"/>
+      <stereotypes xmi:id="_4fde7o-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UYnMUI-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_4fde74-NEe6XYaQa9PD_Zg" name="Annotations">
+        <modelElement href="deltabus1.uml#_UYnMUY-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4fde8I-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde8Y-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4fde8o-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYmlQY-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4fde84-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4fde9I-NEe6XYaQa9PD_Zg" name="Veiculo">
+      <modelElement href="deltabus1.uml#_UkSQ0I-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4fde9Y-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4fde9o-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fde94-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4fde-I-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UkS34I-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4fde-Y-NEe6XYaQa9PD_Zg" name="Veiculo">
+          <modelElement href="deltabus1.uml#_UYkwEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_4fde-o-NEe6XYaQa9PD_Zg" name="idVeiculo">
+        <modelElement href="deltabus1.uml#_UkSQ0Y-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fde-4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fde_I-NEe6XYaQa9PD_Zg" name="Long">
+          <modelElement href="deltabus1.uml#_UkMKMI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fde_Y-NEe6XYaQa9PD_Zg" name="marca">
+        <modelElement href="deltabus1.uml#_UkSQ0o-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fde_o-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fde_4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfAI-NEe6XYaQa9PD_Zg" name="modelo">
+        <modelElement href="deltabus1.uml#_UkSQ04-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfAY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfAo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfA4-NEe6XYaQa9PD_Zg" name="preco">
+        <modelElement href="deltabus1.uml#_UkSQ1I-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfBI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfBY-NEe6XYaQa9PD_Zg" name="Double">
+          <modelElement href="deltabus1.uml#_UkP0kI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfBo-NEe6XYaQa9PD_Zg" name="ano">
+        <modelElement href="deltabus1.uml#_UkSQ1Y-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfB4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfCI-NEe6XYaQa9PD_Zg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfCY-NEe6XYaQa9PD_Zg" name="acessorios">
+        <modelElement href="deltabus1.uml#_UkSQ1o-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfCo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfC4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfDI-NEe6XYaQa9PD_Zg" name="lotacao">
+        <modelElement href="deltabus1.uml#_UkSQ14-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfDY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfDo-NEe6XYaQa9PD_Zg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfD4-NEe6XYaQa9PD_Zg" name="placa">
+        <modelElement href="deltabus1.uml#_UkSQ2I-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfEI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfEY-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfEo-NEe6XYaQa9PD_Zg" name="renavam">
+        <modelElement href="deltabus1.uml#_UkSQ2Y-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfE4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfFI-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfFY-NEe6XYaQa9PD_Zg" name="cor">
+        <modelElement href="deltabus1.uml#_UkSQ2o-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfFo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfF4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfGI-NEe6XYaQa9PD_Zg" name="TipoFrota">
+        <modelElement href="deltabus1.uml#_UkSQ24-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfGY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfGo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfG4-NEe6XYaQa9PD_Zg" name="TipoCombustivel">
+        <modelElement href="deltabus1.uml#_UkSQ3I-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfHI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfHY-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fdfHo-NEe6XYaQa9PD_Zg" name="situacao">
+        <modelElement href="deltabus1.uml#_UkSQ3Y-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fdfH4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fdfII-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_4fIukI-NEe6XYaQa9PD_Zg" name="Usuario" associationsIn="_4erbkI-NEe6XYaQa9PD_Zg" associationsOut="_4cvh4I-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UYhswI-NEe6XYaQa9PD_Zg"/>
+    <visualProperties xmi:id="_4fIukY-NEe6XYaQa9PD_Zg" position="1165.0,541.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_4fIuko-NEe6XYaQa9PD_Zg" label="+"/>
+    <attributes xmi:id="_4fIuk4-NEe6XYaQa9PD_Zg" name="idUsuario">
+      <modelElement href="deltabus1.uml#_UlPTEo-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fIulI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIulY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fIulo-NEe6XYaQa9PD_Zg" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fIul4-NEe6XYaQa9PD_Zg" name="email">
+      <modelElement href="deltabus1.uml#_UlPTE4-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fIumI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIumY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fIumo-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fIum4-NEe6XYaQa9PD_Zg" name="senha">
+      <modelElement href="deltabus1.uml#_UlP6II-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fIunI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIunY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fIuno-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fIun4-NEe6XYaQa9PD_Zg" name="cargo">
+      <modelElement href="deltabus1.uml#_UlP6IY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fIuoI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIuoY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fIuoo-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4fIuo4-NEe6XYaQa9PD_Zg" name="arquivoImagem">
+      <modelElement href="deltabus1.uml#_UlP6Io-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4fIupI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIupY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4fIupo-NEe6XYaQa9PD_Zg" name="Blob">
+        <modelElement href="deltabus1.uml#_UiVwE4-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_4fIup4-NEe6XYaQa9PD_Zg" name="Usuario">
+      <modelElement href="deltabus1.uml#_UYiT0I-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4fIuqI-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4fIuqY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIuqo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4fIuq4-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYiT04-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4fIurI-NEe6XYaQa9PD_Zg" name="Usuario">
+          <modelElement href="deltabus1.uml#_UYhswI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4fIurY-NEe6XYaQa9PD_Zg" name="Usuario">
+      <modelElement href="deltabus1.uml#_UYiT1I-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4fIuro-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4fIur4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIusI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4fIusY-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYi65o-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4fIuso-NEe6XYaQa9PD_Zg" name="Usuario">
+          <modelElement href="deltabus1.uml#_UYhswI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_4fIus4-NEe6XYaQa9PD_Zg" name="idUsuario">
+        <modelElement href="deltabus1.uml#_UYi64I-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fIutI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fIutY-NEe6XYaQa9PD_Zg" name="long">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fIuto-NEe6XYaQa9PD_Zg" name="email">
+        <modelElement href="deltabus1.uml#_UYi64Y-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fIut4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fIuuI-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fIuuY-NEe6XYaQa9PD_Zg" name="senha">
+        <modelElement href="deltabus1.uml#_UYi64o-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fIuuo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fIuu4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4fIuvI-NEe6XYaQa9PD_Zg" name="cargo">
+        <modelElement href="deltabus1.uml#_UYi644-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4fIuvY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4fIuvo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_4fIuv4-NEe6XYaQa9PD_Zg" name="toString">
+      <modelElement href="deltabus1.uml#_UYi654-NEe6XYaQa9PD_Zg"/>
+      <stereotypes xmi:id="_4fIuwI-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UYi66Y-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_4fIuwY-NEe6XYaQa9PD_Zg" name="Annotations">
+        <modelElement href="deltabus1.uml#_UYjh8I-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4fIuwo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4fIuw4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4fIuxI-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYi66I-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4fIuxY-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_4c4r0I-NEe6XYaQa9PD_Zg" name="Funcionario" associationsIn="_4cPLkI-NEe6XYaQa9PD_Zg _4cr3gI-NEe6XYaQa9PD_Zg _4cvh4I-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UYZJ4I-NEe6XYaQa9PD_Zg"/>
+    <visualProperties xmi:id="_4c5S4I-NEe6XYaQa9PD_Zg" position="918.0,199.0" size="399.0,266.0"/>
+    <visibility xmi:id="_4c5S4Y-NEe6XYaQa9PD_Zg" label="+"/>
+    <attributes xmi:id="_4c5S4o-NEe6XYaQa9PD_Zg" name="nome">
+      <modelElement href="deltabus1.uml#_UlM20Y-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S44-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5S5I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5S5Y-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4c5S5o-NEe6XYaQa9PD_Zg" name="email">
+      <modelElement href="deltabus1.uml#_UlM20o-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S54-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5S6I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5S6Y-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4c5S6o-NEe6XYaQa9PD_Zg" name="datanasci">
+      <modelElement href="deltabus1.uml#_UlNd4I-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S64-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5S7I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5S7Y-NEe6XYaQa9PD_Zg" name="LocalDate">
+        <modelElement href="deltabus1.uml#_UiQQgY-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4c5S7o-NEe6XYaQa9PD_Zg" name="genero">
+      <modelElement href="deltabus1.uml#_UlNd4Y-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S74-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5S8I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5S8Y-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4c5S8o-NEe6XYaQa9PD_Zg" name="numeroTelefone">
+      <modelElement href="deltabus1.uml#_UlNd4o-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S84-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5S9I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5S9Y-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4c5S9o-NEe6XYaQa9PD_Zg" name="cpf">
+      <modelElement href="deltabus1.uml#_UlNd44-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S94-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5S-I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5S-Y-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4c5S-o-NEe6XYaQa9PD_Zg" name="endereco">
+      <modelElement href="deltabus1.uml#_UlNd5I-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S-4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5S_I-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5S_Y-NEe6XYaQa9PD_Zg" name="Endereco">
+        <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4c5S_o-NEe6XYaQa9PD_Zg" name="usuario">
+      <modelElement href="deltabus1.uml#_UlNd5Y-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4c5S_4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5TAI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4c5TAY-NEe6XYaQa9PD_Zg" name="Usuario">
+        <modelElement href="deltabus1.uml#_UYhswI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_4c5TAo-NEe6XYaQa9PD_Zg" name="Funcionario">
+      <modelElement href="deltabus1.uml#_UYbmII-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4c5TA4-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4c5TBI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5TBY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4c5TBo-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYbmI4-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4c5TB4-NEe6XYaQa9PD_Zg" name="Funcionario">
+          <modelElement href="deltabus1.uml#_UYZJ4I-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4c5TCI-NEe6XYaQa9PD_Zg" name="toString">
+      <modelElement href="deltabus1.uml#_UYcNMI-NEe6XYaQa9PD_Zg"/>
+      <stereotypes xmi:id="_4c5TCY-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UYc0QY-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_4c5TCo-NEe6XYaQa9PD_Zg" name="Annotations">
+        <modelElement href="deltabus1.uml#_UYc0Qo-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4c5TC4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5TDI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4c5TDY-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYc0QI-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4c5TDo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4c5TD4-NEe6XYaQa9PD_Zg" name="Funcionario">
+      <modelElement href="deltabus1.uml#_UkPNgI-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4c5TEI-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4c5TEY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4c5TEo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4c5TE4-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UkPNi4-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4c5TFI-NEe6XYaQa9PD_Zg" name="Funcionario">
+          <modelElement href="deltabus1.uml#_UYZJ4I-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_4c5TFY-NEe6XYaQa9PD_Zg" name="nome">
+        <modelElement href="deltabus1.uml#_UkPNgY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5TFo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5TF4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4c5TGI-NEe6XYaQa9PD_Zg" name="datanasci">
+        <modelElement href="deltabus1.uml#_UkPNgo-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5TGY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5TGo-NEe6XYaQa9PD_Zg" name="LocalDate">
+          <modelElement href="deltabus1.uml#_UiQQgY-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4c5TG4-NEe6XYaQa9PD_Zg" name="genero">
+        <modelElement href="deltabus1.uml#_UkPNg4-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5THI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5THY-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4c5THo-NEe6XYaQa9PD_Zg" name="email">
+        <modelElement href="deltabus1.uml#_UkPNhI-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5TH4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5TII-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4c5TIY-NEe6XYaQa9PD_Zg" name="numeroTelefone">
+        <modelElement href="deltabus1.uml#_UkPNhY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5TIo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5TI4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4c5TJI-NEe6XYaQa9PD_Zg" name="cpf">
+        <modelElement href="deltabus1.uml#_UkPNho-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5TJY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5TJo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4c5TJ4-NEe6XYaQa9PD_Zg" name="endereco">
+        <modelElement href="deltabus1.uml#_UkPNh4-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5TKI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5TKY-NEe6XYaQa9PD_Zg" name="Endereco">
+          <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4c5TKo-NEe6XYaQa9PD_Zg" name="usuario">
+        <modelElement href="deltabus1.uml#_UkPNiI-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4c5TK4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4c5TLI-NEe6XYaQa9PD_Zg" name="Usuario">
+          <modelElement href="deltabus1.uml#_UYhswI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_4eTBEI-NEe6XYaQa9PD_Zg" name="Pedido" associationsIn="_4dOqEI-NEe6XYaQa9PD_Zg _4dyDsI-NEe6XYaQa9PD_Zg _4eBUQI-NEe6XYaQa9PD_Zg _4eP9wI-NEe6XYaQa9PD_Zg" generalizations="_4eRL4I-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UYepcI-NEe6XYaQa9PD_Zg"/>
+    <visualProperties xmi:id="_4eTBEY-NEe6XYaQa9PD_Zg" position="1765.0,544.0" size="431.0,213.0"/>
+    <visibility xmi:id="_4eTBEo-NEe6XYaQa9PD_Zg" label="+"/>
+    <attributes xmi:id="_4eTBE4-NEe6XYaQa9PD_Zg" name="id_pedidos">
+      <modelElement href="deltabus1.uml#_UlNd5o-NEe6XYaQa9PD_Zg"/>
+      <stereotypes xmi:id="_4eTBFI-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UlOE8I-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4eTBFY-NEe6XYaQa9PD_Zg" label="-"/>
+      <cardinality xmi:id="_4eTBFo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4eTBF4-NEe6XYaQa9PD_Zg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4eTBGI-NEe6XYaQa9PD_Zg" name="quantidade">
+      <modelElement href="deltabus1.uml#_UlOE8Y-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eTBGY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBGo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4eTBG4-NEe6XYaQa9PD_Zg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4eTBHI-NEe6XYaQa9PD_Zg" name="dataCompra">
+      <modelElement href="deltabus1.uml#_UlOE8o-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eTBHY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBHo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4eTBH4-NEe6XYaQa9PD_Zg" name="LocalDate">
+        <modelElement href="deltabus1.uml#_UiQQgY-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4eTBII-NEe6XYaQa9PD_Zg" name="valorPago">
+      <modelElement href="deltabus1.uml#_UlOE84-NEe6XYaQa9PD_Zg"/>
+      <stereotypes xmi:id="_4eTBIY-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UlOE9I-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4eTBIo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBI4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4eTBJI-NEe6XYaQa9PD_Zg" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4eTBJY-NEe6XYaQa9PD_Zg" name="tipoPagamento">
+      <modelElement href="deltabus1.uml#_UlOsBI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eTBJo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBJ4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4eTBKI-NEe6XYaQa9PD_Zg" name="FormaPagamento">
+        <modelElement href="deltabus1.uml#_UYWGkI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4eTBKY-NEe6XYaQa9PD_Zg" name="veiculo">
+      <modelElement href="deltabus1.uml#_UlPTEI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eTBKo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBK4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4eTBLI-NEe6XYaQa9PD_Zg" name="Veiculo">
+        <modelElement href="deltabus1.uml#_UYkwEI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4eTBLY-NEe6XYaQa9PD_Zg" name="cliente">
+      <modelElement href="deltabus1.uml#_UlPTEY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eTBLo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBL4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4eTBMI-NEe6XYaQa9PD_Zg" name="Cliente">
+        <modelElement href="deltabus1.uml#_UYLHcI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_4eTBMY-NEe6XYaQa9PD_Zg" name="Pedido">
+      <modelElement href="deltabus1.uml#_UYfQgI-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4eTBMo-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4eTBM4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBNI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4eTBNY-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYf3ko-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4eTBNo-NEe6XYaQa9PD_Zg" name="Pedido">
+          <modelElement href="deltabus1.uml#_UYepcI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4eTBN4-NEe6XYaQa9PD_Zg" name="getId_pedido">
+      <modelElement href="deltabus1.uml#_UYf3k4-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eTBOI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBOY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4eTBOo-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYf3lI-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4eTBO4-NEe6XYaQa9PD_Zg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4eTBPI-NEe6XYaQa9PD_Zg" name="setId_pedido">
+      <modelElement href="deltabus1.uml#_UYgeoI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4eTBPY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBPo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_4eTBP4-NEe6XYaQa9PD_Zg" name="id_pedidos">
+        <modelElement href="deltabus1.uml#_UYgeoY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBQI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBQY-NEe6XYaQa9PD_Zg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_4eTBQo-NEe6XYaQa9PD_Zg" name="Pedido">
+      <modelElement href="deltabus1.uml#_UkQboY-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4eTBQ4-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4eTBRI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4eTBRY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4eTBRo-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UkRCt4-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4eTBR4-NEe6XYaQa9PD_Zg" name="Pedido">
+          <modelElement href="deltabus1.uml#_UYepcI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_4eTBSI-NEe6XYaQa9PD_Zg" name="id_pedidos">
+        <modelElement href="deltabus1.uml#_UkQboo-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBSY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBSo-NEe6XYaQa9PD_Zg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4eTBS4-NEe6XYaQa9PD_Zg" name="quantidade">
+        <modelElement href="deltabus1.uml#_UkQbo4-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBTI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBTY-NEe6XYaQa9PD_Zg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4eTBTo-NEe6XYaQa9PD_Zg" name="dataCompra">
+        <modelElement href="deltabus1.uml#_UkRCsI-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBT4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBUI-NEe6XYaQa9PD_Zg" name="LocalDate">
+          <modelElement href="deltabus1.uml#_UiQQgY-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4eTBUY-NEe6XYaQa9PD_Zg" name="valorPago">
+        <modelElement href="deltabus1.uml#_UkRCsY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBUo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBU4-NEe6XYaQa9PD_Zg" name="Double">
+          <modelElement href="deltabus1.uml#_UkP0kI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4eTBVI-NEe6XYaQa9PD_Zg" name="tipoPagamento">
+        <modelElement href="deltabus1.uml#_UkRCso-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBVY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBVo-NEe6XYaQa9PD_Zg" name="FormaPagamento">
+          <modelElement href="deltabus1.uml#_UYWGkI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4eTBV4-NEe6XYaQa9PD_Zg" name="veiculo">
+        <modelElement href="deltabus1.uml#_UkRCs4-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBWI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBWY-NEe6XYaQa9PD_Zg" name="Veiculo">
+          <modelElement href="deltabus1.uml#_UYkwEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4eTBWo-NEe6XYaQa9PD_Zg" name="cliente">
+        <modelElement href="deltabus1.uml#_UkRCtI-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4eTBW4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4eTBXI-NEe6XYaQa9PD_Zg" name="Cliente">
+          <modelElement href="deltabus1.uml#_UYLHcI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_4bmSYI-NEe6XYaQa9PD_Zg" name="Endereco" associationsOut="_4aeRAI-NEe6XYaQa9PD_Zg _4cPLkI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+    <visualProperties xmi:id="_4bm5cI-NEe6XYaQa9PD_Zg" position="955.0,807.0" size="468.0,213.0"/>
+    <visibility xmi:id="_4bm5cY-NEe6XYaQa9PD_Zg" label="+"/>
+    <attributes xmi:id="_4bm5co-NEe6XYaQa9PD_Zg" name="cep">
+      <modelElement href="deltabus1.uml#_UlMPwI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4bm5c4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5dI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4bm5dY-NEe6XYaQa9PD_Zg" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4bm5do-NEe6XYaQa9PD_Zg" name="cidade">
+      <modelElement href="deltabus1.uml#_UlMPwY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4bm5d4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5eI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4bm5eY-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4bm5eo-NEe6XYaQa9PD_Zg" name="bairro">
+      <modelElement href="deltabus1.uml#_UlMPwo-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4bm5e4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5fI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4bm5fY-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4bm5fo-NEe6XYaQa9PD_Zg" name="rua">
+      <modelElement href="deltabus1.uml#_UlMPw4-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4bm5f4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5gI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4bm5gY-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4bm5go-NEe6XYaQa9PD_Zg" name="Uf">
+      <modelElement href="deltabus1.uml#_UlMPxI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4bm5g4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5hI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4bm5hY-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_4bm5ho-NEe6XYaQa9PD_Zg" name="Endereco">
+      <modelElement href="deltabus1.uml#_UYScMI-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4bm5h4-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4bm5iI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5iY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4bm5io-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYTDQo-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4bm5i4-NEe6XYaQa9PD_Zg" name="Endereco">
+          <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4bm5jI-NEe6XYaQa9PD_Zg" name="Endereco">
+      <modelElement href="deltabus1.uml#_UYTqUI-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4bm5jY-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4bm5jo-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5j4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4bm5kI-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYURYo-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4bm5kY-NEe6XYaQa9PD_Zg" name="Endereco">
+          <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_4bm5ko-NEe6XYaQa9PD_Zg" name="cep">
+        <modelElement href="deltabus1.uml#_UYTqUY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4bm5k4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4bm5lI-NEe6XYaQa9PD_Zg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4bm5lY-NEe6XYaQa9PD_Zg" name="cidade">
+        <modelElement href="deltabus1.uml#_UYTqUo-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4bm5lo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4bm5l4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4bm5mI-NEe6XYaQa9PD_Zg" name="bairro">
+        <modelElement href="deltabus1.uml#_UYTqU4-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4bm5mY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4bm5mo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4bm5m4-NEe6XYaQa9PD_Zg" name="rua">
+        <modelElement href="deltabus1.uml#_UYTqVI-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4bm5nI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4bm5nY-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4bm5no-NEe6XYaQa9PD_Zg" name="estado">
+        <modelElement href="deltabus1.uml#_UYTqVY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4bm5n4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4bm5oI-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4bm5oY-NEe6XYaQa9PD_Zg" name="UF">
+        <modelElement href="deltabus1.uml#_UYTqVo-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4bm5oo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4bm5o4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_4bm5pI-NEe6XYaQa9PD_Zg" name="toString">
+      <modelElement href="deltabus1.uml#_UYURY4-NEe6XYaQa9PD_Zg"/>
+      <stereotypes xmi:id="_4bm5pY-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UYU4cY-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_4bm5po-NEe6XYaQa9PD_Zg" name="Annotations">
+        <modelElement href="deltabus1.uml#_UYVfgI-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4bm5p4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5qI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4bm5qY-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYU4cI-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4bm5qo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4bm5q4-NEe6XYaQa9PD_Zg" name="Endereco">
+      <modelElement href="deltabus1.uml#_UkN_YI-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4bm5rI-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <stereotypes xmi:id="_4bm5rY-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UkN_ZI-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4bm5ro-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4bm5r4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4bm5sI-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UkN_ZY-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4bm5sY-NEe6XYaQa9PD_Zg" name="Endereco">
+          <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_4bm5so-NEe6XYaQa9PD_Zg" name="cep">
+        <modelElement href="deltabus1.uml#_UkN_YY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4bm5s4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4bm5tI-NEe6XYaQa9PD_Zg" name="Long">
+          <modelElement href="deltabus1.uml#_UkMKMI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_4affJ4-NEe6XYaQa9PD_Zg" name="Cliente" associationsIn="_4aeRAI-NEe6XYaQa9PD_Zg" associationsOut="_4dOqEI-NEe6XYaQa9PD_Zg">
+    <modelElement href="deltabus1.uml#_UYLHcI-NEe6XYaQa9PD_Zg"/>
+    <visualProperties xmi:id="_4affKI-NEe6XYaQa9PD_Zg" position="1613.0,818.0" size="487.0,175.0"/>
+    <visibility xmi:id="_4affKY-NEe6XYaQa9PD_Zg" label="+"/>
+    <attributes xmi:id="_4affKo-NEe6XYaQa9PD_Zg" name="nome">
+      <modelElement href="deltabus1.uml#_UlLosI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4affK4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affLI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4affLY-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4affLo-NEe6XYaQa9PD_Zg" name="numeroTelefone">
+      <modelElement href="deltabus1.uml#_UlLosY-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4affL4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affMI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4affMY-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4affMo-NEe6XYaQa9PD_Zg" name="email">
+      <modelElement href="deltabus1.uml#_UlLoso-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4affM4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affNI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4affNY-NEe6XYaQa9PD_Zg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4affNo-NEe6XYaQa9PD_Zg" name="cnpj">
+      <modelElement href="deltabus1.uml#_UlLos4-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4affN4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affOI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4affOY-NEe6XYaQa9PD_Zg" name="Long">
+        <modelElement href="deltabus1.uml#_UkMKMI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4affOo-NEe6XYaQa9PD_Zg" name="endereco">
+      <modelElement href="deltabus1.uml#_UlLotI-NEe6XYaQa9PD_Zg"/>
+      <visibility xmi:id="_4affO4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affPI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <type xmi:id="_4affPY-NEe6XYaQa9PD_Zg" name="Endereco">
+        <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_4affPo-NEe6XYaQa9PD_Zg" name="Cliente">
+      <modelElement href="deltabus1.uml#_UYMVkI-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4affP4-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4affQI-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affQY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4affQo-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYM8oI-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4affQ4-NEe6XYaQa9PD_Zg" name="Cliente">
+          <modelElement href="deltabus1.uml#_UYLHcI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4affRI-NEe6XYaQa9PD_Zg" name="toString">
+      <modelElement href="deltabus1.uml#_UYM8oY-NEe6XYaQa9PD_Zg"/>
+      <stereotypes xmi:id="_4affRY-NEe6XYaQa9PD_Zg" name="LegacyStyledElement">
+        <modelElement href="deltabus1.uml#_UYNjsY-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_4affRo-NEe6XYaQa9PD_Zg" name="Annotations">
+        <modelElement href="deltabus1.uml#_UYOKwI-NEe6XYaQa9PD_Zg"/>
+      </stereotypes>
+      <visibility xmi:id="_4affR4-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affSI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4affSY-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UYNjsI-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4affSo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_4affS4-NEe6XYaQa9PD_Zg" name="Cliente">
+      <modelElement href="deltabus1.uml#_UkMxQY-NEe6XYaQa9PD_Zg"/>
+      <keywords xmi:id="_4affTI-NEe6XYaQa9PD_Zg" keyword="create"/>
+      <visibility xmi:id="_4affTY-NEe6XYaQa9PD_Zg" label="+"/>
+      <cardinality xmi:id="_4affTo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_4affT4-NEe6XYaQa9PD_Zg">
+        <modelElement href="deltabus1.uml#_UkNYVo-NEe6XYaQa9PD_Zg"/>
+        <type xmi:id="_4affUI-NEe6XYaQa9PD_Zg" name="Cliente">
+          <modelElement href="deltabus1.uml#_UYLHcI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_4affUY-NEe6XYaQa9PD_Zg" name="nome">
+        <modelElement href="deltabus1.uml#_UkMxQo-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4affUo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4affU4-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4affVI-NEe6XYaQa9PD_Zg" name="numeroTelefone">
+        <modelElement href="deltabus1.uml#_UkNYUI-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4affVY-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4affVo-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4affV4-NEe6XYaQa9PD_Zg" name="email">
+        <modelElement href="deltabus1.uml#_UkNYUY-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4affWI-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4affWY-NEe6XYaQa9PD_Zg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4affWo-NEe6XYaQa9PD_Zg" name="cnpj">
+        <modelElement href="deltabus1.uml#_UkNYUo-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4affW4-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4affXI-NEe6XYaQa9PD_Zg" name="Long">
+          <modelElement href="deltabus1.uml#_UkMKMI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_4affXY-NEe6XYaQa9PD_Zg" name="endereco">
+        <modelElement href="deltabus1.uml#_UkNYU4-NEe6XYaQa9PD_Zg"/>
+        <cardinality xmi:id="_4affXo-NEe6XYaQa9PD_Zg" label="1" max="1" min="1"/>
+        <type xmi:id="_4affX4-NEe6XYaQa9PD_Zg" name="Endereco">
+          <modelElement href="deltabus1.uml#_UYROEI-NEe6XYaQa9PD_Zg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>
