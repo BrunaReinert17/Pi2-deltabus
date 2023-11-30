@@ -16,13 +16,16 @@ O software abrange dois tipos de usuários: o administrador e o funcionário, ca
 
 
 # 📉 Diagrama de Casos de Uso:
-![](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/79d7788d-2417-462f-ad3f-22e9e80bc3ec)
+![](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/12dd0e95-cbc6-490b-8982-101d8832696f)
+
 
 # 📈 Diagrama entidade-relacionamento do Software:
-![img_der_deltaBuscerto](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/9994b3e5-655d-48b5-a038-c09bd635df50)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/0b60eaff-d279-44b8-adae-6e5a5c47fb82)
+
 
 # 📉 Diagrama de Classes:
-![Diagrama de classes ](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/de42cf60-8405-4ce8-8f1e-5e0d05f1e666)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/a81262a1-3534-4251-bfc3-57eaf09e6a7f)
+
 
 
 # Tela Login
