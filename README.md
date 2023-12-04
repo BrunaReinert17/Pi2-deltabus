@@ -1,6 +1,8 @@
 # DELTABUS
 
-![DELTABUS](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/be02f278-ee73-431b-9d7c-ab1eb1ec22d3)
+![image](https://github.com/BrunaReinert17/Pi2-deltabus/assets/111304031/b727aa3b-2f00-42a1-9ac3-465d270ccb09)
+
+
 
 
 Software de Gerenciamento para Vendas de Õnibus.
